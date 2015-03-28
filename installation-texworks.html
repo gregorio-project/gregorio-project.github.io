@@ -89,23 +89,7 @@
 
 <h1>Configuring TeXworks for Gregorio</h1>
 
-<p>This page describes how to configure TeXworks to use Gregorio.  You will have to repeat this process for each user who uses TeXworks.</p>
-
-<h3>Configure TeXworks</h3>
-
-<p>While your screens may look a little different depending on your operating system, the steps to configure TeXworks are the same whether you're on Linux, Mac, or Windows.</p>
-
-<p>All we need to do is add the compilation engine for LuaLatex to TeXworks. To do so, go in <code>Edit -&gt; Preferences</code>(<code>TeXworks -&gt; Preferences</code> on a Mac) and then in the "Typesetting" tab, in the "Processing tools" section, click on add ("<code>+</code>"), and enter the following data:</p>
-
-<div class="legende">
-<img src="/gregorio/illus/texworks-lualatex.png" title="" alt="" />
-<br />Adding LuaLaTex in TeXworks
-</div>
-
-<p>If you want, you can also add LilyPond-Book in a similar fashion (the "--shell-escape" argument is not necessary), though you'll first need to get the engine from <a href="https://sole.dimi.uniud.it/~nicola.vitacolonna/software/lilypond-texshop/">its maker</a>.</p>
-
-<p>Once you've downloaded the engine, open TeXworks and click on <code>Help -&gt; Settings and Resources...</code>  Follow the link to the Resources folder in the pop-up dialog that appears.  In this folder create a new subfolder called "engines" and copy it there.  <b>Note:</b> This engine does not work on Windows.</p>
-
+<p>Gregorio needs <code>lualatex</code> to be able to launch the <code>gregorio</code> program. This is done by adding the <code>--shell-escape</code> argument to <code>lualatex</code>. To allow that in TeXWorks, go in <code>Edit -&gt; Preferences</code>(<code>TeXworks -&gt; Preferences</code> on a Mac) and then in the "Typesetting" tab, in the "Processing tools" section, click on "LuaLaTeX", "Edit", then in the box, click on the "+" and type <code>--shell-escape</code>. Click two times on the up arrow so that the new argument is the first one. Relaunch TeXWorks, you're done.</p>
 
 <!-- footer -->
     </div>
