@@ -89,7 +89,38 @@
 
 <h1>Configuring TeXworks for Gregorio</h1>
 
-<p>Gregorio needs <code>lualatex</code> to be able to launch the <code>gregorio</code> program. This is done by adding the <code>--shell-escape</code> argument to <code>lualatex</code>. To allow that in TeXWorks, go in <code>Edit -&gt; Preferences</code>(<code>TeXworks -&gt; Preferences</code> on a Mac) and then in the "Typesetting" tab, in the "Processing tools" section, click on "LuaLaTeX", "Edit", then in the box, click on the "+" and type <code>--shell-escape</code>. Click two times on the up arrow so that the new argument is the first one. Relaunch TeXWorks, you're done.</p>
+<h3>Automatic score compilation</h3>
+
+<p>Gregorio needs <code>lualatex</code> to be able to launch the <code>gregorio</code> program to compile gabc scores automatically.</p>
+
+<p>TeXworks can be configured to do so by creating a new engine for compilation that adds the <code>--shell-escape</code> argument to <code>lualatex</code>.</p>
+
+<p>To create it, go in <code>Edit -&gt; Preferences</code>(<code>TeXworks -&gt; Preferences</code> on a Mac) and then in the "Typesetting" tab, in the "Processing tools" section, click on "+" in the "Tools" section. Then you need to fill the values for the new engine:</p>
+
+<div class="commandline">
+<code>Name: LuaLaTeX+se</code><br>
+<code>Program: lualatex</code><br>
+</div>
+
+<p>The name <code>LuaLaTeX+se</code> is arbitrary, but it's important to use it, so that everyone can have the same scores.</p>
+
+<p>Then you need to add three arguments, clicking each time on "+": first is <code>--shell-escape</code>, second is <code>$synctexoption</code>, third is <code>$fullname</code>.
+
+<p>Once you're done, validate everything and restart TeXworks.</p>
+
+<h3>Ease of use of .gabc files (optional)</h3>
+
+<p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of TeXworks, you have to hack the configuration files a little, but this is very easy.</p>
+
+<p>First, you have to find the file named <code>texworks-config.txt</code>. Under Linux it is in <code>~/.TeXworks/configuration/</code>, under Windows it should be in <code>C:/Users/&lt;your user name&gt;/.texlive2015/texmf-config</code> (change 2015 with your version), if it's not here, you can look with the Window search tools.</p>
+
+<p>Then open this file, and, near the end, you will see comments starting by <code># file-open-filter:</code>, simply add the following line:</p>
+
+<div class="commandline">
+<code># file-open-filter: Gabc score (*.gabc)</code>
+</div>
+
+<p>where you want it to appear in the list.</p>
 
 <!-- footer -->
     </div>
