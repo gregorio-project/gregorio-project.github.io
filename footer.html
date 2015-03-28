@@ -1,10 +1,13 @@
-</div>
-<div class="bottom">
-<!--#config timefmt="%e %B %Y" -->
-<div id="lastdate">Last modification: <!--#echo var="LAST_MODIFIED" -->.</div>
-<h4>License</h4>
-This document and the design of this site (by Patrick Roux) are under <a href="http://www.gnu.org/licenses/gpl.html" title="General Public License" hreflang="en" charset="utf-8" dir="ltr" rel="copyright" xml:lang="en">GPL</a>.<br />
-</div>
-</div>
-</body>
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
 </html>
