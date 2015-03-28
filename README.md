@@ -1,2 +1,3 @@
 # gregorio-project.github.io
-Website for the Gregorio project
+
+The website is currently a set of static pages, with header and footer automatically added by `BuildSite.py`.
