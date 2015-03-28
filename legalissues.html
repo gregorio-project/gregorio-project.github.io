@@ -1,12 +1,106 @@
-<!--#set var="context" value="default" --><!--#set var="title" value="Legal issues" --><!--#include virtual="/gregorio/header.en.html" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
 
-<h1><!--#echo var="title" --></h1>
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+          <li><a href="/gregorio-history.html">About</a> </li>
+          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/tutorial/index.html">gabc Tutorial</a></li>
+          <li><a href="/introduction.html">GregorioTeX Tutorial</a></li>
+          <li><a href="/technical-aspects.html">For developers</a></li>
+          <li><a href="legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/features.html">Extra features</a></li>
+          <li><a href="/gregoriotex/introduction.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+          <li><a href="/tutorial/index.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+          <li><a href="/examples.html">Scores</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Legal issues with Gregorian chant';
+</script>
+
+<h1>Legal issues with Gregorian chant</h1>
 
 <p>This page tries to explain some legal issues that are important for gregorio users.</p>
 
 <p><strong>Warning:</strong> this page is not the official law, and there is no warranty for the information contained herein.</p>
 
-<p>The difficulty with intellectual property legislation is that they can be very different from one country to another. The differences are for example the time after which a piece goes in the public domain, or the possibility for an author to renounce his rights. For this reason, in the <a href="/gregorio/gabc">gabc headers</a>, the copyright of the original score must be something like <code>(C) Solesmes, 1934</code>. Thus we know that the score is in the public domain in countries in which author rights for collective pieces last less than 75 years, but not in other countries.</p>
+<p>The difficulty with intellectual property legislation is that they can be very different from one country to another. The differences are for example the time after which a piece goes in the public domain, or the possibility for an author to renounce his rights. For this reason, in the <a href="/gabc/index.html">gabc headers</a>, the copyright of the original score must be something like <code>(C) Solesmes, 1934</code>. Thus we know that the score is in the public domain in countries in which author rights for collective pieces last less than 75 years, but not in other countries.</p>
 
 <h2>Copyrights</h2>
 
@@ -44,4 +138,17 @@
 
 <p>A lot of French pieces are in the public domain in an <q>illegal</q> way, because it's a common practice in (for example) the free software world, which is really international. Putting a file in the public domain is thus not exceptional in France or other similar countries. But if you want to abide by the law, it would be possible to have a <code>gabc-copyright</code> field like <code>(C) Elie Roux, 2009, wtfpl/public domain</code>.</p>
 
-<!--#include virtual="/gregorio/footer.en.html" -->
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>

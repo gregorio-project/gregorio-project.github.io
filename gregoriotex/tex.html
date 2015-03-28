@@ -1,8 +1,102 @@
-<!--#set var="context" value="gregoriotex" --><!--#set var="title" value="Introduction to TeX" --><!--#include virtual="/gregorio/header.en.html" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+          <li><a href="/gregorio-history.html">About</a> </li>
+          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/tutorial/index.html">gabc Tutorial</a></li>
+          <li><a href="/introduction.html">GregorioTeX Tutorial</a></li>
+          <li><a href="/technical-aspects.html">For developers</a></li>
+          <li><a href="legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/features.html">Extra features</a></li>
+          <li><a href="/gregoriotex/introduction.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+          <li><a href="/tutorial/index.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+          <li><a href="/examples.html">Scores</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregoriotex';
+    title = 'TeX';
+</script>
 
 <h1><!--#echo var="title" --></h1>
 
-<p>This page is intended for the many people wishing to use Gregorio but not yet acquainted with TeX.  For the installation of TeX and GregorioTeX system, refer to the <a href="/gregorio/installation">installation</a> page.</p>
+<p>This page is intended for the many people wishing to use Gregorio but not yet acquainted with TeX.  For the installation of TeX and GregorioTeX system, refer to the <a href="/installation.html">installation</a> page.</p>
 
 <h2>What is TeX?</h2>
 
@@ -16,7 +110,7 @@
 
 <p>The first reason that impelled me to use TeX is that it's a free (non-proprietary) language (in the public domain), ported to various OSes, and capable of producing these types of scores.  The aim of gregorio is to be usable by everyone freely and without charge, and thus that excludes proprietary commercial software for computer-aided publishing. So aside from TeX the choice was quite limited, since there are very few text processors as programmable (making Gregorian chant scores is less easy than it might appear).</p>
 
-<p>Furthermore, TeX can be used to produce complete books of professional quality (cf. <a href="/gregorio/gregoriotex/example">examples</a>), so using TeX does not reduce the possible usages of gregorio.</p>
+<p>Furthermore, TeX can be used to produce complete books of professional quality (cf. <a href="/gregoriotex/example.html">examples</a>), so using TeX does not reduce the possible usages of gregorio.</p>
 
 <h2>Why and how to learn LaTeX ?</h2>
 
@@ -28,8 +122,19 @@
 
 <h2>What are the different versions of TeX?</h2>
 
-<p>TeX, despite its very advanced age for a software program, benefits from the constant attention of the community, and its development and modernisation remain active.  Unfortunately, all the new versions are not perfect or mutually compatible.  The only extension of TeX needed for GregorioTeX is Omega. Omega allows fonts to have more than 255 characters (which is necessary for a gregorian chant font), and also can place characters at the beginning and end of a line (necessary for the automation of the custos and the clef). Thanks to these extensions, GregorioTeX is very simple to compile, and does not need recompilation by any third-party software (in contrast to its competitors OpusTeX and MusixTeX).</p>
+<p>What we usually call TeX, is in fact a combination of a format, written in TeX (usually PlainTeX, LaTeX or ConTeXt) and an engine, the executable file (TeX82, PDFTeX, XeTeX or LuaTeX). Gregorio actively uses the <a href="http://www.luatex.org/">LuaTeX</a> features</p>
 
-<p>Sadly, the Omega extension is not the most common and is not included in all TeX distributions.  Omega development has been abandoned, and instead LuaTeX, an improved version of Omega, is more convenient to use.</p>
-
-<!--#include virtual="/gregorio/footer.en.html" -->
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>

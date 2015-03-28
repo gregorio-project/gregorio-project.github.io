@@ -1,24 +1,106 @@
-<!--#set var="context" value="default" --><!--#set var="title" value="Introduction to Gregorio with TeXShop on a Mac" --><!--#include virtual="/gregorio/header.en.html" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
 
-<h1><!--#echo var="title" --></h1>
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+          <li><a href="/gregorio-history.html">About</a> </li>
+          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/tutorial/index.html">gabc Tutorial</a></li>
+          <li><a href="/introduction.html">GregorioTeX Tutorial</a></li>
+          <li><a href="/technical-aspects.html">For developers</a></li>
+          <li><a href="legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/features.html">Extra features</a></li>
+          <li><a href="/gregoriotex/introduction.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+          <li><a href="/tutorial/index.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+          <li><a href="/examples.html">Scores</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Using Gregorio in TeXShop';
+</script>
+
+<h1>Using Gregorio in TeXShop</h1>
 
 <p>This page describes how to configure gregorio for use with TeXShop.  You will have to repeat this process for each user who uses TeXShop.</p>
 
 <h3>Configure TeXShop</h3>
 
-<h4>Versions prior to 2.4.2:</h4>
-
-<p>There are three compilation engines for use with TeXShop:
-    <dl>
-    <dt>gregorio.engine:</dt> <dd>This engine takes a gabc score runs gregorio on it, converting it to a gtex file.</dd>
-    <dt>greg-book.engine:</dt> <dd>This engine typesets a document which includes one or more scores via the \includescore command (more on that later).  It automatically checks to see if the scores have changed since the document was last typeset and runs gregorio on them as needed.</dd>
-    <dt>greg-lily-book.engine:</dt> <dd>This engine does everything greg-book does, but then calls the <a href="https://sole.dimi.uniud.it/~nicola.vitacolonna/software/lilypond-texshop/">LilyPond-Book engine by Nicola Vitacolonna</a>.  This allows you to mix music set with modern notation (handled by <a href="http://www.lilypond.org/">LilyPond</a>) and ancient notaion (handled by gregorio).  Naturally, you will need both LilyPond and the LilyPond-Book engine to make this engine work.</dd>
-    </dl>
-    All three of these engines can be found in <code>/contrib/TeXShop/</code> in the git repository (see the <a href="/gregorio/installation-mac">Mac Installation page</a> for instructions on how to download from the repository).
-
-<p>Open the folder <code>~/Library/TeXShop/Engines</code> in Finder.  Copy the engines you want to use here.  If you plan on using greg-lily-book you'll also need to put LilyPond-Book.engine here.  You might also want to add the LuaLaTeX engine from the <code>Inactive/luaTeX</code> folder.</p>
-
-<p><b>Note:</b> Do not use the version of LilyPond-Book that is in the <code>Inactive/LilyPondEngines-*</code> folder unless the version number is 2.0.4 or higher.  There is a bug in earlier versions that will prevent greg-lily-book from working properly.   <a href="https://sole.dimi.uniud.it/~nicola.vitacolonna/software/lilypond-texshop/">You can download the latest version of LilyPond-Book (and the other LilyPond engines) here.</a>
+<p>Open the folder <code>~/Library/TeXShop/Engines</code> in Finder.  Copy the LuaLaTeX engine from the <code>Inactive/luaTeX</code> folder, and modify it by opening it with text editor (such as Textedit) and adding "--shell-escape" right after "lualatex".  This enables GregorioTeX to automatically compile your gabc scores as needed when LuaLaTeX compiles your document.</p>
 
 <p>Finally open a Terminal window (it's in <code>Applications/Utilities</code>) and enter the following command:</p>
 
@@ -27,12 +109,6 @@
 </div>
 
 <p>This makes it so that TeXShop will recognize gabc files as ones it can work with.</p>
-
-<h4>Versions from 2.4.2 on:</h4>
-
-<p>The Gregorio specific engines are now obsolte.  All you need to do is copy the LuaLaTeX engine from <code>Inactive/luaTeX</code> folder into <code>~/Library/TeXShop/Engines</code>.  You also need to modify this engine by opening it with text editor (such as Textedit) and adding "--shell-escape" right after "lualatex".  This enables GregorioTeX to automatically compile your gabc scores as needed when LuaLaTeX compiles your document.</p>
-
-<p>Everything else remains as before.</p>
 
 
 <h2 id="working">Working with TeXShop</h2>
@@ -45,27 +121,12 @@
 <li>compiling the GregorioTeX code thus produced, with LaTeX</li>
 </ul>
 
-If you're using greg-book or a version from 2.4.2 on, most of the last two steps are automated, but we'll still go over how to do them individually just in case.
 
 <h3 id="gabc">Creating a gabc file</h3>
 
 <p>For a first example, you can inspire from the score <code>PopulusSion.gabc</code> in the <code>examples/</code> directory of gregorio or <a href="http://svn.gna.org/svn/gregorio/trunk/examples/main-lualatex.tex">here</a>.  Save your file in a directory that will be our working directory. You need to save it with the extension ".gabc". You'll need to choose "Plain Text" or "UTF8 Plain Text" (use the latter if you used unicode characters) and enter the extension manually.</p>
 
-<p>Then you need to type the description of the score in gabc. For more details, refer to the <a href="/gregorio/gabc/">gabc page</a>. For the rest of the introduction, let's suppose you keep this score as it is and that you save it as <code>example.gabc</code>.</p>
-
-<h3>Compilation of the gabc file into TeX</h3>
-
-<p>While you can manually select the gregorio engine from the pull down list in the upper left hand corder of the document window, TeXShop also allows you to automate the selection.  To do this place the following line at the begining of your gabc file:</p>
-
-<div class="commandline">
-<code>% !TEX TS-program = gregorio</code>
-</div>
-
-<p>Then click on the "Typeset" button (or use the keyboard short cut).</p>
-
-<p>This will produce the file <code>example.gtex</code>, that contains the GregorioTeX code of our score.  You should see a message to this effect in the console, but that'll be it.</p>
-
-<p><i>Note for advanced users:</i> By default the gregorio engine produces files with the extension gtex instead of tex like the regular commandline (it uses the "-o" option to specify the output file name and extension).  This is a deliberate saftey mechanism that has to do with how TeXworks chooses its compilation engine.  By doing it this way I greatly reduce the chance of TeXworks users accidently overwriting their project files.  Obviously if you're using TeXShop you may not see the point, but when it comes time to share your source files you'll know that they play nice with others.</p>
+<p>Then you need to type the description of the score in gabc. For more details, refer to the <a href="/gabc/index.html">gabc page</a>. For the rest of the introduction, let's suppose you keep this score as it is and that you save it as <code>example.gabc</code>.</p>
 
 <h3>Compiling the main TeX file</h3>
 
@@ -78,11 +139,13 @@ If you're using greg-book or a version from 2.4.2 on, most of the last two steps
 <div class="commandline">
 <code>\documentclass[11pt]{article}<br />
 <br />
+\usepackage{fontspec}<br />
+<br />
 \usepackage{gregoriotex}<br />
 <br />
 \begin{document}<br />
 <br />
-\includescore[f]{example.gtex}<br />
+\includescore{example}<br />
 <br />
 \end{document}</code>
 </div>
@@ -102,48 +165,14 @@ Copy the above into a new file and save it as <code>test.tex</code> in the same 
 
 <h3 id="automation">Automated the typesetting process.</h3>
 
-<p>While the above step-by-step process works, it leaves you to manually typeset each gabc file when you change it and then typeset the main project file in order to see the changes.  Especially in large projects this can get cumbersome.  As of version 2.4.2, therefore, GregorioTex automates the typesetting process.  For earlier versions, the greg-book (and greg-lily-book) do the same.</p>
-
-<p>If you're using a version later than 2.4.2, then you'll need the following lines at the top of your gabc file (replacing what I told you to put there earlier):</p>
+<p>In order to be able to compile your scores directly in TeXShop, add the following lines at the top of your gabc files:</p>
 
 <div class="commandline">
 <code>% !TEX root = test.tex</code><br />
 <code>% !TEX TS-program = LuaLaTeX</code>
-</div>
-
-<p>To use these engines, the lines at the begining of your gabc file should read:</p>
-
-<div class="commandline">
-<code>% !TEX root = test.tex</code><br />
-<code>% !TEX TS-program = greg-book</code>
 </div>
 
 <p>The first line tells TeXShop that this file is part of a larger project whose main (or root) file is <code>test.tex</code>.  Now whenever you go to typeset <code>example.gabc</code> TeXShop wil typeset <code>test.tex</code> instead.  The second line is not really necessary in TeXShop, but you should probably have it there anyway to make it easier to share your source files with people using TeXworks (where it is required).</p>
-
-<p>Now open <code>test.tex</code> and place the following line at the begining of the file (replacing what I told you to put there earlier):</p>
-
-
-<div class="commandline">
-<code>% !TEX TS-program = LuaLaTeX</code>
-</div>
-
-<p>Or with the engines:</p>
-
-<div class="commandline">
-<code>% !TEX TS-program = greg-book</code>
-</div>
-
-<p>This line tells TeXShop which engine to use to typeset this file.  This will automatically check for included scores, check to see if they have changed, run gregorio on those that have, and then typeset the project with LuaLaTeX.</p>
-
-<p>Finally, for versions later than 2.4.2, change the code that includes the score in <code>test.tex</code> to:
-
-<div class="commandline">
-\includescore{example}
-</div>
-
-<p>Note the lack of an extension and the loss of the <code>[f]</code> (force) option.</p>
-
-<p>With both files setup like this, a typesetting command issued from either one will cause TeXShop to take all necessary steps to update your project and display the resulting pdf.  It's not much of a time saver here, but if you start creating projects with half-a-dozen or more scores in them, you'll be glad you have this setup.</p>
 
 <p><b>Note:</b> If your project combines LilyPond scores with Gregorio ones, then you need the following lines at the begining of all project files (in addition to the root designation in non-root files):</p>
 
@@ -152,40 +181,19 @@ Copy the above into a new file and save it as <code>test.tex</code> in the same 
 <code>% !LILYPOND tex = lualatex --shell-escape</code>
 </div>
 
-<p>Or with versions before 2.4.2:</p>
-
-<div class="commandline">
-<code>% !TEX TS-program = greg-lily-book</code><br />
-<code>% !LILYPOND tex = lualatex --shell-escape</code>
-</div>
-
 <p>The first line tells TeXShop which engine to use, the second tells LilyPond-Book (which is called by greg-lily-book) to use lualatex instaed of pdflatex.  You'll also should probably name the project file <code>test.lytex</code> in order to avoid some potential name issues (see the documentation for LilyPond-Book for more details).</p>
 
-<p>For versions prior to 2.4.2 it is absolutely essential in projects using greg-lily-book that you provide an explicit extension for all include scores and that it not be "tex" (I suggest "gtex").  From 2.4.2 on GregorioTeX handles this for you.</p>
-
-<h3 id="Troubleshooting">Troubleshooting</h3>
-
-<p>The most common problem to run into is for TeXShop to return the following error when you try to run the engine:</p>
-
-<div class="legende">
-<img src="/gregorio/illus/texshop-error.png" title="" alt="" />
-<br />Problem!
-</div>
-
-<p>This problem occurs because some systems automaticaly restrict you from running downloaded files as a saftey precaution.  To let your system know that it's okay to run this file we have to set the executable bit.</p>
-
-<p>To do this start by opening Terminal (it's in <code>Applications/Utilities</code>) then enter the following commands (you can leave out the lines associated with engines you're not setting up):</p>
-
-<div class="commandline">
-<code>cd ~/Library/TeXShop/Engines</code><br />
-<code>chmod a+x gregorio.engine</code><br />
-<code>chmod a+x greg-book.engine</code><br />
-<code>chmod a+x greg-lily-book.engine</code><br />
-<code>chmod a+x LilyPond-Book.engine</code>
-</div>
-
-<p>Once you've done this, you should be able to run the engines in TeXShop as described above.</p>
-
-<p>If you're still having trouble, then sign up for the users mailing list (<a href="/gregorio/contact">instructions are here</a>) and send an email describing your problem in as much detail as possible.  Someone will help you get your issue resolved.</p>
-
-<!--#include virtual="/gregorio/footer.en.html" -->
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>

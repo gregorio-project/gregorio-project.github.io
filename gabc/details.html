@@ -1,6 +1,100 @@
-<!--#set var="context" value="gabc" --><!--#set var="title" value="Complete description of gabc" --><!--#include virtual="/gregorio/header.en.html" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
 
-<h1><!--#echo var="title" --></h1>
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+          <li><a href="/gregorio-history.html">About</a> </li>
+          <li><a href="https://github.com/gregorio-project/releases">Download</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/tutorial/index.html">gabc Tutorial</a></li>
+          <li><a href="/introduction.html">GregorioTeX Tutorial</a></li>
+          <li><a href="/technical-aspects.html">For developers</a></li>
+          <li><a href="legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/features.html">Extra features</a></li>
+          <li><a href="/gregoriotex/introduction.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+          <li><a href="/tutorial/index.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+          <li><a href="/examples.html">Scores</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gabc';
+    title = 'GABC Notation';
+</script>
+
+<h1>GABC Notation</h1>
 
 <div class="toc">
 <h1>Table of contents</h1>
@@ -34,7 +128,7 @@
 <p>The notation of an <em>initio debilis</em> is simple: you simply add a hyphen (<strong><code>&nbsp;-&nbsp;</code></strong>) before the note to be affected.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/initiodebilis.png" title="" alt="" />
+<img src="/illus/initiodebilis.png" title="" alt="" />
 <br /><em>Torculus</em> and <em>torculus initio debilis</em>&nbsp;: <code>fgf -fgf</code>
 </div>
 
@@ -66,7 +160,7 @@
 <p>In some scores, there are sometimes two levels of horizontal episema: a short episema beneath a longer one. To put an horizontal episemus under a note, type <strong><code>&nbsp;_0&nbsp;</code></strong>. This can be combined with a normal horizontal episemus.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/allsigns.png" title="" alt="" />
+<img src="/illus/allsigns.png" title="" alt="" />
 <br />The different signs
 </div>
 
@@ -77,7 +171,7 @@
 <p>Note that you can also type a sharp in gabc, with the character <code>#</code>.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/alterations.png" title="" alt="" />
+<img src="/illus/alterations.png" title="" alt="" />
 <br />The alterations
 </div>
 
@@ -97,7 +191,7 @@
 <p>The neumatic cut is denoted by a slash (<strong><code>&nbsp;/&nbsp;</code></strong>), and the larger neumatic space, more rare, by two slashes (<strong><code>&nbsp;//&nbsp;</code></strong>). . A glyph space is indicated by a normal space. Syllabic and word spaces are automatically calculated by the software, according to the text, and this poses no difficulty. The glyph space is automatically included when there is a climacus with an interval of a third or greater.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/spaces.png" title="" alt="" />
+<img src="/illus/spaces.png" title="" alt="" />
 <br />Examples of spaces
 </div>
 
@@ -110,7 +204,7 @@
 <p>To any sequence of notes and spaces corresponds one and only one written form. The only exception is the sequence of three or more ascending notes. To determine the written form to use in this case, we must introduce a character to prevent  linking between two notes. This character is <code>!</code> .  It allows us to have a complete equivalence between our notation and the written form.  But be aware that this sign indicates a space of zero width: it is the only "space" that can be found within a glyph.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/pointdexclamation.png" title="" alt="" />
+<img src="/illus/pointdexclamation.png" title="" alt="" />
 <br />Simple use: <code>fghi fg!hi f!gh!i</code>
 </div>
 
@@ -119,7 +213,7 @@
 <p>For neumes that repeat the same note several times, it is possible to achieve faster notation. For example, for the <em>bivirga</em> two <code>v</code> are added after the note, and for the <em>tristropha</em> three <code>s</code>. The result will be the same if each detail is written: <code>hs/hs/hs</code> = <code>hsss</code>.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/bistrophatristropha.png" title="" alt="" />
+<img src="/illus/bistrophatristropha.png" title="" alt="" />
 <br /><em>bistropha</em> and <em>tristropha</em>&nbsp;: <code>gss hsss</code>
 </div>
 
@@ -131,7 +225,7 @@
 <p>A new written form of the podatus is also proposed here. It could be used to distinguish <em>pes quadratus</em> of the old notation that is currently transcribed in the same way that the light <em>pes</em> and the <em>pes</em> with episema are. In this new written form of the podatus, the second note is located to the right of the bar that links the two notes, and not to the left. These <em>pes quadratus</em> are notated by adding a <code>&nbsp;q&nbsp;</code> between the two notes.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/q1.png" alt=""/>
+<img src="/illus/q1.png" alt=""/>
 <br /><em>Pes quadratum</em> and <em>Pes quilisma quadratum</em>
 </div>
 
@@ -151,7 +245,7 @@
 </ul>
 
 <div class="legende">
-<img src="/gregorio/illus/empty-accents.png" alt=""/>
+<img src="/illus/empty-accents.png" alt=""/>
 <br /><em>Empty notes and accents</em>
 </div>
 
@@ -166,7 +260,7 @@
 <p>Sadly the typography of polyphony on several levels of staffs is way more difficult than the normal typography, and it's not yet possible (with any serious gregorian software). Some simpler notations exist though for simple polyphony on one staff line. This is possible in gabc when putting the first note of a vertically aligned group between curly brackets:</p>
 
 <div class="legende">
-<img src="/gregorio/illus/polyphony.png" alt=""/>
+<img src="/illus/polyphony.png" alt=""/>
 <br />Simple polyphonic notation
 </div>
 
@@ -177,7 +271,7 @@
 <p>In some very rare cases, it may be necessary to typeset a custos inside a line. It is the case of a clef change for examples. In this particular case, simply type <code>z0</code> to get it; its height will be calculated automatically.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/clef-change.png" alt="">
+<img src="/illus/clef-change.png" alt="">
 </div>
 
 <p>People wanting a guide at the end of their score, can type it with <code>g+</code> as the last note of the score (right after the final bar), replacing <code>g</code> with the height you want.
@@ -189,7 +283,7 @@
 <p>It is also possible to add text above notes in two ways: the first is to set the text at the syllable text level between <code>&lt;alt&gt;</code> markups (alt like <em>above lines text</em>). This text will be left-aligned with the first note of the syllable. It is also possible to typeset text entering <code>[alt:my text]</code> in the notes, which will align "my text" with the note following.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/translationalt.png" alt="">
+<img src="/illus/translationalt.png" alt="">
 </div>
 
 <h3 id="choral">Choral signs</h3>
@@ -197,7 +291,7 @@
 <p>It is possible to produce choral signs in gabc. To do so add <code>[cs:t]</code> after the note for which you want the sign, replacing <code>t</code> with the sign you desire.</p>
 
 <div class="legende">
-<img src="/gregorio/illus/choralsign.png" alt="">
+<img src="/illus/choralsign.png" alt="">
 </div>
 
 <h3 id="comments">Comments</h3>
@@ -235,7 +329,7 @@
 </ul>
 
 <div class="legende">
-<img src="/gregorio/illus/ob.png" alt="">
+<img src="/illus/ob.png" alt="">
 </div>
 
 <h2 id="conclusion">Conclusion and extensions</h2>
@@ -249,7 +343,7 @@
 <h2 id="example">A complete example</h2>
 
 <div class="legende">
-<img src="/gregorio/illus/complet.png" alt=""/>
+<img src="/illus/complet.png" alt=""/>
 </div>
 
 <div class="commandline">
@@ -271,4 +365,17 @@
 <code>E(i)u(i!jwk)o(i)u(h) a(hhh)e(fe..) (::)</code>
 </div>
 
-<!--#include virtual="/gregorio/footer.en.html" -->
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>

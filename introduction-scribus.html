@@ -1,24 +1,114 @@
-<!--#set var="context" value="default" --><!--#set var="title" value="Using gregorio under Scribus" --><!--#include virtual="/gregorio/header.en.html" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
 
-<h1><!--#echo var="title" --></h1>
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-<p>This page describes the use of gregorio inside the free <acronym title="Desktop Publishing">DTP</acronym> software called <a href="http://www.scribus.net/" title="">Scribus</a>. This possibility works from version 1.0 of gregorio and version 1.3.5 of Scribus.</p>
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+          <li><a href="/gregorio-history.html">About</a> </li>
+          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/tutorial/index.html">gabc Tutorial</a></li>
+          <li><a href="/introduction.html">GregorioTeX Tutorial</a></li>
+          <li><a href="/technical-aspects.html">For developers</a></li>
+          <li><a href="legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/features.html">Extra features</a></li>
+          <li><a href="/gregoriotex/introduction.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+          <li><a href="/tutorial/index.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+          <li><a href="/examples.html">Scores</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Using Gregorio with Scribus';
+</script>
+
+<h1>Using Gregorio with Scribus</h1>
+
+<p>This page describes the use of gregorio inside <a href="http://www.scribus.net/" title="">Scribus</a>.</p>
 
 <h3>Scribus</h3>
 
 <p>Scribus is a free <acronym title="Desktop Publishing">DTP</acronym> software that has this advantage to have a simple and accessible graphical user interface. It is possible to include gregorio scores in a Scribus document, and thus to build simply a book or a booklet containing gregorian scores.</p>
 
-<p class="nofirst">A page describing the process to have the latest version of gregorio under Linux is available on the <a href="http://docs.scribus.net/index.php?lang=fr&page=install1">Scribus web site</a>. The Windows version is available on the <a href="http://sourceforge.net/projects/scribus/files/scribus-devel/">download page</a> and the instructions for Mac <a href="http://www.scribus.net/?q=macosx">here</a>. Note that in order for the gregorio score import to work, you also need ghostscript, certainly already installed under Linux, and available for Windows on the <a href="http://sourceforge.net/projects/ghostscript/files/GPL%20Ghostscript/8.70">sourceforge page</a>.</p>
-
-<p class="nofirst">If you encounter problems with the Scribus software outside of its interaction with gregorio, you can consult the <a href="http://docs.scribus.net/index.php?lang=en&page=about2">Scribus documentation</a>.</p>
-
 <h3>Installation of the additional Scribus files</h3>
 
-<p>To benefit from the import of the gregorio scores, some additional files for Scribus must be installed. These files are available in the <code>contrib/</code> directory of the gregorio sources, and also in the <a href="http://svn.gna.org/viewcvs/gregorio/trunk/contrib/">subversion repository</a>. These files are gregorio-scribus.lua,  900_gregorio.xml and gregorio.png. If you are under Windows, it's better to take them that have been installed with the automatic installer, they are in <code>C:\Program Files\Gregorio\contrib</code> (assuming you have gregorio installed here).</p>
+<p>To be able to use Gregorio, some additional files for Scribus must be installed. These files are available in the <code>contrib/</code> directory of the gregorio sources, and also in the <a href="https://github.com/gregorio-project/gregorio/tree/master/contrib">Git repository</a>. These files are <code>gregorio-scribus.lua</code>,  <code>900_gregorio.xml</code> and <code>gregorio.png</code>. If you are under Windows, they are in <code>C:\Program Files\Gregorio\contrib</code> (assuming you have gregorio installed here).</p>
 
 <p class="nofirst">If you are under Mac or if you have installed Gregorio under Windows with the advanced method, you need to slightly modify these files to adapt them to your system. These modifications are described in the comments of the file <code>900_gregorio.xml</code>.</p>
 
-<p class="nofirst">Finally, you need to make Scribus use these files. To do so go in <code>File/Preferences</code>, and then, in the <code>External Tools</code> part, in <code>Render Frames</code>, click on add and select the file 900_gregorio.xml in the <code>contrib/</code> directory of the gregorio installation. An interesting trick if you use only gregorio score import, is to make gregorio the first of the list, in order to use it by default. To do so click on <code>Up</code> several times. Click on <code>Apply</code> then <code>OK</code>, and it's done.</p>
+<p class="nofirst">Finally, you need to make Scribus use these files. Go in <code>File/Preferences</code>, and, in the <code>External Tools</code> part, in <code>Render Frames</code>, click on <code>Add</code> and select the file <code>900_gregorio.xml</code>. Something you might want to do is to make gregorio the first of the list. To do so click on <code>Up</code> several times. Click on <code>Apply</code> then <code>OK</code>, and you're done.</p>
 
 <h3>Use in Scribus</h3>
 
@@ -30,4 +120,17 @@
 
 <p class="nofirst">When you will try to export a PDF, scribus will output some warnings, you can ignore them safely. Also you will need to check the box <code>Embed EPS &amp; PDF files (EXPERIMENTAL)</code>. If you cannot check this box (it happens on certain versions, especially under Linux), the scores will be included as images, which can introduce pixelization. To improve the quality of the images, you can change the value of the option <code>Resolution for EPS Graphics</code>; 600dpi is a standard value for desktop printers. Note that in this case the produced PDF will be as much as 10 times heavier.</p>
 
-<!--#include virtual="/gregorio/footer.en.html" -->
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>

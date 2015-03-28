@@ -1,26 +1,117 @@
-<!--#set var="context" value="default" --><!--#set var="title" value="Introduction to Gregorio using the command line" --><!--#include virtual="/gregorio/header.en.html" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
 
-<h1><!--#echo var="title" --></h1>
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-<p>This page is an introduction to working with gregorio from the command line. If you are not familiar with TeX at all, refer to the <a href="/gregorio/gregoriotex/tex">page on TeX</a>.</p>
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+          <li><a href="/gregorio-history.html">About</a> </li>
+          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/tutorial/index.html">gabc Tutorial</a></li>
+          <li><a href="/introduction.html">GregorioTeX Tutorial</a></li>
+          <li><a href="/technical-aspects.html">For developers</a></li>
+          <li><a href="legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/features.html">Extra features</a></li>
+          <li><a href="/gregoriotex/introduction.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+          <li><a href="/tutorial/index.html">Tutorial</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+          <li><a href="/examples.html">Scores</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Using Gregorio';
+</script>
+
+<h1>Using Gregorio in a terminal</h1>
+
+<p>This page is an introduction to working with gregorio from the command line. If you are not familiar with TeX at all, refer to the <a href="/gregoriotex/tex.html">page on TeX</a>.</p>
 
 <p>Overall, producing a score involves these steps:</p>
 
 <ul>
 <li>writing a gabc text file that describes the score.  This can be done in any text editor (for example, TeXworks, gedit, notepad++)</li>
-<li>producing GregorioTeX code based on the gabc file</li>
-<li>compiling the GregorioTeX code thus produced, with LaTeX</li>
+<li>compiling a LaTeX file including the score</li>
 </ul>
 
 <p>If you have a relatively good computer background including LaTeX, you can skip directly to the summary of commands at the end of this page, as what follows here is addressed principally to LaTeX and computer beginners.</p>
 
 <h3>Creating a gabc file</h3>
 
-<p>The first step is the most simple: to open your preferred text editor.  Note that I am speaking precisely here of a text editor, not a word processing program.  A word processing program is, for example, OpenOffice.org Writer, MS Word, etc.  A text editor is a lightweight program that allows the user to create or modify a file that contains only text (no fonts, no page formatting).  Examples of text editors are TeXworks under Windows and gedit under Linux. In Windows, you can open TeXworks by going to <code> Start -> All Programs -> TeXLive 2010 -> TeXworks editor</code>. </p>
-
 <p>For a first example, you might look at the <code>PopulusSion.gabc</code> score, which can be found in the <code>examples/</code> directory under gregorio (in Windows, this is where you chose to install gregorio).</p>
 
-<p>In this text editor, you will need to type the score in gabc notation.  For more details on gabc notation, refer to the gabc pages.  To see a full example quickly, refer to the end of the <a href="/gregorio/gabc/details">detailed gabc description page</a>.</p>
+<p>In a text editor (like TeXworks, not a document editor like Microsoft Word), you will need to type the score in gabc notation.  For more details on gabc notation, refer to the gabc pages.  To see a full example quickly, refer to the end of the <a href="/gabc/details.html">detailed gabc description page</a>.</p>
 
 <p>Once you have created your gabc file in a text editor, save it in a directory that will be convenient for you. This file must have the extension <code>.gabc </code>. In TeXworks, you can select the proper .gabc extension from the list of possibilities.</p>
 
@@ -28,7 +119,9 @@
 
 <p>In the following, we will assume that the file is named <code>example.gabc</code>.</p>
 
-<h3>Compiling the gabc into TeX code</h3>
+<h3>Compiling the gabc into TeX code (optional)</h3>
+
+<p>Starting with version 3.0.0, this step can be skipped, as gregorio will be called directly by LaTeX. The following instructions are left for users with a technical background.</p>
 
 <p>Once you have saved your gabc file, you can run the gregorio program to produce  GregorioTeX code based on it.</p>
 
@@ -38,26 +131,24 @@
 <code>gregorio example.gabc</code>
 </div>
 
-<p>Based on <code>example.gabc</code>, that will produce the file <code>example.tex</code>, which contains the GregorioTeX code corresponding to the gabc file.</p>
+<p>Based on <code>example.gabc</code>, that will produce the file <code>example.tex</code>, which contains the GregorioTeX code corresponding to the gabc file, that we will include in our main document.</p>
 
-<h3>Compiling the TeX file</h3>
+<h3>Compiling the main TeX file</h3>
 
 <p>The last step is to incorporate the score into a LaTeX document and compile that to make a PDF file. We will use LuaLaTeX to do this. So we must first explain a little bit about LaTeX documents.</p>
 
-<p>The TeX file produced by gregorio represents the gregorian chant score, but that is not an entire document.  In order to place that score into a simple page (with perhaps only a title) or into a book, you will need another file of LaTeX code to represent the main document.  This main LaTeX file will contain commands to specify the page size, margins, etc., and it will contain a command to "include" the score, <code>example.tex</code>, in the proper place.</p>
+<p>Now you need a LaTeX file representing your document (booklet, simple score with a title, etc.). This file will contain a command to "include" the score, <code>example.tex</code>, in the proper place.</p>
 
-<p>This system, which may appear a little complex, lets us considerably simplify the production of books containing numerous scores, because each score will be in an independent file such as our <code>example.tex</code>.</p>
-
-<p>For the case of a simple page, you can download <a href="http://svn.gna.org/svn/gregorio/trunk/examples/main-lualatex.tex">this template</a>. Save this file in the same directory as <code>example.tex</code>, and call it <code>main.tex</code>. Open it with a text editor. You will have to change one line:  where the file contains the code</p>
+<p>For the case of a simple page, you can use the example that comes with Gregorio (<a href="https://github.com/gregorio-project/gregorio/blob/master/examples/main-lualatex.tex">accessible through github</a>). Save this file in the same directory as <code>example.gabc</code>, and call it <code>main.tex</code>. Open it with a text editor. You will have to change one line:  where the file contains the code</p>
 
 <div class="commandline">
-<code>\includescore{PopulusSion.tex}</code>
+<code>\includescore[a]{PopulusSion}</code>
 </div>
 
 <p class="nofirst">change it to use our produced file:</p>
 
 <div class="commandline">
-<code>\includescore{example.tex}</code>
+<code>\includescore[a]{example}</code>
 </div>
 
 <p>This is the code that will invoke our TeX code, which we produced in the previous step. Our goal now will be to compile <code>main.tex</code>, which will produce <code>main.pdf</code>, containing the score.</p>
@@ -65,31 +156,12 @@
 <p>To do this, just type the following in a terminal window:</p>
 
 <div class="commandline">
-<code>lualatex main.tex</code>
+<code>lualatex --shell-escape main.tex</code>
 </div>
-
-<p class="nofirst">or, if you do not have LuaTeX:</p>
-
-<div class="commandline">
-<code>lamed main.tex<br/>
-dvipdfm main.dvi</code>
-</div>
-
-<p>If you have a different TeX system, the goal will be to invoke these two commands, but it is up to you to find out the proper way to do this with your software.</p>
-
-<blockquote>
-
-<p><strong>Please note:</strong> You <strong>cannot display</strong> the .dvi file directly using <code>xdvi</code> or other traditional TeX DVI utilities.   They will not work.  Instead, convert the .dvi file to PDF or Postscript using <code>dvipdfm</code> or <code>dvips</code>. You may use <code>dvipdf</code> instead of <code>dvipdfm</code>, but it is older and may have problems in finding fonts.</p>
-
-<p>This approach is a conscious design choice on our part.   DVI files are not portable, because they do not contain the fonts of the document.  Even within a single TeX installation, some utilities will not recognize the omega fonts used in the .dvi file.  And if you transfer the file to another system without the specialized Gregorio fonts, the document will be unusable.  </p>
-
-</blockquote>
 
 <p>Now you have a file <code>main.pdf</code> in the same directory as your .tex files, and this contains your score!  You can display it with Adobe Reader or any other program you normally use with PDF documents.</p>
 
 <p>If that was your first experience with a TeX system, you may be discouraged and telling yourself that this is all too complicated for you.  Rest assured that it is not at all so!  Be brave and make some scores by yourself; you will confirm that in the end it is very simple, and the result is worth the trouble involved!</p>
-
-<p>In theory, the TeX code produced by gregorio really should not be touched, other than in exceptional cases.  For this reason, it is not very readable.  The code produced will be in a partial file, which you will be able to include into your principal LaTeX code, with the command <code>\includescore{}</code>. This produces the score in the indicated place. </p>
 
 <p>While gregorio and LaTeX can position the neumes of your score automatically, to achieve the best results, you will sometimes find that a manual change in a score is helpful. For example, for spacing it is sometimes preferable to indicate line breaks manually.   To accomplish that, you can modify your gabc file and recompile it to make a more customized TeX file for the score.  For characters that gabc cannot generate, you can even insert TeX code directly into your gabc file, thanks to the <code>&lt;v&gt;</code> tags.</p>
 
@@ -100,16 +172,29 @@ dvipdfm main.dvi</code>
 <a name="Summary"></a>
 <h2>Summary</h2>
 
-<p>To compile <code>example.gabc</code> into <code>example.tex</code>:</p>
+<p>To compile <code>example.gabc</code> into <code>example.tex</code> (optional):</p>
 
 <div class="commandline">
 <code>gregorio example.gabc</code>
 </div>
 
-<p>Then incorporate the corresponding score <code>example.tex</code> into a TeX wrapper file, <code>main.tex</code>, which contains the command <code>\includescore{example.tex}</code>. To compile <code>main.tex</code> into <code>main.pdf</code>:</p>
+<p>Then incorporate the corresponding score <code>example.tex</code> into a TeX wrapper file, <code>main.tex</code>, which contains the command <code>\includescore[a]{example}</code>. To compile <code>main.tex</code> into <code>main.pdf</code>:</p>
 
 <div class="commandline">
-<code>lualatex main.tex</code>
+<code>lualatex --shell-escape main.tex</code>
 </div>
 
-<!--#include virtual="/gregorio/footer.en.html" -->
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = title;
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>
