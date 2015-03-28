@@ -1,0 +1,27 @@
+\documentclass[12pt, a5paper]{article}
+\usepackage{fullpage}
+\usepackage{palatino}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{gregoriotex}
+\pagestyle{empty}
+\begin{document}
+
+
+\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+
+\setspaceafterinitial{3.2mm plus 0em minus 0em}
+\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+
+\def\greinitialformat#1{%
+{\fontsize{43}{43}\selectfont #1}%
+}
+
+\setfirstlineaboveinitial{\small \textsc{\textbf{VI.}}}{\small \textsc{\textbf{VI.}}}
+\commentary{{\small \emph{XIV. s.}}}
+
+\setgrefactor{17}
+\spaceabovelines=10mm
+\includescore{kyrie-17-final.tex}
+
+\end{document}

@@ -1,0 +1,74 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Installing Gregorio under MAC OS" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<h2>The TeX distribution</h2>
+
+<p>The first step to make Gregorio work is to have a TeX distribution: MacTeX or TeXLive. See the <a href="http://tug.org/mactex/">official site</a> for instructions.</p>
+
+<h2>The installer</h2>
+
+<p>An installer has been created for some Mac systems. It is available from the <a href="http://download.gna.org/gregorio/releases/current">download page</a>, meant for systems running OS X versions 10.5 or later.</p>
+
+<p><i>WARNING:</i> Recently many people have reported difficulties with getting Gregorio to work after using the installer and to date no one has been able to identify just which systems the installer works for and which it doesn't.  It may be related to the fact that the installer puts things in unusual locations, but no one is currently working on the development of the installer package, so don't expect it to magically get better anytime soon.  If you try the installer and things don't work then delete everything that the installer placed on your system (to prevent conflicts with the new version) and try compiling directly from the sources according to the directions below.</p>
+
+<p>The simplest way to clear out the files placed on your computer by the installer is to execute the following commands in Terminal:</p>
+
+<div class="commandline">
+<code>$ sudo rm /usr/bin/gregorio</code><br/>
+<code>$ sudo rm -r /usr/include/gregorio</code><br/>
+<code>$ sudo rm /usr/lib/pkconfig/gregorio.pc</code><br/>
+<code>$ sudo rm -r /usr/local/texlive/texmf-local/tex/gregoriotex</code><br/>
+<code>$ sudo rm -r /usr/local/texlive/texmf-local/tex/latex/gregoriotex</code>
+</div>
+
+<p>Oh, and if you know something about creating Mac installers and are willing to help fix ours, please <a href="/gregorio/technical-aspects">get in touch.</a></p>
+
+<h2>Compiling from sources</h2>
+
+<h3>Development environment installation</h3>
+
+<p>To be able to compile Gregorio, you must first install an installation environment. Here are the main guidelines:</p>
+
+<ol>
+<li>download XCode (free) from the Apple Mac App Store</li>
+<li>lauch it, it will first want to install a device manager, install it</li>
+<li>under Preferences, click on Downloads and install the Command Line Tools</li>
+<li>download and install <a href="http://www.macports.org/">MacPorts</a> (free)</li>
+<li>once installed, in the TERMINAL, do <code>sudo port selfupdate</code> to get the latest sources packages</li>
+<li>do <code>sudo port install libtool autoconf automake flex bison libxml2</code>.</li>
+</ol>
+
+<p>Once all this is done, you should be able to compile Gregorio.</p>
+
+<p>If you want to compile fonts (to modify them), do <code>sudo port install fontforge</code>.</p>
+
+<h3>Source downloading</h3>
+
+<p>You have a choice between versions of Gregorio. To obtain the sources of the stable version, you just need to download the sources from the <a href="http://download.gna.org/gregorio/releases/current">download page</a>, and decompress the archive.</p>
+
+<p>To get the git version, that is, the version in development (more functionalities, but might contain more bugs), you will have to create a local copy of the gitn repository of the project, with the command:</p>
+
+<div class="commandline">
+<code>$ git clone https://github.com/gregorio-project/gregorio.git gregorio-git</code>
+<code>$ cd gregorio-git</code>
+</div>
+
+<h3>Compilation</h3>
+
+<p>Once the sources are downloaded, carry out the following commands in the directory containing the source files:</p>
+
+<div class="commandline">
+<code>$ autoreconf -f -i</code> (if you have the git version)<br/>
+<code>$ ./configure CFLAGS='-I/opt/local/include' CPPFLAGS='-I/opt/local/include' LDFLAGS='-L/opt/local/lib'</code><br/>
+<code>$ make</code><br/>
+<code>$ sudo make install</code><br/>
+<code>$ cd fonts</code><br/>
+<code>$ sudo make install</code><br/>
+</div>
+
+<h3>Update</h3>
+
+<p>To update your git version, you just need to go in the directory containing the source files (assuming you kept it), run <code>git pull origin master</code> and recompile with the same instructions as the previous <em>Compilation</em> section.  If you deleted that directory after install, then just repeat the steps above starting at the <code>git clone</code> command.</p>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

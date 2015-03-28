@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.44.1"
+   sodipodi:docbase="/home/elie/gregorio/website/illus"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="265.9013"
+     inkscape:cy="979.59298"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1269"
+     inkscape:window-height="941"
+     inkscape:window-x="0"
+     inkscape:window-y="27" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       y="350.95139"
+       x="1.1225059"
+       id="image3807"
+       height="323"
+       width="348"
+       sodipodi:absref="/home/eroux/gregorio/completesvn/website/illus/logo.png"
+       xlink:href="logo.png"
+       style="fill:#c87137" />
+    <rect
+       style="fill:#8a7a5b;fill-opacity:1"
+       id="rect3810"
+       width="348.50262"
+       height="324.25897"
+       x="1.0101525"
+       y="0.79338294" />
+    <path
+       style="fill:white;fill-opacity:0.75;fill-rule:evenodd;stroke:black;stroke-width:0.25pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 242.43661,287.67671 L 245.39528,307.41058 C 356.19603,269.96189 338.62383,158.31071 332.34019,82.615739 L 313.14729,63.42284 L 315.16759,82.615739 C 323.96196,176.00359 334.45035,256.64909 242.43661,287.67671 z "
+       id="path3812"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:white;fill-opacity:0.75;fill-rule:evenodd;stroke:black;stroke-width:0.25pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 335.53571,81.469324 L 329.28572,59.505038 C 325.19371,57.005038 322.53722,53.433609 322.32143,50.755038 C 327.97806,52.259417 330.25081,51.716951 331.42857,50.219324 C 331.89034,48.708678 329.31241,46.039308 326.96428,44.862181 C 323.14567,43.941716 322.17319,39.385233 324.82143,36.647895 C 328.82889,38.374086 328.7657,39.028847 330.53573,40.755038 C 327.1283,24.753123 303.12737,19.75825 297.5033,26.478876 C 288.2631,26.695776 282.83228,22.51229 271.81392,31.353076 C 267.7344,34.626357 261.02763,43.319991 250.36677,54.496011 C 228.31632,77.612002 199.8022,86.448317 193.48845,103.5256 C 191.56368,108.73168 192.45309,117.24872 194.46429,121.8571 L 203.51014,122.18361 C 202.05037,117.50963 201.23582,108.89242 203.21819,105.18777 C 211.08853,90.479712 225.62726,92.743076 254.16126,63.305955 C 263.60533,53.562974 266.78088,47.274227 270.83753,43.099512 C 279.13325,34.562353 281.31333,34.167638 285,33.790753 C 288.70895,33.41159 294.05815,33.844253 293.39285,38.790753 C 291.03466,37.339423 288.77884,35.785718 284.10714,36.647895 C 273.24166,41.891349 272.31816,45.477805 266.60714,49.862181 C 273.51951,48.843244 283.5861,43.634357 286.60714,47.719324 C 290.68914,53.9098 294.96153,55.100276 298.57143,58.076466 C 298.41313,67.401692 308.79443,74.011075 312.85714,81.647895 L 310.35715,57.897896 L 335.53571,81.469324 z "
+       id="path3814"
+       sodipodi:nodetypes="ccccccccsssccssszcccccccc" />
+    <image
+       y="-0.56638408"
+       x="374.57144"
+       id="image2497"
+       height="323"
+       width="348"
+       sodipodi:absref="/home/eroux/gregorio/completesvn/website/illus/logo.png"
+       xlink:href="logo.png"
+       style="fill:#c87137" />
+  </g>
+</svg>

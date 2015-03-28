@@ -1,0 +1,115 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Introduction to Gregorio using the command line" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<p>This page is an introduction to working with gregorio from the command line. If you are not familiar with TeX at all, refer to the <a href="/gregorio/gregoriotex/tex">page on TeX</a>.</p>
+
+<p>Overall, producing a score involves these steps:</p>
+
+<ul>
+<li>writing a gabc text file that describes the score.  This can be done in any text editor (for example, TeXworks, gedit, notepad++)</li>
+<li>producing GregorioTeX code based on the gabc file</li>
+<li>compiling the GregorioTeX code thus produced, with LaTeX</li>
+</ul>
+
+<p>If you have a relatively good computer background including LaTeX, you can skip directly to the summary of commands at the end of this page, as what follows here is addressed principally to LaTeX and computer beginners.</p>
+
+<h3>Creating a gabc file</h3>
+
+<p>The first step is the most simple: to open your preferred text editor.  Note that I am speaking precisely here of a text editor, not a word processing program.  A word processing program is, for example, OpenOffice.org Writer, MS Word, etc.  A text editor is a lightweight program that allows the user to create or modify a file that contains only text (no fonts, no page formatting).  Examples of text editors are TeXworks under Windows and gedit under Linux. In Windows, you can open TeXworks by going to <code> Start -> All Programs -> TeXLive 2010 -> TeXworks editor</code>. </p>
+
+<p>For a first example, you might look at the <code>PopulusSion.gabc</code> score, which can be found in the <code>examples/</code> directory under gregorio (in Windows, this is where you chose to install gregorio).</p>
+
+<p>In this text editor, you will need to type the score in gabc notation.  For more details on gabc notation, refer to the gabc pages.  To see a full example quickly, refer to the end of the <a href="/gregorio/gabc/details">detailed gabc description page</a>.</p>
+
+<p>Once you have created your gabc file in a text editor, save it in a directory that will be convenient for you. This file must have the extension <code>.gabc </code>. In TeXworks, you can select the proper .gabc extension from the list of possibilities.</p>
+
+<p><strong>Warning!</strong> The file must be in UTF-8, it is absolutely mandatory! Otherwise Gregorio will have random behaviour when it comes to the accents! Every modern text editor has this option (it is the default in TeXworks).</p>
+
+<p>In the following, we will assume that the file is named <code>example.gabc</code>.</p>
+
+<h3>Compiling the gabc into TeX code</h3>
+
+<p>Once you have saved your gabc file, you can run the gregorio program to produce  GregorioTeX code based on it.</p>
+
+<p>Open a terminal window, go to the directory containing your gabc file, and simply type:</p>
+
+<div class="commandline">
+<code>gregorio example.gabc</code>
+</div>
+
+<p>Based on <code>example.gabc</code>, that will produce the file <code>example.tex</code>, which contains the GregorioTeX code corresponding to the gabc file.</p>
+
+<h3>Compiling the TeX file</h3>
+
+<p>The last step is to incorporate the score into a LaTeX document and compile that to make a PDF file. We will use LuaLaTeX to do this. So we must first explain a little bit about LaTeX documents.</p>
+
+<p>The TeX file produced by gregorio represents the gregorian chant score, but that is not an entire document.  In order to place that score into a simple page (with perhaps only a title) or into a book, you will need another file of LaTeX code to represent the main document.  This main LaTeX file will contain commands to specify the page size, margins, etc., and it will contain a command to "include" the score, <code>example.tex</code>, in the proper place.</p>
+
+<p>This system, which may appear a little complex, lets us considerably simplify the production of books containing numerous scores, because each score will be in an independent file such as our <code>example.tex</code>.</p>
+
+<p>For the case of a simple page, you can download <a href="http://svn.gna.org/svn/gregorio/trunk/examples/main-lualatex.tex">this template</a>. Save this file in the same directory as <code>example.tex</code>, and call it <code>main.tex</code>. Open it with a text editor. You will have to change one line:  where the file contains the code</p>
+
+<div class="commandline">
+<code>\includescore{PopulusSion.tex}</code>
+</div>
+
+<p class="nofirst">change it to use our produced file:</p>
+
+<div class="commandline">
+<code>\includescore{example.tex}</code>
+</div>
+
+<p>This is the code that will invoke our TeX code, which we produced in the previous step. Our goal now will be to compile <code>main.tex</code>, which will produce <code>main.pdf</code>, containing the score.</p>
+
+<p>To do this, just type the following in a terminal window:</p>
+
+<div class="commandline">
+<code>lualatex main.tex</code>
+</div>
+
+<p class="nofirst">or, if you do not have LuaTeX:</p>
+
+<div class="commandline">
+<code>lamed main.tex<br/>
+dvipdfm main.dvi</code>
+</div>
+
+<p>If you have a different TeX system, the goal will be to invoke these two commands, but it is up to you to find out the proper way to do this with your software.</p>
+
+<blockquote>
+
+<p><strong>Please note:</strong> You <strong>cannot display</strong> the .dvi file directly using <code>xdvi</code> or other traditional TeX DVI utilities.   They will not work.  Instead, convert the .dvi file to PDF or Postscript using <code>dvipdfm</code> or <code>dvips</code>. You may use <code>dvipdf</code> instead of <code>dvipdfm</code>, but it is older and may have problems in finding fonts.</p>
+
+<p>This approach is a conscious design choice on our part.   DVI files are not portable, because they do not contain the fonts of the document.  Even within a single TeX installation, some utilities will not recognize the omega fonts used in the .dvi file.  And if you transfer the file to another system without the specialized Gregorio fonts, the document will be unusable.  </p>
+
+</blockquote>
+
+<p>Now you have a file <code>main.pdf</code> in the same directory as your .tex files, and this contains your score!  You can display it with Adobe Reader or any other program you normally use with PDF documents.</p>
+
+<p>If that was your first experience with a TeX system, you may be discouraged and telling yourself that this is all too complicated for you.  Rest assured that it is not at all so!  Be brave and make some scores by yourself; you will confirm that in the end it is very simple, and the result is worth the trouble involved!</p>
+
+<p>In theory, the TeX code produced by gregorio really should not be touched, other than in exceptional cases.  For this reason, it is not very readable.  The code produced will be in a partial file, which you will be able to include into your principal LaTeX code, with the command <code>\includescore{}</code>. This produces the score in the indicated place. </p>
+
+<p>While gregorio and LaTeX can position the neumes of your score automatically, to achieve the best results, you will sometimes find that a manual change in a score is helpful. For example, for spacing it is sometimes preferable to indicate line breaks manually.   To accomplish that, you can modify your gabc file and recompile it to make a more customized TeX file for the score.  For characters that gabc cannot generate, you can even insert TeX code directly into your gabc file, thanks to the <code>&lt;v&gt;</code> tags.</p>
+
+<p>In short, gregorio offers a relatively easy system, and except for strange and unexpected cases, you will be able to get along by merely modifying the gabc file.</p>
+
+<p>If you ever need to modify a GregorioTeX file, or if you are simply curious about its contents, refer to the page giving the structure of a GregorioTeX file.</p>
+
+<a name="Summary"></a>
+<h2>Summary</h2>
+
+<p>To compile <code>example.gabc</code> into <code>example.tex</code>:</p>
+
+<div class="commandline">
+<code>gregorio example.gabc</code>
+</div>
+
+<p>Then incorporate the corresponding score <code>example.tex</code> into a TeX wrapper file, <code>main.tex</code>, which contains the command <code>\includescore{example.tex}</code>. To compile <code>main.tex</code> into <code>main.pdf</code>:</p>
+
+<div class="commandline">
+<code>lualatex main.tex</code>
+</div>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

@@ -1,0 +1,238 @@
+<!--#set var="context" value="gabc" --><!--#set var="title" value="Gregorio and gabc: a tutorial" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<style type="text/css">
+	.commandblock {font-family: courier; padding-left: 150px;}
+	.commandline {font-family: courier;}
+</style>
+<h1><!--#echo var="title" --></h1>
+
+<p>This tutorial demonstrates the features of gabc by showing how to reproduce an existing score.</p>
+
+<p>The documentation of the gabc notation, the notation we use in this tutorial can be found <a href="/gregorio/gabc/">here</a>.</p>
+
+<p>We'll start with an empty staff and build up from there. Along the way, I'll make some deliberate mistakes to illustrate some common problems.</p>
+
+<p>If you don't know how to run gregorio, please refer to the <a href="/gregorio/introduction"> introduction page</a> that describes the typical workflow.</p>
+
+<h2>Kyrie XVII</h2>
+
+<p>Here is a score from the <i>Liber Cantualis</i>. </p>
+
+<div class="legende">
+<img src="kyrie-xvii-goal.png"/>
+</div>
+
+<h3>Step one: Enter the first syllable.</h3>
+
+<p>To start creating a gabc file, I'll enter the name of the piece, indicate the clef position, and specify the note for the first syllable.</p>
+
+<div class="commandblock">
+<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-01.png"/>
+</div>
+
+<p>Well, it's not much, but it's a start.  The note on "Ky" is on the second line, and that's represented by (f).  Gregorio automatically makes the first letter of the piece a large initial.</p>
+
+<p>Let's add some more text and notes:</p>
+
+<h3>Adding notes</h3>
+
+
+<div class="commandblock">
+<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri<font color="red">(gfg)</font>e<font color="red">(h)</font>
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-02.png"/>
+</div>
+
+<p>That looks better. The three notes on "ri" are represented by (gfg).  Let's add more notes.  Here's a reminder of the letters used to represent each note position on the staff:</p>
+
+<img src="note-positions.png"/>
+
+<h3>Adding more notes</h3>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri(gfg)e(h) * e<font color="red">(jihghfe)</font>le<font color="red">(ghg</font>)i<font color="red">(g)</font>son<font color="red">(f)</font>.
+	</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-03.png"/>
+</div>
+
+<p>(There may be a message about a "syntax error" in the gabc file; we'll deal with that later.)</p>
+
+<p>The GregorioTeX system certainly produced some beautiful neumes automatically, but they don't match the original, because we didn't specify the neume shapes we wanted. To produce the diamond-shaped ("inclined") notes that we want, we'll type them in upper-case.</p>
+
+<h3>Using capital letters to represent "inclined" notes</h3>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri(gfg)e(h) * e(j<font color="red">IHG</font>h<font color="red">FE</font>)le(ghg)i(g)son(f).
+	</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-04.png"/>
+</div>
+
+<p>Now we have the right "inclined" notes.   Here's another change we should make: each series of inclined notes is preceded by a <i>virga</i> instead of a simple punctum.  A virga is a punctum with a stem attached.    Let's change those note shapes by adding a "v" after the note letters.</p>
+
+<h3>Marking virgas with "v"</h3>
+
+<p>In the previous step's gabc file, the notes on the first syllable of <i>eleison</i> are <code>(jIHGhFEi)</code>.  Because the "j" note and the "h" note should both be virgas, change them to "jv" and "hv":</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri(gfg)e(h) * e(<font color="red">jv</font>IHG<font color="red">hv</font>FE)le(ghg)i(g)son(f). bis
+Christe eleison. bis
+Kyrie eleison. Kyrie * ** eleison.
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-05.png"/>
+</div>
+
+<h3>Time for a review!</h3>
+
+<p>Let's compare this with the original to see what else needs to be corrected:</p>
+
+<div class="legende">
+<img src="kyrie-xvii-goal.png"/>
+</div>
+
+<p>We need to add the flat symbol, mark the dots on the <i>punctum mora</i> notes, indicate the ictuses, and add the double bar.   Also, we need to fix up some details about the text, but we'll do that after correcting the notes.</p>
+
+<h3>Adding marks for <i>punctum mora</i> and ictus</h3>
+
+<p>Each <i>punctum mora</i> is represented with a period after the note letter, and each ictus is represented with an apostrophe after the note letter.   Because a vertical episema looks identical to an ictus mark, we would treat them the same way.</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri(gfg)e(<font color="red">h.</font>) * e(jvI<font color="red">H'</font>Hhv<font color="red">F'</font>es)le(gh<font color="red">g'</font>)i(g)son(<font color="red">f.</font>).
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-06.png"/>
+</div>
+
+<h3>Adding the flat and the double bar</h3>
+
+<p>In gabc notation, "x" represents a flat symbol.  Because the flat falls on position "i" (the uppermost space in the staff), we represent it with the letters "ix", and we add those letters to the first syllable of <i>eleison</i>.<p>
+
+<p>After <i>eleison</i>, let us add the word <i>bis</i>, meaning 'twice', since the phrase is to be sung twice.  The double bar is represented with a double colon (::), on the word "bis".   Let's also take the moment to set "bis" in italic type.</p>
+
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri(gfg)e(h.) * e(<font color="red">ix</font>jvIH'GhvF'E)le(ghg')i(g)son(f.). <font color="red">&lt;i&gt;bis&lt;/i&gt;(::)</font>
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-07.png"/>
+</div>
+
+<h3>Correcting two text alignment problems</h3>
+
+<p>You've probably noticed that a syntax error was reported during processing from steps 3-6.   That happened because the text <i>Kyrie eleison</i> ends with a period, but is put the notes for "-son" before the period:</p>
+<div class="commandblock">
+	<pre>
+e(ixjvIH'GhvF'E)le(ghg')i(g)son(f.). 
+</pre>
+</div>
+
+<p>Even now in the result from step seven, there's a hyphen and a little space between "-son" and the period.  Let's move the period and put it next to the syllable, like this: "son." and resolve that issue.</p>
+
+<p>Also, you may have noticed that there are notes above the asterisk, unlike in the original score.  We do not want any notes above the asterisk; therefore, to express that intention, let's add a pair of empty parentheses () at the asterisk.</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)Ky(f)ri(gfg)e(h.) <font color="red">*()</font> e(ixjvIH'GhvF'E)le(ghg')i(g)<font color="red">son.</font>(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-08.png"/>
+</div>
+
+<h3>Text correction</h3>
+
+<p>In the original score, the "y" in <i>Kyrie</i> is capitalized.  This is a convention in typesetting for chant scores, so let's follow it here, by changing the "y" to an upper-case letter.</p>
+
+<p>Also, the word <i>eleison</i> needs an accent mark on the second "e", so I'm going to replace that letter with the character "&eacute;". If your keyboard layout does not have the "&eacute;" character, you can probably produce it by using your operating system's "Character Select" utility.  Copy the desired character to the clipboard, and paste it into your gabc file.</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)K<font color="red">Y</font>(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l<font color="red">&eacute;</font>(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+</pre>
+</div>
+
+<p>Here's the result after processing by gregorio and LaTeX:</p>
+
+<div class="legende">
+<img src="kyrie-17-09.png"/>
+</div>
+
+<h3>Pretty good progress!</h3>
+
+<p>Let's compare this with the original again:</p>
+
+<div class="legende">
+<img src="kyrie-xvii-goal.png"/>
+</div>
+
+<p>There are still some differences.  Of course, the typefaces are different. The examples above from my system use the TeX typeface "newcent" (New Century Schoolbook), which is very readable. I'll do an experiment with a different typeface later.</p>
+
+<p>There is also a difference in the hyphenation of the text. The gregorio software did not automatically add a hyphen after the first syllable of <i>KYrie</i>, because there was enough space between the neumes without a hyphen. Feel free to add a hyphen manually in your gabc file if you find that it makes the score more readable for you.</p>
+
+<p>Let's go on to <a href="tutorial-gabc-02">another page</a>, to work on the remainder of this Kyrie.</p>
+
+
+<!--#include virtual="/gregorio/footer.en.html" -->
+

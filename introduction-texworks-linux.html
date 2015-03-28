@@ -1,0 +1,67 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Configuring Gregorio with TeXworks on Linux" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<p>This page describes how to configure gregorio for use with TeXworks on a Linux box.  You will have to repeat this process for each user who uses TeXworks.</p>
+
+<h3>Configure TeXworks</h3>
+
+<p><b>Note:</b> These instructions are for versions of Gregorio prior to 2.4.2.  For more recent versions see <a href="gregorio/introduction-texworks-universal">TeXworks configuration page</a>.
+
+<p>There are three compilation engines for use with TeXworks:
+    <dl>
+    <dt>gregorio.engine:</dt> <dd>This engine takes a gabc score runs gregorio on it, converting it to a gtex file.</dd>
+    <dt>greg-book.engine:</dt> <dd>This engine typesets a document which includes one or more scores via the \includescore command (more on that later).  It automatically checks to see if the scores have changed since the document was last typeset and runs gregorio on them as needed.</dd>
+    <dt>greg-lily-book.engine:</dt> <dd>This engine does everything greg-book does, but then calls the <a href="https://sole.dimi.uniud.it/~nicola.vitacolonna/software/lilypond-texshop/">LilyPond-Book engine by Nicola Vitacolonna</a>.  This allows you to mix music set with modern notation (handled by <a href="http://www.lilypond.org/">LilyPond</a>) and ancient notaion (handled by gregorio).  Naturally, you will need both LilyPond and the LilyPond-Book engine to make this engine work.</dd>
+    </dl>
+    All three of these engines can be found in <code>/contrib/TeXworks/Linux</code> in the git repository (see the <a href="/gregorio/installation-linux">GNU/Linux Installation page</a> for instructions on how to download from the repository).
+
+<p>Open TeXworks and click on <code>Help -&gt; Settings and Resources...</code>  Follow the link to the Resources folder in the pop-up dialog that appears.  In this folder create a new subfolder called "engines" and copy the engines you plan to use there (don't forget LilyPond-Book if you plan on using greg-lily-book).</p>
+
+<p>Now we need to add the compilation engines to TeXworks. To do so, go in <code>Edit -&gt; Preferences</code>) (if you haven't already, you will need to dismiss the "Settings and Resources..." dialog first) and then in the "Typesetting" tab, in the "Processing tools" section, click on add ("<code>+</code>"), and enter the following data (replace "parallels" by your user name):</p>
+
+<div class="legende">
+<img src="/gregorio/illus/texworks-gregorio-linux.png" title="" alt="" />
+<br />Adding gregorio in TeXworks
+</div>
+
+<p>You can also use the "Browse" button to select the engine.  Make sure that you uncheck the "View PDF after running" box in the lower left as this engine doesn't produce a pdf.  Once you're done click OK to add the engine.</p>
+
+<p>Repeat the same process for greg-book and greg-lily-book, this time leaving the "View PDF after running" box checked.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/texworks-greg-book-linux.png" title="" alt="" />
+<img src="/gregorio/illus/texworks-greg-lily-book-linux.png" title="" alt="" />
+<br />Adding greg-book and greg-lily-book in TeXworks
+</div>
+
+<p>If you want, you can also add LilyPond-Book in a similar fashion.</p>
+
+<p>If everything goes as planned, then you're ready to <a href="/gregorio/introduction-texworks.en.html">start working with TeXworks</a>.  If not, see below.</p>
+
+<h3 id="Troubleshooting">Troubleshooting</h3>
+
+<p>The most common problem to run into at this stage is for TeXworks to return the following error when you try to add an engine:</p>
+
+<div class="legende">
+<img src="/gregorio/illus/texworks-error-linux.png" title="" alt="" />
+<br />Problem!
+</div>
+
+<p>This problem occurs because some systems automaticaly restrict you from running downloaded files as a saftey precaution.  To let your system know that it's okay to run this file we have to set the executable bit.</p>
+
+<p>To do this start by opening Terminal (it's in <code>Applications/Utilities</code>) then enter the following commands (you can leave out the lines associated with engines you're not setting up):</p>
+
+<div class="commandline">
+<code>cd ~/.TeXworks/engines</code><br />
+<code>chmod a+x gregorio.engine</code><br />
+<code>chmod a+x greg-book.engine</code><br />
+<code>chmod a+x greg-lily-book.engine</code><br />
+<code>chmod a+x LilyPond-Book.engine</code>
+</div>
+
+<p>Once you've done this, you should be able to add the engines to TeXworks as described above.</p>
+
+<p>If you're still having trouble, then sign up for the users mailing list (<a href="/gregorio/contact">instructions are here</a>) and send an email describing your problem in as much detail as possible.  Someone will help you get your issue resolved.</p>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

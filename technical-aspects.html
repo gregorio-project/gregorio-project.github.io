@@ -1,0 +1,51 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Information for developers" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<h2>Source code</h2>
+
+<p>The source code of Gregorio is entirely under <a href="http://www.gnu.org/licenses/gpl.html"><acronym title="GNU is Not Unix">GNU</acronym> <acronym title="General Public License">GPL</acronym></a> and is hosted on a <a href="http://subversion.tigris.org/" title="">subversion</a> server of <a href="http://gna.org" title="">gna.org</a>.</p>
+
+<p>You can <a href="http://svn.gna.org/viewcvs/gregorio/trunk/" title="">browse the code online</a> or get a local copy of the repository by checking the address <code>svn://svn.gna.org/svn/gregorio/trunk</code> out.</p>
+
+<h2>Code modifications</h2>
+
+<p>A <a href="http://cia.vc/" title="">CIA</a> bot allows you to keep informed on commits on the Gregorio <acronym title="Subversion">SVN</acronym> repository. For the latest changes you can consult the <a href="http://cia.vc/stats/project/gregorio" title="">CIA page on Gregorio</a>. This bot also reports commits in real time on <acronym title="Internet Relay Chat">IRC</acronym>, on the <code>#gregorio</code> channel on <a href="http://freenode.net">Freenode</a>.</p>
+
+
+<h2>Internals</h2>
+
+<p>The gregorio software has a very modular structure that allows developers to very easily add read or write modules for a format type (OpusTeX, *XML, ...).</p>
+
+<p>The program itself is written in C. Some parts (in particular modules to read gabc) are written in <a href="http://http://en.wikipedia.org/wiki/Flex_lexical_analyser" title="">flex</a> and <a href="http://en.wikipedia.org/wiki/GNU_bison" title="">bison</a>. The TeX part is written in <a href="http://en.wikipedia.org/wiki/Omega_%28TeX%29" title="">Omega</a>, for the additional primitives it offers, such as, for example, adding a box at the end or at the beginning of a line (with <code>\localeleftbox{}</code>).  This makes possible the automated creation of the custos or clef for each line without manually specifying the end of line.  The gregorio font (for GregorioTeX) was designed with <a href="http://en.wikipedia.org/wiki/FontForge" title="">fontforge</a>.</p>
+
+<p>gregorio has an internal structure (built with <code>struct</code> in C) to represent a score in memory. This structure is based on nested linked lists (<code>score &rarr; syllable &rarr; element &rarr; glyph &rarr; note</code>). The reading functions transform a variable of type 'file' into that structure and the writing functions transform this structure into another variable of type 'file'. This modularity makes it possible to write a reading or writing function independently of the rest of the program.</p>
+
+<p>The C data structure has a structure very close to that of <a href="/gregorio/gregorioxml/" title="">GregorioXML</a>.</p>
+
+
+<h1>Future work</h1>
+
+<p>There is still much to develop in Gregorio. Here is a quick overview.</p>
+
+<h2>Additional functions</h2>
+
+<p>Some functions are still missing in Gregorio, notably:</p>
+
+<ul><li>export in lilypond format, even though the Gregorian chant part of lilypond in not very good and not maintained anymore</li>
+<li>export in MusiXTeX format, though for similar reasons it is not urgent</li>
+<li>importing from OpusTeX, because it is the most used format for the moment</li>
+</ul>
+
+<p>If you are interested in the development of one of these functions, do not hesitate to contact the <a href="mailto:gregorio-devel@gna.org" title="Mail the Gregorio developers">Gregorio developers</a>, even if you are not a C guru.</p>
+
+<h2>A graphical interface</h2>
+
+<p>It is planned to make a graphical interface for Gregorio, in Python/Qt, so that anyone will be able to create his own Gregorian chant scores as simply as possible.</p>
+
+<p>In this graphical interface, we would type gabc notation and the score would appear in real time on the screen, thanks to glyphs of the gregorio font converted into SVG format.</p>
+
+<p>This GUI is already started and has advanced, but current development is focusing on GregorioTeX and code stabilization.</p>
+
+
+<!--#include virtual="/gregorio/footer.en.html" -->

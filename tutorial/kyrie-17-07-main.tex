@@ -1,0 +1,28 @@
+
+\documentclass[12pt, letterpaper]{article}
+\usepackage{fullpage}
+\usepackage{newcent}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{gregoriotex}
+\pagestyle{empty}
+\begin{document}
+\include{setlength}
+
+\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+
+\setspaceafterinitial{3.2mm plus 0em minus 0em}
+\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+
+\def\greinitialformat#1{%
+{\fontsize{43}{43}\selectfont #1}%
+}
+
+\setfirstlineaboveinitial{\small \textsc{\textbf{}}}{\small \textsc{\textbf{}}}
+\commentary{{\small \emph{}}}
+\setgrefactor{17}
+\includescore{kyrie-17-07.tex}
+
+\end{document}
+
+

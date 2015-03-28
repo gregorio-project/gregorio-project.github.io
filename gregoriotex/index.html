@@ -1,0 +1,28 @@
+<!--#set var="context" value="gregoriotex" --><!--#set var="title" value="GregorioTeX" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<p>This page describes quickly the origin and the construction of GregorioTeX. You can also take a look at the <a href="/gregorio/introduction">GregorioTeX introduction page</a> or at the <a href="details">GregorioTeX detailed description page</a>. If it is the first time you are dealing with TeX, I advise you to take a look at the <a href="tex">TeX page</a>.</p>
+
+<p>Last but not least, you can see some <a href="example">examples</a>.</p>
+
+<h2>Yet another Gregorian chant TeX style?</h2>
+
+<p>At the beginning of the project, we didn't set out to build a new TeX style. We wanted to use an existing package, so we tried various options:</p>
+<ul>
+<li><a href="http://lilypond.org">Lilypond</a> (<a href="http://lilypond.org/doc/v2.12/Documentation/user/lilypond/Typesetting-Gregorian-chant" title="">documentation</a>) is a very good tool, but the part on Gregorian chant is not maintained and very deep modifications would be needed to perfectly align the notes and text.</li>
+<li><a href="http://icking-music-archive.org/software/indexmt6.html" title="">MusiXTeX</a> (<a href="http://icking-music-archive.org/software/musixtex/musixdoc.pdf" title="">documentation</a>, cf. page 95) has a lot of glyphs missing.</li>
+<li><a href="http://www.hermes.net.au/pvb/opustex.html" title="">OpusTeX</a> seems to be the best tool (the most popular at least). Sadly it is quite buggy and it is not free (Libre) software.  It is not actively maintained, as its author (Andreas Egler) has almost disappeared.</li>
+</ul>
+
+<p>GregorioTeX aims:</p>
+<ul>
+<li>to be a 100% free software tool, using a free font.</li>
+<li>to have a flexibility and features that the others do not have, by offering the option to change the height of the text font independently of the neume font, by calculating end-of-lines automatically, etc.</li>
+<li>to use a very beautiful Gregorian chant font that has all glyphs drawn (rather than basic glyphs to be combined by TeX).</li>
+<li>to document the font format and characteristics and offer everyone the possibility of building his own font, which would not be limited to square notation (as all glyphs can be defined).</li>
+<li>to have clear and commented code, which lets anyone improve it.</li>
+</ul>
+
+
+<!--#include virtual="/gregorio/footer.en.html" -->

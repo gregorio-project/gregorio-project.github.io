@@ -1,0 +1,274 @@
+<!--#set var="context" value="gabc" --><!--#set var="title" value="Complete description of gabc" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<div class="toc">
+<h1>Table of contents</h1>
+<h2><a href="#advancednotation">Advanced notation</a></h2>
+<h3><a href="#liquescences">Liquescentiae and <em>initio debilis</em> figures</a></h3>
+<h3><a href="#signs">Rhythm signs</a></h3>
+<h3><a href="#alterations">Flats and naturals</a></h3>
+<h3><a href="#spaces">Spaces</a></h3>
+<h3><a href="#determination">Determination of the neume according to the sequence of notes</a></h3>
+<h3><a href="#repetitions">Optional characters and repetitions</a></h3>
+<h2><a href="#advanceddetails">Advanced details</a></h2>
+<h3><a href="#podatus">The podatus</a></h3>
+<h3><a href="#accents">Empty notes and accents</a></h3>
+<h3><a href="#polyphony">Polyphony</a></h3>
+<h3><a href="#endofline">Ends of line</a></h3>
+<h3><a href="#translation">Translation and text above notes</a></h3>
+<h3><a href="#choral">Choral signs</a></h3>
+<h3><a href="#comments">Comments</a></h3>
+<h3><a href="#verbatim">Insert code (for advanced users)</a></h3>
+<h3><a href="#braces">Braces above notes</a></h3>
+
+<h2><a href="#conclusion">Conclusion and extensions</a></h2>
+
+<h2><a href="#example">Complete example</a></h2>
+</div>
+
+<h2 id="advancednotation">Advanced notation</h2>
+ 
+<h3 id="liquescences">Liquescentiae and <em>initio debilis</em> figures</h3>
+ 
+<p>The notation of an <em>initio debilis</em> is simple: you simply add a hyphen (<strong><code>&nbsp;-&nbsp;</code></strong>) before the note to be affected.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/initiodebilis.png" title="" alt="" />
+<br /><em>Torculus</em> and <em>torculus initio debilis</em>&nbsp;: <code>fgf -fgf</code>
+</div>
+
+<p>For liquescentiae, three types exist, which are indicated by characters at the end of the neumes:</p>
+<ul>
+  <li>diminutive liquescentiae, indicated by <code>~</code></li>
+  <li>increasing liquescentiae
+    <ul>
+      <li>ascending indicated by <code>&lt;</code></li>
+      <li>descending indicated by <code>&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Liquescentiae are indicated after other characters that determine the note.</p>
+
+<h3 id="signs">Rhythmic signs</h3>
+ 
+<p>The <em>punctum mora</em> (dots after the note) are denoted by adding a period (<strong><code>&nbsp;.&nbsp;</code></strong>) after the note. When there are two dots after a neume, the character is simply doubled: (<strong><code>&nbsp;..&nbsp;</code></strong>) .</p>
+
+<p>The vertical <em>episema</em> does not pose a problem; it is denoted by an apostrophe(<strong><code>&nbsp;'&nbsp;</code></strong>) after the note. </p>
+
+<p>Of course, the <em>punctum mora</em> and vertical <em>episema</em> can be present more than once in a neume, but only once per note.</p>
+
+<p>For the horizontal episema, type an underscore (<strong><code>&nbsp;_&nbsp;</code></strong>) after every note that is under an episema.</p>
+
+<p>Rhythmic signs are notated after liquescentiae and other signs that determine the shape of the note. For example, a virga followed by a punctum mora is denoted <code>hv.</code> and not <code>h.v</code>, and a <em>torculus deminutus</em> followed by a <em>punctum mora</em> is denoted <strong><code>&nbsp;ghg~.&nbsp;</code></strong> .</p>
+
+<p>In some scores, there are sometimes two levels of horizontal episema: a short episema beneath a longer one. To put an horizontal episemus under a note, type <strong><code>&nbsp;_0&nbsp;</code></strong>. This can be combined with a normal horizontal episemus.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/allsigns.png" title="" alt="" />
+<br />The different signs
+</div>
+
+<h3 id="alterations">Alterations</h3>
+
+<p>Two letters have been chosen to represent the flat and the natural: <code>x</code> <code>y</code>. As these signs take the space of a note, we notate them like a note, for example, <code>ix</code> for a flat on the staff position represented by <code>i</code>.</p>
+
+<p>Note that you can also type a sharp in gabc, with the character <code>#</code>.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/alterations.png" title="" alt="" />
+<br />The alterations
+</div>
+
+<h3 id="spaces">Spaces</h3>
+
+<p>Spaces are very important in Gregorian chant. When monks transposed scores from ancient neumes into square notation, the equivalence was not exact, and some ancient figures have been translated by a larger space between two notes of a neume. Although this phenomenon is quite rare, it exists, and it is necessary to take it into consideration in order to preserve every detail of a work.</p>
+
+<p>Five spaces are used in Gregorian chant:</p>
+<ul>
+<li><strong>neumatic cut</strong>: within a neume, the neumatic elements are separated by this space, which is the smallest space;</li>
+<li><strong>large neumatic cut</strong>: this is the space described in the paragraph above; it is used in the same way as the neumatic cut, but the space is larger;</li>
+<li><strong>glyph space</strong>: this is equivalent to the size of a punctum and serves to mediate between the <em>puncta inclinata</em> of a climacus whose range is greater than a third</li>
+<li><strong>syllabic space</strong>: the space between two neumes corresponding to two syllables of the same word</li>
+<li><strong>word space</strong>: the space between two words. This space is more difficult: it is the space between both the letters and the notes of two different words. This space is also the one between words and separation bars.</li>
+</ul>
+
+<p>The neumatic cut is denoted by a slash (<strong><code>&nbsp;/&nbsp;</code></strong>), and the larger neumatic space, more rare, by two slashes (<strong><code>&nbsp;//&nbsp;</code></strong>). . A glyph space is indicated by a normal space. Syllabic and word spaces are automatically calculated by the software, according to the text, and this poses no difficulty. The glyph space is automatically included when there is a climacus with an interval of a third or greater.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/spaces.png" title="" alt="" />
+<br />Examples of spaces
+</div>
+
+<p>Note that for practical reasons, a space can be set unbreakable if you precede it with the character <code>!</code> .</p>
+
+<h3 id="determination">Determination of the neume according to the sequence of notes</h3>
+
+<p>Regarding notation, we should say first that it is not useful to specify a  <em>virga</em> in a neume, as linking bars between notes will be automatically added when necessary. Except for <em>virga</em> (which can be a glyph inside another neume), <em>bivirga</em> or <em>trivirga</em> neumes, there is no place for entering a <code>v</code> when you type the sequence of notes of a neume.</p>
+
+<p>To any sequence of notes and spaces corresponds one and only one written form. The only exception is the sequence of three or more ascending notes. To determine the written form to use in this case, we must introduce a character to prevent  linking between two notes. This character is <code>!</code> .  It allows us to have a complete equivalence between our notation and the written form.  But be aware that this sign indicates a space of zero width: it is the only "space" that can be found within a glyph.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/pointdexclamation.png" title="" alt="" />
+<br />Simple use: <code>fghi fg!hi f!gh!i</code>
+</div>
+
+<h3 id="repetitions">Optional characters and repetitions</h3>
+
+<p>For neumes that repeat the same note several times, it is possible to achieve faster notation. For example, for the <em>bivirga</em> two <code>v</code> are added after the note, and for the <em>tristropha</em> three <code>s</code>. The result will be the same if each detail is written: <code>hs/hs/hs</code> = <code>hsss</code>.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/bistrophatristropha.png" title="" alt="" />
+<br /><em>bistropha</em> and <em>tristropha</em>&nbsp;: <code>gss hsss</code>
+</div>
+
+<h2 id="advanceddetails">Advanced details</h2>
+<h3 id="podatus">The podatus</h3>
+
+<p>The <em>podatus</em> poses a difficulty for square notation in general, because there are seven ways of denoting it in ancient notation, and much fewer in square notation. In the Solesmes hymnary of 1983, two new notations were introduced: the <em>pesquassus</em> and the <em>podatus initio debilis</em>. The first is written using an o after the first note, as it is an <em>oriscus</em>, and the second is written logically with a - before the first note.</p>
+
+<p>A new written form of the podatus is also proposed here. It could be used to distinguish <em>pes quadratus</em> of the old notation that is currently transcribed in the same way that the light <em>pes</em> and the <em>pes</em> with episema are. In this new written form of the podatus, the second note is located to the right of the bar that links the two notes, and not to the left. These <em>pes quadratus</em> are notated by adding a <code>&nbsp;q&nbsp;</code> between the two notes.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/q1.png" alt=""/>
+<br /><em>Pes quadratum</em> and <em>Pes quilisma quadratum</em>
+</div>
+
+<h3 id="accents">Empty notes and accents</h3>
+
+<p>As the empty notes and accents are quite rare, the notation to get them is not very intuitive, but is still simple: simply add the following signs after your note:</p>
+
+<ul>
+<li>punctum cavum: r</li>
+<li>linea punctum: R</li>
+<li>linea punctum cavum: r0</li>
+<li>accentus: r1</li>
+<li>reversed accentus: r2</li>
+<li>circulus: r3</li>
+<li>semi-circulus: r4</li>
+<li>reversed semi-circulus: r5</li>
+</ul>
+
+<div class="legende">
+<img src="/gregorio/illus/empty-accents.png" alt=""/>
+<br /><em>Empty notes and accents</em>
+</div>
+
+<h3 id="polyphony">Polyphony</h3>
+
+<p>The first polyphonic pieces were written in square notation, even if the current notation is slightly different. The goal of the notation presented here is to represent Gregorian chant, and thus song in only one voice; however it seemed important to consider the case of people who would want to write polyphonic scores in square notation. Polyphonic pieces are different only at the level of the neume; indeed, the text is the same for all the voices (but usually only two). We propose separating the voices using the character <code>&amp;</code> .</p>
+
+<div class="commandline">
+<code>A(g&amp;f)nnua(j/k&amp;dfde/d) gau(j&amp;e)dia(hjhi/g&amp;f/g) (:&amp;:)</code>
+</div>
+
+<p>Sadly the typography of polyphony on several levels of staffs is way more difficult than the normal typography, and it's not yet possible (with any serious gregorian software). Some simpler notations exist though for simple polyphony on one staff line. This is possible in gabc when putting the first note of a vertically aligned group between curly brackets:</p>
+
+<div class="legende">
+<img src="/gregorio/illus/polyphony.png" alt=""/>
+<br />Simple polyphonic notation
+</div>
+
+<h3 id="endofline">End of line and custos</h3>
+
+<p>End of line and custos can be automatically generated by the software, indicating the first note of the following line.  Meanwhile it can be useful for you to specify it, because it improves the rendering. To force an end of line somewhere, just type <code>z</code>. If you want your line to end without being justified, type <code>Z</code></p>
+
+<p>In some very rare cases, it may be necessary to typeset a custos inside a line. It is the case of a clef change for examples. In this particular case, simply type <code>z0</code> to get it; its height will be calculated automatically.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/clef-change.png" alt="">
+</div>
+
+<p>People wanting a guide at the end of their score, can type it with <code>g+</code> as the last note of the score (right after the final bar), replacing <code>g</code> with the height you want.
+
+<h3 id="translation">Translation and text above notes</h3>
+
+<p>To add a translation (or a second line of text), simply put it between square brackets in the syllable text. The text will be left-aligned with the text of the syllable, and won't go to the next line automatically. Thus it may require a bit of work to get the desired effect.</p>
+
+<p>It is also possible to add text above notes in two ways: the first is to set the text at the syllable text level between <code>&lt;alt&gt;</code> markups (alt like <em>above lines text</em>). This text will be left-aligned with the first note of the syllable. It is also possible to typeset text entering <code>[alt:my text]</code> in the notes, which will align "my text" with the note following.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/translationalt.png" alt="">
+</div>
+
+<h3 id="choral">Choral signs</h3>
+
+<p>It is possible to produce choral signs in gabc. To do so add <code>[cs:t]</code> after the note for which you want the sign, replacing <code>t</code> with the sign you desire.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/choralsign.png" alt="">
+</div>
+
+<h3 id="comments">Comments</h3>
+
+<p>After the character <code>%</code>, all the characters of the line will be ignored.</p>
+
+<h3 id="verbatim">Insert code (for advanced users)</h3>
+
+<p>It is possible to insert verbatim code in gabc, this code will appear as it is in the TeX file. You can do this at several levels. First you can insert text between the <code>&lt;v&gt;</code> markups in the syllable text.</p>
+
+<p>Verbatim code can also be inserted at three levels in the notes:</p>
+
+<ul>
+<li>at note level, not modifying the glyph determination, with <code>[nv:\mycode]</code> after the note, remplacing <code>\mycode</code> with the code you want to insert</li>
+<li>at glyph level, forcing the glyph to stop but staying in the same element, with <code>[gv:\mycode]</code></li>
+<li>at element level, forcing the element to stop and not automatically adding a neumatic space (which you may have to add by hand), with <code>[ev:\mycode]</code></li>
+</ul>
+
+<p>Note that macros can be defined. Let's take an example: add this in your header:</p>
+
+<div class="commandline">
+<code>def-m1:\mycode;</code>
+</div>
+
+<p>You can now call this macro in your notes using the notation <code>[nm1]</code>, <code>[gm1]</code> or <code>[em1]</code>. You can define 10 macros this way (from 0 to 9).</p>
+
+<h3 id="braces">Braces above notes</h3>
+
+<p>You can create braces above notes, with the following syntax: <code>[ob:1;6mm]</code> where</p>
+
+<ul>
+<li><code>ob</code> represents the shape of the brace: a round brace (<code>ob</code>), a curly brace (<code>ocb</code>) or a curly brace with accent (<code>ocba</code>)</li>
+<li><code>1</code> is there to know if we shift one note on the left (1) or not (0)</li>
+<li><code>6mm</code> is the length of the brace (you have to enter it by hand)</li>
+</ul>
+
+<div class="legende">
+<img src="/gregorio/illus/ob.png" alt="">
+</div>
+
+<h2 id="conclusion">Conclusion and extensions</h2>
+
+<p>If some aspects have been overlooked or if a new written form should appear, many ASCII characters have not yet been used in our notation and remain available, for example, the letters <em>n, p, t</em> and <em>u</em>, both upper- and lower-case.</p>
+
+<p>We hope that we have described here the main aspects that need to be considered for the fast notation of Gregorian chant, and we hope that this notation will be implemented. All questions and remarks are welcome on <a href="mailto:gregorio-devel@gna.org" title="">the gregorio developers mailing list</a>.</p>
+
+<p>This notation does not consider the ancient neume notation. Although the latter is important, a completely different technique is needed for it, which we may consider at a later stage.</p>
+
+<h2 id="example">A complete example</h2>
+
+<div class="legende">
+<img src="/gregorio/illus/complet.png" alt=""/>
+</div>
+
+<div class="commandline">
+
+<code>name: Populus Sion;</code><br />
+
+<code>%%</code><br />
+
+<code>(c3) Pó(eh/hi)pu(h)lus(h) Si(hi)on,(hgh.) *(;) ec(hihi)ce(e.) Dó(e.f!gwh/hi)mi(h)nus(h) vé(hi)ni(ig/ih)et(h.) (,)</code><br /><br />
+
+<code>ad(IV./hig)sal(fe~)ván(ghg)das(fg) gen(e_f_e_)tes(e.) :(:) et(e) au(eh)dí(h/hi)tam(i) fá(kjki)ci(i)et(i) Dó(ij)</code><br /><br />
+
+<code>mi(ihi)nus(IV./hiHF) (,) gló(h!i'j)ri(ji!KVJI)am(ij~) vo(j.i!jwk)cis(ji) su(i_j_i_)æ,(i.) (;) in(e) læ(e)tí(e!f'h)ti(h)a(hi!JVji)</code><br /><br />
+
+<code>cor(gh!ijI'H)dis(ihhf!gwh) ves(e_f_e_)tri.(e) &lt;i&gt;Ps.&lt;/i&gt;(::) Qui(ehg) re(hi)gis(i) I(i)sra(i)el,(ik) in(j)tén(ji~)de(ij..) :*(:)</code><br /><br />
+
+<code>qui(ig) de(hi)dú(i)cis(i) vel(i)ut(i!jwk) o(i')vem(h) Jo(hhh)seph.(fe..) (::) Gló(ehg)ri(hi)a(i) Pa(i)tri.(i) (:)</code><br /><br />
+
+<code>E(i)u(i!jwk)o(i)u(h) a(hhh)e(fe..) (::)</code>
+</div>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

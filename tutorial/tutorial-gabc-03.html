@@ -1,0 +1,150 @@
+<!--#set var="context" value="gabc" --><!--#set var="title" value="Gregorio and gabc: a tutorial (page 3)" --><!--#include virtual="/gregorio/header.en.html" -->
+<style type="text/css">
+        .commandblock {font-family: courier; padding-left: 150px;}
+	.commandline {font-family: courier;}
+        .filename {font-family: courier; font-weight: bold;}
+</style>
+<h1><!--#echo var="title" --></h1>
+
+<p>Here we continue the gabc tutorial that began on <a href="tutorial-gabc-01">this page</a>.</p>
+
+<p>We will here talk about GregorioTeX, the documentation of which can be found <a href="/gregorio/gregoriotex/">here</a>.</p>
+
+<h2>Kyrie XVII (end)</h2>
+
+<p>We have been working to typeset this score:</p>
+
+<div class="legende">
+<img src="kyrie-xvii-goal.png"/>
+</div>
+
+<p>Our gabc notation file is complete now:</p>
+
+<div class="filename">kyrie-17-final.gabc</div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::) 
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+<p>And the resulting score looks like this:</p>
+
+<div class="legende">
+<img src="kyrie-17-13a.png"/>
+</div>
+
+<p>We still have some changes to do: to add the mode notation "VI" before the first clef and add the annotation "XIV. s." above the first stave. I'd like to experiment with a different typeface for the text. Last of all, it would also be nice if we could add more vertical space between the staves.</p>
+
+<h3>Adding annotations</h3>
+
+<p>All these details of the output are controlled by the TeX file which represents the document, so let's look at that.</p>
+
+<div class="filename">kyrie-17-final-main.tex</div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+\usepackage{fullpage}
+\usepackage{newcent}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage{gregoriotex}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+
+\setspaceafterinitial{3.2mm plus 0em minus 0em}
+\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+
+\def\greinitialformat#1{%
+{\fontsize{43}{43}\selectfont #1}%
+}
+
+\gresetfirstlineaboveinitial{\small \textsc{\textbf{}}}{\small \textsc{\textbf{}}}
+\commentary{{\small \emph{}}}
+\setgrefactor{17}
+\includescore{kyrie-17-final.tex}
+
+\end{document}
+</pre>
+</div>
+
+
+<p>The <code>\commentary{}</code> macro generates the small text above the first stave, so let's add the desired text to it:</p>
+
+<div class="commandblock">
+	<pre>
+\commentary{{\small \emph{<font color="red">XIV. s.</font>}}}
+</pre>
+</div>
+
+<p>The macro <code>\gresetfirstlineaboveinitial{}{}</code> generates the mode label before the first clef, so let's make that:</p>
+
+<div class="commandblock">
+	<pre>
+{\small \textsc{\textbf{<font color="red">VI.</font>}}}{\small \textsc{\textbf{<font color="red">VI.</font>}}}
+</pre>
+</div>
+
+<p>Notice that we had to put "VI." into both arguments.   It's strange, but this is how it works.</p>
+
+<p>Make those changes, run that file through LaTeX, and the resulting score looks like this:</p>
+
+<div class="legende">
+<img src="kyrie-17-final.png"/>
+</div>
+
+<h3>Changing the typeface</h3>
+
+<p>To see how the score looks in Palatino font, I looked for the line that sets the typeface New Century Schoolbook:</p>
+
+<div class="commandline">
+	<pre>
+\usepackage{newcent}
+</pre>
+</div>
+
+<p>and I changed it:</p>
+
+<div class="commandline">
+	<pre>
+\usepackage{<font color="red">palatino</font>}
+</pre>
+</div>
+
+<p>Here's how the score looks after that change:</p>
+
+<div class="legende">
+<img src="kyrie-17-final2.png"/>
+</div>
+
+<p>The best-looking free font for gregorio is a matter of taste, but <code>kpfonts</code> is also a good choice (<code>\usepackage{kpfonts}</code>).</p>
+
+<h3>Changing vertical spacing</h3>
+
+<p>To add more space between the staves, I adjusted a spacing variable:</p>
+
+<div class="commandline">
+	<pre>
+\setgrefactor{17}
+<font color="red">\global\advance\grespaceabovelines by 10mm%</font>
+\includescore{kyrie-17-final.tex}
+</pre>
+</div>
+
+<p>Here's how the score looks after that change:</p>
+
+<div class="legende">
+<img src="kyrie-17-final3.png"/>
+</div>
+
+<p>That completes this tutorial. For reference, you may want to print a copy of this PDF <a href="/gregorio/gabc/summary-gabc.pdf">summary of gabc</a>, which shows the notation for gabc features we haven't demonstrated here.</p>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

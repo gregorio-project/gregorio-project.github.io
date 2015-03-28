@@ -1,0 +1,71 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Installing Gregorio under GNU/Linux" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<p>This page describes the installation and compilation of gregorio software under a GNU/Linux system.  Whether you install a precompiled version or whether you compile from source, it's a quick and easy operation.</p>
+
+<h2>On Debian and Ubuntu systems</h2>
+
+<p>To obtain the sources of the stable version, you just need to download them from the <a href="http://download.gna.org/
+gregorio/releases/current">download page</a>, and decompress the archive.</p>
+
+<p>To get the SVN version of the source code, that is, the version in development, you will have to create
+a local copy of the subversion repository of the project, with the command:</p>
+
+<div class="commandline">
+<code>svn co svn://svn.gna.org/svn/gregorio/trunk</code><br/>
+<code>cd trunk</code>
+</div>
+
+<p>Gregorio's software includes compilation tools specific to debian systems (including Ubuntu), for both the program <em>gregorio</em> and the TeX style <em>GregorioTeX</em> , as debian's installation method differs from that of other distributions.</p>
+
+<p class="nofirst">In order to compile gregorio from source on debian, it's necessary to install several packages:</p>
+
+<div class="commandline">
+<code>sudo aptitude install libxml2-dev flex bison docbook-to-man xsltproc autotools-dev automake libtool libltdl-dev tex-common docbook-xsl autopoint python-fontforge fakeroot dh-autoreconf</code>
+</div>
+
+<p class="nofirst">Then, to construct the debian packages corresponding to gregorio and GregorioTeX, type:</p>
+
+<div class="commandline">
+<code>dpkg-buildpackage -rfakeroot -d -b</code>
+</div>
+
+<p>This will produce two debian packages.  You can find them <em>in the parent directory</em>, which you will be able to install as follows:</p>
+
+<div class="commandline">
+<code>sudo dpkg -i ../gregorio*.deb</code>
+</div>
+
+<h2>For other GNU/Linux systems</h2>
+
+<p>On other systems, you will need to compile gregorio. In order to do this, you will have to install the software packages necessary for compilation, which are <code>gcc</code>, <code>automake</code>, <code>libltdl-dev</code>, <code>libtool</code>, <code>libxml2</code>, <code>libxml2-dev</code>, <code>flex</code>, <code>bison</code>, <code>python</code>, <code>autoconf</code>, <code>texlive</code> and <code>make</code>. (Note: on some distros, packages may be called <code>foo-devel</code> instead of <code>foo-dev</code>). </p>
+
+<p>To obtain the sources of the stable version, you can download them from the <a href="http://download.gna.org/
+gregorio/releases/current">download page</a>, and decompress the archive.</p>
+
+<p><strong>OR:</strong> To get the latest version of the source code, that is, the version in development, you will have to create
+a local copy of the git repository of the project.  Use these commands:</p>
+
+<div class="commandline">
+<code>git clone https://github.com/gregorio-project/gregorio.git gregorio-git</code><br/>
+<code>cd gregorio-git</code><br/>
+</div>
+
+
+<p class="nofirst">Once those preparatory steps are done, simply execute the following commands:</p>
+
+<div class="commandline">
+<code>$ autoreconf -f -i</code> (if you have the git version)<br/>
+<code>$ ./configure --prefix=/usr</code><br/>
+<code>$ make</code><br/>
+<code>$ make install</code><br/>
+<code>$ cd fonts</code><br/>
+<code>$ sudo make install</code>
+</div>
+
+<h3>Update</h3>
+
+<p>To update your git version, you just need to go in the directory containing the source files (assuming you kept them), run <code>git pull origin master</code> and recompile with the same instructions as the previous <em>Compilation</em> section.  If you deleted that directory after install, then just repeat the steps above starting at the <code>git clone</code> command.</p>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

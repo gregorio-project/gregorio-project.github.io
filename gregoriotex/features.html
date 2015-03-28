@@ -1,0 +1,49 @@
+<!--#set var="context" value="gregoriotex" --><!--#set var="title" value="Features of GregorioTeX" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<h2 id="symbols">Red lines</h2>
+
+<p>For liturgical books, it is often useful to get red staff lines. GregorioTeX offers this possibility. To get it, you have to include the package <code>color</code>, distributed with the base TeXLive. Include it simply in the header of your main file: <code>\usepackage{color}</code>.</p>
+
+<p>To get red lines, simply call the macro <code>\redlines</code>, without argument. This will make the lines of all following scores red. To cancel it, call <code>\normallines</code>.</p>
+
+<p>The red it will produce is quite close to the red of the scores I have been able to find, but it's not perfect. If you want to adapt it with your own color, call the macro <code>\coloredlines{}{}{}</code> that will take the RGB code (in decimal) of the color you want to give to the lines. Once again, call <code>\normallines</code> to cancel it. If you find a better red than the one of Gregorio, please suggest it!</p>
+
+<h2 id="symbols">Symbols included in GregorioTeX</h2>
+
+<p>GregorioTeX includes several symbols and some macros to call them. These symbols are very useful for scores and books of gregorian chant, and it's almost impossible to find them outside of GregorioTeX. They may even interest people wanting to make their books more beautiful. A lot of symbols are still missing, so any help or suggestion is welcome!</p>
+
+<p>To get the symbols of GregorioTeX you don't need any special TeX system, you can simply use it with your default LaTeX or pdfLaTeX. Install GregorioTeX and include the package <code>gregoriosyms</code>.</p>
+
+<h4>Simple symbols</h4>
+
+<p>Here are the simple symbols of GregorioTeX:</p>
+
+<div class="legende">
+<img src="/gregorio/illus/symbols.png" title="" alt="" />
+</div>
+
+<p>The macros to call them are (in the order): <code>\Abar</code> <code>\Rbar</code> <code>\Vbar</code> <code>\Vbarsmall</code> <code>\greletterbar</code> <code>\greletteraltbar</code> <code>\gothRbar</code> <code>\gothVbar</code><br /><code>\gredagger</code> <code>\grecross</code> <code>\grealtcross</code> <code>\greheightstar</code> <code>\gresixstar</code>.</p>
+
+<p>By default the symbols are for 12pt documents. If you want to use them in other sizes, define <code>\font\gregoriosymbolfont=gresym at 12pt</code> by replacing 12pt with the point size you want.</p>
+
+<p>Update: If you are using a version of gregorio committed to the repository after November 1, 2014, then the above symbols should automatically resize to the current font size.  There is no longer any need to redefine <code>\gregoriosymbolfont</code>.</p>
+
+<h4>The lines</h4>
+
+<div class="legende">
+<img src="/gregorio/illus/lines.png" title="" alt="" />
+</div>
+
+<p>The lines are created with the macro <code>\gresep{}{}</code>. It takes as its first argument the shape of the line, which is a number between 1 and 5, in the order of the picture above. The second argument is the width of the line.</p>
+
+<h4>Ornamentations</h4>
+
+<p>The ornamentations are an aborted project. You can obtain the result below by repeating <code>{\gregoriosymbolfont \char 75}</code> without space (for the second line, replace 75 by 76). The symbols to begin and end the lines are missing. If you have a suggestion, I'll be happy to take it.</p>
+
+<div class="legende">
+<img src="/gregorio/illus/series.png" title="" alt="" />
+</div>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

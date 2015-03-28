@@ -1,0 +1,34 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Installing Gregorio under Windows" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<p>The first step for a simple install of gregorio under Windows is to install TeXLive:</p>
+
+<h2>Installing TeXLive</h2>
+
+<p>To use GregorioTeX, the TeX system of gregorio, you will need a complete TeX system (called a <em>distribution</em>). There are various TeX distributions.  The two most prominent for Windows are:</p>
+
+<ul>
+<li>MikTeX, a distribution exclusively for Windows,</li>
+<li>TeXLive, an up-to-date widespread multi-platform distribution,</li>
+</ul>
+
+<p>As TeXLive is the system used on Linux and Mac, we have chosen to describe the installation of TeXLive.  Everything should work the same with MikTeX but it has not been tested.</p>
+
+<p>To begin, download the latest TeXLive installer from <a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip">the official site</a> and unzip it. Then you have two options:</p>
+
+<p> The first is to launch <code>install-tl.bat</code> and to say yes all the time, it will simply install all the TeXLive distribution (about 3GB).</p>
+
+<p>If you have less time or disk space, launch <code>install-tl-advanced.bat</code>. A graphical interface will open to give you the installation options. Click on the uppermost "Change" button, to select the <code>scheme medium</code>. Click then on the second "Change" button and select at least "LuaTeX packets", "LaTeX3 packets", "LaTeX recommended packages", "Recommended standard packages", "Recommended fonts", "LaTeX base packages" and "Essential programs and files". Click then on the "Change" button for languages. Deselect all the documentation languages (you can find them on the Internet), as well as all the languages on the left that you won't use (don't forget to check latin, which is unchecked by default). To gain some room, you can also say "no" to "Install source of macros and fonts". It should be less than 1GB.</p>
+
+<p>Once you have activated the installation choices, click on "Install TeXLive". The installation may take a while, because it requires downloading the necessary packages.</p>
+
+<h2>Installing Gregorio</h2>
+
+<p>Once you've installed TeXLive, you have to restart your computer before you can install gregorio. Once you have done it, there is a Windows auto-installer called <code>gregorio-##-setup.exe</code> (where ## is the version number) available in the <a href="http://download.gna.org/gregorio/releases/">Download</a> section for the more recent releases. Simply follow the steps and the installation will be over!</p>
+
+<h3>Which release should I use?</h3>
+
+<p>Unless you have a specific reason for picking an older release, we recommend that you use the development version of Gregorio.  This will get you all the latest features and bug fixes.  By the time the source code package and installer are posted to the <a href="http://download.gna.org/gregorio/releases/">Download</a> section, they are already fairly stable and have been tested.  The truly cutting edge (and buggy) development goes on in the git repository.  We call this the development version simply because we haven't yet assigned it a release number.</p>
+
+<!--#include virtual="/gregorio/footer.en.html" -->

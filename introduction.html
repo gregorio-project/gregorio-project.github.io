@@ -1,0 +1,27 @@
+<!--#set var="context" value="default" --><!--#set var="title" value="Introduction to Gregorio" --><!--#include virtual="/gregorio/header.en.html" -->
+
+<h1><!--#echo var="title" --></h1>
+
+<p>So, you've installed TeXLive (or some other TeX distribution) and Gregorio and are now ready to get to work.  But how do you do that?  If you're familiar with TeX, you probably have some ideas already as to the workflow, but if this is your first experience with TeX then you're probably stuck looking for what program to open up to get started.</p>
+
+<p>The fisth thing to understand is that TeX and all the flavors built on top of it (LaTeX, LuaTex, LuaLaTeX, etc.) are basically compilers.  So too is Gregorio.  This means that they are editor agnostic.  You can write the source that gets fed to these programs in any editor with which you feel comfortable so long as the editor can save the file as plain text (i.e. no formatting).  It's a very similar workflow to programming.  In this arangement Gregorio functions as a pre-compiler.  It translates a source document writen in <a href="gabc/index">gabc</a> (a standard designed to make entering Gregorian Chant fairly user friendly) into something that can be placed in a LuaTeX (or LuaLaTeX) document using the gregoriotex package.</p>
+
+<p>What editor you use is largely up to you, but if you've never worked with TeX before then I highly recommend using an editor specifically designed to work with TeX.  Luckly TeXLive comes with just such an editor: TeXworks.  Just follow the link below that corresponds to your system to see how to get started.</p>
+
+
+<p>These pages describe the workflow of a gregorio compilation with various editors:</p>
+<ul>
+<li><a href="introduction-texworks-universal">With TeXworks</a></li>
+<li><a href="introduction-texshop">With TeXShop on a Mac</a></li>
+<li><a href="introduction-scribus">With Scribus</a></li>
+<li><a href="introduction-commandline">Through command line</a> (for advanced users)</li>
+</ul>
+
+<p>Prior to Gregorio version 2.4.2 the configuration of TeXworks was a bit more complicated.  To see the old instrcutions follow the link appropriate to your platform:</p>
+<ul>
+<li><a href="introduction-texworks-mac">With TeXworks on a Mac</a></li>
+<li><a href="introduction-texworks-win">With TeXworks on a Windows PC</a></li>
+<li><a href="introduction-texworks-linux">With TeXworks on a Linux box</a></li>
+</ul>
+
+<!--#include virtual="/gregorio/footer.en.html" -->
