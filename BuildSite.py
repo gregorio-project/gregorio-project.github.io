@@ -25,8 +25,7 @@ def get_all_files():
             dirs.remove('illus')
         if '.git' in dirs:
             dirs.remove('.git')
-    return ['index.html']
-    #return res
+    return res
 
 def get_header():
     "Get header.html content"
@@ -53,7 +52,6 @@ def main():
         with open(myfile, 'r') as infile:
             for line in infile:
                 if state == 'header' and HEADER_LIMIT in line:
-                    print "je vois la ligne header"
                     result.append(line)
                     state = 'main'
                 elif state == 'main' and FOOTER_LIMIT in line:
