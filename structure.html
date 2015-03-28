@@ -88,7 +88,6 @@
 <!-- header -->
 <script>
     context = 'notation';
-    title = 'Structure of Gregorian Chant notation';
 </script>
 
 <h1>Structure of Gregorian Chant notation</h1>
@@ -248,7 +247,7 @@
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

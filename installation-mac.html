@@ -86,10 +86,6 @@
     <div class="text">
       <!-- End of header -->
 <!-- header -->
-<script>
-    context = 'gregorio';
-    title = 'Installing Gregorio under Mac OSX';
-</script>
 
 <h1>Installing Gregorio under Mac OSX</h1>
 
@@ -149,7 +145,7 @@
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

@@ -86,12 +86,8 @@
     <div class="text">
       <!-- End of header -->
 <!-- header -->
-<script>
-    context = 'gregorio';
-    title = 'Gregorio installation';
-</script>
 
-<h1>Gregorio Installation</h1>
+<h1>Installing Gregorio</h1>
 
 <p>To install a complete gregorio system, refer to one of the following three pages:</p>
 
@@ -106,7 +102,7 @@
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

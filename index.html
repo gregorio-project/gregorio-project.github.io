@@ -86,11 +86,6 @@
     <div class="text">
       <!-- End of header -->
 <!-- header -->
-<script>
-    context = 'gregorio';
-    title = 'The Gregorio project';
-</script>
-
 <h1>The Gregorio project</h1>
 
 <p>The Gregorio project offers tools for the typesetting of Gregorian chant. These tools include:</p>
@@ -115,7 +110,7 @@
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

@@ -88,7 +88,6 @@
 <!-- header -->
 <script>
     context = null;
-    title = 'Useful links';
 </script>
 
 <h1>Useful links</h1>
@@ -105,7 +104,7 @@
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

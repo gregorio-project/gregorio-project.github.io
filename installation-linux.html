@@ -86,10 +86,6 @@
     <div class="text">
       <!-- End of header -->
 <!-- header -->
-<script>
-    context = 'gregorio';
-    title = 'Installing Gregorio on Linux';
-</script>
 
 <h1>Installing Gregorio under Linux</h1>
 
@@ -135,7 +131,7 @@ If you're under another distribution, packages will certainly have a similar nam
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

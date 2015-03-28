@@ -86,19 +86,10 @@
     <div class="text">
       <!-- End of header -->
 <!-- header -->
-<script>
-    context = 'gregorio';
-    title = 'Test';
-</script>
-<!-- header -->
-<script>
-    context = 'gregorio';
-    title = 'Test';
-</script>
 
-<h1><!--#echo var="title" --></h1>
+<h1>Configuring TeXworks for Gregorio</h1>
 
-<p>This page describes how to configure gregorio for use with TeXworks on a Linux box.  You will have to repeat this process for each user who uses TeXworks.</p>
+<p>This page describes how to configure TeXworks to use Gregorio.  You will have to repeat this process for each user who uses TeXworks.</p>
 
 <h3>Configure TeXworks</h3>
 
@@ -116,39 +107,12 @@
 <p>Once you've downloaded the engine, open TeXworks and click on <code>Help -&gt; Settings and Resources...</code>  Follow the link to the Resources folder in the pop-up dialog that appears.  In this folder create a new subfolder called "engines" and copy it there.  <b>Note:</b> This engine does not work on Windows.</p>
 
 
-<p>If everything goes as planned, then you're ready to <a href="/gregorio/introduction-texworks.en.html">start working with TeXworks</a>.  If not, see below.</p>
-
-<h3 id="Troubleshooting">Troubleshooting</h3>
-
-<p>The most common problem to run into at this stage is for TeXworks to return the following error when you try to add an engine:</p>
-
-<div class="legende">
-<img src="/gregorio/illus/texworks-error-linux.png" title="" alt="" />
-<br />Problem!
-</div>
-
-<p>This problem occurs because some systems automaticaly restrict you from running downloaded files as a saftey precaution.  To let your system know that it's okay to run this file we have to set the executable bit.</p>
-
-<p>To do this start by opening Terminal (it's in <code>Applications/Utilities</code>) then enter the following commands (you can leave out the lines associated with engines you're not setting up):</p>
-
-<div class="commandline">
-<code>cd ~/.TeXworks/engines</code><br />
-<code>chmod a+x gregorio.engine</code><br />
-<code>chmod a+x greg-book.engine</code><br />
-<code>chmod a+x greg-lily-book.engine</code><br />
-<code>chmod a+x LilyPond-Book.engine</code>
-</div>
-
-<p>Once you've done this, you should be able to add the engines to TeXworks as described above.</p>
-
-<p>If you're still having trouble, then sign up for the users mailing list (<a href="/gregorio/contact">instructions are here</a>) and send an email describing your problem in as much detail as possible.  Someone will help you get your issue resolved.</p>
-
 <!-- footer -->
     </div>
     <div class="bottom">
     </div>
     <script>
-      document.title = title;
+      document.title = $('h1:first').html();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();
