@@ -89,93 +89,13 @@
 
 <h1>Using Gregorio in a terminal</h1>
 
-<p>This page is an introduction to working with gregorio from the command line. If you are not familiar with TeX at all, refer to the <a href="/gregoriotex/tex.html">page on TeX</a>.</p>
+<p>This page is an introduction to working with gregorio from the command line. This page is reserved for users who are used to compile TeX documents in command line. If you are not, please start with <a href="introduction-editor.html">an editor</a>.</p>
 
-<p>Overall, producing a score involves these steps:</p>
+<p>The command line tool <code>gregorio</code> converts a score written in <a href="/gabc/index.html">gabc</a> into a TeX file. GregorioTeX provides mainly the <code>\includescore</code> that takes the filename of your gabc score and includes it. It automates gabc to TeX compilation by automatically executing the <code>gregorio</code> command when needed. See UserManual.pdf for more details.</p>
 
-<ul>
-<li>writing a gabc text file that describes the score.  This can be done in any text editor (for example, TeXworks, gedit, notepad++)</li>
-<li>compiling a LaTeX file including the score</li>
-</ul>
+<p>Gregorio extensively uses the new features of LuaTeX, so compilations needs to occur with this engine. Also, in order to compile your scores automatically, <code>lualatex</code> needs to be able to run external commands. To allow it, run <code>lualatex</code> with the <code>--shell-escape</code> argument, or add gregorio to the list of allowed commands by restricted command execution (the list is named <code>shell_escape_commands</code> in <code>texmf.cnf</code>).
 
-<p>If you have a relatively good computer background including LaTeX, you can skip directly to the summary of commands at the end of this page, as what follows here is addressed principally to LaTeX and computer beginners.</p>
-
-<h3>Creating a gabc file</h3>
-
-<p>For a first example, you might look at the <code>PopulusSion.gabc</code> score, which can be found in the <code>examples/</code> directory under gregorio (in Windows, this is where you chose to install gregorio).</p>
-
-<p>In a text editor (like TeXworks, not a document editor like Microsoft Word), you will need to type the score in gabc notation.  For more details on gabc notation, refer to the gabc pages.  To see a full example quickly, refer to the end of the <a href="/gabc/details.html">detailed gabc description page</a>.</p>
-
-<p>Once you have created your gabc file in a text editor, save it in a directory that will be convenient for you. This file must have the extension <code>.gabc </code>. In TeXworks, you can select the proper .gabc extension from the list of possibilities.</p>
-
-<p><strong>Warning!</strong> The file must be in UTF-8, it is absolutely mandatory! Otherwise Gregorio will have random behaviour when it comes to the accents! Every modern text editor has this option (it is the default in TeXworks).</p>
-
-<p>In the following, we will assume that the file is named <code>example.gabc</code>.</p>
-
-<h3>Compiling the gabc into TeX code (optional)</h3>
-
-<p>Starting with version 3.0.0, this step can be skipped, as gregorio will be called directly by LaTeX. The following instructions are left for users with a technical background.</p>
-
-<p>Once you have saved your gabc file, you can run the gregorio program to produce  GregorioTeX code based on it.</p>
-
-<p>Open a terminal window, go to the directory containing your gabc file, and simply type:</p>
-
-<div class="commandline">
-<code>gregorio example.gabc</code>
-</div>
-
-<p>Based on <code>example.gabc</code>, that will produce the file <code>example.tex</code>, which contains the GregorioTeX code corresponding to the gabc file, that we will include in our main document.</p>
-
-<h3>Compiling the main TeX file</h3>
-
-<p>The last step is to incorporate the score into a LaTeX document and compile that to make a PDF file. We will use LuaLaTeX to do this. So we must first explain a little bit about LaTeX documents.</p>
-
-<p>Now you need a LaTeX file representing your document (booklet, simple score with a title, etc.). This file will contain a command to "include" the score, <code>example.tex</code>, in the proper place.</p>
-
-<p>For the case of a simple page, you can use the example that comes with Gregorio (<a href="https://github.com/gregorio-project/gregorio/blob/master/examples/main-lualatex.tex">accessible through github</a>). Save this file in the same directory as <code>example.gabc</code>, and call it <code>main.tex</code>. Open it with a text editor. You will have to change one line:  where the file contains the code</p>
-
-<div class="commandline">
-<code>\includescore[a]{PopulusSion}</code>
-</div>
-
-<p class="nofirst">change it to use our produced file:</p>
-
-<div class="commandline">
-<code>\includescore[a]{example}</code>
-</div>
-
-<p>This is the code that will invoke our TeX code, which we produced in the previous step. Our goal now will be to compile <code>main.tex</code>, which will produce <code>main.pdf</code>, containing the score.</p>
-
-<p>To do this, just type the following in a terminal window:</p>
-
-<div class="commandline">
-<code>lualatex --shell-escape main.tex</code>
-</div>
-
-<p>Now you have a file <code>main.pdf</code> in the same directory as your .tex files, and this contains your score!  You can display it with Adobe Reader or any other program you normally use with PDF documents.</p>
-
-<p>If that was your first experience with a TeX system, you may be discouraged and telling yourself that this is all too complicated for you.  Rest assured that it is not at all so!  Be brave and make some scores by yourself; you will confirm that in the end it is very simple, and the result is worth the trouble involved!</p>
-
-<p>While gregorio and LaTeX can position the neumes of your score automatically, to achieve the best results, you will sometimes find that a manual change in a score is helpful. For example, for spacing it is sometimes preferable to indicate line breaks manually.   To accomplish that, you can modify your gabc file and recompile it to make a more customized TeX file for the score.  For characters that gabc cannot generate, you can even insert TeX code directly into your gabc file, thanks to the <code>&lt;v&gt;</code> tags.</p>
-
-<p>In short, gregorio offers a relatively easy system, and except for strange and unexpected cases, you will be able to get along by merely modifying the gabc file.</p>
-
-<p>If you ever need to modify a GregorioTeX file, or if you are simply curious about its contents, refer to the page giving the structure of a GregorioTeX file.</p>
-
-<a name="Summary"></a>
-<h2>Summary</h2>
-
-<p>To compile <code>example.gabc</code> into <code>example.tex</code> (optional):</p>
-
-<div class="commandline">
-<code>gregorio example.gabc</code>
-</div>
-
-<p>Then incorporate the corresponding score <code>example.tex</code> into a TeX wrapper file, <code>main.tex</code>, which contains the command <code>\includescore[a]{example}</code>. To compile <code>main.tex</code> into <code>main.pdf</code>:</p>
-
-<div class="commandline">
-<code>lualatex --shell-escape main.tex</code>
-</div>
+<p>Behind the scenes, the automatic compilation creates <code>foo-bar.gtex</code> where <code>foo</code> is the base name of your gabc score and <code>bar</code> is the version of Gregorio.</p>
 
 <!-- footer -->
     </div>
