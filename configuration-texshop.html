@@ -91,13 +91,11 @@
 
 <h3>Automatic score compilation</h3>
 
-<p>Gregorio needs a <code>lualatex</code> that is able to launch the <code>gregorio</code> program during compilation, in order to compile gabc scores automatically.</p>
+<p>Gregorio needs a <code>lualatex</code> engine that is able to launch the <code>gregorio</code> program during compilation in order to compile gabc scores automatically (i.e. the engine has to have the <code>--shell-escape</code> option active).  Unfortunately, TeXShop does not come with such an engine setup by default.</p>
 
-<p>TeXworks can be configured to do so by creating a new engine for compilation that adds the <code>--shell-escape</code> argument to <code>lualatex</code>.</p>
+<p>To make life easier, we've included an engine which is setup correctly in the contributed add-ons which were installed as part of Gregorio: <code>LuaLaTeX+se.engine</code>.  You can find it in <code>/Users/Shared/Gregorio/contrib/TeXShop</code> if you used the installer or in <code>#/gregorio-git/contrib/TeXShop</code> if you cloned the repository (where <code>#</code> is the directory you cloned the repository to).  Simply copy this file to <code>~/Library/TeXShop/Engines</code> and the engine should show up in the drop down list the next time you start TeXShop.</p>
 
-<p>To create it, open the folder <code>~/Library/TeXShop/Engines</code> in Finder.  Copy the LuaLaTeX engine from the <code>Inactive/luaTeX</code> folder, and modify it by opening it with text editor (such as Textedit) and adding "--shell-escape" right after "lualatex". Save this file as <code>~/Library/TeXShop/Engines/LuaLaTeX+se</code>.  This enables GregorioTeX to automatically compile your gabc scores as needed when LuaLaTeX compiles your document.</p>
-
-<p>The name <code>LuaLaTeX+se</code> is arbitrary, but it's important to use it, so that everyone can have the same scores.</p>
+<p>The name <code>LuaLaTeX+se</code> is arbitrary, but it's important to use it, so that everyone can have the same scores.  This will also serve to differentiate it from the normal LuaLaTeX engine where the shell escape option is not active (TeXShop comes with this engine in its Inactive folder).</p>
 
 <h3>Ease of use of .gabc files (optional)</h3>
 
