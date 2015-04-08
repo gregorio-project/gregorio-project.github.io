@@ -118,9 +118,9 @@
 
 <h3>Source downloading</h3>
 
-<p>You have a choice between versions of Gregorio. To obtain the sources of the stable version, you just need to download the sources from the <a href="http://download.gna.org/gregorio/releases/current">download page</a>, and decompress the archive.</p>
+<p>You have a choice between versions of Gregorio. To obtain the sources of the stable version, you just need to download the sources from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and decompress the archive.</p>
 
-<p>To get the git version, that is, the version in development (more functionalities, but might contain more bugs), you will have to create a local copy of the gitn repository of the project, with the command:</p>
+<p>To get the git version, that is, the version in development (more functionalities, but might contain more bugs), you will have to create a local copy of the git repository of the project, with the command:</p>
 
 <div class="commandline">
 <code>$ git clone --depth 1 -b develop https://github.com/gregorio-project/gregorio.git gregorio-git</code>
@@ -132,9 +132,11 @@
 <p>Once the sources are downloaded, carry out the following commands in the directory containing the source files:</p>
 
 <div class="commandline">
-<code>$ ./build.sh</code><br/>
+<code>$ ./build.sh --arch=x86_64 --enable-all-static --disable-shared --enable-static-ltdl</code><br/>
 <code>$ sudo ./install.sh</code><br/>
 </div>
+
+<p><i>Note:</i> Technically speaking, only the first argument is required for <code>build.sh</code>, the others are optional.  However they will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries. This will make upgrading easier as we are currently reworking the source code to eliminate the linked libraries structure.</p>
 
 <h3>Update</h3>
 
