@@ -114,7 +114,7 @@
 
 <p>Once all this is done, you should be able to compile Gregorio.</p>
 
-<p>If you want to compile fonts (to modify them), do <code>sudo port install fontforge</code>.</p>
+<p>If you want to compile fonts (to modify them, or when building directly from git), do <code>sudo port install fontforge +python27</code>.</p>
 
 <h3>Source downloading</h3>
 
@@ -124,7 +124,6 @@
 
 <div class="commandline">
 <code>$ git clone --depth 1 -b develop https://github.com/gregorio-project/gregorio.git gregorio-git</code>
-<code>$ cd gregorio-git</code>
 </div>
 
 <h3>Compilation</h3>
@@ -136,7 +135,7 @@
 <code>$ sudo ./install.sh</code><br/>
 </div>
 
-<p><i>Note:</i> Technically speaking, only the first argument is required for <code>build.sh</code>, the others are optional.  However they will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries. This will make upgrading easier as we are currently reworking the source code to eliminate the linked libraries structure.</p>
+<p><i>Note:</i> Technically speaking, only the first argument is required for <code>build.sh</code>, the others are optional (indeed, in the most recent versions of develop they will be unrecognized as valid options).  However they will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries. This will make upgrading easier as we are currently reworking the source code to eliminate the linked libraries structure.</p>
 
 <h3>Update</h3>
 
