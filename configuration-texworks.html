@@ -29,6 +29,7 @@
   <link rel="icon" href="/illus/fav.ico">
   <link rel="stylesheet" href="/style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -42,45 +43,8 @@
     <div id="banniere">
     </div>
   </div>
-  <div class="menu">
-    <ul class="menuitem">
-      <li><a href="/">Gregorio</a>
-        <ul class="level2" id="menu-gregorio">
-          <li><a href="/gregorio-history.html">About</a> </li>
-          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
-          <li><a href="/installation.html">Installation</a> </li>
-          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
-          <li><a href="/introduction-editor.html">Using Gregorio</a></li>
-          <li><a href="/legalissues.html">Legal issues</a></li>
-        </ul>
-      </li>
-      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
-        <ul class="level2" id="menu-gregoriotex">
-          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
-          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
-          <li><a href="/gregoriotex/examples.html">Examples</a></li>
-          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
-        </ul>
-      </li>
-      <li><a href="/gabc/index.html">gabc</a>
-        <ul class="level2" id="menu-gabc">
-          <li><a href="/gabc/index.html">Basics</a></li>
-          <li><a href="/gabc/details.html">Details</a></li>
-        </ul>
-      </li>
-      <li><a href="/structure.html">Gregorian notation</a>
-        <ul class="level2" id="menu-notation">
-          <li><a href="/structure.html">Structure</a></li>
-          <li><a href="/graphy.html">Alignment</a></li>
-        </ul>
-      </li>
-      <li><a href="/contact.html">Contact</a>
-      </li>
-      <li><a href="/links.html">Links</a>
-      </li>
-    </ul>
-  </div>
-  <div class="flux">
+  <script>write_gre_menu();</script>
+ <div class="flux">
     &nbsp;
     <!-- IE patch-->
     <div class="text">
@@ -91,19 +55,18 @@
 
 <h3>Automatic score compilation</h3>
 
-<p>Gregorio needs a <code>lualatex</code> that is able to launch the <code>gregorio</code> program during compilation, in order to compile gabc scores automatically.</p>
+<p>A feature of Gregorio version 3.0 and later is the automatic compilation of gabc scores when needed to complete a LaTeX document.  For this feature to work, <code>lualatex</code> must be able to launch the <code>gregorio</code> program during compilation.</p>
 
+<p>TeXworks can be configured to do this by creating a new engine for compilation that adds the <code>--shell-escape</code> argument to <code>lualatex</code>.</p>
 
-<p>TeXworks can be configured to do so by creating a new engine for compilation that adds the <code>--shell-escape</code> argument to <code>lualatex</code>.</p>
-
-<p>To create it, go in <code>Edit -&gt; Preferences</code>(<code>TeXworks -&gt; Preferences</code> on a Mac) and then in the "Typesetting" tab, in the "Processing tools" section, click on "+" in the "Tools" section. Then you need to fill the values for the new engine:</p>
+<p>To create it, go into <code>Edit -&gt; Preferences</code> (into <code>TeXworks -&gt; Preferences</code> on a Mac).  Then, in the "Typesetting" tab, in the "Processing tools" section, click on "+" in the "Tools" section. You can fill the values for the new engine:</p>
 
 <div class="commandline">
 <code>Name: LuaLaTeX+se</code><br>
 <code>Program: lualatex</code><br>
 </div>
 
-<p>The name <code>LuaLaTeX+se</code> is arbitrary, but it's important to use it, so that everyone can have the same scores.</p>
+<p>The name <code>LuaLaTeX+se</code> is arbitrary, but it's important to use it so that Gregorio users will be able to share scores.</p>
 
 <p>Then you need to add three arguments, clicking each time on "+": first is <code>--shell-escape</code>, second is <code>$synctexoption</code>, third is <code>$fullname</code>.
 
@@ -113,15 +76,15 @@
 
 <p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of TeXworks, you have to hack the configuration files a little, but this is very easy.</p>
 
-<p>First, you have to find the file named <code>texworks-config.txt</code>. Under Linux it is in <code>~/.TeXworks/configuration/</code>, under Windows it should be in <code>C:/Users/&lt;your user name&gt;/.texlive2015/texmf-config</code> (change 2015 with your version), if it's not here, you can look with the Window search tools.</p>
+<p>First, you have to find the file named <code>texworks-config.txt</code>. Under Linux it is in <code>~/.TeXworks/configuration/</code>, under Windows it should be in <code>C:/Users/&lt;your user name&gt;/.texlive2015/texmf-config</code> (replace "2015" with your version); if it's not there, you can look for it with the Windows search tools.</p>
 
-<p>Then open this file, and, near the end, you will see comments starting by <code># file-open-filter:</code>, simply add the following line:</p>
+<p>Then open this file, and, near the end, you will see comments starting by <code># file-open-filter:</code>. Simply add the following line:</p>
 
 <div class="commandline">
 <code># file-open-filter: Gabc score (*.gabc)</code>
 </div>
 
-<p>where you want it to appear in the list.</p>
+<p>...where you want it to appear in the list.</p>
 
 <h3>Using TeXworks</h3>
 
@@ -131,13 +94,6 @@
     </div>
     <div class="bottom">
     </div>
-    <script>
-      document.title = $('h1:first').html();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
-        if (context != menu) {
-          $('#menu-'+menu).hide();
-        }
-      });
-    </script>
+    <script>initialize_menu();</script>
   </body>
 </html>

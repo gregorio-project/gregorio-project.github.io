@@ -29,6 +29,7 @@
   <link rel="icon" href="/illus/fav.ico">
   <link rel="stylesheet" href="/style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -42,45 +43,8 @@
     <div id="banniere">
     </div>
   </div>
-  <div class="menu">
-    <ul class="menuitem">
-      <li><a href="/">Gregorio</a>
-        <ul class="level2" id="menu-gregorio">
-          <li><a href="/gregorio-history.html">About</a> </li>
-          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
-          <li><a href="/installation.html">Installation</a> </li>
-          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
-          <li><a href="/introduction-editor.html">Using Gregorio</a></li>
-          <li><a href="/legalissues.html">Legal issues</a></li>
-        </ul>
-      </li>
-      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
-        <ul class="level2" id="menu-gregoriotex">
-          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
-          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
-          <li><a href="/gregoriotex/examples.html">Examples</a></li>
-          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
-        </ul>
-      </li>
-      <li><a href="/gabc/index.html">gabc</a>
-        <ul class="level2" id="menu-gabc">
-          <li><a href="/gabc/index.html">Basics</a></li>
-          <li><a href="/gabc/details.html">Details</a></li>
-        </ul>
-      </li>
-      <li><a href="/structure.html">Gregorian notation</a>
-        <ul class="level2" id="menu-notation">
-          <li><a href="/structure.html">Structure</a></li>
-          <li><a href="/graphy.html">Alignment</a></li>
-        </ul>
-      </li>
-      <li><a href="/contact.html">Contact</a>
-      </li>
-      <li><a href="/links.html">Links</a>
-      </li>
-    </ul>
-  </div>
-  <div class="flux">
+  <script>write_gre_menu();</script>
+    <div class="flux">
     &nbsp;
     <!-- IE patch-->
     <div class="text">
@@ -95,15 +59,15 @@
   .commandblock {font-family: courier; padding-left: 150px;}
   .commandline {font-family: courier;}
 </style>
-<h1>Gregorio Tutorial</h1>
+<h1>Gregorio and GABC Tutorial</h1>
 
-<p>This tutorial demonstrates the features of gabc by showing how to reproduce an existing score.</p>
+<p>This tutorial demonstrates the features of Gregorio by showing how to reproduce an existing score.</p>
 
-<p>The documentation of the gabc notation, the notation we use in this tutorial can be found <a href="/gabc/index.html">here</a>.</p>
+<p>Documentation for the gabc notation which we use in this tutorial can be found <a href="/gabc/index.html">here</a>. A <a href="http://home.gna.org/gregorio/gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
 
 <p>We'll start with an empty staff and build up from there. Along the way, I'll make some deliberate mistakes to illustrate some common problems.</p>
 
-<p>If you don't know how to run gregorio, please refer to the <a href="introduction.html"> introduction page</a> that describes the typical workflow.</p>
+<p>If you don't have Gregorio installed on your own computer, you can find out about running it through the web at this <a href="introduction-web.html"> introduction page</a>.</p>
 
 <h2>Kyrie XVII</h2>
 
@@ -322,20 +286,13 @@ name:Kyrie XVII;
 
 <p>There is also a difference in the hyphenation of the text. The gregorio software did not automatically add a hyphen after the first syllable of <i>KYrie</i>, because there was enough space between the neumes without a hyphen. Feel free to add a hyphen manually in your gabc file if you find that it makes the score more readable for you.</p>
 
-<p>Let's go on to <a href="tutorial-gabc-02">another page</a>, to work on the remainder of this Kyrie.</p>
+<p>Let's go on to <a href="tutorial-gabc-02.html">another page</a>, to work on the remainder of this Kyrie.</p>
 
 
 <!-- footer -->
     </div>
     <div class="bottom">
     </div>
-    <script>
-      document.title = $('h1:first').html();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
-        if (context != menu) {
-          $('#menu-'+menu).hide();
-        }
-      });
-    </script>
+    <script>initialize_menu();</script>
   </body>
 </html>

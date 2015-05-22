@@ -29,6 +29,7 @@
   <link rel="icon" href="/illus/fav.ico">
   <link rel="stylesheet" href="/style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -42,44 +43,7 @@
     <div id="banniere">
     </div>
   </div>
-  <div class="menu">
-    <ul class="menuitem">
-      <li><a href="/">Gregorio</a>
-        <ul class="level2" id="menu-gregorio">
-          <li><a href="/gregorio-history.html">About</a> </li>
-          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
-          <li><a href="/installation.html">Installation</a> </li>
-          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
-          <li><a href="/introduction-editor.html">Using Gregorio</a></li>
-          <li><a href="/legalissues.html">Legal issues</a></li>
-        </ul>
-      </li>
-      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
-        <ul class="level2" id="menu-gregoriotex">
-          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
-          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
-          <li><a href="/gregoriotex/examples.html">Examples</a></li>
-          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
-        </ul>
-      </li>
-      <li><a href="/gabc/index.html">gabc</a>
-        <ul class="level2" id="menu-gabc">
-          <li><a href="/gabc/index.html">Basics</a></li>
-          <li><a href="/gabc/details.html">Details</a></li>
-        </ul>
-      </li>
-      <li><a href="/structure.html">Gregorian notation</a>
-        <ul class="level2" id="menu-notation">
-          <li><a href="/structure.html">Structure</a></li>
-          <li><a href="/graphy.html">Alignment</a></li>
-        </ul>
-      </li>
-      <li><a href="/contact.html">Contact</a>
-      </li>
-      <li><a href="/links.html">Links</a>
-      </li>
-    </ul>
-  </div>
+  <script>write_gre_menu();</script>
   <div class="flux">
     &nbsp;
     <!-- IE patch-->
@@ -89,25 +53,19 @@
 
 <h1>Using Gregorio in a terminal</h1>
 
-<p>This page is an introduction to working with gregorio from the command line. This page is reserved for users who are used to compile TeX documents in command line. If you are not, please start with <a href="introduction-editor.html">an editor</a>.</p>
+<p>This page is an introduction to working with Gregorio from the command line. It is intended for users who are familiar with using LaTeX and compiling LaTeX documents at the command line. If that is not the case for you, you can start with <a href="introduction-editor.html">an editor</a> for TeX documents.</p>
 
-<p>The command line tool <code>gregorio</code> converts a score written in <a href="/gabc/index.html">gabc</a> into a TeX file. GregorioTeX provides mainly the <code>\includescore</code> that takes the filename of your gabc score and includes it. It automates gabc to TeX compilation by automatically executing the <code>gregorio</code> command when needed. See UserManual.pdf for more details.</p>
+<p>The command line tool <code>gregorio</code> converts a score file written in <a href="/gabc/index.html">gabc</a> notation into a TeX file. That TeX file contains commands for the GregorioTeX package.</p>
+<p>Your LaTeX file incorporates the score into a document by means of the GregorioTeX command <code>\includescore</code>.  This command takes one argument, the filename of your gabc score. When invoked, it automatically runs <code>gregorio</code> to compile the gabc into a TeX file if needed, and adds the TeX file to its compilation.  (See UserManual.pdf for more details.)</p>
 
-<p>Gregorio extensively uses the new features of LuaTeX, so compilations needs to occur with this engine. Also, in order to compile your scores automatically, <code>lualatex</code> needs to be able to run external commands. To allow it, run <code>lualatex</code> with the <code>--shell-escape</code> argument, or add gregorio to the list of allowed commands by restricted command execution (the list is named <code>shell_escape_commands</code> in <code>texmf.cnf</code>).
+<p>Gregorio extensively uses the new features of LuaTeX, so the compilation needs to occur with this engine. Also, in order to compile your scores automatically, <code>lualatex</code> needs to be able to run external commands. To allow that, run <code>lualatex</code> with the <code>--shell-escape</code> switch, or add <code>gregorio</code> to the list of commands allowed under restricted command execution: the list is named <code>shell_escape_commands</code> in <code>texmf.cnf</code>.
 
-<p>Behind the scenes, the automatic compilation creates <code>foo-bar.gtex</code> where <code>foo</code> is the base name of your gabc score and <code>bar</code> is the version of Gregorio.</p>
+<p>Behind the scenes, the automatic compilation creates <code>myfile-foo.gtex</code> where <code>myfile</code> is the base name of your gabc score and <code>foo</code> is the version of Gregorio.</p>
 
 <!-- footer -->
     </div>
     <div class="bottom">
     </div>
-    <script>
-      document.title = $('h1:first').html();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
-        if (context != menu) {
-          $('#menu-'+menu).hide();
-        }
-      });
-    </script>
+    <script>initialize_menu();</script>
   </body>
 </html>

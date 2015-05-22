@@ -29,6 +29,7 @@
   <link rel="icon" href="/illus/fav.ico">
   <link rel="stylesheet" href="/style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -42,44 +43,7 @@
     <div id="banniere">
     </div>
   </div>
-  <div class="menu">
-    <ul class="menuitem">
-      <li><a href="/">Gregorio</a>
-        <ul class="level2" id="menu-gregorio">
-          <li><a href="/gregorio-history.html">About</a> </li>
-          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
-          <li><a href="/installation.html">Installation</a> </li>
-          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
-          <li><a href="/introduction-editor.html">Using Gregorio</a></li>
-          <li><a href="/legalissues.html">Legal issues</a></li>
-        </ul>
-      </li>
-      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
-        <ul class="level2" id="menu-gregoriotex">
-          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
-          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
-          <li><a href="/gregoriotex/examples.html">Examples</a></li>
-          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
-        </ul>
-      </li>
-      <li><a href="/gabc/index.html">gabc</a>
-        <ul class="level2" id="menu-gabc">
-          <li><a href="/gabc/index.html">Basics</a></li>
-          <li><a href="/gabc/details.html">Details</a></li>
-        </ul>
-      </li>
-      <li><a href="/structure.html">Gregorian notation</a>
-        <ul class="level2" id="menu-notation">
-          <li><a href="/structure.html">Structure</a></li>
-          <li><a href="/graphy.html">Alignment</a></li>
-        </ul>
-      </li>
-      <li><a href="/contact.html">Contact</a>
-      </li>
-      <li><a href="/links.html">Links</a>
-      </li>
-    </ul>
-  </div>
+  <script>write_gre_menu();</script>
   <div class="flux">
     &nbsp;
     <!-- IE patch-->
@@ -135,11 +99,11 @@
 <code>$ sudo ./install.sh</code><br/>
 </div>
 
-<p><i>Note:</i> Technically speaking, only the first argument is required for <code>build.sh</code>, the others are optional (indeed, in the most recent versions of develop they will be unrecognized as valid options).  However they will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries. This will make upgrading easier as we are currently reworking the source code to eliminate the linked libraries structure.</p>
+<p><b>Nota bene:</b> Technically speaking, only the first argument is required for <code>build.sh</code>, the others are optional (indeed, in the most recent versions of develop they will be unrecognized as valid options).  However they will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries. This will make upgrading easier as we are currently reworking the source code to eliminate the linked libraries structure.</p>
 
 <h3>Update</h3>
 
-<p>To update your git version, you just need to go in the directory containing the source files (assuming you kept it), run <code>git pull</code> and recompile with the same instructions as the previous <em>Compilation</em> section.  If you deleted that directory after install, then just repeat the steps above starting at the <code>git clone</code> command.</p>
+<p>To update your git version, you just need to go into the directory containing the source files (assuming you kept it), run <code>git pull</code> and recompile with the same instructions as the previous <em>Compilation</em> section.  If you deleted that directory after install, then just repeat the steps above starting at the <code>git clone</code> command.</p>
 
 <h3>Next steps</h3>
 
@@ -149,13 +113,6 @@
     </div>
     <div class="bottom">
     </div>
-    <script>
-      document.title = $('h1:first').html();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
-        if (context != menu) {
-          $('#menu-'+menu).hide();
-        }
-      });
-    </script>
+    <script>initialize_menu();</script>
   </body>
 </html>

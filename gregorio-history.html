@@ -29,6 +29,7 @@
   <link rel="icon" href="/illus/fav.ico">
   <link rel="stylesheet" href="/style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -42,44 +43,7 @@
     <div id="banniere">
     </div>
   </div>
-  <div class="menu">
-    <ul class="menuitem">
-      <li><a href="/">Gregorio</a>
-        <ul class="level2" id="menu-gregorio">
-          <li><a href="/gregorio-history.html">About</a> </li>
-          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
-          <li><a href="/installation.html">Installation</a> </li>
-          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
-          <li><a href="/introduction-editor.html">Using Gregorio</a></li>
-          <li><a href="/legalissues.html">Legal issues</a></li>
-        </ul>
-      </li>
-      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
-        <ul class="level2" id="menu-gregoriotex">
-          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
-          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
-          <li><a href="/gregoriotex/examples.html">Examples</a></li>
-          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
-        </ul>
-      </li>
-      <li><a href="/gabc/index.html">gabc</a>
-        <ul class="level2" id="menu-gabc">
-          <li><a href="/gabc/index.html">Basics</a></li>
-          <li><a href="/gabc/details.html">Details</a></li>
-        </ul>
-      </li>
-      <li><a href="/structure.html">Gregorian notation</a>
-        <ul class="level2" id="menu-notation">
-          <li><a href="/structure.html">Structure</a></li>
-          <li><a href="/graphy.html">Alignment</a></li>
-        </ul>
-      </li>
-      <li><a href="/contact.html">Contact</a>
-      </li>
-      <li><a href="/links.html">Links</a>
-      </li>
-    </ul>
-  </div>
+  <script>write_gre_menu();</script>
   <div class="flux">
     &nbsp;
     <!-- IE patch-->
@@ -87,19 +51,19 @@
       <!-- End of header -->
 <!-- header -->
 
-<h1>Gregorio project history</h1>
+<h1>History of the Gregorio project</h1>
 
 <p>The Gregorio project was born in 2006 at <a href="http://www.telecom-bretagne.eu" title="TELECOM Bretagne">TELECOM Bretagne</a>, a graduate engineering school in France. It was at first a student project of six months duration, supervised by <a href="http://www.telecom-bretagne.eu/studies/msc/professors/haralambous/" >Mr Yannis Haralambous</a>, developer of <a href="http://en.wikipedia.org/wiki/Omega_(TeX)" title="Wikipedia article about Omega">Omega</a>. When the project was done, Élie Roux decided to continue the project on his own and to develop it under GPL.</p>
 
 <p>From the outset the goal of the project has been to create a graphical interface for the monks of the <a href="http://www.barroux.org/" title="Site of the abbey">Abbey of Sainte Madeleine du Barroux</a> so that they could use a gregorian font. This font, <a href="http://anatoletype.net/projects/gregoria" title="Presentation of the font Gregoria"><em>Gregoria</em></a>, is a professional font designed by Elena Albertoni, a typographer and graphic designer. Finally, due to licence issues, it was decided that the project would have its own font called <em>gregorio</em>.</p>
 
-<p>At the end of the year 2006, a new developer, Olivier Berten, joined the project and created its OpusTeX component (deprecated since). By April 2007, Gregorio had reached a certain maturity and could start to be used, at least through its command line interface, as a preprocessor for OpusTeX. A <a href="https://gna.org/projects/gregorio/" title="Page of the Gregorio project on Gna!">project</a> page was created on <a href="http://gna.org" title="Front page of Gna!">gna.org</a>.</p>
+<p>At the end of the year 2006, a new developer, Olivier Berten, joined the project and created its OpusTeX component (deprecated since). By April 2007, Gregorio had reached a certain maturity and could start to be used, at least through its command line interface, as a preprocessor for OpusTeX. A <a href="https://gna.org/projects/gregorio/" title="Page of the Gregorio project on Gna!">project page</a> was created at gna.org (now superceded by this site).</p>
 
-<p>The development of the graphical interface and the modification of the code structure to use autotools and dynamic libraries has been the subject of my third year project in <a href="http://www.telecom-bretagne.eu">TELECOM Bretagne</a>. The graphical interface revealed to be too complex and was never finished.</p>
+<p>The development of the graphical interface and the modification of the code structure to use autotools and dynamic libraries was the subject of Élie's third-year project at TELECOM Bretagne. The graphical interface proved to be too complex and was never finished.</p>
 
-<p>During a three-month internship starting april 2008 at the <a href="http://osbnorcia.org">Monastero di San Benedetto</a>, in Norcia (Italy), gregorio made considerable progress,  The GregorioTeX style is now almost finished, and as a consequence, we've made progress in code stabilization. Gregorio is now close to a release.</p>
+<p>During a three-month internship starting in April 2008 at the <a href="http://osbnorcia.org">Monastero di San Benedetto</a>, in Norcia (Italy), Gregorio made considerable progress. The GregorioTeX package was almost finished, and as a consequence, we made progress in code stabilization.</p>
 
-<p>Information on future plans for the gregorio software is in the <a href="technical-aspects">developer page</a>.</p>
+<p>As of 2015, three major versions of the Gregorio software have been released.</p>
 
 <h1>The logo</h1>
 
@@ -113,13 +77,6 @@
     </div>
     <div class="bottom">
     </div>
-    <script>
-      document.title = $('h1:first').html();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
-        if (context != menu) {
-          $('#menu-'+menu).hide();
-        }
-      });
-    </script>
+    <script>initialize_menu();</script>
   </body>
 </html>

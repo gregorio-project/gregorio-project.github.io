@@ -17,11 +17,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+/* Edit history
+2005-05-18: design updates by Richard Chonak:
+-- replace various fonts with Crimson Text
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:600italic,600,400,400italic);
+
 body { 
 	margin: 0px;
-	background: #ffffff url('illus/p05.png') repeat;
+	background: #ffffff url('illus/p02.png') repeat;
 	color: #44322c;
-	padding: 25px 10px 30px 10px;
+	padding: 0;
 	}
 
 /* top image */
@@ -32,7 +39,8 @@ body {
 	margin-left: 0;
 	background: transparent url('illus/fondban.png') repeat;
 	margin-top: 0;
-	margin-bottom: 30px; 
+	margin-bottom: 0; 
+	border-bottom: 2px solid cornflowerblue;
 	}
 	
 #banniere {
@@ -55,23 +63,27 @@ body {
 .flux {
 	background: url('illus/p02.png') repeat;
 	margin-right: 0;
-	margin-left: 160px;
+	margin-left: 220px;
 	margin-top: 0;
 	margin-bottom: 30px;
+	border-left: 2px solid cornflowerblue;
 	}
 
 .text {
 	padding: 30px;
 	padding-top: 0;
-	font-family: 'Century Schoolbook L', 'Palatino Linotype', Georgia, Palatino, 'Bitstream Vera Serif', serif;
+	font-family: 'Crimson Text', 'Century Schoolbook L', 'Palatino Linotype', Georgia, Palatino, 'Bitstream Vera Serif', serif;
 	color: #44322c;
 	font-size: 1.06em;
+	font-weight: 400;
+	
 	}
 	
 /* menu */
 .menu {
-	font-family: 'Urw Chancery L', 'Apple Chancery', 'ZapfChan Dm BT', 'Monotype Corsiva', 'Palatino Linotype', Georgia, 'Times New Roman', Times, serif;
-	width: 150px;
+	font-family: 'Crimson Text', 'Urw Chancery L', 'Apple Chancery', 'ZapfChan Dm BT', 'Monotype Corsiva', 'Palatino Linotype', Georgia, 'Times New Roman', Times, serif;
+	font-weight: 400;
+	width: 218px;
 	float: left;
 	background: url('illus/p02.png') repeat;
 	margin-right: 30px;
@@ -82,7 +94,7 @@ body {
 	}
 
 .menu li {
-	margin-left: 5px;
+	margin-left: 1em;
 	list-style-type: none;
 	}
 
@@ -94,7 +106,7 @@ body {
 .menu a {
 	text-decoration: none;	/*no underlines*/
 	display: block;
-	width: 137px;
+	width: 187px;
 	margin-top: 15px;
 	margin-left: 2px;
 	margin: 2px;
@@ -149,9 +161,9 @@ body {
 /* titles */
 h1, h2, h3, h4, h5 {
 	color: #b22250;
-	font-family: 'Urw Chancery L', 'Apple Chancery', 'ZapfChan Dm BT', 'Monotype Corsiva', 'Century Schoolbook L', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
-	padding-left: 15px;
-	font-weight: normal;
+	font-family: 'Crimson Text', 'Urw Chancery L', 'Apple Chancery', 'ZapfChan Dm BT', 'Monotype Corsiva', 'Century Schoolbook L', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+	padding-left: 0;
+	font-weight: 600;
 	margin-bottom: 0;
 	padding-bottom: 0;
 	}
@@ -159,33 +171,32 @@ h1, h2, h3, h4, h5 {
 h1 {
 	padding-left: 0;
 	margin-top: 0;
-	text-align: center;
 	font-size: 2.3em;
 	}
 
 h2 {
-	font-size: 1.9em;
+	font-size: 1.84em;
 	}
 	
 h3 {
-	font-size: 1.55em;
+	font-size: 1.47em;
 	}
 
 h4 {
-	font-size: 1.4em;
+	font-size: 1.18em;
 	}
 
 p:first-letter {
-	font-size: 2em;
-	font-family: 'Urw Chancery L', 'Apple Chancery', 'ZapfChan MdIt BT', 'Monotype Corsiva', 'Palatino Linotype', Georgia, 'Times New Roman', 'Century Schoolbook L';
+	font-size: 1.59em;
+	font-family: 'Crimson Text', 'Urw Chancery L', 'Apple Chancery', 'ZapfChan MdIt BT', 'Monotype Corsiva', 'Palatino Linotype', Georgia, 'Times New Roman', 'Century Schoolbook L';
+	font-weight: 400;
 	 /*float: left;*/
 	 color: #b22250; 
-	 margin-right: 2px;
 	 line-height: 50%;
 	 }
 
 p.nofirst:first-letter {
-	font-family: 'Century Schoolbook L', 'Palatino Linotype', Georgia, Palatino, 'Bitstream Vera Serif', serif;
+	font-family: 'Crimson Text', 'Century Schoolbook L', 'Palatino Linotype', Georgia, Palatino, 'Bitstream Vera Serif', serif;
 	color: #44322c;
 	font-size: 1.06em;
 	margin-right: 0px;
@@ -204,8 +215,8 @@ p.nofirst:first-letter {
 .text a, .bottom a {
 	text-decoration: none;
 	color: #c9265a;
-	font-family: 'Bitstream Vera Sans', sans-serif;
-	font-size: 0.9em;
+	
+	
 	}
 
 code {
@@ -256,7 +267,7 @@ code {
 
 .toc h2 {
 	height: 0.9em;
-	font-size: 1.2em;
+	font-size: 1.44em;
 	font-weight: normal;
 	}
 
@@ -266,7 +277,7 @@ code {
 
 .toc h3 {
 	margin-left: 2em;
-	font-size: 0.8em;
+	font-size: 1.15em;
 	height: 0.7em;
 	font-weight: normal;
 	}
@@ -277,7 +288,7 @@ code {
 
 .toc h4 {
 	margin-left: 4em;
-	font-size: 0.7em;
+	font-size: 0.92em;
 	height: 0.6em;
 	font-weight: normal;
 	}
@@ -321,7 +332,7 @@ caption {
 	}
 
 .legende {
-	font-family: 'Urw Chancery L', 'Apple Chancery', 'ZapfChan MdIt BT', 'Monotype Corsiva', 'Palatino Linotype', Georgia, 'Times New Roman', 'Century Schoolbook L';
+	font-family: 'Crimson Text', 'Urw Chancery L', 'Apple Chancery', 'ZapfChan MdIt BT', 'Monotype Corsiva', 'Palatino Linotype', Georgia, 'Times New Roman', 'Century Schoolbook L';
 	text-align: center;
 	margin: 15px;
 	font-size: 1.2em;
