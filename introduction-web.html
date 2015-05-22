@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="/illus/fav.ico">
+  <link rel="icon" href="/illus/fav.ico">
+  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="menuitem">
+      <li><a href="/">Gregorio</a>
+        <ul class="level2" id="menu-gregorio">
+           <li><a href="/gregorio-history.html">History</a> </li>
+          <li><a href="/introduction-editor.html">Using Gregorio</a>
+		<ul class="level2">
+		<li><a href="/introduction-editor.html">In an editor</a></li>
+		<li><a href="/introduction-commandline.html">At the command line</a></li>
+		<li><a href="/introduction-web.html">Through the web</a></li>
+		    </ul>
+          </li>
+          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
+         <li><a href="https://github.com/gregorio-project/gregorio/releases">Download@github</a> </li>
+          <li><a href="/installation.html">Installation</a> </li>
+          <li><a href="/legalissues.html">Legal issues</a></li>
+        </ul>
+      </li>
+      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
+        <ul class="level2" id="menu-gregoriotex">
+          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
+          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
+          <li><a href="/gregoriotex/examples.html">Examples</a></li>
+          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
+        </ul>
+      </li>
+      <li><a href="/gabc/index.html">gabc</a>
+        <ul class="level2" id="menu-gabc">
+          <li><a href="/gabc/index.html">Basics</a></li>
+          <li><a href="/gabc/details.html">Details</a></li>
+        </ul>
+      </li>
+      <li><a href="/structure.html">Gregorian notation</a>
+        <ul class="level2" id="menu-notation">
+          <li><a href="/structure.html">Structure</a></li>
+          <li><a href="/graphy.html">Alignment</a></li>
+        </ul>
+      </li>
+      <li><a href="/contact.html">Contact</a>
+      </li>
+      <li><a href="/links.html">Links</a>
+      </li>
+    </ul>
+  </div>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+
+<h1>Using Gregorio through the web</h1>
+
+<p>Beginners and other users with simple formatting needs (a document with only a single score) can run Gregorio through one of two websites offering this service, without needing to install the Gregorio software or TeX on their own computer.</p> 
+
+<p><b>These web services are run independently of the Gregorio project, and the project team does not provide any support for them.</b> However, users can often find mutual help regarding these services by addressing questions to the <i>gregorio-users</i> mailing list.</p>
+
+<h3>Web sites offering Gregorio access</h3>
+<ul>
+<li>illuminarepublications.com: <a href="http://illuminarepublications.com/gregorio">Illuminare Score Editor</a> (see the <a href="http://www.ccwatershed.org/blog/2013/jun/16/try-illuminare-score-editor/">video demo</a>)</li>
+<li>gregorio.gabrielmass.com: <a href="http://gregorio.gabrielmass.com/">Gregorio chant engraver</a></li>
+</ul>
+
+<h3>Reference information on gabc</h3>
+<ul>
+<li><a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">The "cheat sheet" at gregoriochant.org</a></li>
+<li><a href="http://home.gna.org/gregorio/gabc/summary-gabc.pdf">A one-page summary</a> (PDF)</li>
+</ul>
+
+<h3>More on-line tools</h3>
+<p>Additional on-line tools to assist in preparing gabc files are listed at the GregoWiki, <a href="http://gregoriochant.org/">gregoriochant.org</a>.</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>
+      document.title = $('h1:first').html();
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+        if (context != menu) {
+          $('#menu-'+menu).hide();
+        }
+      });
+    </script>
+  </body>
+</html>
