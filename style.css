@@ -40,7 +40,7 @@ body {
 	background: transparent url('illus/fondban.png') repeat;
 	margin-top: 0;
 	margin-bottom: 0; 
-	border-bottom: 2px solid cornflowerblue;
+	border-bottom: 2px solid #a97359;
 	}
 	
 #banniere {
@@ -66,7 +66,7 @@ body {
 	margin-left: 220px;
 	margin-top: 0;
 	margin-bottom: 30px;
-	border-left: 2px solid cornflowerblue;
+	border-left: 2px solid #a97359;
 	}
 
 .text {
