@@ -51,48 +51,27 @@
       <!-- End of header -->
 <!-- header -->
 
-<h1>Installing Gregorio under Linux</h1>
+<h1>Using Gregorio through the web</h1>
 
-<p>This page describes the installation and compilation of Gregorio software under a GNU/Linux system.  Whether you install a precompiled version or whether you compile from source, it's a quick and easy operation.</p>
+<p>Beginners and other users with simple formatting needs (a document with only a single score) can run Gregorio through one of two websites offering this service, without needing to install the Gregorio software or TeX on their own computer.</p> 
 
-<h2>Getting the sources</h2>
+<p><b>These web services are run independently of the Gregorio project, and the project team does not provide any support for them.</b> However, users can often find mutual help regarding these services by addressing questions to the <i>gregorio-users</i> mailing list. (See the <a href="contact.html">Contact page</a> for information on that.)</p>
 
-<p>To obtain the sources of the stable version, you just need to download them from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and decompress the archive.</p>
+<h3>Web sites offering Gregorio access</h3>
+<ul>
+<li>illuminarepublications.com: <a href="http://illuminarepublications.com/gregorio">Illuminare Score Editor</a> (see the <a href="http://www.ccwatershed.org/blog/2013/jun/16/try-illuminare-score-editor/">video demo</a>)</li>
+<li>gregorio.gabrielmass.com: <a href="http://gregorio.gabrielmass.com/">Gregorio chant engraver</a></li>
+</ul>
 
-<p>To get the development version, create
-a local copy of the repository of the project, with the command:</p>
+<h3>Reference information on gabc</h3>
+<ul>
+<li><a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">The "cheat sheet" at gregoriochant.org</a></li>
+<li><a href="http://home.gna.org/gregorio/gabc/summary-gabc.pdf">A one-page summary</a> (PDF)</li>
+</ul>
 
-<div class="commandline">
-<code>git clone --depth 1 -b develop https://github.com/gregorio-project/gregorio.git gregorio-git</code><br/>
-<code>cd gregorio-git</code>
-</div>
+<h3>More on-line tools</h3>
+<p>Additional on-line tools to assist in preparing gabc files are listed at the GregoWiki, <a href="http://gregoriochant.org/">gregoriochant.org</a>.</p>
 
-<h2>Install dependencies</h2>
-
-<p class="nofirst">Under Ubuntu/Debian/Mint:</p>
-
-<div class="commandline">
-<code>sudo aptitude install autotools-dev flex bison libltdl7-dev texlive-luatex autopoint python-fontforge</code>
-</div>
-
-If you're using another distribution, some packages may have a slightly different name.
-
-<h2>Building</h2>
-
-<p class="nofirst">In the directory of the sources, run:</p>
-
-<div class="commandline">
-<code>$ ./build.sh</code><br/>
-<code>$ sudo ./install.sh</code>
-</div>
-
-<h2>Updating</h2>
-
-<p>To update your git version, you just need to go into the directory containing the source files (assuming you kept them), run <code>git pull</code> and recompile with the same commands.</p>
-
-<h2>Next steps</h2>
-
-<p>If you use TeXworks, it can be very helpful to <a href="configuration-texworks.html">configure it for Gregorio</a>. Otherwise, you can refer to the <a href="introduction-commandline.html">command line page</a>.</p>
 
 <!-- footer -->
     </div>

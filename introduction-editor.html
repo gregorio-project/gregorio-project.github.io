@@ -29,6 +29,7 @@
   <link rel="icon" href="/illus/fav.ico">
   <link rel="stylesheet" href="/style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -42,44 +43,7 @@
     <div id="banniere">
     </div>
   </div>
-  <div class="menu">
-    <ul class="menuitem">
-      <li><a href="/">Gregorio</a>
-        <ul class="level2" id="menu-gregorio">
-          <li><a href="/gregorio-history.html">About</a> </li>
-          <li><a href="https://github.com/gregorio-project/gregorio/releases">Download</a> </li>
-          <li><a href="/installation.html">Installation</a> </li>
-          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>
-          <li><a href="/introduction-editor.html">Using Gregorio</a></li>
-          <li><a href="/legalissues.html">Legal issues</a></li>
-        </ul>
-      </li>
-      <li><a href="/gregoriotex/index.html">GregorioTeX</a>
-        <ul class="level2" id="menu-gregoriotex">
-          <li><a href="/gregoriotex/tex.html">TeX?</a></li>
-          <li><a href="/gregoriotex/details.html">Detailed description</a></li>
-          <li><a href="/gregoriotex/examples.html">Examples</a></li>
-          <li><a href="/gregoriotex/features.html">Bonus features</a></li>
-        </ul>
-      </li>
-      <li><a href="/gabc/index.html">gabc</a>
-        <ul class="level2" id="menu-gabc">
-          <li><a href="/gabc/index.html">Basics</a></li>
-          <li><a href="/gabc/details.html">Details</a></li>
-        </ul>
-      </li>
-      <li><a href="/structure.html">Gregorian notation</a>
-        <ul class="level2" id="menu-notation">
-          <li><a href="/structure.html">Structure</a></li>
-          <li><a href="/graphy.html">Alignment</a></li>
-        </ul>
-      </li>
-      <li><a href="/contact.html">Contact</a>
-      </li>
-      <li><a href="/links.html">Links</a>
-      </li>
-    </ul>
-  </div>
+  <script>write_gre_menu();</script>
   <div class="flux">
     &nbsp;
     <!-- IE patch-->
@@ -89,24 +53,30 @@
 
 <h1>Using Gregorio in TeXShop</h1>
 
-<p>This page describes the way to use Gregorio with a TeX editor, such as TeXworks or TeXShop. It supposes that your editor is already correctly configured. See configuration page for <a href="configuration-texworks.html">TeXworks</a> or <a href="configuration-texshop">TeXshop</a>. These instructions can be easily adapted for other tools using TeXShop markup, such as <a href="https://github.com/SublimeText/LaTeXTools">LaTeX-tools for SublimeText</a>. If you are used to TeX compilation and know the command line tools, please refer to the <a href="introduction-commandline.html">command line introduction</a>.</p>
+<p>This page describes how Gregorio is used with a TeX editor such as TeXworks or TeXShop. (If you are used to TeX compilation and know the command line tools, you can  refer to the <a href="introduction-commandline.html">command line introduction</a>.)</p>
+
+
+<p>The editor must be correctly configured according to the instructions for <a href="configuration-texworks.html">TeXworks</a> or <a href="configuration-texshop.html">TeXshop</a>. These instructions can be easily adapted for other tools using TeXShop markup, such as the <a href="https://github.com/SublimeText/LaTeXTools">LaTeX Tools for SublimeText</a>.</p>
 
 <p>Overall, producing a score involves these steps:</p>
 
 <ul>
 <li>writing a gabc text file that describes the score</li>
-<li>compiling the GregorioTeX code thus produced, with LaTeX</li>
+<li>writing a LaTeX text file that describes the document which contains the score</li>
+<li>running LaTeX to compile the document file and the gabc file</li>
 </ul>
 
-<h3 id="gabc">Creating a gabc file</h3>
+<h3 id="gabc">Creating a gabc score file</h3>
 
-<p>For a first example, you can inspire from the score <code>PopulusSion.gabc</code> in the <code>examples/</code> directory of gregorio or <a href="https://github.com/gregorio-project/gregorio/blob/master/examples/PopulusSion.gabc">here</a>.  Save your file in a directory that will be our working directory. You need to save it with the extension ".gabc", in UTF-8 encoding (under TeXShop, save in "UTF8 Plain Text" format). See the <a href="/gabc/index.html">gabc page</a> for details about the gabc syntax let's suppose you keep this score as it is and that you save it as <code>example.gabc</code>.</p>
+<p>For a first example, you can take inspiration from the file <code>PopulusSion.gabc</code> in the <code>examples/</code> directory of the Gregorio software distribution (also <a href="https://github.com/gregorio-project/gregorio/blob/master/examples/PopulusSion.gabc">here</a>).</p>
+<p>See the <a href="/gabc/index.html">gabc page</a> for details about the gabc syntax. For now, let's suppose you keep this score as it is and that you save it as <code>example.gabc</code>.<p>
+<p>Save your gabc file in a new directory, which will be our working directory. You need to save it with the extension "<code>.gabc</code>", and save it in UTF-8 encoding: under TeXShop, save it in "UTF8 Plain Text" format. </p>
 
 <h3>Making a document and including your score</h3>
 
-<p>This step will make you create a small document and include your score in it. It will be very basic, but you'll be able to do virtually anything with this base: a booklet, a book, including more scores, etc.</p>
+<p>This step will let you create a small document and include your score in it. It will be very basic, but from this basis, you'll be able to do virtually anything you need, such as a booklet including more scores or a book.</p>
 
-<p>For this you will certainly need some notions of LaTeX. But for a first try, you can use the following barebones file:</p>
+<p>To accomplish that, you will certainly need some understanding of LaTeX, but for a first try, you can use the following barebones file:</p>
 
 <div class="commandline">
 <code>\documentclass[11pt]{article}<br />
@@ -124,7 +94,8 @@
 
 <p>Copy the above into a new file and save it as <code>test.tex</code> in the same directory as <code>example.gabc</code></p>
 
-<p>The goal now is to compile this file to get the final PDF.  Select LuaLaTeX+se from the drop down list in the upper left, or automate this selection by placing the following line at the begining of the file:</p> 
+<h3 id="compile">Compiling the document</h3>
+<p>The goal now is to compile this file using your TeX editor to produce a PDF output.  Select <code>LuaLaTeX+se</code> from the drop down list in the upper left, or automate this selection by placing the following line at the begining of the file:</p> 
 
 <div class="commandline">
 <code>% !TEX TS-program = LuaLaTeX+se</code>
@@ -132,24 +103,24 @@
 
 <p>Then click on the "Typeset" button.</p>
 
-<p>If you correctly followed the instructions of this page, a PDF file will show up in the right part of your screen!  You're now ready to start playing with <a href="/gregoriotex/details.html">the various commands available to tweak the appearence of the score.</a></p>
+<p>If you correctly followed the instructions of this page, a PDF file will show up in the right part of your screen!  You're now ready to start playing with your document file by using <a href="/gregoriotex/details.html">the various GregorioTeX commands available to tweak the appearence of the score.</a></p>
 
 <h3>Behind the scenes</h3>
 
 <p>What you just did might seem a bit magical and confusing. Here is what really happened:</p>
 
 <ul>
-  <li>Your editor launches the command <code>lualatex --shell-escape test.tex</code></li>
-  <li>LuaLaTeX compiles the document, when it sees <code>\includescore{example}</code>, it launches the command <code>gregorio example.gabc</code></li>
-  <li>Gregorio compiles your gabc score into <code>example-foo.gtex</code> (where <code>foo</code> is the version of gregorio), you can check your folder for this file</li>
-  <li>Once it is compiled, LuaLaTeX includes <code>example-foo.gtex</code> and continues the compilation of your document.
+  <li>Your editor launches the command <br/><code>lualatex --shell-escape test.tex</code></li>
+  <li>LuaLaTeX compiles the document.  When it sees <code>\includescore{example}</code>, it launches the command <br/><code>gregorio example.gabc</code></li>
+  <li>Gregorio compiles your gabc score into <code>example-foo.gtex</code> (where <code>foo</code> is the version number of Gregorio).  You can check your folder for this file.</li>
+  <li>Once <code>example.gabc</code> is compiled to produce <code>example-foo.gtex</code>, LuaLaTeX reads in the contents of <code>example-foo.gtex</code> and continues the compilation of your document.
 </ul>
 
-<p>There is a mechanism to avoid compilation if the gabc file and gregorio version did not change.</p>
+<p>There is a mechanism to avoid repeated compilation if the gabc file and the Gregorio version have not changed.</p>
 
-<h3 id="automation">Compiling from the score document</h3>
+<h3 id="automation">Compiling directly from the score window</h3>
 
-<p>It can be practical, when writing a gabc score, to compile directly from the windows of the gabc file. To allow that, add the following lines at the top of your gabc file:</p>
+<p>It can be practical, when writing a gabc score, to compile directly from the window containing the gabc file. To allow that, add the following lines at the top of your gabc file:</p>
 
 <div class="commandline">
 <code>% !TEX root = test.tex</code><br />
@@ -162,13 +133,6 @@
     </div>
     <div class="bottom">
     </div>
-    <script>
-      document.title = $('h1:first').html();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
-        if (context != menu) {
-          $('#menu-'+menu).hide();
-        }
-      });
-    </script>
+    <script>initialize_menu();</script>
   </body>
 </html>
