@@ -72,7 +72,13 @@ a local copy of the repository of the project, with the command:</p>
 <p class="nofirst">Under Ubuntu/Debian/Mint:</p>
 
 <div class="commandline">
-<code>sudo aptitude install autotools-dev flex bison libltdl7-dev texlive-luatex autopoint python-fontforge libxml2-dev</code>
+<code>sudo aptitude install autotools-dev flex bison libltdl7-dev texlive-luatex autopoint python-fontforge</code>
+</div>
+
+For gregorio versions <4.0, is you are using <span style="font-family: monospace;">--enable-xml-read</span> then this additional dependency is needed:
+
+<div class="commandline">
+  <code>libxml2-dev</code>
 </div>
 
 If you're using another distribution, some packages may have a slightly different name.
