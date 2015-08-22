@@ -74,7 +74,7 @@
 <li>download and install <a href="http://www.macports.org/">MacPorts</a> (free)</li>
 <li>once installed, in the TERMINAL, do <code>sudo port selfupdate</code> to get the latest sources packages</li>
 <li>do <code>sudo port install libtool autoconf automake flex bison</code>.</li>
-<li>For gregorio versions &lt;4.0, is you are using <span style="font-family: monospace;">--enable-xml-read</span> then this additional dependency is needed: <code>sudo port install libxml2</code>.</li>
+<li>For gregorio versions prior to 4.0, is you are using <span style="font-family: monospace;">--enable-xml-read</span> then this additional dependency is needed: <code>sudo port install libxml2</code>.</li>
 </ol>
 
 <p>Once all this is done, you should be able to compile Gregorio.</p>
@@ -85,7 +85,7 @@
 
 <p>You have a choice between versions of Gregorio. To obtain the sources of the stable version, you just need to download the sources from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and decompress the archive.</p>
 
-<p><b>Nota bene:</b> There are three source code files on the download page.  Two have the name "Source Code" (once in zip and one in tar.gz format).  These files are images of the repository at the time of the release which are added automatically by GitHub.  As a result, the process for building from these files is identical to the process for building from a clone of the repository itself.  The other source code file, "gregorio-x.x.x.tar.bz2", is a special distribution version of the source which has several files, which do not depend on your particular system's architecture, pre-built for you.  As a result, it requires fewer tools to build.</p>
+<p><b>Nota bene:</b> There are two different source code files on the download page: gregorio-x.x.x.tar.bz2 (where x.x.x is the version number) and "Source Code" (in both zip and tar.gz format).  "gregorio-x.x.x.tar.bz2", is a special distribution version of the source which has several files, which do not depend on your particular system's architecture, pre-built for you.  As a result, it requires fewer tools to build, and should be the default choice for most people.  The file named "Source Code" is an image of the repository at the time of the release which is added automatically by GitHub.  As a result, the process for building from this file is identical to the process for building from a clone of the repository itself.</p>
 
 <p>To get the git version, that is, the version in development (more functionalities, but might contain more bugs), you will have to create a local copy of the git repository of the project, with the command:</p>
 
