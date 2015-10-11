@@ -51,13 +51,13 @@
       <!-- End of header -->
 <!-- header -->
 
-<h1>Configuring TeXworks for Gregorio</h1>
+<h1>Configuring <span class="tex">T<span class="epsilon">e</span>X</span>works for Gregorio</h1>
 
 <h3>Automatic score compilation</h3>
 
-<p>A feature of Gregorio version 3.0 and later is the automatic compilation of gabc scores when needed to complete a LaTeX document.  For this feature to work, <code>lualatex</code> must be able to launch the <code>gregorio</code> program during compilation.</p>
+<p>A feature of Gregorio version 3.0 and later is the automatic compilation of gabc scores when needed to complete a <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> document.  For this feature to work, <code>lualatex</code> must be able to launch the <code>gregorio</code> program during compilation.</p>
 
-<p>TeXworks can be configured to do this by creating a new engine for compilation that adds the <code>--shell-escape</code> argument to <code>lualatex</code>.</p>
+<p><span class="tex">T<span class="epsilon">e</span>X</span>works can be configured to do this by creating a new engine for compilation that adds the <code>--shell-escape</code> argument to <code>lualatex</code>.</p>
 
 <p>To create it, go into <code>Edit -&gt; Preferences</code> (into <code>TeXworks -&gt; Preferences</code> on a Mac).  Then, in the "Typesetting" tab, in the "Processing tools" section, click on "+" in the "Tools" section. You can fill the values for the new engine:</p>
 
@@ -70,11 +70,11 @@
 
 <p>Then you need to add three arguments, clicking each time on "+": first is <code>--shell-escape</code>, second is <code>$synctexoption</code>, third is <code>$fullname</code>.
 
-<p>Once you're done, validate everything and restart TeXworks.</p>
+<p>Once you're done, validate everything and restart <span class="tex">T<span class="epsilon">e</span>X</span>works.</p>
 
 <h3>Ease of use of .gabc files (optional)</h3>
 
-<p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of TeXworks, you have to hack the configuration files a little, but this is very easy.</p>
+<p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of <span class="tex">T<span class="epsilon">e</span>X</span>works, you have to hack the configuration files a little, but this is very easy.</p>
 
 <p>First, you have to find the file named <code>texworks-config.txt</code>. Under Linux it is in <code>~/.TeXworks/configuration/</code>, under Windows it should be in <code>C:/Users/&lt;your user name&gt;/.texlive2015/texmf-config</code> (replace "2015" with your version); if it's not there, you can look for it with the Windows search tools.</p>
 
@@ -86,9 +86,9 @@
 
 <p>...where you want it to appear in the list.</p>
 
-<h3>Using TeXworks</h3>
+<h3>Using <span class="tex">T<span class="epsilon">e</span>X</span>works</h3>
 
-<p>Once TeXworks is ready, refer to <a href="introduction-editor.html">the introduction page</a> to start using Gregorio!</p>
+<p>Once <span class="tex">T<span class="epsilon">e</span>X</span>works is ready, refer to <a href="introduction-editor.html">the introduction page</a> to start using Gregorio!</p>
 
 <!-- footer -->
     </div>

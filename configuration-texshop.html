@@ -51,27 +51,27 @@
       <!-- End of header -->
 <!-- header -->
 
-<h1>Configuring TeXShop for Gregorio</h1>
+<h1>Configuring <span class="tex">T<span class="epsilon">e</span>X</span>Shop for Gregorio</h1>
 
 <h3>Automatic score compilation</h3>
 
-<p>Gregorio needs a <code>lualatex</code> engine that is able to launch the <code>gregorio</code> program during compilation in order to compile gabc scores automatically (i.e. the engine has to have the <code>--shell-escape</code> option active).  Unfortunately, TeXShop does not come with such an engine configured by default.</p>
+<p>Gregorio needs a <code>lualatex</code> engine that is able to launch the <code>gregorio</code> program during compilation in order to compile gabc scores automatically (i.e. the engine has to have the <code>--shell-escape</code> option active).  Unfortunately, <span class="tex">T<span class="epsilon">e</span>X</span>Shop does not come with such an engine configured by default.</p>
 
-<p>To make life easier, we've included an engine which is set up correctly, in the contributed add-ons which were installed as part of Gregorio: <code>LuaLaTeX+se.engine</code>.  You can find it in <code>/Users/Shared/Gregorio/contrib/TeXShop</code> if you used the installer or in <code>#/gregorio-git/contrib/TeXShop</code> if you cloned the repository (where <code>#</code> is the directory you cloned the repository to).  Simply copy this file to <code>~/Library/TeXShop/Engines</code> and the engine should show up in the drop down list the next time you start TeXShop.</p>
+<p>To make life easier, we've included an engine which is set up correctly, in the contributed add-ons which were installed as part of Gregorio: <code>LuaLaTeX+se.engine</code>.  You can find it in <code>/Users/Shared/Gregorio/contrib/TeXShop</code> if you used the installer or in <code>#/gregorio-git/contrib/TeXShop</code> if you cloned the repository (where <code>#</code> is the directory you cloned the repository to).  Simply copy this file to <code>~/Library/TeXShop/Engines</code> and the engine should show up in the drop down list the next time you start <span class="tex">T<span class="epsilon">e</span>X</span>Shop.</p>
 
-<p>The name <code>LuaLaTeX+se</code> is arbitrary, but it's important to use it, so that everyone can have the same scores.  This will also serve to differentiate it from the normal LuaLaTeX engine where the shell escape option is not active (TeXShop comes with this engine in its Inactive folder).</p>
+<p>The name <code>Lua<span class="latex">LaTeX+se</code> is arbitrary, but it's important to use it, so that everyone can have the same scores.  This will also serve to differentiate it from the normal Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> engine where the shell escape option is not active (<span class="tex">T<span class="epsilon">e</span>X</span>Shop comes with this engine in its Inactive folder).</p>
 
 <h3>Ease of use of .gabc files (optional)</h3>
 
-<p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of TeXShop, open a Terminal window (it's in <code>Applications/Utilities</code>) and enter the following command:</p>
+<p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of <span class="tex">T<span class="epsilon">e</span>X</span>Shop, open a Terminal window (it's in <code>Applications/Utilities</code>) and enter the following command:</p>
 
 <div class="commandline">
 <code>defaults write TeXShop OtherTeXExtensions -array-add "gabc"</code>
 </div>
 
-<h3>Using TeXShop</h3>
+<h3>Using <span class="tex">T<span class="epsilon">e</span>X</span>Shop</h3>
 
-<p>Once TeXShop is ready, refer to <a href="introduction-editor.html">the introduction page</a> to start using Gregorio!</p>
+<p>Once <span class="tex">T<span class="epsilon">e</span>X</span>Shop is ready, refer to <a href="introduction-editor.html">the introduction page</a> to start using Gregorio!</p>
 
 <!-- footer -->
     </div>

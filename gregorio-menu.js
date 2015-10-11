@@ -51,7 +51,7 @@ menuline('  </div>');
 };
 
 function initialize_menu() {
-      document.title = $('h1:first').html();
+      document.title = $('h1:first').text();
       $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();

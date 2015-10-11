@@ -349,3 +349,25 @@ caption {
 	font-size: 1.2em;
 	}
 
+/* TeX and LaTeX logos */
+
+.tex .epsilon, .latex .epsilon, .latex .alpha {
+  text-transform: uppercase;
+}
+
+.tex .epsilon, .latex .epsilon {
+  vertical-align: -0.5ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+}
+
+.tex, .latex, .tex .epsilon, .latex .epsilon {
+  font-size: 1em;
+}
+
+.latex .alpha {
+  font-size: 0.85em;
+  vertical-align: 0.15em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}

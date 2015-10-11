@@ -55,9 +55,9 @@
     title = 'GregorioTeX';
 </script>
 
-<h1>Detailed information on GregorioTeX</h1>
+<h1>Detailed information on Gregorio<span class="tex">T<span class="epsilon">e</span>X</span></h1>
 
-<p>This page presents some detailed instructions on the use of GregorioTeX, starting with the most basic: best practices for creating an engraved (that is, typeset) score in GregorioTeX, then some simple options for modifying the score, and finally a precise description of the contents of a GregorioTeX file.</p>
+<p>This page presents some detailed instructions on the use of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, starting with the most basic: best practices for creating an engraved (that is, typeset) score in Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, then some simple options for modifying the score, and finally a precise description of the contents of a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> file.</p>
 
 <h2>Best practices for creating an engraved score</h2>
 
@@ -74,11 +74,11 @@
 
 <h2>Modifying the style of a score</h2>
 
-<p>GregorioTeX is a relatively flexible style, in which you can modify many things.</p>
+<p>Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> is a relatively flexible style, in which you can modify many things.</p>
 
 <h3>Changing the size of a score</h3>
 
-<p>You can change the size of a GregorioTeX score simply, by calling the macro <code>\setgrefactor{}</code> with a whole number. For example, calling it with 17 (the default value), you will obtain a score whose notes, spaces, etc., will be the same as in the Solesmes Antiphonale (2005).</p>
+<p>You can change the size of a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> score simply, by calling the macro <code>\setgrefactor{}</code> with a whole number. For example, calling it with 17 (the default value), you will obtain a score whose notes, spaces, etc., will be the same as in the Solesmes Antiphonale (2005).</p>
 
 <h3>Modifying the text style</h3>
 
@@ -127,7 +127,7 @@
 
 <p>To change other spaces, copy the file <code>gsp-default.tex</code>, rename it in <code>gsp-myspaces.tex</code>, change the values of the spaces and call <code>\GreLoadSpaceConf{myspaces}</code>.</p>
 
-<p>It is also possible to change TeX algorithm for spacing. For instance try to put this in your code before any score inclusion:</p>
+<p>It is also possible to change <span class="tex">T<span class="epsilon">e</span>X</span> algorithm for spacing. For instance try to put this in your code before any score inclusion:</p>
 
 <div class="commandline">
 <code>\tolerance=9999</code><br />
@@ -138,7 +138,7 @@
 
 <h3>Other useful things</h3>
 
-<p>A lot of useful things can be made with GregorioTeX. For example:</p>
+<p>A lot of useful things can be made with Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>. For example:</p>
 
 <ul>
 <li><code>\greremovelines</code> removes completely the staff lines</li>
@@ -151,11 +151,11 @@
 <li><code>\GreHideAltLines</code> hides the staff lines behind the alterations.</li>
 </ul>
 
-<h2>Understanding a GregorioTeX file</h2>
+<h2>Understanding a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> file</h2>
 
-<p>In contrast to the competing TeX systems (OpusTeX and MusixTeX), GregorioTeX is not designed to be written by a human being but by the gregorio software. This makes it more difficult to understand, but it is necessary in order to obtain certain improvements in the output.</p>
+<p>In contrast to the competing <span class="tex">T<span class="epsilon">e</span>X</span> systems (Opus<span class="tex">T<span class="epsilon">e</span>X</span> and Musix<span class="tex">T<span class="epsilon">e</span>X</span>), Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> is not designed to be written by a human being but by the gregorio software. This makes it more difficult to understand, but it is necessary in order to obtain certain improvements in the output.</p>
 
-<p>A GregorioTeX file is basically composed of 3 parts:</p>
+<p>A Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> file is basically composed of 3 parts:</p>
 
 <ul>
   <li>the first describes the large initial letter, the surrounding markings, and the clef, and gives information on the score</li>
@@ -163,19 +163,19 @@
   <li>the last gives the final bar, which is treated in a special manner, and closes the score</li>
 </ul>
  
-<p>As you can confirm, each line ends with a percent sign: <code>%</code>. this symbol is the comment symbol in TeX: everything after this character is not read by TeX, including end-of-line characters.  If TeX were to read the EOLs, it would insert unwanted spaces and change the final result. By placing a <code>%</code> at the end of each line, we can be sure that that does not happen.  Remember this point if you modify the file.</p>
+<p>As you can confirm, each line ends with a percent sign: <code>%</code>. this symbol is the comment symbol in <span class="tex">T<span class="epsilon">e</span>X</span>: everything after this character is not read by <span class="tex">T<span class="epsilon">e</span>X</span>, including end-of-line characters.  If <span class="tex">T<span class="epsilon">e</span>X</span> were to read the EOLs, it would insert unwanted spaces and change the final result. By placing a <code>%</code> at the end of each line, we can be sure that that does not happen.  Remember this point if you modify the file.</p>
 
 <h3>First part</h3>
 
-<p class="nofirst"><code>\begingregorioscore</code> creates the TeX environment for Gregorio scores and initializes variables.</p>
+<p class="nofirst"><code>\begingregorioscore</code> creates the <span class="tex">T<span class="epsilon">e</span>X</span> environment for Gregorio scores and initializes variables.</p>
 
 <p class="nofirst"><code>\greinitial{}</code> takes as its argument the letter (or letters) of the initial.  </p>
 
-<p class="nofirst"><code>\grebeginscore</code> (which absolutely must be placed after <code>\greinitial{}</code>) produces the first line of the score and gives TeX the instruction to begin each line of the score with staff lines.</p>
+<p class="nofirst"><code>\grebeginscore</code> (which absolutely must be placed after <code>\greinitial{}</code>) produces the first line of the score and gives <span class="tex">T<span class="epsilon">e</span>X</span> the instruction to begin each line of the score with staff lines.</p>
 
 <p class="nofirst"><code>\grebiginitial</code> is a macro to be used with the large capital is two lines in height.</p>
 
-<p class="nofirst"><code>\gresetinitialclef{}{}</code> takes as its first argument the type of clef (c for the do-clef, f for the fa-clef), and as its second argument the line on which it is to be placed.  This produces the clef of the first line and gives an instruction to TeX to begin each new line with this clef.</p>
+<p class="nofirst"><code>\gresetinitialclef{}{}</code> takes as its first argument the type of clef (c for the do-clef, f for the fa-clef), and as its second argument the line on which it is to be placed.  This produces the clef of the first line and gives an instruction to <span class="tex">T<span class="epsilon">e</span>X</span> to begin each new line with this clef.</p>
 
 <h3>Second part</h3>
 
@@ -183,7 +183,7 @@
 
 <p>The second part has several levels.  The principal macro of the second part is the macro <code>\gresyllable</code>, which is the most complex. This macro takes 9 arguments, which we shall present in detail.  The macro describes a syllable very comprehensively: the text, the position within the word, etc.</p>
 
-<p>You have very likely noticed that in the scores produced by GregorioTeX, the alignment of the note is not made above the first letter of a syllable, but above the first vowel.  Thus it is necessary to distinguish three zones within a syllable:</p>
+<p>You have very likely noticed that in the scores produced by Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, the alignment of the note is not made above the first letter of a syllable, but above the first vowel.  Thus it is necessary to distinguish three zones within a syllable:</p>
 
 <ul>
 <li>the letters which precede the alignment letters</li>
@@ -197,15 +197,15 @@
 
 <p>Arguments 5 and 6 are redundant but necessary arguments: the fifth consists of the letters preceding the alignment letters of the following syllable, and the sixth consists of the alignment letters of the following syllable. </p>
 
-<p>Argument 7 is the alignment type of the following syllable (depending solely on the notes). This argument has many possible values, and there is no real reason to modify it. Its complete description can be found in the TeX code of GregorioTeX.</p>
+<p>Argument 7 is the alignment type of the following syllable (depending solely on the notes). This argument has many possible values, and there is no real reason to modify it. Its complete description can be found in the <span class="tex">T<span class="epsilon">e</span>X</span> code of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
 
 <p>Argument 8 is the most often unused argument; it relates to macros to be called before the note macros, for example, the translation of the syllable.</p>
 
-<p>Argument 9 is the largest, corresponding to the various notes in the score.  As you will be able to see, the argument is quite often specified on several lines; it corresponds to the second level of the description of a score in GregorioTeX.</p>
+<p>Argument 9 is the largest, corresponding to the various notes in the score.  As you will be able to see, the argument is quite often specified on several lines; it corresponds to the second level of the description of a score in Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
 
 <p>Another important macro of the first level is the macro <code>\grebarsyllable</code> which has the same arguments as <code>syllable</code>, but is used to describe the syllables containing only a bar and no notes.</p>
 
-<p>The last important macro of this level is the macro <code>\grenewline</code>, which forces TeX to go to a new line and improves the spacing at the beginning of the following line. Another version, <code>\grenewlinewithspace{}{}{}</code>, goes to a new line, but adds spacing above and below.   The first argument corresponds to the height of the highest note that exceeds the upper range of the staff (1 for a k, 2 for an l, 3 for an m).  The second argument is the equivalent for the lower notes. The third argument is 1 if there is a translation, otherwise 0.</p>
+<p>The last important macro of this level is the macro <code>\grenewline</code>, which forces <span class="tex">T<span class="epsilon">e</span>X</span> to go to a new line and improves the spacing at the beginning of the following line. Another version, <code>\grenewlinewithspace{}{}{}</code>, goes to a new line, but adds spacing above and below.   The first argument corresponds to the height of the highest note that exceeds the upper range of the staff (1 for a k, 2 for an l, 3 for an m).  The second argument is the equivalent for the lower notes. The third argument is 1 if there is a translation, otherwise 0.</p>
 
 <p class="nofirst">These two last macros have some equivalents to go to the next line without justifying the line: <code>\grenewparline</code> and <code>\grenewparlinewithspace{}{}{}</code>.</p>
 
@@ -215,9 +215,9 @@
  
 <p>The principal macro of the second level is the macro <code>\greglyph</code>. This macro describes a gregorian glyph (a simple note or any grouping of notes) and takes 6 arguments.</p>
 
-<p>The first argument is the number of the glyph.  In fact Gregorio possesses a simple numbering system for the gregorian glyphs, going from 1 to 65536, which allows any glyph to be represented in two eight-bit bytes. Glyphs with different ambitus do not have the same numbers, but the number does not describe its position on the staff. This numbering system is too complex to be described here, and besides you normally will never have to modify one of these numbers (again, recourse to the gabc file is a good solution). Meanwhile, the principle of the numbering systems is described in the GregorioTeX source files.</p>
+<p>The first argument is the number of the glyph.  In fact Gregorio possesses a simple numbering system for the gregorian glyphs, going from 1 to 65536, which allows any glyph to be represented in two eight-bit bytes. Glyphs with different ambitus do not have the same numbers, but the number does not describe its position on the staff. This numbering system is too complex to be described here, and besides you normally will never have to modify one of these numbers (again, recourse to the gabc file is a good solution). Meanwhile, the principle of the numbering systems is described in the Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> source files.</p>
 
-<p>The second argument is the position on the staff. This is the same thing as the position in gabc.   The third argument is the position on the staff of the following note.  The third argument is the position on the staff of the following note. This serves to position the custos correctly at the end of the staff. The fourth argument is the type of note alignment. The fourth argument is the alignment type of the note. This is a slightly complex argument which is described in the source code for GregorioTeX.</p>
+<p>The second argument is the position on the staff. This is the same thing as the position in gabc.   The third argument is the position on the staff of the following note.  The third argument is the position on the staff of the following note. This serves to position the custos correctly at the end of the staff. The fourth argument is the type of note alignment. The fourth argument is the alignment type of the note. This is a slightly complex argument which is described in the source code for Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
 
 <p>The fifth argument are macros that must be expanded before the glyph sign, typically additional staff lines that must be "beneath" the glyph when they are in a different color. The sixth argument is just executed at the end of the macro.</p>
 
