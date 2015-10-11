@@ -25,11 +25,11 @@
   <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
   <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
   <meta name="author" content="The Gregorio project">
-  <link rel="shortcut icon" href="/illus/fav.ico">
-  <link rel="icon" href="/illus/fav.ico">
-  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <link rel="shortcut icon" href="./illus/fav.ico">
+  <link rel="icon" href="./illus/fav.ico">
+  <link rel="stylesheet" href="./style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="gregorio-menu.js"></script>
+  <script type="text/javascript" src="./gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -38,7 +38,7 @@
 
 <body>
   <div id="ban">
-    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <img src="./illus/harpedroite.png" title="" class="hd" alt="" />
     <a id="haut" name="haut"></a>
     <div id="banniere">
     </div>
@@ -71,18 +71,18 @@
 <p>Here is an example of a neume, which we will analyze throughout this document:</p>
 
 <div class="legende">
-<img src="/illus/struct-1.png" title="" alt="" />
+<img src="./illus/struct-1.png" title="" alt="" />
 <br />Example of a neume
 </div>
 
-<p>The first element of this neume is <img src="/illus/struct-2.png" title="" alt="" />.</p>
+<p>The first element of this neume is <img src="./illus/struct-2.png" title="" alt="" />.</p>
 
-<p>This element itself is composed of the glyph <img src="/illus/struct-3.png" title="" alt="" /> followed by the three glyphs <img src="/illus/struct-4.png" title="" alt="" />, <img src="/illus/struct-5.png" title="" alt="" /> and <img src="/illus/struct-6.png" title="" alt="" />.</p>
+<p>This element itself is composed of the glyph <img src="./illus/struct-3.png" title="" alt="" /> followed by the three glyphs <img src="./illus/struct-4.png" title="" alt="" />, <img src="./illus/struct-5.png" title="" alt="" /> and <img src="./illus/struct-6.png" title="" alt="" />.</p>
 
 <p>Our example of a neume composed of 32 notes may be surprising. It is just a choice of vocabulary: we call a <em>neume</em> <strong>&ldquo;the group of notes sung on the same syllable&rdquo;</strong>. This example of a neume, found in the <em>Antiphonale Monasticum</em> (Solesmes, 2005, vol. I, p. 542-543), comes from the following piece:</p>
 
 <div class="legende">
-<img src="/illus/struct-7.png" title="" alt="" />
+<img src="./illus/struct-7.png" title="" alt="" />
 <br />Complete score
 </div>
 
@@ -91,12 +91,12 @@
 <p>Musically, the neumatic elements are a sequence of notes sung in a connected manner and forming a certain entity. The vocabulary used here to indicate these elements vary from one liturgical book to another. Here are the names usually given to the elements that compose the neume that we took as an example:</p>
 
 <div class="legende">
-<img src="/illus/struct-examples.png" title="" alt="" />
+<img src="./illus/struct-examples.png" title="" alt="" />
 </div>
 
 <h3>Role of the neumatic elements</h3>
 
-<p>These elements give an indication of rhythm by the distinctions or articulations that they introduce to the thread of the melody. It would have been possible, without changing the melody of the first eight notes of our neume, to transcribe it like this: <img src="/illus/struct-change1.png" title="" alt="" /> instead of <img src="/illus/struct-change2.png" title="" alt="" />.</p>
+<p>These elements give an indication of rhythm by the distinctions or articulations that they introduce to the thread of the melody. It would have been possible, without changing the melody of the first eight notes of our neume, to transcribe it like this: <img src="./illus/struct-change1.png" title="" alt="" /> instead of <img src="./illus/struct-change2.png" title="" alt="" />.</p>
 
 <p>If the second transcription has been retained instead of the first, it does not seem daring to think that this choice was dictated by a musical reason. Some would translate this nuance in the manner of singing, by distinguishing the last punctum inclinatum with a little more &ldquo;weight&rdquo;, a very light sustain. Just to think of articulating the two neumatic elements well can at times be sufficient to render this nuance.</p>
 
@@ -113,7 +113,7 @@
 <p>Here are the various types of neumatic elements that we can find in current Gregorian chant scores:</p>
 
 <div class="legende">
-<img src="/illus/struct-examples2.png" title="" alt="" />
+<img src="./illus/struct-examples2.png" title="" alt="" />
 </div>
 
 <p>If we don't consider the different heights (pitches) of the notes and the liquescent forms, this list is quite exhaustive for the elements with one or two notes. Starting with the three-note elements, the number of elements grows sharply, and giving the list of all the elements would appear, if not impossible, at least tiresome, and not useful for constructing a lexical typography for chant.</p>
@@ -131,33 +131,33 @@
 <p>Therefore, the following written forms will be considered as only one neumatic element:</p>
 
 <div class="legende">
-<img src="/illus/struct-list1.png" title="" alt="" />
+<img src="./illus/struct-list1.png" title="" alt="" />
 </div>
 
 <p>But the following written forms as two different elements:</p>
 
 <div class="legende">
-<img src="/illus/struct-list2.png" title="" alt="" />
+<img src="./illus/struct-list2.png" title="" alt="" />
 </div>
 
 <h3>Difficulties resulting from this choice in establishing a XML standard</h3>
 
 <p>Let us take two examples:</p>
 <ul>
-<li>this neumatic element: <img src="/illus/struct-diff1.png" title="" alt="" /> called <em>scandicus flexus</em>, is written in the <em>Nocturnale Romanum</em> (Hartker Verlag, 2002, p. 501), in the following way: <img src="/illus/struct-diff2.png" title="" alt="" /></li>
-<li>the element <img src="/illus/struct-diff3.png" title="" alt="" /> named <em>porrectus flexus</em>, is written this way: <img src="/illus/struct-diff4.png" title="" alt="" /> (Ibid., p. 499) but we could also choose to write it more aesthetically this way: <img src="/illus/struct-diff5.png" title="" alt="" />.</li>
+<li>this neumatic element: <img src="./illus/struct-diff1.png" title="" alt="" /> called <em>scandicus flexus</em>, is written in the <em>Nocturnale Romanum</em> (Hartker Verlag, 2002, p. 501), in the following way: <img src="./illus/struct-diff2.png" title="" alt="" /></li>
+<li>the element <img src="./illus/struct-diff3.png" title="" alt="" /> named <em>porrectus flexus</em>, is written this way: <img src="./illus/struct-diff4.png" title="" alt="" /> (Ibid., p. 499) but we could also choose to write it more aesthetically this way: <img src="./illus/struct-diff5.png" title="" alt="" />.</li>
 </ul>
 
 <p>If we consider the <em>scandicus flexus</em> and the <em>porrectus flexus</em> typographically sometimes as only one element and sometimes as two, it is very hard to establish a standard XML representation.</p>
 
 <p>Do we have to revert to a more musical definition of the neumatic cut and abandon the one we just defined?</p>
 
-<p>It does not seem so, because in a lot of cases, the distinctions are debatable and indeed debated. What can be said, for example, of the written forms of the <em>porrectus flexus</em> such as these: <img src="/illus/struct-diff6.png" title="" alt="" /> and <img src="/illus/struct-diff7.png" title="" alt="" />&nbsp;? In some manuscripts they are both written like this <img src="/illus/struct-diff8.png" title="" alt="" />.</p>
+<p>It does not seem so, because in a lot of cases, the distinctions are debatable and indeed debated. What can be said, for example, of the written forms of the <em>porrectus flexus</em> such as these: <img src="./illus/struct-diff6.png" title="" alt="" /> and <img src="./illus/struct-diff7.png" title="" alt="" />&nbsp;? In some manuscripts they are both written like this <img src="./illus/struct-diff8.png" title="" alt="" />.</p>
 
 <p>Not to speak of the <em>salicus</em>, the subject of so many discussions. and transcribed with the following forms:</p>
 
 <div class="legende">
-<img src="/illus/struct-salicus.png" title="" alt="" />
+<img src="./illus/struct-salicus.png" title="" alt="" />
 <br />Different representations of the salicus
 </div>
 
@@ -167,9 +167,9 @@
 
 <p>What we have said above about the great number of existing and imaginable neumatic elements and the difficulty of naming them shows that it is necessary to turn back to the first and smallest units for the typographical composition of a gregorian chant score.</p>
 
-<p>Spontaneously a typographer will seek to analyse what are the different shapes he needs to compose his scores, and he will come to uncover four principal genres of shapes: <img src="/illus/struct-8.png" title="" alt="" /> that will be set next to one another.</p>
+<p>Spontaneously a typographer will seek to analyse what are the different shapes he needs to compose his scores, and he will come to uncover four principal genres of shapes: <img src="./illus/struct-8.png" title="" alt="" /> that will be set next to one another.</p>
 
-<p>He will also seek to simplify his task by trying to find less elementary shapes that will enable him to compose one or several notes at a time. Such as for example the following shapes:<img src="/illus/struct-9.png" title="" alt="" /></p>
+<p>He will also seek to simplify his task by trying to find less elementary shapes that will enable him to compose one or several notes at a time. Such as for example the following shapes:<img src="./illus/struct-9.png" title="" alt="" /></p>
 
 <p>Typography with lead characters evidently had to invent a typeface comprising this series of elementary forms or glyphs.  For our part, we have never had the occasion to see such a typeface.  The creators of digital fonts have proceeded in the same way, replacing the various neumatic glyphs with their tables of characters.</p>
 
@@ -186,17 +186,17 @@
 <p>What is the maximum number of notes in a neumatic element?  It seems quite hard to fix this number. Where should we stop?</p>
 
 <div class="legende">
-<img src="/illus/struct-long.png" title="" alt="" />
+<img src="./illus/struct-long.png" title="" alt="" />
 <br />Example of an extremely long neumatic element
 </div>
 
 <p>For example we can find in this type of tables the following &ldquo;neumes&rdquo;:</p>
 
 <div class="legende">
-<img src="/illus/punctum-quadratum.png" style="width:15px;" title="" alt="" />
-<img src="/illus/pes.png" style="width:15px;" title="" alt="" />
-<img src="/illus/scandicus.png" title="" alt="" />
-<img src="/illus/scandicus2.png" title="" alt="" />
+<img src="./illus/punctum-quadratum.png" style="width:15px;" title="" alt="" />
+<img src="./illus/pes.png" style="width:15px;" title="" alt="" />
+<img src="./illus/scandicus.png" title="" alt="" />
+<img src="./illus/scandicus2.png" title="" alt="" />
 <br>punctum, pes, scandicus, and scandicus
 </div>
 
