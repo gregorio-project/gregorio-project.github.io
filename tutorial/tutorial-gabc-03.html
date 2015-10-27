@@ -114,16 +114,14 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 \begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
 
-\setspaceafterinitial{3.2mm plus 0em minus 0em}
-\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+\grechangedim{afterinitialshift}{3.2mm}{scalable}
+\grechamgedim{beforeinitialshift}{3.2mm}{scalable}
 
-\def\greinitialformat#1{%
-{\fontsize{43}{43}\selectfont #1}%
-}
+\grechangestyle{initial}{\fontsize{43}{43}\selectfont}
 
-\gresetfirstlineaboveinitial{\small \textsc{\textbf{}}}{\small \textsc{\textbf{}}}
-\commentary{{\small \emph{}}}
-\setgrefactor{17}
+\greannotation{\small \textsc{\textbf{}}}
+\grecommentary{{\small \emph{}}}
+\gresetstaffsize{17}
 \includescore[a]{kyrie-17-final}
 
 \end{document}
@@ -131,23 +129,21 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 </div>
 
 
-<p>The <code>\commentary{}</code> macro generates the small text above the first stave, so let's add the desired text to it:</p>
+<p>The <code>\grecommentary{}</code> macro generates the small text above the first stave, so let's add the desired text to it:</p>
 
 <div class="commandblock">
 	<pre>
-\commentary{{\small \emph{<font color="red">XIV. s.</font>}}}
+\grecommentary{{\small \emph{<font color="red">XIV. s.</font>}}}
 </pre>
 </div>
 
-<p>The macro <code>\gresetfirstlineaboveinitial{}{}</code> generates the mode label before the first clef, so let's make that:</p>
+<p>The macro <code>\greannotation{}</code> generates the mode label before the first clef, so let's make that:</p>
 
 <div class="commandblock">
 	<pre>
-{\small \textsc{\textbf{<font color="red">VI.</font>}}}{\small \textsc{\textbf{<font color="red">VI.</font>}}}
+\greannotaion{\small \textsc{\textbf{<font color="red">VI.</font>}}}
 </pre>
 </div>
-
-<p>Notice that we had to put "VI." into both arguments.   It's strange, but this is how it works.</p>
 
 <p>Make those changes, run that file through <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
 
@@ -187,8 +183,8 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 <div class="commandline">
 	<pre>
-\setgrefactor{17}
-<font color="red">\global\advance\grespaceabovelines by 10mm%</font>
+\gresetstaffsize{17}
+<font color="red">\grechangedim{spaceabovelines}{1.45576 cm plus 0.36461 cm minus 0.09114 cm}%</font>
 \includescore{kyrie-17-final.tex}
 </pre>
 </div>
