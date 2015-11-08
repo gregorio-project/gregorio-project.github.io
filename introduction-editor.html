@@ -89,7 +89,7 @@
 <br />
 \begin{document}<br />
 <br />
-\includescore{example}<br />
+\gregorioscore{example}<br />
 <br />
 \end{document}</code>
 </div>
@@ -113,7 +113,7 @@
 
 <ul>
   <li>Your editor launches the command <br/><code>lualatex --shell-escape test.tex</code></li>
-  <li>Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> compiles the document.  When it sees <code>\includescore{example}</code>, it launches the command <br/><code>gregorio example.gabc</code></li>
+  <li>Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> compiles the document.  When it sees <code>\gregorioscore{example}</code>, it launches the command <br/><code>gregorio example.gabc</code></li>
   <li>Gregorio compiles your gabc score into <code>example-foo.gtex</code> (where <code>foo</code> is the version number of Gregorio).  You can check your folder for this file.</li>
   <li>Once <code>example.gabc</code> is compiled to produce <code>example-foo.gtex</code>, Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> reads in the contents of <code>example-foo.gtex</code> and continues the compilation of your document.
 </ul>
