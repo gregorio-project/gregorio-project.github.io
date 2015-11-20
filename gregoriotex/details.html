@@ -61,13 +61,13 @@
 
 <h2>Best practices for creating an engraved score</h2>
 
-<p>In order to produce a perfect result and avoid errors in placement, you will need to specify some changes in line breaks by hand. The following is the most effective and simple method:</p>
+<p>In order to produce a perfect result and avoid errors in placement, you may need to specify some changes in line breaks by hand. The following is the most effective and simple method:</p>
 
 <ul>
 <li>produce a gabc file describing your score, without specifying any formatting</li>
 <li>determine the ideal size of the score</li>
 <li>define the style of the initial letter and the typeface for the characters of the text</li>
-<li>finally, set line breaks in the gabc file</li>
+<li>finally, set line breaks in the gabc file, if necessary</li>
 </ul>
 
 <p>When you specify line breaks in gabc, it is possible that a line may break in the middle of a word, but without adding a hyphen at the end of the line. The only way to correct this is to add a hyphen by hand to the last syllable before the line break, directly in the gabc file.</p>
@@ -78,165 +78,469 @@
 
 <h3>Changing the size of a score</h3>
 
-<p>You can change the size of a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> score simply, by calling the macro <code>\setgrefactor{}</code> with a whole number. For example, calling it with 17 (the default value), you will obtain a score whose notes, spaces, etc., will be the same as in the Solesmes Antiphonale (2005).</p>
+<p>You can change the size of a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> score simply, by calling the macro <code>\gresetstaffsize{}</code> with a whole number. For example, calling it with 17 (the default value), you will obtain a score whose notes, spaces, etc., will be the same as in the Solesmes Antiphonale (2005).</p>
 
 <h3>Modifying the text style</h3>
 
-<p>You can modify the style of the initial letter or the styles of the text by redefining the following macros:</p>
-<ul>
-<li><code>\gretextformat#1</code> for the style of the text of the scores</li>
-<li><code>\greinitialformat#1</code> for the style of the large initial</li>
-<li><code>\grebiginitialformat#1</code> for the style of a large initial two lines tall</li>
-<li><code>\gretranslationformat#1</code> for the style of the translation</li>
-<li><code>\grehighchoralsignstyle#1</code> for the style of the high choral signs</li>
-<li><code>\grelowchoralsignstyle#1</code> for the style of the low choral signs</li>
-<li><code>\greabovelinestextstyle#1</code> for the style of the text above the lines</li>
-<li><code>\greitalic#1</code> for text in italics</li>
-<li><code>\gresmallcaps#1</code> for text in small capitals</li>
-<li><code>\grebold#1</code> for bold text</li>
-<li><code>\grett#1</code> for monospaced (typewriter style) text</li>
+<p>You can modify the style of the initial letter or the styles of the text by using <code>\grechangestyle</code>.	The first argument specifies the element whose style you want to change.  The available values and their defaults are:</p>
+<table	style="width:100%">
+    <col width="25%">
+    <col width="50%">
+    <col width="25%">
+	<tr>
+		<th>Element Name</th>
+		<th>Description</th>
+		<th>Default</th>
+	</tr>
+	<tr>
+		<td><code>initial</code></td>
+		<td>Normal Initials</td>
+		<td>40 pt font</td>
+	</tr>
+	<tr>
+		<td><code>biginitial</code></td>
+		<td>Big (2-Line) Initials</td>
+		<td>80 pt font</td>
+	</tr>
+	<tr>
+		<td><code>translation</code></td>
+		<td>Translation text (appears below lyrics)</td>
+		<td><i>italics</i></td>
+	</tr>
+	<tr>
+		<td><code>abovelinestext</code></td>
+		<td>Above line text (<code>&lt;alt&gt;&lt;/alt&gt;</code> in gabc, appears above the staff)</td>
+		<td>normal</td>
+	</tr>
+	<tr>
+		<td><code>normalstafflines</code></td>
+		<td>Full length staff lines</td>
+		<td>none</td>
+	</tr>
+	<tr>
+		<td><code>additionalstafflines</code></td>
+		<td>short lines behind notes above or below the staff</td>
+		<td>special<sup>1</sup></td>
+	</tr>
+	<tr>
+		<td><code>lowchoralsign</code></td>
+		<td>low choral signs</td>
+		<td>none</td>
+	</tr>
+	<tr>
+		<td><code>highchoralsign</code></td>
+		<td>high choral signs</td>
+		<td>none</td>
+	</tr>
+	<tr>
+		<td><code>firstsyllableinitial</code></td>
+		<td>the first letter of the first syllable of a score which is not the score initial</td>
+		<td>none</td>
+	</tr>
+	<tr>
+		<td><code>firstsyllable</code></td>
+		<td>the first syllable of the score excluding the score initial</td>
+		<td>none</td>
+	</tr>
+	<tr>
+		<td><code>firstword</code></td>
+		<td>the first word of the first score excluding the score initial</td>
+		<td>none</td>
+	</tr>
+	<tr>
+		<td><code>modeline</code></td>
+		<td>the rendered annotation from the <code>mode: ;</code> header in the gabc file</td>
+		<td><b><sc>Bold Small Capitals</sc></b></td>
+	</tr>
+	<tr>
+		<td><code>nabc</code></td>
+		<td>ancient notation</td>
+		<td><span class="gregoriocolor">gregoriocolor</span> (<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>)</td>
+	</tr>
+	<tr>
+	    <td></td>
+	    <td></td>
+	    <td>none (Plain <span class="tex">T<span class="epsilon">e</span>X</span>)</td>
+	</tr>
+</table>
 
-</ul>
+<p><sup>1</sup>By default, <code>additionalstafflines</code> inherits its properties from <code>normalstafflines</code>.  To decouple these environments, you must manually change <code>additionalstafflines</code> using <code>\grechangestyle</code>.
+
 
 <h3>Making the initial letter two lines high</h3>
 
-<p>To make the initial letter of a score as tall as two staff lines, call the macro <code>\setbiginitial</code> before <code>\includescore</code>. Note that you have to specifiy end of lines in order for it to work.</p>
+<p>To make the initial letter of a score as tall as two staff lines, set <code>initial-style: 2;</code> in the header of your gabc file.
 
 <h3>Adding indications to the score</h3>
 
 <p>It is often useful to add indications to gregorian chant scores, for example the mode, above the initial letter of the score, or an indication of the origin of the text above the score.</p>
 
-<p>To add indications above the initial letter, you can use the macro <code>\gresetfirstlineaboveinitial{}{}</code>, which takes two arguments: the first is the text you wish to set there.  If you want the top of the text to be aligned with the top line of the staff, then use the same text as the second argument.</p>
+<p>To add indications above the initial letter, you can use the macro <code>\greannotation{}</code>.  The argument is the text you wish to set there.  To get multiple lines, simply call the command multiple times.  Each call will add a new line to the bottom containing the new text.</p>
 
-<p>If you want to adjust the alignment by hand, you can change the second argument to a text with a height specification such as, for example, <code>\Large A</code> or <code>\tiny A</code>.  The height of that character string is used as a vertical offset.  If the second argument is, for example, 9 pt. in height, then the first argument will be displayed with the baseline of its text 9 pt. below the top line of the staff.   Therefore, a taller second argument makes the first argument display lower, and a less tall second argument makes the first argument display higher.</p>
+<p>By default new lines are alinged center with the existing content.  If you want to adjust the horizontal alignment by hand, add the optional argument <code>[r]</code> or <code>[l]</code> for right and left alignment respectively: e.g. <code>\greannotation[r]{right aligned second line}</code></p>
 
-<p>To add a note about source of the text, call the macro <code>\commentary{}</code> which takes a text argument.   It will be displayed, right-aligned, just above the score.  This macro (and <code>\gresetfirstlineaboveinitial</code> must be called immediately before the <code>\includescore</code> without an intervening blank line.</p>
+<p>To adjust the vertical placement of the annotations, you need to change <code>annotationraise</code> using <code>\grechangedim</code>: <code>\grechangedim{annotationraise}{1 mm}{scalable}</code>.  Positive values will raise the annotations, negative values will lower them.</p>
+
+<p>To adjust the distance between the lines in a multi-line annotation, you need to change <code>annotationseparation</code> using <code>\grechangedim</code>.  The default value for this distance is 0.85 cm.
+
+<p>To add a note about source of the text, call the macro <code>\grecommentary{}</code> which takes a text argument.	It will be displayed, right-aligned, just above the score.	This macro must be called immediately before the <code>\gregorioscore</code> or <code>\gabcsnippet</code> without an intervening blank line.</p>
 
 
 
-<h3>Modifying the vertical spacing</h3>
+<h3>Modifying the spacing</h3>
 
-<p>Gregorio adjusts vertical spacing automatically whenever there is an additional line, with the macro <code>\grenewlinewithspace{}{}</code>, described below.  Still, the vertical spacing may not be ideal for your purposes, so you can adjust spacing in several ways:</p>
+<p>Gregorio defines a bunch of distances which control the spacing between the various elements of a score.  These distances are defined in the file <code>gsp-default.tex</code>.  If you want to create your own custom set of spacings, copy this file and rename it in <code>gsp-myspaces.tex</code>, change the values of the spaces and call <code>\greloadspaceconf{myspaces}</code>.  <code>myspaces</code> is arbitrary, so you can replce it (in both the file name and the command argument) by whatever you want, thus allowing you to have several different spacing configurations that you can load as needed.</p>
 
-<ul>
-<li><code>\spaceabovelines</code> for the space above the staff</li>
-<li><code>\spacelinestext</code> for the space between the baseline of the text and the bottom line of the staff</li>
-<li><code>\spacebeneathtext</code> for the space below the text</li>
-<li><code>\translationheight</code> for space dedicated to a translation of the text, if there is one</li>
-</ul>
+<p>If you just need to change a few distances, then you can use the command <code>\grechangedim</code>.  The available distances that can be changed are:
 
-<p>To change other spaces, copy the file <code>gsp-default.tex</code>, rename it in <code>gsp-myspaces.tex</code>, change the values of the spaces and call <code>\GreLoadSpaceConf{myspaces}</code>.</p>
+<table width="100%">
+    <col width="25%">
+    <col width="50%">
+    <col width="25%">
+    <tr>
+        <th>Distance</th>
+        <th>Description</th>
+        <th>Default Value</th>
+    </tr>
+	<tr>
+		<td>additionallineswidth</td>
+		<td>The additional width of the additional lines (i.e., the value added to the width of the glyph with which they're associated to get the width of the line).</td>
+		<td>0.14584 cm</td>
+	</tr>
+	<tr>
+		<td>alterationspace</td>
+		<td>Space between an alteration (flat or natural) and the next glyph.</td>
+		<td>0.07747 cm plus 0.01276 cm minus 0.00455 cm</td>
+	</tr>
+	<tr>
+		<td>beforealterationspace</td>
+		<td>When beginning of line shifts (bolshifts) are enabled, minimum space between a clef at the beginning of the line and a leading alteration glyph.  This distance should be larger than <code>clefflatspace</code> so that a flatted clef can be distinguished from a flat which is part of the first glyph on a line, but also smaller than <code>spaceafterlineclef</code>, the distance from the clef to the first notes.</td>
+		<td>-0.32816 cm$ plus 0.01093 cm minus 0.01093 cm</td>
+	</tr>
+	<tr>
+		<td>beforelowchoralsignspace</td>
+		<td>Space before a low choral sign.</td>
+		<td>0.04556 cm plus 0.00638 cm minus 0.00638 cm</td>
+	</tr>
+	<tr>
+		<td>clefflatspace</td>
+		<td>Space between a clef and a flat (for clefs with flat).</td>
+		<td>0.05469 cm plus 0.00638 cm minus 0.00638 cm</td>
+	</tr>
+	<tr>
+		<td>interglyphspace</td>
+		<td>Space between glyphs in the same element.</td>
+		<td>0.06927 cm plus 0.00363 cm minus 0.00363 cm</td>
+	</tr>
+	<tr>
+		<td>zerowidthspace</td>
+		<td>Null space.</td>
+		<td>0 cm plus 0 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>interelementspace</td>
+		<td>Space between elements.</td>
+		<td>0.06927 cm plus 0.00182 cm minus 0.00363 cm</td>
+	</tr>
+	<tr>
+		<td>largerspace</td>
+		<td>Larger space between elements.</td>
+		<td>0.10938 cm plus 0.01822 cm minus 0.00911 cm</td>
+	</tr>
+	<tr>
+		<td>glyphspace</td>
+		<td>Space between elements which has the size of a note.</td>
+		<td>0.21877 cm plus 0.01822 cm minus 0.01822 cm</td>
+	</tr>
+	<tr>
+		<td>intersyllablespacenotes</td>
+		<td>Minimum space between two notes of different syllables.</td>
+		<td>0.25523 cm plus 0.31903 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>spacebeforeeolcustos</td>
+		<td>Space before custos at the end of a line.</td>
+		<td>0.1823 cm plus 0.31903 cm minus 0.0638 cm</td>
+	</tr>
+	<tr>
+		<td>spacebeforeinlinecustos</td>
+		<td>Space before custos within a line.</td>
+		<td>0 cm plus 0 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>spacebeforesigns</td>
+		<td>Space before punctum mora and augmentum duplex.</td>
+		<td>0.05469 cm plus 0.00455 cm minus 0.00455 cm</td>
+	</tr>
+	<tr>
+		<td>spaceaftersigns</td>
+		<td>Space after punctum mora and augmentum duplex.</td>
+		<td>0.08203 cm plus 0.0082 cm minus 0.0082 cm</td>
+	</tr>
+	<tr>
+		<td>spaceafterlineclef</td>
+		<td>Space after a clef at the beginning of a line.</td>
+		<td>0.27345 cm plus 0.14584 cm minus 0.01367 cm</td>
+	</tr>
+	<tr>
+		<td>interwordspacenotes</td>
+		<td>Space after at the end of a word when the last written symbol is a note and the first is a note.</td>
+		<td>0.29169 cm plus 0.08751 cm minus 0.05469 cm</td>
+	</tr>
+	<tr>
+		<td>interwordspacetext</td>
+		<td>Space after at the end of a word when the last written symbol is text and the first is text.</td>
+		<td>0.22787 cm plus 0.41019 cm minus 0.07292 cm</td>
+	</tr>
+	<tr>
+		<td>interwordspacenotes@euouae</td>
+		<td>Space after at the end of a word when the last written symbol is a note and the first is a note in <code>euouae</code> blocks.</td>
+		<td>0.19 cm plus 0.1 cm minus 0.05 cm</td>
+	</tr>
+	<tr>
+		<td>interwordspacetext@euouae</td>
+		<td>Space after at the end of a word when the last written symbol is text and the first is text in <code>euouae</code> blocks.</td>
+		<td>0.27 cm plus 0.1 cm minus 0.05 cm</td>
+	</tr>
+	<tr>
+		<td>bitrivirspace</td>
+		<td>Space between notes of a bivirga or trivirga.</td>
+		<td>0.06927 cm plus 0.00182 cm minus 0.00546 cm</td>
+	</tr>
+	<tr>
+		<td>bitristrospace</td>
+		<td>Space between notes of a bistropha or tristrophae.</td>
+		<td>0.06927 cm plus 0.00182 cm minus 0.00546 cm</td>
+	</tr>
+	<tr>
+		<td>punctuminclinatumshift</td>
+		<td>Space between two punctum inclinatum.</td>
+		<td>-0.03918 cm plus 0.0009 cm minus 0.0009 cm</td>
+	</tr>
+	<tr>
+		<td>beforepunctainclinatashift</td>
+		<td>Space before puncta inclinata.</td>
+		<td>0.05286 cm plus 0.00728 cm minus 0.00455 cm</td>
+	</tr>
+	<tr>
+		<td>punctuminclinatumanddebilisshift</td>
+		<td>Space between a punctum inclinatum and a punctum inclinatum deminutus.</td>
+		<td>-0.02278 cm plus 0.0009 cm minus 0.0009 cm</td>
+	</tr>
+	<tr>
+		<td>punctuminclinatumdebilisshift</td>
+		<td>Space between two punctum inclinatum deminutus.</td>
+		<td>-0.00728 cm plus 0.0009 cm minus 0.0009 cm</td>
+	</tr>
+	<tr>
+		<td>punctuminclinatumbigshift</td>
+		<td>Space between puncta inclinata, larger ambitus (range=3rd).</td>
+		<td>0.07565 cm plus 0.0009 cm minus 0.0009 cm</td>
+	</tr>
+	<tr>
+		<td>punctuminclinatummaxshift</td>
+		<td>Space between puncta inclinata, larger ambitus (range=4th -or more?-).</td>
+		<td>0.17865 cm plus 0.0009 cm minus 0.0009 cm</td>
+	</tr>
+	<tr>
+		<td>spacearoundsmallbar</td>
+		<td>Space around virgula and divisio minima.</td>
+		<td>0.1823 cm plus 0.22787 cm minus 0.05469 cm</td>
+	</tr>
+	<tr>
+		<td>spacearoundminor</td>
+		<td>Space around divisio minor.</td>
+		<td>0.1823 cm plus 0.22787 cm minus 0.05469 cm</td>
+	</tr>
+	<tr>
+		<td>spacearoundmaior</td>
+		<td>Space around divisio maior.</td>
+		<td>0.1823 cm plus 0.22787 cm minus 0.05469 cm</td>
+	</tr>
+	<tr>
+		<td>spacearoundfinalis</td>
+		<td>Space around divisio finalis.</td>
+		<td>0.1823 cm plus 0.1823 cm minus 0.05469 cm</td>
+	</tr>
+	<tr>
+		<td>spacebeforefinalfinalis</td>
+		<td>A special space for finalis, for when it is the last glyph.</td>
+		<td>0.29169 cm plus 0.07292 cm minus 0.27345 cm</td>
+	</tr>
+	<tr>
+		<td>spacearoundclefbars</td>
+		<td>Additional space that will appear around bars that are preceded by a custos and followed by a key.</td>
+		<td>0.03645 cm plus 0.00455 cm minus 0.0009 cm</td>
+	</tr>
+	<tr>
+		<td>textbartextspace</td>
+		<td>Space between the text and the text of the bar.</td>
+		<td>0.24611 cm plus 0.13672 cm minus 0.04921 cm</td>
+	</tr>
+	<tr>
+		<td>notebarspace</td>
+		<td>Minimal space between a note and a bar.</td>
+		<td>0.31903 cm plus 0.27345 cm minus 0.02824 cm</td>
+	</tr>
+	<tr>
+		<td>maximumspacewithoutdash</td>
+		<td>Maximal space between two syllables for which we consider a dash is not needed.</td>
+		<td>0.02005 cm</td>
+	</tr>
+	<tr>
+		<td>afterclefnospace</td>
+		<td>An extensible space for the beginning of lines.</td>
+		<td>0 cm plus 0.27345 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>additionalcustoslineswidth</td>
+		<td>Width of the additional lines, used only for the custos.  The width is the one for the custos at end of lines, the line for custos in the middle of a score is the same multiplied by 2.</td>
+		<td>0.09114 cm</td>
+	</tr>
+	<tr>
+		<td>afterinitialshift</td>
+		<td>Space between the initial and the beginning of the score.</td>
+		<td>0.2457 cm plus 0 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>beforeinitialshift</td>
+		<td>Space between the initial and the beginning of the score.</td>
+		<td>0.2457 cm plus 0 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>minimalspaceatlinebeginning</td>
+		<td>Minimal space in front of the lyrics at the beginning of a line when <code>bolshift</code>s are enabled.</td>
+		<td>1.7 cm</td>
+	</tr>
+	<tr>
+		<td>manualinitialwidth</td>
+		<td>Space to force the initial width to.  Ignored when 0.</td>
+		<td>0 cm</td>
+	</tr>
+	<tr>
+		<td>annotationseparation</td>
+		<td>This space is the one between lines in the annotation (text above the initial).</td>
+		<td>0.85 cm</td>
+	</tr>
+	<tr>
+		<td>annotationraise</td>
+		<td>Amount to raise (positive) or lower (negative) the annotation from it's normal position (baseline of the first line aligned with the top line of the staff).</td>
+		<td>0 cm</td>
+	</tr>
+	<tr>
+		<td>noclefspace</td>
+		<td>Space at the beginning of the lines if there is no clef.</td>
+		<td>0.1 cm</td>
+	</tr>
+	<tr>
+		<td>choralsigndownshift</td>
+		<td>The distance to shift choral signs down.  The following choral signs are shifted down:
+		    <ul>
+		        <li>Low choral signs that are not lower than the note</li>
+                <li>High choral signs which are in a space</li>
+                <li>Low choral signs that are lower than the note which are in a space</li>
+            </ul></td>
+		<td>0.00911 cm</td>
+	</tr>
+	<tr>
+		<td>choralsignupshift</td>
+		<td>The distance to shift choral signs up.  The following choral signs are shifted up:
+		    <ul>
+		        <li>High choral signs which are on a line</li>
+		        <li>Low choral signs that are lower than the note which are on a line</li>
+		    </ul></td>
+		<td>0.04556 cm</td>
+	</tr>
+	<tr>
+		<td>translationheight</td>
+		<td>The space for the translation.</td>
+		<td>0.5 cm</td>
+	</tr>
+	<tr>
+		<td>spaceabovelines</td>
+		<td>The space above the lines.</td>
+		<td>0.45576 cm plus 0.36461 cm minus 0.09114 cm</td>
+	</tr>
+	<tr>
+		<td>spacelinestext</td>
+		<td>The space between the lines and the bottom of the text.</td>
+		<td>0.60617 cm plus 0 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>spacebeneathtext</td>
+		<td>The space beneath the text.</td>
+		<td>0 cm plus 0 cm minus 0 cm</td>
+	</tr>
+	<tr>
+		<td>abovelinestextraise</td>
+		<td>Height of the text above the note line.</td>
+		<td>1.7 cm</td>
+	</tr>
+	<tr>
+		<td>abovelinestextheight</td>
+		<td>Height that is added at the top of the lines if there is text above the lines (it must be bigger than the text for it to be taken into consideration).</td>
+		<td>0.3 cm</td>
+	</tr>
+	<tr>
+		<td>braceshift</td>
+		<td>An additional shift you can give to the brace above the bars.</td>
+		<td>0 cm</td>
+	</tr>
+	<tr>
+		<td>curlybraceaccentusshift</td>
+		<td>A shift you can give to the accentus above the curly brace.  </td>
+		<td>-0.05 cm$
 
-<p>It is also possible to change <span class="tex">T<span class="epsilon">e</span>X</span> algorithm for spacing. For instance try to put this in your code before any score inclusion:</p>
+	<tr>
+		<td>nabcinterelementspace</td>
+		<td>Space between elements in ancient notation.</td>
+		<td>0.06927 cm plus 0.00182 cm minus 0.00363 cm</td>
+	</tr>
+	<tr>
+		<td>nabclargerspace</td>
+		<td>Larger space between elements in ancient notation.</td>
+		<td>0.10938 cm plus 0.01822 cm minus 0.00911 cm</td>
+	</tr>
+	<tr>
+		<td>clivisalignmentmin</td>
+		<td>When <code>\gre@clivisalignment</code> is 2, this distance is the maximum length of the consonants after vowels for which the clivis will be aligned on its center.</td>
+		<td>0.3 cm</td>
+	</tr>
+	<tr>
+		<td>clefchangespace</td>
+		<td>Space around a clef change.</td>
+		<td>0.01768 cm plus 0.00175 cm minus 0.01768 cm</td>
+	</tr>
+	<tr>
+		<td>initialraise</td>
+		<td>Distance the initial will be raised above its default baseline.  The default baseline for the initial coincides with the baseline for the text below the staff.</td>
+		<td>0 cm
+</table>
 
-<div class="commandline">
-<code>\tolerance=9999</code><br />
-<code>\pretolerance=500</code>
-</div>
-
-<p>It should give a better result, but also more spacing and thus more lines.</p>
+<p><code>gsp-default.tex</code> also contains the definitions for several penalties which are used to control the auotomatic line breaking decisions.  If you don't like where the line breaks are falling, adjusting these can help you get better results.  However, if you only have a problem with one or two line breaks, it's probably better to just define a manual line break using <code>z</code> or <code>Z</code> in the gabc.</p>
 
 <h3>Other useful things</h3>
 
-<p>A lot of useful things can be made with Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>. For example:</p>
+<p>A lot of useful things can be done with Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>. For example:</p>
 
 <ul>
-<li><code>\greremovelines</code> removes completely the staff lines</li>
-<li><code>\greremoveclef</code> removes the keys</li>
-<li><code>\gresetstafflinefactor#1</code> changes the thickness of the staff lines. 10 is the default value. You can only put integers here</li>
-<li><code>\UseAlternatePunctumCavum</code> changes the shape of the punctum cavum</li>
-<li><code>\GreDisableEOLShifts</code> slightly changes the beginning of line algorithm. <code>\GreEnableEOLShifts</code> restores the default spacing at the beginning of lines.</li>
-<li><code>\greusemensuralstyle</code>, <code>\greusehufnagelstyle</code> and <code>\greusemedicaeastyle</code> change the style of some signs</li>
-<li><code>\GreDontHidePCLines</code> unhides the staff lines behind the punctum cavum</li>
-<li><code>\GreHideAltLines</code> hides the staff lines behind the alterations.</li>
+<li><code>\gresetlines{invisible}</code> removes completely the staff lines.</li>
+<li><code>\gresetclef{invisible}</code> removes the keys.</li>
+<li><code>\gresetstaffthicknes{<i>&lt;integer&gt;</i>}</code> changes the thickness of the staff lines. The default value is the same as the staff size. You can only put integers here.</li>
+<li><code>\gresetgregoriofont[op]{parmesan}</code> uses the Dominican varian of the Parmesan font for the neumes.</li>
+<li><code>\gresetbolshifts{disable}</code> slightly changes the beginning of line algorithm. <code>\greseteolshifts{enable}</code> restores the default spacing at the beginning of lines.</li>
+<li><code>\gresetglyphstyle{mensural}</code>, <code>\gresetglyphstyle{hufnagel}</code> and <code>\gresetglyphstyle{medicaea}</code> change the style of some signs.</li>
+<li><code>\gresetlinesbehindpunctumcavum{visible}</code> unhides the staff lines behind the punctum cavum (allowing one to see them in the middle).</li>
+<li><code>\gresetlinesbehindalteration{invisible}</code> unhides the staff lines behind the alterations (allowing one to see them in the middle).</li>
 </ul>
+
+For more details about these and other possibilities, please consult GregorioRef-###.pdf (where ### is the version number).  You should be able to find it in the directory where you installed Gregorio.
 
 <h2>Understanding a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> file</h2>
 
 <p>In contrast to the competing <span class="tex">T<span class="epsilon">e</span>X</span> systems (Opus<span class="tex">T<span class="epsilon">e</span>X</span> and Musix<span class="tex">T<span class="epsilon">e</span>X</span>), Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> is not designed to be written by a human being but by the gregorio software. This makes it more difficult to understand, but it is necessary in order to obtain certain improvements in the output.</p>
 
-<p>A Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> file is basically composed of 3 parts:</p>
-
-<ul>
-  <li>the first describes the large initial letter, the surrounding markings, and the clef, and gives information on the score</li>
-  <li>the second is the part describing the notes and the syllables</li>
-  <li>the last gives the final bar, which is treated in a special manner, and closes the score</li>
-</ul>
- 
-<p>As you can confirm, each line ends with a percent sign: <code>%</code>. this symbol is the comment symbol in <span class="tex">T<span class="epsilon">e</span>X</span>: everything after this character is not read by <span class="tex">T<span class="epsilon">e</span>X</span>, including end-of-line characters.  If <span class="tex">T<span class="epsilon">e</span>X</span> were to read the EOLs, it would insert unwanted spaces and change the final result. By placing a <code>%</code> at the end of each line, we can be sure that that does not happen.  Remember this point if you modify the file.</p>
-
-<h3>First part</h3>
-
-<p class="nofirst"><code>\begingregorioscore</code> creates the <span class="tex">T<span class="epsilon">e</span>X</span> environment for Gregorio scores and initializes variables.</p>
-
-<p class="nofirst"><code>\greinitial{}</code> takes as its argument the letter (or letters) of the initial.  </p>
-
-<p class="nofirst"><code>\grebeginscore</code> (which absolutely must be placed after <code>\greinitial{}</code>) produces the first line of the score and gives <span class="tex">T<span class="epsilon">e</span>X</span> the instruction to begin each line of the score with staff lines.</p>
-
-<p class="nofirst"><code>\grebiginitial</code> is a macro to be used with the large capital is two lines in height.</p>
-
-<p class="nofirst"><code>\gresetinitialclef{}{}</code> takes as its first argument the type of clef (c for the do-clef, f for the fa-clef), and as its second argument the line on which it is to be placed.  This produces the clef of the first line and gives an instruction to <span class="tex">T<span class="epsilon">e</span>X</span> to begin each new line with this clef.</p>
-
-<h3>Second part</h3>
-
-<h4>First level</h4>
-
-<p>The second part has several levels.  The principal macro of the second part is the macro <code>\gresyllable</code>, which is the most complex. This macro takes 9 arguments, which we shall present in detail.  The macro describes a syllable very comprehensively: the text, the position within the word, etc.</p>
-
-<p>You have very likely noticed that in the scores produced by Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, the alignment of the note is not made above the first letter of a syllable, but above the first vowel.  Thus it is necessary to distinguish three zones within a syllable:</p>
-
-<ul>
-<li>the letters which precede the alignment letters</li>
-<li>the letter (or letters) on which alignment is made with the notes (in most cases the first vowel, cf. the <a href="../graphy.html">page on alignment</a>)</li>
-<li>the letters which follow the alignment letters</li>
-</ul>
-
-<p>The first three arguments of the macro <code>\gresyllable</code> correspond to these three zones, in order.</p>
-
-<p>The fourth argument is a boolean: it is one (1) if the syllable is the last one in the word, otherwise zero (0).</p>
-
-<p>Arguments 5 and 6 are redundant but necessary arguments: the fifth consists of the letters preceding the alignment letters of the following syllable, and the sixth consists of the alignment letters of the following syllable. </p>
-
-<p>Argument 7 is the alignment type of the following syllable (depending solely on the notes). This argument has many possible values, and there is no real reason to modify it. Its complete description can be found in the <span class="tex">T<span class="epsilon">e</span>X</span> code of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
-
-<p>Argument 8 is the most often unused argument; it relates to macros to be called before the note macros, for example, the translation of the syllable.</p>
-
-<p>Argument 9 is the largest, corresponding to the various notes in the score.  As you will be able to see, the argument is quite often specified on several lines; it corresponds to the second level of the description of a score in Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
-
-<p>Another important macro of the first level is the macro <code>\grebarsyllable</code> which has the same arguments as <code>syllable</code>, but is used to describe the syllables containing only a bar and no notes.</p>
-
-<p>The last important macro of this level is the macro <code>\grenewline</code>, which forces <span class="tex">T<span class="epsilon">e</span>X</span> to go to a new line and improves the spacing at the beginning of the following line. Another version, <code>\grenewlinewithspace{}{}{}</code>, goes to a new line, but adds spacing above and below.   The first argument corresponds to the height of the highest note that exceeds the upper range of the staff (1 for a k, 2 for an l, 3 for an m).  The second argument is the equivalent for the lower notes. The third argument is 1 if there is a translation, otherwise 0.</p>
-
-<p class="nofirst">These two last macros have some equivalents to go to the next line without justifying the line: <code>\grenewparline</code> and <code>\grenewparlinewithspace{}{}{}</code>.</p>
-
-<h4>Second level</h4>
-
-<p>The second level seldom needs to be modified, inasmuch as it is quite a bit easier, in modifying a note or a group of notes, to modify the gabc file and to recompile it.  In the meantime it may perhaps be useful to at least understand it.</p>
- 
-<p>The principal macro of the second level is the macro <code>\greglyph</code>. This macro describes a gregorian glyph (a simple note or any grouping of notes) and takes 6 arguments.</p>
-
-<p>The first argument is the number of the glyph.  In fact Gregorio possesses a simple numbering system for the gregorian glyphs, going from 1 to 65536, which allows any glyph to be represented in two eight-bit bytes. Glyphs with different ambitus do not have the same numbers, but the number does not describe its position on the staff. This numbering system is too complex to be described here, and besides you normally will never have to modify one of these numbers (again, recourse to the gabc file is a good solution). Meanwhile, the principle of the numbering systems is described in the Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> source files.</p>
-
-<p>The second argument is the position on the staff. This is the same thing as the position in gabc.   The third argument is the position on the staff of the following note.  The third argument is the position on the staff of the following note. This serves to position the custos correctly at the end of the staff. The fourth argument is the type of note alignment. The fourth argument is the alignment type of the note. This is a slightly complex argument which is described in the source code for Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
-
-<p>The fifth argument are macros that must be expanded before the glyph sign, typically additional staff lines that must be "beneath" the glyph when they are in a different color. The sixth argument is just executed at the end of the macro.</p>
-
-<p>The other macros of the second level are very obvious; they are principally macros describing the bars and various signs.</p>
-
-<p>The macro <code>\greadjustthirdline</code> is included just after the first line break; it serves in case of a initial two lines tall, to reduce the left margin of the third and following lines. </p>
-
-<h3>Third part</h3>
-
-<p>The macro <code>\gredivisiofinalis{}</code> lets us describe the final division of a score.  It takes an argument because there are indeed two possibilities for this bar:</p>
-
-<ul>
-<li>It may be within the last line, in which case the argument is zero (0).</li>
-<li>It may also be at the end of the last line, and in that case if the argument is set to 1, the last bar will indeed be aligned with the right end of the line, which will make the final result prettier.</li>
-</ul>
- 
-<p>This argument is 0 by default; it is necessary to pass a 1 manually if you want it to be set.</p>
-
-<p class="nofirst"><code>\endgregorioscore</code> ends a score, changing the paragraph and cancelling the instructions at the beginning and end of the line (for lines, clefs, and custodes.)</p>
+<p>Nevertheless, there are some occasions where understanding the structure of a gtex file is useful and may even allow you to create non-standard effects.  If you want to learn how to do this, look at the Gregorio Controls section of GregorioRef-###.pdf (where ### is the version number), which you should be able to find in the directory where you installed Gregorio.  All the commands which can appear in a gtex file are explained here, along with a full listing of their arguments.</p>
 
 <!-- footer -->
     </div>

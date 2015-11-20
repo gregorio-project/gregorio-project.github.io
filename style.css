@@ -263,6 +263,9 @@ code {
 	list-style-image: url('illus/puce.png');
 	}
 
+.gregoriocolor {
+    color: #E5352C;
+}
 /* table of contents */
 .toc {
 	margin-left: 50px;
