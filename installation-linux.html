@@ -55,11 +55,53 @@
 
 <p>This page describes the installation and compilation of Gregorio software under a GNU/Linux system.  Whether you install a precompiled version or whether you compile from source, it's a quick and easy operation.</p>
 
-<h2>Getting the sources</h2>
+<h2>Most Recent Release</h2>
+
+<h3>Install dependencies</h3>
+
+<p>As Gregorio uses Lua<span class="tex">T<span class="epsilon">e</span>X</span> to produce the final printed socres, you need to obtain a <span class="tex">T<span class="epsilon">e</span>X</span> distribution which contains this engine.  We recommend <span class="tex">T<span class="epsilon">e</span>X</span>Live.  You can get this either via your package manager (in which case make sure you get the Lua<span class="tex">T<span class="epsilon">e</span>X</span> engine and tools, as package managers often split <span class="tex">T<span class="epsilon">e</span>X</span>Live up into multiple packages to reduce the download size) or from the <a href="https://www.tug.org/texlive/"><span class="tex">T<span class="epsilon">e</span>X</span>Live homepage.</a></p>
+
+<h3>Obtaining Source</h3>
 
 <p>To obtain the sources of the stable version, you just need to download them from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and decompress the archive.</p>
 
-<p><b>Nota bene:</b> There are two different source code files on the download page: gregorio-x.x.x.tar.bz2 (where x.x.x is the version number) and "Source Code" (in both zip and tar.gz format).  "gregorio-x.x.x.tar.bz2" is a special distribution version of the source which has several files, which do not depend on your particular system's architecture, pre-built for you.  As a result, it requires fewer tools to build, and should be the default choice for most people.  The file named "Source Code" is an image of the repository at the time of the release which is added automatically by GitHub.  As a result, the process for building from this file is identical to the process for building from a clone of the repository itself.</p>
+<p><b>Nota bene:</b> There are two different source code files on the download page: gregorio-x.x.x.tar.bz2 (where x.x.x is the version number) and &#8220;Source Code&#8221; (in both zip and tar.gz format).  &#8220;gregorio-x.x.x.tar.bz2&#8221; is a special distribution version of the source which has several files, which do not depend on your particular system's architecture, pre-built for you.  As a result, it requires fewer tools to build, and should be the default choice for most people.  The file named &#8220;Source Code&#8221; is an image of the repository at the time of the release which is added automatically by GitHub.  As a result, the process for building from this file is identical to the process for building from a clone of the repository itself (see below).</p>
+
+<h3>Building & Installing</h3>
+
+<p>While you could follow the usual route of using <code>make</code> commands to build and install the package, we&#8217;ve provided a couple of convenience scripts that make life easier.  To use them, open a terminal window and enter the directory of the sources.  Then run:</p>
+
+<div class="commandline">
+    <code>./build.sh</code><br/>
+    <code>sudo ./install.sh</code>
+</div>
+
+<h2>Most Recent Development Version</h2>
+
+<h3>Install Dependencies</h3>
+
+<p>In addition to <span class="tex">T<span class="epsilon">e</span>X</span>Live, to build from the repository you will also need to get several build tools with your package manager.  On Ubuntu/Debian/Mint execute the following in a terminal window:</p>
+
+<div class="commandline">
+    <code>sudo apt-get install git autoconf libltdl7-dev flex bison fontforge</code>
+</div>
+
+<p><b>Nota bene:</b> You may, should you so choose, use a different pacakge manager, such as <code>aptitude</code>.  If you are using a different Linux distribution, then the names of the packages you need may be slightly different.</p>
+
+<p>If you intend to contribute to development, then you'll also need the following:</p>
+
+<div class="commandline">
+    <code>imagemagick</code>
+</div>
+
+<p>For building gregorio versions prior to 4.0 this additional dependency is needed:</p>
+
+<div class="commandline">
+    <code>libxml2-dev</code>
+</div>
+
+
+<h3>Obtaining Soruces</h3>
 
 <p>To get the development version, create
 a local copy of the repository of the project, with the command:</p>
@@ -69,32 +111,20 @@ a local copy of the repository of the project, with the command:</p>
 <code>cd gregorio-git</code>
 </div>
 
-<h2>Install dependencies</h2>
+<p><b>Nota Bene:</b> This clone command uses several options to limit your download size to just the most recent development branch.  If you're familiar with git, feel free to clone the whole repository.  Just remember to switch to the develop branch (or whichever branch you want to install) before going on to the next step.</p>
 
-<p class="nofirst">Under Ubuntu/Debian/Mint:</p>
+<h3>Building & Installing</h3>
 
-<div class="commandline">
-<code>sudo aptitude install autotools-dev flex bison libltdl7-dev texlive-luatex autopoint python-fontforge</code>
-</div>
+<p>To build from the git repository, you will need to configure the build first.  This can be done manually, as you would for any other package built from source on Linux, but our build script is capable of detecting the need to do this and executing the necessary commands sos you can simply follow the same build and install instructions as above.</p>
 
-For gregorio versions prior to 4.0, if you are using <span style="font-family: monospace;">--enable-xml-read</span> then this additional dependency is needed:
+<p>Should you need to force your system to go through the configuration process again for some reason, there is an option for our build script which allows that:</p>
 
 <div class="commandline">
-  <code>libxml2-dev</code>
+    <code>./build.sh --force=autoreconf</code><br/>
 </div>
 
-If you're using another distribution, some packages may have a slightly different name.
 
-<h2>Building</h2>
-
-<p class="nofirst">In the directory of the sources, run:</p>
-
-<div class="commandline">
-<code>$ ./build.sh</code><br/>
-<code>$ sudo ./install.sh</code>
-</div>
-
-<h2>Updating</h2>
+<h3>Updating</h3>
 
 <p>To update your git version, you just need to go into the directory containing the source files (assuming you kept them), run <code>git pull</code> and recompile with the same commands.</p>
 
