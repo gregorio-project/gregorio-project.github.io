@@ -93,7 +93,7 @@
 <br /><em>Torculus</em> and <em>torculus initio debilis</em>&nbsp;: <code>fgf -fgf</code>
 </div>
 
-<p>For liquescentiae, three types exist, which are indicated by characters at the end of the neumes:</p>
+<p>For liquescentiae, three types exist, which are indicated by a character at the end of the neume:</p>
 <ul>
   <li>diminutive liquescentiae, indicated by <code>~</code></li>
   <li>increasing liquescentiae
@@ -108,7 +108,7 @@
 
 <h3 id="signs">Rhythmic signs</h3>
  
-<p>The <em>punctum mora</em> (dots after the note) are denoted by adding a period (<strong><code>&nbsp;.&nbsp;</code></strong>) after the note. When there are two dots after a neume, the character is simply doubled: (<strong><code>&nbsp;..&nbsp;</code></strong>) .</p>
+<p>The <em>punctum mora</em> (dots after the note) are denoted by adding a period (<strong><code>&nbsp;.&nbsp;</code></strong>) after the note. When there are two dots after a neume, the character is simply doubled: (<strong><code>&nbsp;..&nbsp;</code></strong>).</p>
 
 <p>The vertical <em>episema</em> does not pose a problem; it is denoted by an apostrophe(<strong><code>&nbsp;'&nbsp;</code></strong>) after the note. </p>
 
@@ -116,9 +116,9 @@
 
 <p>For the horizontal episema, type an underscore (<strong><code>&nbsp;_&nbsp;</code></strong>) after every note that is under an episema.</p>
 
-<p>Rhythmic signs are notated after liquescentiae and other signs that determine the shape of the note. For example, a virga followed by a punctum mora is denoted <code>hv.</code> and not <code>h.v</code>, and a <em>torculus deminutus</em> followed by a <em>punctum mora</em> is denoted <strong><code>&nbsp;ghg~.&nbsp;</code></strong> .</p>
+<p>Rhythmic signs are notated after liquescentiae and other signs that determine the shape of the note. For example, a virga followed by a punctum mora is denoted <code>hv.</code> and not <code>h.v</code>, and a <em>torculus deminutus</em> followed by a <em>punctum mora</em> is denoted <strong><code>&nbsp;ghg~.&nbsp;</code></strong>.</p>
 
-<p>In some scores, there are sometimes two levels of horizontal episema: a short episema beneath a longer one. To put an horizontal episemus under a note, type <strong><code>&nbsp;_0&nbsp;</code></strong>. This can be combined with a normal horizontal episemus.</p>
+<p>In some scores, there are sometimes two levels of horizontal episema: a short episema beneath a longer one. To put an horizontal episema under a note, type <strong><code>&nbsp;_0&nbsp;</code></strong>. This can be combined with a normal horizontal episemus.</p>
 
 <div class="legende">
 <img src="../illus/allsigns.png" title="" alt="" />
@@ -245,7 +245,7 @@ Polyphonic pieces are different only at the level of the neume; indeed, the text
 
 <p>To add a translation (or a second line of text), simply put it between square brackets in the syllable text. The text will be left-aligned with the text of the syllable, and won't go to the next line automatically. Thus it may require a bit of work to get the desired effect.</p>
 
-<p>It is also possible to add text above notes in two ways: the first is to set the text at the syllable text level between <code>&lt;alt&gt;</code> markups (alt like <em>above lines text</em>). This text will be left-aligned with the first note of the syllable. It is also possible to typeset text entering <code>[alt:my text]</code> in the notes, which will align "my text" with the note following.</p>
+<p>It is also possible to add text above notes in two ways: the first is to set the text at the syllable text level between <code>&lt;alt&gt;</code> markup tags (<code>alt</code> is short for <em>above lines text</em>). This text will be left-aligned with the first note of the syllable. It is also possible to typeset text entering <code>[alt:my text]</code> in the notes, which will align "my text" with the next note.</p>
 
 <div class="legende">
 <img src="../illus/translationalt.png" alt="">
@@ -261,16 +261,16 @@ Polyphonic pieces are different only at the level of the neume; indeed, the text
 
 <h3 id="comments">Comments</h3>
 
-<p>After the character <code>%</code>, all the characters of the line will be ignored.</p>
+<p>All the characters on a line after a <code>%</code> will be ignored.</p>
 
 <h3 id="verbatim">Insert code (for advanced users)</h3>
 
-<p>It is possible to insert verbatim code in gabc, this code will appear as it is in the <span class="tex">T<span class="epsilon">e</span>X</span> file. You can do this at several levels. First you can insert text between the <code>&lt;v&gt;</code> markups in the syllable text.</p>
+<p>It is possible to insert verbatim code in gabc, this code will appear as it is in the <span class="tex">T<span class="epsilon">e</span>X</span> file. You can do this at several levels. First, you can insert text between the <code>&lt;v&gt;</code> markups in the syllable text.</p>
 
 <p>Verbatim code can also be inserted at three levels in the notes:</p>
 
 <ul>
-<li>at note level, not modifying the glyph determination, with <code>[nv:\mycode]</code> after the note, remplacing <code>\mycode</code> with the code you want to insert</li>
+<li>at note level, not modifying the glyph determination, with <code>[nv:\mycode]</code> after the note, replacing <code>\mycode</code> with the code you want to insert</li>
 <li>at glyph level, forcing the glyph to stop but staying in the same element, with <code>[gv:\mycode]</code></li>
 <li>at element level, forcing the element to stop and not automatically adding a neumatic space (which you may have to add by hand), with <code>[ev:\mycode]</code></li>
 </ul>

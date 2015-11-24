@@ -214,8 +214,7 @@ Usualis</code>.</dt>
 <dd><a name="mode">mode</a></dd>
 <dt>The mode of the piece.  This should
 normally be an arabic number between 1 and 8, but may be any text required for unusual
-cases.  Note that this is not used for the text above the initial, for
-which see the <a href="#annotation">annotation field</a>.</dt>
+cases.  Note that this will only appear above the initial if the <a href="#annotation">annotation field</a> is not provided.</dt>
 
 <dd><a name="initial-style">initial-style</a></dd>
 <dt>The style of the initial letter.  0 means no initial letter, 1 a
@@ -339,7 +338,7 @@ section, which is the heart of the notation.</p>
 <p>When there is no character under a separation bar, we proceed the same way, but with a space instead of text:</p>
 
 <div class="commandline">
-<code>su(iji)\ae,(i) (;) in(e)</code>
+<code>su(iji)<sp>ae</sp>,(i) (;) in(e)</code>
 </div>
 
 <h3 id="textcentering">Text centering</h3>
@@ -352,23 +351,23 @@ section, which is the heart of the notation.</p>
 
 <h3 id="initial">Initial determination</h3>
 
-<p>The initial is automatically recognized by gregorio as the first letter.  You can use the gabc attribute <code>initial-style</code> in the header to set its size.  The values corespond to number of lines the intial takes up: <code>0</code> (there is not initial), <code>1</code> (the default), or <code>2</code> (the initial takes up two lines).</p>
+<p>The initial is automatically recognized by gregorio as the first letter.  You can use the gabc attribute <code>initial-style</code> in the header to set its size.  The values corespond to number of lines the intial takes up: <code>0</code> (there is no initial), <code>1</code> (the default), or <code>2</code> (the initial takes up two lines).</p>
 
 <p>Note that in the case of a syllable composed of one letter only, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> automatically adds a hyphen under the first notes.  To disable this feature, use the command <code>\gresetemptyfirstsyllablehyphen{auto}</code>.</p>
 
 <h3 id="specialcharacters">Special characters</h3>
 
-<p>It can happen that the texts of Gregorian chants contain unicode characters which are not easily accesible from the keyboard.   Examples of this sort of characters used in Gregorian notation are <code>ý</code>, <code>ǽ</code>, <code>œ́</code>, the crossed R (℟ for <em>Response</em>), and the crossed V (℣ for <em>Versicle</em>).  There is also the possibility of a non-unicode character such as the crossed A (for <em>Antiphon</em>).</p>
+<p>It can happen that the texts of Gregorian chants contain unicode characters which are not easily accesible from the keyboard.   Examples of this sort of character are <code>ý</code>, <code>ǽ</code>, <code>œ́</code>, the barred R (℟ for <em>Response</em>), and the barred V (℣ for <em>Versicle</em>).  There is also the possibility of a non-unicode character such as the barred A (for <em>Antiphon</em>).</p>
 
-<p>Gregorio will allow the use of any unicode character directly entered via your platform's character picker or a keyboard shortcut.  In the case where it is not possible to insert special characters in one of these fashions, you can be use <code>&lt;sp&gt;</code> markup tags, for example <code>&lt;sp&gt;R/&lt;/sp&gt;</code> for the crossed R, <code>&lt;sp&gt;'ae&lt;/sp&gt;</code> for <em>ǽ</em>.  This also works for the crossed A, even though it is not in the unicode table: <code>&lt;sp&gt;A/&lt;/sp&gt;</code></p>  Finally, you can make use of the <code>&lt;v&gt;</code> markup tags to enter a character using it's <span class="tex">T<span class="epsilon">e</span>X</span> code: <code>&lt;v&gt;{\ae}&lt;/v&gt;</code> for <em>æ</em>.
+<p>Gregorio will allow the use of any unicode character directly entered via your platform's character picker or a keyboard shortcut.  In the case where it is not possible to insert special characters in either of these ways, you can be use <code>&lt;sp&gt;</code> markup tags, for example <code>&lt;sp&gt;R/&lt;/sp&gt;</code> for the barred R, <code>&lt;sp&gt;'ae&lt;/sp&gt;</code> for <em>ǽ</em>.  This also works for the barred A, even though it is not in the unicode table: <code>&lt;sp&gt;A/&lt;/sp&gt;</code></p>  Finally, you can make use of the <code>&lt;v&gt;</code> markup tags to enter a character using it's <span class="tex">T<span class="epsilon">e</span>X</span> code: <code>&lt;v&gt;{\ae}&lt;/v&gt;</code> for <em>æ</em>.
 
 <h3 id="textstyle">Text style</h3>
 
-<p>Even though text is rarely styled in a chant score, we have made some markups to apply styles to the text: they are <code>&lt;i&gt;</code> for italic, <code>&lt;b&gt;</code> for bold, <code>&lt;u&gt;</code> for underline (does not work in Plain <span class="tex">T<span class="epsilon">e</span>X</span>), <code>&lt;c&gt;</code> for colored (specifically in <code>gregoriocolor</code>), and <code>&lt;sc&gt;</code> for small capitals.</p>
+<p>Even though text is rarely styled in a chant score, gabc allows for some markup to apply styles to the text: they are <code>&lt;i&gt;</code> for italic, <code>&lt;b&gt;</code> for bold, <code>&lt;u&gt;</code> for underline (does not work in Plain <span class="tex">T<span class="epsilon">e</span>X</span>), <code>&lt;c&gt;</code> for colored (specifically in <code>gregoriocolor</code>), and <code>&lt;sc&gt;</code> for small capitals.</p>
 
 <p>For example: <code>&lt;i&gt;Ps.&lt;/i&gt;(::)</code></p>
 
-<p>You have now read the basics of the gabc notation, you can go on the <a href="details">details page</a> if you want to know more!</p>
+<p>You have now read the basics of the gabc notation, you can go on the <a href="details.html">details page</a> if you want to know more!</p>
 
 <!-- footer -->
     </div>

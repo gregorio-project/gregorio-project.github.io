@@ -61,7 +61,7 @@
 
 <h2>Best practices for creating an engraved score</h2>
 
-<p>In order to produce a perfect result and avoid errors in placement, you may need to specify some changes in line breaks by hand. The following is the most effective and simple method:</p>
+<p>In order to produce a better result and avoid errors in placement, you may need to specify some changes in line breaks by hand. The following is the most effective and simple method:</p>
 
 <ul>
 <li>produce a gabc file describing your score, without specifying any formatting</li>
@@ -177,7 +177,7 @@
 
 <p>To add indications above the initial letter, you can use the macro <code>\greannotation{}</code>.  The argument is the text you wish to set there.  To get multiple lines, simply call the command multiple times.  Each call will add a new line to the bottom containing the new text.</p>
 
-<p>By default new lines are alinged center with the existing content.  If you want to adjust the horizontal alignment by hand, add the optional argument <code>[r]</code> or <code>[l]</code> for right and left alignment respectively: e.g. <code>\greannotation[r]{right aligned second line}</code></p>
+<p>By default new lines are aligned center with the existing content.  If you want a different horizontal alignment, add the optional argument <code>[r]</code> or <code>[l]</code> for right and left alignment respectively: e.g. <code>\greannotation[r]{right aligned second line}</code></p>
 
 <p>To adjust the vertical placement of the annotations, you need to change <code>annotationraise</code> using <code>\grechangedim</code>: <code>\grechangedim{annotationraise}{1 mm}{scalable}</code>.  Positive values will raise the annotations, negative values will lower them.</p>
 
@@ -189,7 +189,7 @@
 
 <h3>Modifying the spacing</h3>
 
-<p>Gregorio defines a bunch of distances which control the spacing between the various elements of a score.  These distances are defined in the file <code>gsp-default.tex</code>.  If you want to create your own custom set of spacings, copy this file and rename it in <code>gsp-myspaces.tex</code>, change the values of the spaces and call <code>\greloadspaceconf{myspaces}</code>.  <code>myspaces</code> is arbitrary, so you can replce it (in both the file name and the command argument) by whatever you want, thus allowing you to have several different spacing configurations that you can load as needed.</p>
+<p>Gregorio defines a bunch of distances which control the spacing between the various elements of a score.  These distances are defined in the file <code>gsp-default.tex</code>.  If you want to create your own custom set of spacings, copy this file and rename it in <code>gsp-myspaces.tex</code>, change the values of the spaces and call <code>\greloadspaceconf{myspaces}</code>.  <code>myspaces</code> is arbitrary, so you can replace it (in both the file name and the command argument) by whatever you want, thus allowing you to have several different spacing configurations that you can load as needed.</p>
 
 <p>If you just need to change a few distances, then you can use the command <code>\grechangedim</code>.  The available distances that can be changed are:
 
@@ -524,11 +524,11 @@
 <p>A lot of useful things can be done with Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>. For example:</p>
 
 <ul>
-<li><code>\gresetlines{invisible}</code> removes completely the staff lines.</li>
-<li><code>\gresetclef{invisible}</code> removes the keys.</li>
-<li><code>\gresetstaffthicknes{<i>&lt;integer&gt;</i>}</code> changes the thickness of the staff lines. The default value is the same as the staff size. You can only put integers here.</li>
+<li><code>\gresetlines{invisible}</code> completely removes the staff lines.</li>
+<li><code>\gresetclef{invisible}</code> removes the clefs.</li>
+<li><code>\grechangestaffthicknes{<i>&lt;integer&gt;</i>}</code> changes the thickness of the staff lines. The default value is the same as the staff size. You can only put integers here.</li>
 <li><code>\gresetgregoriofont[op]{parmesan}</code> uses the Dominican varian of the Parmesan font for the neumes.</li>
-<li><code>\gresetbolshifts{disable}</code> slightly changes the beginning of line algorithm. <code>\greseteolshifts{enable}</code> restores the default spacing at the beginning of lines.</li>
+<li><code>\gresetbolshifts{disable}</code> slightly changes the beginning of line algorithm. <code>\gresetbolshifts{enable}</code> restores the default spacing at the beginning of lines.</li>
 <li><code>\gresetglyphstyle{mensural}</code>, <code>\gresetglyphstyle{hufnagel}</code> and <code>\gresetglyphstyle{medicaea}</code> change the style of some signs.</li>
 <li><code>\gresetlinesbehindpunctumcavum{visible}</code> unhides the staff lines behind the punctum cavum (allowing one to see them in the middle).</li>
 <li><code>\gresetlinesbehindalteration{invisible}</code> unhides the staff lines behind the alterations (allowing one to see them in the middle).</li>

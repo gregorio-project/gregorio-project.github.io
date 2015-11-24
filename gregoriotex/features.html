@@ -61,9 +61,11 @@ Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> contains sever
 
 <h2 id="symbols">Red lines</h2>
 
-<p>For liturgical books, it is often useful to get red staff lines. Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> offers this possibility.  To get red lines, simply call the macro <code>\gresetlinescolor{gregoriocolor}</code>, without argument. This will make the lines of all following scores red. To cancel it, call <code>\gresetlinescolor{black}</code>.</p>
+<p>For liturgical books, it is often useful to get red staff lines. Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> offers this possibility.  To get red lines, simply call the macro <code>\gresetlinescolor{gregoriocolor}</code>. This will make the lines of all following scores red. To cancel it, call <code>\gresetlinescolor{black}</code>.</p>
 
 <p>The red it will produce is quite close to the red of the scores I have been able to find, but it's not perfect.  If you want to adapt it with your own color, you can either define a new color or redefine <code>gregoriocolor</code> with <code>\definecolor</code>. See the documentation of the xcolor package for details on how to use this command.  If you find a better red than the one of Gregorio, please suggest it!</p>
+
+<p><b>Nota Bene:</b> Since Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> uses the xcolor package to create colors, colors are only available in <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> documents.</p>
 
 <h2 id="symbols">Symbols included in Gregorio<span class="tex">T<span class="epsilon">e</span>X</span></h2>
 
@@ -87,7 +89,7 @@ In order to better match your font, Gregorio<span class="tex">T<span class="epsi
     <code>\gresimpledefbarglyph{A}{0.3em}</code>
 </div>
 
-<p>This will redefine the command <code>\Abar</code>.  You can change the distance to suit your taste.</p>
+<p>This will redefine the command <code>\Abar</code>.  You can change the distance to suit your font.</p>
 
 <p>For more complicated redefinitions, such as the &#8220;V&#8221; which uses an alternate bar, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> provides the commands <code>\gredefsizedsymbol</code> and <code>\gredefbarredsymbol</code>.  For example, the above picture can be obtained with the following definition for <code>\VBarSmall</code>:</p>
 
