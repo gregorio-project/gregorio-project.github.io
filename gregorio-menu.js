@@ -8,7 +8,7 @@ menuline('    <ul class="menuitem">');
 menuline('      <li><a href="/index.html">Gregorio</a>');
 menuline('        <ul class="level2" id="menu-gregorio">');
 menuline('          <li><a href="/gregorio-history.html">History</a> </li>');
-menuline('          <li><a href="/introduction-editor.html">Using Gregorio</a>');
+menuline('          <li><a href="/introduction.html">Using Gregorio</a>');
 menuline('		<ul class="level2">');
 menuline('		<li><a href="/introduction-editor.html">In an editor</a></li>');
 menuline('		<li><a href="/introduction-commandline.html">At the command line</a></li>');
