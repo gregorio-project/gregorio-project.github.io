@@ -100,32 +100,32 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 <p>All these details of the output are controlled by the <span class="tex">T<span class="epsilon">e</span>X</span> file which represents the document, so let's look at that.</p>
 
-<div class="filename">kyrie-17-final-main.tex</div>
+<div class="filename">kyrie-17-13b-main.tex</div>
 
 <div class="commandblock">
 	<pre>
 \documentclass[12pt, a5paper]{article}
 \usepackage{fullpage}
 \usepackage{newcent}
-\usepackage{fontspec}
-\usepackage{gregoriotex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[autocompile]{gregoriotex}
 \pagestyle{empty}
 \begin{document}
+
 
 \begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
 
 \grechangedim{afterinitialshift}{3.2mm}{scalable}
-\grechamgedim{beforeinitialshift}{3.2mm}{scalable}
+\grechangedim{beforeinitialshift}{3.2mm}{scalable}
 
 \grechangestyle{initial}{\fontsize{43}{43}\selectfont}
 
 \greannotation{\small \textsc{\textbf{}}}
 \grecommentary{{\small \emph{}}}
-\gresetstaffsize{17}
-\includescore[a]{kyrie-17-final}
+\gregorioscore{kyrie-17-13b}
 
-\end{document}
-</pre>
+\end{document}</pre>
 </div>
 
 
@@ -148,7 +148,7 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 <p>Make those changes, run that file through <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
 
 <div class="legende">
-<img src="kyrie-17-final.png"/>
+<img src="kyrie-17-14.png"/>
 </div>
 
 <h3>Changing the typeface</h3>
@@ -172,27 +172,25 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 <p>Here's how the score looks after that change:</p>
 
 <div class="legende">
-<img src="kyrie-17-final2.png"/>
+<img src="kyrie-17-15.png"/>
 </div>
 
 <p>The best-looking free font for gregorio is a matter of taste, but <code>kpfonts</code> is also a good choice (<code>\usepackage{kpfonts}</code>).</p>
 
 <h3>Changing vertical spacing</h3>
 
-<p>To add more space between the staves, I adjusted a spacing variable:</p>
+<p>To add more space between the staves, I adjusted a spacing variable by adding the following line:</p>
 
 <div class="commandline">
 	<pre>
-\gresetstaffsize{17}
 <font color="red">\grechangedim{spaceabovelines}{1.45576 cm plus 0.36461 cm minus 0.09114 cm}%</font>
-\includescore{kyrie-17-final.tex}
 </pre>
 </div>
 
 <p>Here's how the score looks after that change:</p>
 
 <div class="legende">
-<img src="kyrie-17-final3.png"/>
+<img src="kyrie-17-final.png"/>
 </div>
 
 <p>That completes this tutorial. For reference, you may want to print a copy of this PDF <a href="../gabc/summary-gabc.pdf">summary of gabc</a>, which shows the notation for some gabc features we haven't demonstrated here. For more, see <a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">this reference</a>.</p>
