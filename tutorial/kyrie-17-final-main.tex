@@ -3,25 +3,21 @@
 \usepackage{palatino}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{gregoriotex}
+\usepackage[autocompile]{gregoriotex}
 \pagestyle{empty}
 \begin{document}
 
 
 \begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
 
-\setspaceafterinitial{3.2mm plus 0em minus 0em}
-\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+\grechangedim{afterinitialshift}{3.2mm}{scalable}
+\grechangedim{beforeinitialshift}{3.2mm}{scalable}
 
-\def\greinitialformat#1{%
-{\fontsize{43}{43}\selectfont #1}%
-}
+\grechangestyle{initial}{\fontsize{43}{43}\selectfont}
+\grechangedim{spaceabovelines}{1.45576 cm plus 0.36461 cm minus 0.09114 cm}%
 
-\setfirstlineaboveinitial{\small \textsc{\textbf{VI.}}}{\small \textsc{\textbf{VI.}}}
-\commentary{{\small \emph{XIV. s.}}}
-
-\setgrefactor{17}
-\spaceabovelines=10mm
-\includescore{kyrie-17-final.tex}
+\greannotation{\small \textsc{\textbf{VI.}}}
+\grecommentary{{\small \emph{XIV. s.}}}
+\gregorioscore{kyrie-17-final}
 
 \end{document}
