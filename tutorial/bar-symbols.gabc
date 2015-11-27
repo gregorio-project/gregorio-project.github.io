@@ -1,4 +1,5 @@
 name:separator bars;
+initial-style: 0;
 %%
 (c4) ,(,) `(`) ;(;) :(:) ::(::)
 
