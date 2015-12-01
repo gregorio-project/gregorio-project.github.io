@@ -1,0 +1,25 @@
+% !TEX program = LuaLaTeX+se
+\documentclass{book}
+
+\usepackage{gregoriotex}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={NoRequired,NoCommon,NoContextual}}
+\setmainfont[Extension=.otf,
+		ItalicFont=Inconsolatazi4-Regular,
+		BoldFont=Inconsolatazi4-Bold,
+		BoldItalicFont=Inconsolatazi4-Bold,
+		AutoFakeSlant,
+		ItalicFeatures={FakeSlant},
+		BoldItalicFeatures={FakeSlant}
+		]{Inconsolatazi4-Regular}
+
+\pagestyle{empty}
+\begin{document}
+\gresetbolshifts{disable}
+\greseteolshifts{disable}
+\gresetclef{invisible}
+\gresetlyriccentering{syllable}
+\hsize=3.8in
+\gabcsnippet[0]{( ) a(a) b(b) c(c) d(d) e(e) f(f) g(g) h(h) i(i) j(j) k(k) l(l) m(m) ()}
+
+\end{document}

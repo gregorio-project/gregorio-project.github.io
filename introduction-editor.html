@@ -114,8 +114,8 @@
 <ul>
   <li>Your editor launches the command <br/><code>lualatex --shell-escape test.tex</code></li>
   <li>Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> compiles the document.  When it sees <code>\gregorioscore{example}</code>, it launches the command <br/><code>gregorio example.gabc</code></li>
-  <li>Gregorio compiles your gabc score into <code>example-foo.gtex</code> (where <code>foo</code> is the version number of Gregorio).  You can check your folder for this file.</li>
-  <li>Once <code>example.gabc</code> is compiled to produce <code>example-foo.gtex</code>, Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> reads in the contents of <code>example-foo.gtex</code> and continues the compilation of your document.
+  <li>Gregorio compiles your gabc score into <code>example-###.gtex</code> (where <code>###</code> is the version number of Gregorio).  You can check your folder for this file.</li>
+  <li>Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> reads in the contents of <code>example-###.gtex</code> and continues the compilation of your document.
 </ul>
 
 <p>There is a mechanism to avoid repeated compilation if the gabc file and the Gregorio version have not changed.</p>
