@@ -25,11 +25,11 @@
   <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
   <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
   <meta name="author" content="The Gregorio project">
-  <link rel="shortcut icon" href="/illus/fav.ico">
-  <link rel="icon" href="/illus/fav.ico">
-  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="/gregorio-menu.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -38,7 +38,7 @@
 
 <body>
   <div id="ban">
-    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
     <a id="haut" name="haut"></a>
     <div id="banniere">
     </div>
@@ -83,7 +83,9 @@
 
 <h3 id="summary">Summary</h3>
 
-<p>A small summary has been created, you can download it <a href="summary-gabc.pdf">here</a>. You must have basics of gabc to understand it, but it can help you remember some notations. It is made to be printed on A5 paper.</p>
+<p>A small summary has been created, you can download it <a href="./summary-gabc.pdf">here</a>. You must have basics of gabc to understand it, but it can help you remember some notations. It is made to be printed on A5 paper.</p>
+
+<p>There is also a <a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">"cheat sheet" available at gregoriochant.org</a>.</p>
 
 <h3 id="header">Header</h3>
 
@@ -98,19 +100,17 @@
 <a href="#meter">meter</a>: for metrical hymns;
 <a href="#commentary">commentary</a>: source of words;
 <a href="#arranger">arranger</a>: name of arranger;
-<a href="#gabc-version">gabc-version</a>: 0.9.3;
 <a href="#author">author</a>: if known;
 <a href="#date">date</a>: xi c;
 <a href="#manuscript">manuscript</a>: ms name;
 <a href="#manuscript-reference">manuscript-reference</a>: e.g. CAO reference;
 <a href="#manuscript-storage-place">manuscript-storage-place</a>: library/monastery;
 <a href="#book">book</a>: from which score taken;
+<a href="#language">language</a>: of the lyrics;
 <a href="#transcriber">transcriber</a>: writer of gabc;
 <a href="#transcription-date">transcription-date</a>: 2009;
-<a href="#gregoriotex-font">gregoriotex-font</a>: greciliae;
 <a href="#mode">mode</a>: 6;
 <a href="#initial-style">initial-style</a>: 1;
-<a href="#centering-scheme">centering-scheme</a>: english;
 <a href="#user-notes">user-notes</a>: whatever other comments you wish to make;
 <a href="#annotation">annotation</a>: IN.;
 <a href="#annotation">annotation</a>: 6;
@@ -134,20 +134,16 @@ first few words.  In the case of the mass ordinary, the form as <code>Kyrie
 X Alme Pater</code> or <code>Sanctus XI</code> is recommended where appropriate.</dt>
 
 <dd><a name="gabc-copyright">gabc-copyright</a></dd>
-<dt>This license is the copyright notice (in english) of the gabc file, as chosen by the
-person named in the transcriber field.  As well as the notice itself,
-it may include a brief description of the license, such as <code>public
-domain</code>, <code>CC-by-sa</code>; a separate text file will be necessary for the
-complete legal license. For the legal issues about gregorian chant scores, please see <a href="/legalissues">the dedicated page</a>. An example of this field would be:<br/>
-<code>(C) Elie Roux, 2009, public domain</code></dt>
+<dt>This license is the copyright notice (in English) of the gabc file, as chosen by the person named in the transcriber field. As well as the notice itself, it may include a brief description of the license, such as public domain, CC-by-sa; for a list of commonly found open source licenses and exceptions, please see <a href="https://spdx.org/licenses/">this page</a>.  A separate text file will be necessary for the complete legal license. For the legal issues about Gregorian chant scores, please see <a href="../legalissues.html">the legal issues page</a>. An example of this field would be:<br/>
+<code>gabc-copyright: CC0-1.0 by Elie Roux, 2009 &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;</code></dt>
 
 <dd><a name="score-copyright">score-copyright</a></dd>
 <dt>This license is the copyright notice (in english) of the score itself from which
 the gabc was transcribed.  Like the gabc-license, there may be a brief
 description of the license too.  In unclear or complex cases it may be
 omitted; it is most suitable for use when the transcriber is the
-copyright holder and licensor of the score as well. One again, reading the <a href="/legalissues">page on legal issues</a> is recommended. An example of this field would be:<br/>
-<code>(C) Abbaye de Solesmes, 1934</code>
+copyright holder and licensor of the score as well. One again, reading the <a href="../legalissues.html">page on legal issues</a> is recommended. An example of this field would be:<br/>
+<code>score-copyright: (C) Abbaye de Solesmes, 1934</code>
 </dt>
 
 
@@ -175,10 +171,6 @@ references to the Bible.</dt>
 been adapted for new words, or when a manuscript is transcribed into square notation.
 This may be a corporate name, like
 <code>Solesmes</code>.</dt>
-
-<dd><a name="gabc-version">gabc-version</a></dd>
-<dt>The version of gabc notation used.  At present the version should
-be the same as the version of gregorio used.</dt>
 
 <dd><a name="author">author</a></dd>
 <dt>The author of the piece, if known; of course, the author of most
@@ -212,35 +204,24 @@ held; e.g. <code>Bibliothèque Nationale, Paris</code>.</dt>
 19th century revival), the name of the book; e.g. <code>Liber
 Usualis</code>.</dt>
 
+<dd><a name="language">language</a></dd>
+<dt>The language of the lyrics.</dt>
+
 <dd><a name="transcriber">transcriber</a></dd>
 <dt>The name of the transcriber into gabc.</dt>
 
 <dd><a name="transcription-date">transcription-date</a></dd>
 <dt>The date the gabc was written, with the following convention yyyymmdd, like 20090129 for january the 29th 2009.</dt>
 
-<dd><a name="gregoriotex-font">gregoriotex-font</a></dd>
-<dt>The font used
-by gregoriotex. At present gregoriotex can use three fonts:
-<code>greciliae</code>, <code>gregorio</code>, and
-<code>parmesan</code>.</dt>
-
 <dd><a name="mode">mode</a></dd>
 <dt>The mode of the piece.  This should
 normally be an arabic number between 1 and 8, but may be any text required for unusual
-cases.  Note that this is not used for the text above the initial, for
-which see the <a href="#annotation">annotation field</a>.</dt>
+cases.  Note that this will only appear above the initial if the <a href="#annotation">annotation field</a> is not provided.</dt>
 
 <dd><a name="initial-style">initial-style</a></dd>
 <dt>The style of the initial letter.  0 means no initial letter, 1 a
 normal one, and 2 a large one, on two lines. Note that if you want to use the
 initial on two lines, you have to specify at least the two first line breaks.
-</dt>
-
-<dd><a name="centering-scheme">centering-scheme</a></dd>
-<dt>To change the type of centering behavior gregorio uses. In the
-default scheme (latin), neumes are centered over the vowel in each syllable, as
-is typical in Latin chant books. Using the centering-scheme: english option
-will instead center notes over the entire syllable, rather than just the vowel. (note: this feature is currently only useable with a recent svn version of gregorio)
 </dt>
 
 <dd><a name="user-notes">user-notes</a></dd> <dt>This may contain any
@@ -263,16 +244,6 @@ used, the first is the upper line, the second the lower.  Example:<br />
 <dt>The name of the software used to generate the gabc file. If you
 write gabc by hand, this field should not appear.</dt>
 
-<dd><a name="style">style</a></dd>
-<dt>The typographical style of the music.  This is not yet supported, in
-that it has no effect.  Example: <code>editio vaticana</code>, <code>editio medicea</code>.</dt>
-
-<dd><a name="virgula-position">virgula-position</a></dd>
-<dt>The position to be used for the virgula.  This is not yet supported,
-in that it has no effect.  Example: <code>top</code>, <code>bottom</code>.</dt>
-
-<dd><a name="number-of-voices">number-of-voices</a></dd>
-<dt>The number-of-voices is the number of voices for a polyphonic piece.</dt>
 </dl>
 
 <p>After the <code>%%</code> separator, <a
@@ -291,7 +262,7 @@ section, which is the heart of the notation.</p>
 <p>The inconvenience of this choice is that it only corresponds to English notation (notes A through G) when the do-clef is on the top line of the staff, and even then only for the low notes on the staff.</p>
 
 <div class="legende">
-<img src="/illus/notes.png" title="" alt="" />
+<img src="../illus/notes.png" title="" alt="" />
 <br />Correspondence between letter and staff position
 </div>
 
@@ -302,7 +273,7 @@ section, which is the heart of the notation.</p>
 <p>For the <em>virga</em>, add a <code>v</code> after the letter. For the oriscus, add a <code>v</code>, for the oriscus an <code>o</code>, a <code>s</code> for the stropha, etc.</p>
 
 <div class="legende">
-<img src="/illus/shapes.png" title="" alt="" /><br />
+<img src="../illus/shapes.png" title="" alt="" /><br />
 <br />The different shapes
 </div>
 
@@ -312,8 +283,8 @@ section, which is the heart of the notation.</p>
 <p>To compose a neume with more than one note, you simply type the letters corresponding to the notes, without worrying about the connections between them. These will be calculated automatically. In the following examples, the caption to each image shows the letters in gabc notation which correspond to the image.</p>
 
 <div class="legende">
-<img src="/illus/complexneume.png" title="" alt="" /><br />
-<br />Example of complex neume: <strong><code>gfge</code></strong>
+<img src="../illus/complexneume.png" title="" alt="" /><br />
+<br />Example of complex neume</strong>
 </div>
 
 <p>When there is a <em>quilisma</em> within a neume, you type a <code>w</code> after the corresponding pitch.</p>
@@ -325,8 +296,8 @@ section, which is the heart of the notation.</p>
 <p>Separation bars indicate a pause in the chant, so punctuation signs have been chosen to represent them.</p>
 
 <div class="legende">
-<img src="/illus/bars.png" title="" alt="" />
-<br />The separation bars:  <strong><code>&nbsp;` , ; : ::&nbsp;</code></strong>
+<img src="../illus/bars.png" title="" alt="" />
+<br />The separation bars
 </div>
 
 <p>When a bar is located between two syllables, you must put it in as a separate syllable, as for example, <strong><code>&nbsp;jus(g) (::) Di(g)&nbsp;</code></strong>.</p>
@@ -344,13 +315,13 @@ section, which is the heart of the notation.</p>
 </ul>
 
 <div class="legende">
-<img src="/illus/clef.png" title="" alt="" />
+<img src="../illus/clef.png" title="" alt="" />
 <br />Clefs used in Gregorian chant: <code>&nbsp;c2 c3 c4 f3 f4</code>
 </div>
 
 <h2 id="text">Text</h2>
 
-<p>It is very simple to write text and neumes: the letters corresponding to the notes are typed in brackets after the syllable to which they correspond.</p>
+<p>It is very simple to write text and neumes: the letters corresponding to the notes are typed in parentheses after the syllable to which they correspond.</p>
 
 <p>To delineate words, you simply put a space between them. We can now give an example of the final notation:</p>
 
@@ -369,32 +340,36 @@ section, which is the heart of the notation.</p>
 <p>When there is no character under a separation bar, we proceed the same way, but with a space instead of text:</p>
 
 <div class="commandline">
-<code>su(iji)\ae,(i) (;) in(e)</code>
+<code>su(iji)<sp>ae</sp>,(i) (;) in(e)</code>
 </div>
 
 <h3 id="textcentering">Text centering</h3>
 
-<p>In Gregorian chant, aligning the neumes with the text is important, and can be automated (cf. <a href="/graphy" title="">the page about the writing of chant</a>). However, in many software programs, it is necessary to specify the part of the text over which the neume will be centered. Usually you do not have to indicate this with gregorio, but if it is necessary, put the part of the text to be aligned between braces.</p>
+<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, this may not give the desireable result in all cases.  If it is necessary, put the part of the text to be aligned between braces.  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
+
+<div class="commandline">
+<code>e{ve}r(e)</code>
+</div>
 
 <h3 id="initial">Initial determination</h3>
 
-<p>The initial is automatically recognized by gregorio as the first letter. If this behaviour is not the one you want, you can force the text centering of the first syllable. Thus Gregorio will consider that the letters preceding the centered text are the initial (it can be empty), and the centered letter as well as the following ones will be under the first note. You can also use the gabc attribute <code>initial-style:0;</code> in the header.</p>
+<p>The initial is automatically recognized by gregorio as the first letter.  You can use the gabc attribute <code>initial-style</code> in the header to set its size.  The values corespond to number of lines the intial takes up: <code>0</code> (there is no initial), <code>1</code> (the default), or <code>2</code> (the initial takes up two lines).</p>
 
-<p>Note that in the case of a syllable composed of one letter only, gregorio does not automatically add an hyphen under the first notes. This is due to the fact that it's easy to add it in gabc, and it would be difficult to remove it if it was automatically added.</p>
+<p>Note that in the case of a syllable composed of one letter only, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> automatically adds a hyphen under the first notes.  To disable this feature, use the command <code>\gresetemptyfirstsyllablehyphen{auto}</code>.</p>
 
 <h3 id="specialcharacters">Special characters</h3>
 
-<p>It can happen that the texts of Gregorian chants contain non-unicode characters, so we must consider how to notate them.   Special characters used in Gregorian notation are <code>ý</code>, <code>ǽ</code>, <code>œ́</code>, the crossed R (for <em>Response</em>), the crossed V (for <em>Versicle</em>) and the crossed A (for <em>Antiphon</em>). Of these characters, only the crossed A is not to be found in the Unicode table.</p>
+<p>It can happen that the texts of Gregorian chants contain unicode characters which are not easily accesible from the keyboard.   Examples of this sort of character are <code>ý</code>, <code>ǽ</code>, <code>œ́</code>, the barred R (℟ for <em>Response</em>), and the barred V (℣ for <em>Versicle</em>).  There is also the possibility of a non-unicode character such as the barred A (for <em>Antiphon</em>).</p>
 
-<p>In the case where it is not possible to insert special characters using the keyboard, this can be done using <code>sp</code> markup tags, for example <code>&lt;sp&gt;R/&lt;/sp&gt;</code> for the crossed R, <code>&lt;sp&gt;'ae&lt;/sp&gt;</code> for accented <em>æ</em>.</p>
+<p>Gregorio will allow the use of any unicode character directly entered via your platform's character picker or a keyboard shortcut.  In the case where it is not possible to insert special characters in either of these ways, you can be use <code>&lt;sp&gt;</code> markup tags, for example <code>&lt;sp&gt;R/&lt;/sp&gt;</code> for the barred R, <code>&lt;sp&gt;'ae&lt;/sp&gt;</code> for <em>ǽ</em>.  This also works for the barred A, even though it is not in the unicode table: <code>&lt;sp&gt;A/&lt;/sp&gt;</code></p>  Finally, you can make use of the <code>&lt;v&gt;</code> markup tags to enter a character using it's <span class="tex">T<span class="epsilon">e</span>X</span> code: <code>&lt;v&gt;{\ae}&lt;/v&gt;</code> for <em>æ</em>.
 
 <h3 id="textstyle">Text style</h3>
 
-<p>Even though text is rarely styled in a chant score, we have made some markups to apply styles to the text: they are <code>&lt;i&gt;</code> for italic, <code>&lt;b&gt;</code> for bold and <code>&lt;sc&gt;</code> for small capitals.</p>
+<p>Even though text is rarely styled in a chant score, gabc allows for some markup to apply styles to the text: they are <code>&lt;i&gt;</code> for italic, <code>&lt;b&gt;</code> for bold, <code>&lt;u&gt;</code> for underline (does not work in Plain <span class="tex">T<span class="epsilon">e</span>X</span>), <code>&lt;c&gt;</code> for colored (specifically in <code>gregoriocolor</code>), and <code>&lt;sc&gt;</code> for small capitals.</p>
 
 <p>For example: <code>&lt;i&gt;Ps.&lt;/i&gt;(::)</code></p>
 
-<p>You have now read the basics of the gabc notation, you can go on the <a href="details">details page</a> if you want to know more!</p>
+<p>You have now read the basics of the gabc notation, you can go on the <a href="details.html">details page</a> if you want to know more!</p>
 
 <!-- footer -->
     </div>

@@ -25,11 +25,11 @@
   <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
   <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
   <meta name="author" content="The Gregorio project">
-  <link rel="shortcut icon" href="/illus/fav.ico">
-  <link rel="icon" href="/illus/fav.ico">
-  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="/gregorio-menu.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -38,7 +38,7 @@
 
 <body>
   <div id="ban">
-    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
     <a id="haut" name="haut"></a>
     <div id="banniere">
     </div>
@@ -55,51 +55,92 @@
     title = 'GregorioTeX';
 </script>
 
-<h1>Features of GregorioTeX</h1>
+<h1>Features of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span></h1>
+
+Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> contains several features which allow you to manipulate the way your scores appear.  This page introduces you to a few of the most commonly used ones.  For a complete list, please consult GregorioRef-###.pdf (where ### is the version number) which you can find in the directory where you installed Gregorio.
 
 <h2 id="symbols">Red lines</h2>
 
-<p>For liturgical books, it is often useful to get red staff lines. GregorioTeX offers this possibility. To get it, you have to include the package <code>color</code>, distributed with the base TeXLive. Include it simply in the header of your main file: <code>\usepackage{color}</code>.</p>
+<p>For liturgical books, it is often useful to get red staff lines. Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> offers this possibility.  To get red lines, simply call the macro <code>\gresetlinescolor{gregoriocolor}</code>. This will make the lines of all following scores red. To cancel it, call <code>\gresetlinescolor{black}</code>.</p>
 
-<p>To get red lines, simply call the macro <code>\redlines</code>, without argument. This will make the lines of all following scores red. To cancel it, call <code>\normallines</code>.</p>
+<p>The red it will produce is quite close to the red of the scores I have been able to find, but it's not perfect.  If you want to adapt it with your own color, you can either define a new color or redefine <code>gregoriocolor</code> with <code>\definecolor</code>. See the documentation of the xcolor package for details on how to use this command.  If you find a better red than the one of Gregorio, please suggest it!</p>
 
-<p>The red it will produce is quite close to the red of the scores I have been able to find, but it's not perfect. If you want to adapt it with your own color, call the macro <code>\coloredlines{}{}{}</code> that will take the RGB code (in decimal) of the color you want to give to the lines. Once again, call <code>\normallines</code> to cancel it. If you find a better red than the one of Gregorio, please suggest it!</p>
+<p><b>Nota Bene:</b> Since Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> uses the xcolor package to create colors, colors are only available in <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> documents.</p>
 
-<h2 id="symbols">Symbols included in GregorioTeX</h2>
+<h2 id="symbols">Symbols included in Gregorio<span class="tex">T<span class="epsilon">e</span>X</span></h2>
 
-<p>GregorioTeX includes several symbols and some macros to call them. These symbols are very useful for scores and books of gregorian chant, and it's almost impossible to find them outside of GregorioTeX. They may even interest people wanting to make their books more beautiful. A lot of symbols are still missing, so any help or suggestion is welcome!</p>
+<p>Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> includes several symbols and some macros to call them. These symbols are very useful for scores and books of gregorian chant, and it's almost impossible to find them outside of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>. They may even interest people wanting to make their books more beautiful. A lot of symbols are still missing, so any help or suggestion is welcome!</p>
 
-<p>To get the symbols of GregorioTeX you don't need any special TeX system, you can simply use it with your default LaTeX or pdfLaTeX. Install GregorioTeX and include the package <code>gregoriosyms</code>.</p>
+<p>In documents where you want to use these symbols but don't need to include any scores, you can make use of the <code>gregoriosyms</code> pacakge instead of the <code>gregoriotex</code> package.  This lighter-weight package will only load the commands related to the symbols.</p>
 
-<h4>Simple symbols</h4>
+<h3>Simple symbols</h3>
 
-<p>Here are the simple symbols of GregorioTeX:</p>
-
-<div class="legende">
-<img src="/illus/symbols.png" title="" alt="" />
-</div>
-
-<p>The macros to call them are (in the order): <code>\Abar</code> <code>\Rbar</code> <code>\Vbar</code> <code>\Vbarsmall</code> <code>\greletterbar</code> <code>\greletteraltbar</code> <code>\gothRbar</code> <code>\gothVbar</code><br /><code>\gredagger</code> <code>\grecross</code> <code>\grealtcross</code> <code>\greheightstar</code> <code>\gresixstar</code>.</p>
-
-<p>By default the symbols are for 12pt documents. If you want to use them in other sizes, define <code>\font\gregoriosymbolfont=gresym at 12pt</code> by replacing 12pt with the point size you want.</p>
-
-<p>Update: If you are using a version of gregorio committed to the repository after November 1, 2014, then the above symbols should automatically resize to the current font size.  There is no longer any need to redefine <code>\gregoriosymbolfont</code>.</p>
-
-<h4>The lines</h4>
+<p>Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> comes with a special font, greextra, which contains some symbols which appear in liturgical documents but which are difficult to find in other fonts.  Some examples of these are shown below:</p>
 
 <div class="legende">
-<img src="/illus/lines.png" title="" alt="" />
+<img src="../illus/symbols.png" title="" alt="" />
 </div>
 
-<p>The lines are created with the macro <code>\gresep{}{}</code>. It takes as its first argument the shape of the line, which is a number between 1 and 5, in the order of the picture above. The second argument is the width of the line.</p>
+<h4>Barred Letters</h4>
 
-<h4>Ornamentations</h4>
+In order to better match your font, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> allows you to define your own barred letters.  By default <code>\Abar</code>, <code>\Vbar</code>, and <code>\Rbar</code> are defined using settings appropriate for Linux Libertine.  If you're using a different font (or simply don't like the look of the existing definitions, you can redefine them like so:</p>
 
-<p>The ornamentations are an aborted project. You can obtain the result below by repeating <code>{\gregoriosymbolfont \char 75}</code> without space (for the second line, replace 75 by 76). The symbols to begin and end the lines are missing. If you have a suggestion, I'll be happy to take it.</p>
+<div class="commandline">
+    <code>\gresimpledefbarglyph{A}{0.3em}</code>
+</div>
+
+<p>This will redefine the command <code>\Abar</code>.  You can change the distance to suit your font.</p>
+
+<p>For more complicated redefinitions, such as the "V" which uses an alternate bar, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> provides the commands <code>\gredefsizedsymbol</code> and <code>\gredefbarredsymbol</code>.  For example, the above picture can be obtained with the following definition for <code>\VBarSmall</code>:</p>
+
+<div class="commandline">
+    <code>\gredefsizedsymbol{greVBaralt}{greextra}{VBar.alt}<br/>
+    \gredefbarredsymbol{VBarSmall}{V}{greVBaralt}{13}{0.05em}{0.1mm}
+    </code>
+</div>
+
+<p>The bars can also be used by themselves, and several variants exist, allowing you to pick the bar which goes best with the font and letter that you are looking to use.  See GregorioRef-###.pdf for more details on how to use these functions and for a complete listing of the symbols (including all the possible bars) in greextra.</p>
+
+<p><b>Special:</b> Because of their unusual font, the gothic "R" and "V" shown above are present in precomposed form in the greextra font.  As a result, they can be obtained by the following simple definitions for <code>\RBarGoth</code> and <code>\RBarGoth</code>:
+
+<div class="commandline">
+    <code>\gredefsizedsymbol{RBarGoth}{greextra}{RWithBarGoth}<br/>
+    \gredefsizedsymbol{VBarGoth}{greextra}{VWithBarGoth}
+    </code>
+</div>
+
+<h4>Crosses and Stars</h4>
+
+<p>Of the symbols in the second line, the dagger (the first) and the six-pointed star (the last) are available by default with the predefined commands <code>\GreDagger</code> and <code>\GreStar</code>.  These will automatically be used for occasions of <code>+</code> and <code>*</code> in the gabc file.  Macros for the others can be created with the following definitions:</p>
+
+<div class="commandline">
+    <code>
+    \gredefsizedsymbol{GreCross}{greextra}{Cross}<br/>
+    \gredefsizedsymbol{GreCrossAlt}{greextra}{Cross.alt}<br/>
+    \gredefsizedsymbol{GreStarHeight}{greextra}{StarHeight}
+    </code>
+</div>
+
+
+<h3>Decorative Lines</h3>
 
 <div class="legende">
-<img src="/illus/series.png" title="" alt="" />
+<img src="../illus/lines.png" title="" alt="" />
 </div>
+
+<p>The decorative lines are created with the macro <code>\greseparator{}{}</code>. It takes as its first argument the shape of the line, which is a number between 1 and 5, in the order of the picture above. The second argument is the width of the line in points (provide a plain integer, do not attach units).</p>
+
+<h3>Ornamentations</h3>
+
+<p>The ornamentations are an aborted project to provide some of the other decorative features often found in liturgical books.  Only the symbols for the middle of the lines are present.  The symbols to begin and end the lines are missing. If you'd like to take up this project, please <a href="../contact.html">get in touch</a>.</p>
+
+<div class="legende">
+<img src="../illus/series.png" title="" alt="" />
+</div>
+
+<p>The above pictured ornamentations can be obtained with the macro <code>\greornamentation{}{}</code>.  The first argument is the number of the ornamentation (1 or 2).  The second is the point size (provide a plain integer, do not attach units.</p>
+
+<p><b>Nota bene:</b> Each call of the macro provides only one iteration of the ornamentation.  The above images show five repetitions for ornamentation 1 and four for ornamentation 2.</p>
 
 <!-- footer -->
     </div>

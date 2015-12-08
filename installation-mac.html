@@ -25,11 +25,11 @@
   <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
   <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
   <meta name="author" content="The Gregorio project">
-  <link rel="shortcut icon" href="/illus/fav.ico">
-  <link rel="icon" href="/illus/fav.ico">
-  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <link rel="shortcut icon" href="./illus/fav.ico">
+  <link rel="icon" href="./illus/fav.ico">
+  <link rel="stylesheet" href="./style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="gregorio-menu.js"></script>
+  <script type="text/javascript" src="./gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -38,7 +38,7 @@
 
 <body>
   <div id="ban">
-    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <img src="./illus/harpedroite.png" title="" class="hd" alt="" />
     <a id="haut" name="haut"></a>
     <div id="banniere">
     </div>
@@ -53,13 +53,15 @@
 
 <h1>Installing Gregorio under Mac OSX</h1>
 
-<h2>The TeX distribution</h2>
+<h2>The <span class="tex">T<span class="epsilon">e</span>X</span> distribution</h2>
 
-<p>The first step to make Gregorio work is to have a TeX distribution: MacTeX or TeXLive. See the <a href="http://tug.org/mactex/">official site</a> for instructions.</p>
+<p>The first step to make Gregorio work is to have a <span class="tex">T<span class="epsilon">e</span>X</span> distribution: Mac<span class="tex">T<span class="epsilon">e</span>X</span> (or <span class="tex">T<span class="epsilon">e</span>X</span>Live for Mac). See the <a href="http://tug.org/mactex/">official site</a> for instructions.</p>
 
 <h2>The installer</h2>
 
-<p>An installer has been created for some Mac systems. It is available from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, meant for systems running OS X versions 10.5 or later.</p>
+<p>An installer has been created for some Mac systems. It is available from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and is meant for systems running OS X versions 10.5 or later.</p>
+
+<p>The installer will automatically place the command-line tool in your path and will add the Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> files to your texmf tree.  It will also create a directory at <code>/Users/Shared/Gregorio</code> containing the documentation, examples, and contributed add-ons.</p>
 
 <h2>Compiling from sources</h2>
 
@@ -69,23 +71,36 @@
 
 <ol>
 <li>download XCode (free) from the Apple Mac App Store</li>
-<li>lauch it, it will first want to install a device manager, install it</li>
-<li>under Preferences, click on Downloads and install the Command Line Tools</li>
+<li>lauch it, it will ask you to agree to the terms of use, agree to them</li>
+<li>open TERMINAL and do <code>xcode-select --install</code> to install the command line tools</li>
 <li>download and install <a href="http://www.macports.org/">MacPorts</a> (free)</li>
 <li>once installed, in the TERMINAL, do <code>sudo port selfupdate</code> to get the latest sources packages</li>
 <li>do <code>sudo port install libtool autoconf automake flex bison</code>.</li>
 <li>For gregorio versions prior to 4.0, if you are using <span style="font-family: monospace;">--enable-xml-read</span> then this additional dependency is needed: <code>sudo port install libxml2</code>.</li>
+<li>Because the versions of git and bash which ship with OSX are not the most recent, you may also want to consider adding the following two packages: <code>sudo port install bash git</code>  If you are planning on helping with development, then the bash upgrade is required.</li>
 </ol>
 
 <p>Once all this is done, you should be able to compile Gregorio.</p>
 
 <p>If you want to compile fonts (to modify them, or when building directly from git), do <code>sudo port install fontforge +python27</code>.</p>
 
+<p>If you intend to aid in development, then there are a couple of more packages which will come in handy: <code>sudo port install python27 ImageMagick coreutils</code>
+
+<p>Finally, the version of flex that is currently (as of September 2015) available in MacPorts (2.5.37) is not the most current version (2.5.39).  While at last test this version still enabled a successful compilation of Gregorio, the development team uses the current version and does not test for backwards compatibility regularly.  If you want to use the more recent version of flex to ensure compatibility, then follow the following steps:</p>
+
+<ol>
+<li>install <a href="http://brew.sh/">Homebrew</a></li>
+<li>open TERMINAL and do <code>brew update</code> to make sure you have the latest version</li>
+<li>in TERMINAL do <code>brew install flex</code></li>
+<li>since Homebrew doesn't add its version of flex to the PATH, you need to do so manually.  To do this for a parituclar TERMINAL session do <code>export PATH=/usr/local/opt/flex/bin/:$PATH</code>.  If you prefer to do this more permently you will need to modify your bash profile.  Instructions for doing so can be found using a Google search.</li>
+</ol>
+
+
 <h3>Source downloading</h3>
 
-<p>You have a choice between versions of Gregorio. To obtain the sources of the stable version, you just need to download the sources from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and decompress the archive.</p>
+<p>You have a choice between versions of Gregorio. To obtain the sources of the stable version, you just need to download the sources from the <a href="https://github.com/gregorio-project/gregorio/releases">download page</a>, and decompress the archive.  Previous versions and current beta or release candidates are also available on this page.</p>
 
-<p><b>Nota bene:</b> There are two different source code files on the download page: gregorio-x.x.x.tar.bz2 (where x.x.x is the version number) and "Source Code" (in both zip and tar.gz format).  "gregorio-x.x.x.tar.bz2" is a special distribution version of the source which has several files, which do not depend on your particular system's architecture, pre-built for you.  As a result, it requires fewer tools to build, and should be the default choice for most people.  The file named "Source Code" is an image of the repository at the time of the release which is added automatically by GitHub.  As a result, the process for building from this file is identical to the process for building from a clone of the repository itself.</p>
+<p><b>Nota bene:</b> There are two different source code files on the download page: gregorio-x.x.x.tar.bz2 (where x.x.x is the version number) and "Source Code" (in both zip and tar.gz format).  "gregorio-x.x.x.tar.bz2" is a special distribution version of the source which has several files, which do not depend on your particular system's architecture, pre-built for you.  As a result, it requires fewer tools to build, and should be the default choice for most people.  The file named "Source Code" is an image of the repository at the time of the release which is added automatically by GitHub.  As a result, the process for building from this file is identical to the process for building from a clone of the repository itself (see below).</p>
 
 <p>To get the git version, that is, the version in development (more functionalities, but might contain more bugs), you will have to create a local copy of the git repository of the project, with the command:</p>
 
@@ -93,16 +108,24 @@
 <code>$ git clone --depth 1 -b develop https://github.com/gregorio-project/gregorio.git gregorio-git</code>
 </div>
 
+<p>The above command minimizes the size of the download by not grabing the complete history of the repository.  If you plan on helping with development, however, that complete history is essential and you should use the following command instead:</p>
+
+<div class="commandline">
+<code>$ git clone https://github.com/gregorio-project/gregorio.git gregorio-git</code>
+</div>
+
+<p>Once cloned, you'll be on the master branch of the repository (latest stable release) and can use the normal git commands to navigate and explore the repository.</p>
+
 <h3>Compilation</h3>
 
 <p>Once the sources are downloaded, carry out the following commands in the directory containing the source files:</p>
 
 <div class="commandline">
-<code>$ ./build.sh --arch=x86_64 --enable-all-static --disable-shared --enable-static-ltdl</code><br/>
+<code>$ ./build.sh --arch=x86_64</code><br/>
 <code>$ sudo ./install.sh</code><br/>
 </div>
 
-<p><b>Nota bene:</b> Technically speaking, only the first argument is required for <code>build.sh</code>, the others are optional (indeed, in the most recent versions of develop they will be unrecognized as valid options).  However they will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries. This will make upgrading easier as we are currently reworking the source code to eliminate the linked libraries structure.</p>
+<p><b>Nota bene:</b> For versions of Gregorio prior to 4.0, you may want to add the following flags to <code>build.sh</code>: <code> --enable-all-static --disable-shared --enable-static-ltdl</code>.  They will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries.</p>
 
 <h3>Update</h3>
 
@@ -110,7 +133,7 @@
 
 <h3>Next steps</h3>
 
-<p>It can be very helpful to <a href="configuration-texshop.html">configure TeXShop for Gregorio</a>. Once you have done so, refer to the <a href="introduction-editor.html">introduction page</a> to start using Gregorio !</p>
+<p>It can be very helpful to <a href="./configuration-texshop.html">configure <span class="tex">T<span class="epsilon">e</span>X</span>Shop for Gregorio</a>. Once you have done so, refer to the <a href="./introduction-editor.html">introduction page</a> to start using Gregorio !</p>
 
 <!-- footer -->
     </div>

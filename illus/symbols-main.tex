@@ -1,0 +1,34 @@
+% !TEX program = LuaLaTeX+se
+\documentclass[12pt]{book}
+
+\usepackage{gregoriosyms}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={NoRequired,NoCommon,NoContextual}}
+\setmainfont[
+		BoldFont=LinLibertineOZ,
+		BoldItalicFont=LinLibertineOZI,
+		SmallCapsFont=LinLibertineO,
+		SmallCapsFeatures={Letters=SmallCaps},
+]{LinuxLibertineO}
+
+\pagestyle{empty}
+\begin{document}
+\begin{center}
+\Abar\,
+\Rbar\,
+\Vbar\,
+\gredefsizedsymbol{greVBaralt}{greextra}{VBar.alt}%
+\gredefbarredsymbol{VBarSmall}{V}{greVBaralt}{13}{0.05em}{0.1mm}\VBarSmall\,
+\gredefsizedsymbol{greVBar}{greextra}{VBar}%
+\greVBar{12}\,
+\greVBaralt{12}\,
+\gredefsizedsymbol{RBarGoth}{greextra}{RWithBarGoth}\RBarGoth{12}\,
+\gredefsizedsymbol{VBarGoth}{greextra}{VWithBarGoth}\VBarGoth{12}
+
+\GreDagger\,
+\gredefsizedsymbol{GreCross}{greextra}{Cross}\GreCross{12}\,
+\gredefsizedsymbol{GreCrossAlt}{greextra}{Cross.alt}\GreCrossAlt{12}\,
+\gredefsizedsymbol{GreStarHeight}{greextra}{StarHeight}\GreStarHeight{12}\,
+\GreStar\ 
+\end{center}
+\end{document}

@@ -25,11 +25,11 @@
   <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
   <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
   <meta name="author" content="The Gregorio project">
-  <link rel="shortcut icon" href="/illus/fav.ico">
-  <link rel="icon" href="/illus/fav.ico">
-  <link rel="stylesheet" href="/style.css" type="text/css" title="default">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="/gregorio-menu.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
   <script>
     var context = 'gregorio';
     var title = 'Gregorio project website'
@@ -38,7 +38,7 @@
 
 <body>
   <div id="ban">
-    <img src="/illus/harpedroite.png" title="" class="hd" alt="" />
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
     <a id="haut" name="haut"></a>
     <div id="banniere">
     </div>
@@ -61,9 +61,9 @@
 </style>
 <h1>Gregorio Tutorial (part III)</h1>
 
-<p>Here we continue the gabc tutorial that began on <a href="tutorial-gabc-01.html">this page</a>.</p>
+<p>Here we continue the gabc tutorial that began on <a href="./tutorial-gabc-01.html">this page</a>.</p>
 
-<p>We will talk about some features of GregorioTeX, whose documentation can be found <a href="/gregoriotex/index.html">here</a>.</p>
+<p>We will talk about some features of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, whose documentation can be found <a href="../gregoriotex/index.html">here</a>.</p>
 
 <h2>Kyrie XVII (end)</h2>
 
@@ -98,61 +98,56 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 <h3>Adding annotations</h3>
 
-<p>All these details of the output are controlled by the TeX file which represents the document, so let's look at that.</p>
+<p>All these details of the output are controlled by the <span class="tex">T<span class="epsilon">e</span>X</span> file which represents the document, so let's look at that.</p>
 
-<div class="filename">kyrie-17-final-main.tex</div>
+<div class="filename">kyrie-17-13b-main.tex</div>
 
 <div class="commandblock">
 	<pre>
 \documentclass[12pt, a5paper]{article}
 \usepackage{fullpage}
 \usepackage{newcent}
-\usepackage{fontspec}
-\usepackage{gregoriotex}
+\usepackage[T1]{fontenc}
+\usepackage[autocompile]{gregoriotex}
 \pagestyle{empty}
 \begin{document}
 
+
 \begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
 
-\setspaceafterinitial{3.2mm plus 0em minus 0em}
-\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+\grechangedim{afterinitialshift}{3.2mm}{scalable}
+\grechangedim{beforeinitialshift}{3.2mm}{scalable}
 
-\def\greinitialformat#1{%
-{\fontsize{43}{43}\selectfont #1}%
-}
+\grechangestyle{initial}{\fontsize{43}{43}\selectfont}
 
-\gresetfirstlineaboveinitial{\small \textsc{\textbf{}}}{\small \textsc{\textbf{}}}
-\commentary{{\small \emph{}}}
-\setgrefactor{17}
-\includescore[a]{kyrie-17-final}
+\greannotation{\small \textsc{\textbf{}}}
+\grecommentary{{\small \emph{}}}
+\gregorioscore{kyrie-17-13b}
 
-\end{document}
-</pre>
+\end{document}</pre>
 </div>
 
 
-<p>The <code>\commentary{}</code> macro generates the small text above the first stave, so let's add the desired text to it:</p>
+<p>The <code>\grecommentary{}</code> macro generates the small text above the first stave, so let's add the desired text to it:</p>
 
 <div class="commandblock">
 	<pre>
-\commentary{{\small \emph{<font color="red">XIV. s.</font>}}}
+\grecommentary{{\small \emph{<font color="red">XIV. s.</font>}}}
 </pre>
 </div>
 
-<p>The macro <code>\gresetfirstlineaboveinitial{}{}</code> generates the mode label before the first clef, so let's make that:</p>
+<p>The macro <code>\greannotation{}</code> generates the mode label before the first clef, so let's make that:</p>
 
 <div class="commandblock">
 	<pre>
-{\small \textsc{\textbf{<font color="red">VI.</font>}}}{\small \textsc{\textbf{<font color="red">VI.</font>}}}
+\greannotaion{\small \textsc{\textbf{<font color="red">VI.</font>}}}
 </pre>
 </div>
 
-<p>Notice that we had to put "VI." into both arguments.   It's strange, but this is how it works.</p>
-
-<p>Make those changes, run that file through LaTeX, and the resulting score looks like this:</p>
+<p>Make those changes, run that file through <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
 
 <div class="legende">
-<img src="kyrie-17-final.png"/>
+<img src="kyrie-17-14.png"/>
 </div>
 
 <h3>Changing the typeface</h3>
@@ -176,30 +171,28 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 <p>Here's how the score looks after that change:</p>
 
 <div class="legende">
-<img src="kyrie-17-final2.png"/>
+<img src="kyrie-17-15.png"/>
 </div>
 
 <p>The best-looking free font for gregorio is a matter of taste, but <code>kpfonts</code> is also a good choice (<code>\usepackage{kpfonts}</code>).</p>
 
 <h3>Changing vertical spacing</h3>
 
-<p>To add more space between the staves, I adjusted a spacing variable:</p>
+<p>To add more space between the staves, I adjusted a spacing variable by adding the following line:</p>
 
 <div class="commandline">
 	<pre>
-\setgrefactor{17}
-<font color="red">\global\advance\grespaceabovelines by 10mm%</font>
-\includescore{kyrie-17-final.tex}
+<font color="red">\grechangedim{spaceabovelines}{1.45576 cm plus 0.36461 cm minus 0.09114 cm}{scalable}%</font>
 </pre>
 </div>
 
 <p>Here's how the score looks after that change:</p>
 
 <div class="legende">
-<img src="kyrie-17-final3.png"/>
+<img src="kyrie-17-final.png"/>
 </div>
 
-<p>That completes this tutorial. For reference, you may want to print a copy of this PDF <a href="/gabc/summary-gabc.pdf">summary of gabc</a>, which shows the notation for some gabc features we haven't demonstrated here. For more, see <a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">this reference</a>.</p>
+<p>That completes this tutorial. For reference, you may want to print a copy of this PDF <a href="../gabc/summary-gabc.pdf">summary of gabc</a>, which shows the notation for some gabc features we haven't demonstrated here. For more, see <a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">this reference</a>.</p>
 
 <!-- footer -->
     </div>

@@ -1,27 +1,19 @@
-
-\documentclass[12pt, letterpaper]{article}
+\documentclass[12pt, a5paper]{article}
 \usepackage{fullpage}
 \usepackage{newcent}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{gregoriotex}
+\usepackage[autocompile]{gregoriotex}
 \pagestyle{empty}
 \begin{document}
-\include{setlength}
 
-\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+\grechangedim{afterinitialshift}{3.2mm}{scalable}
+\grechangedim{beforeinitialshift}{3.2mm}{scalable}
 
-\setspaceafterinitial{3.2mm plus 0em minus 0em}
-\setspacebeforeinitial{3.2mm plus 0em minus 0em}
+\grechangestyle{initial}{\fontsize{43}{43}\selectfont}
 
-\def\greinitialformat#1{%
-{\fontsize{43}{43}\selectfont #1}%
-}
-
-\setfirstlineaboveinitial{\small \textsc{\textbf{}}}{\small \textsc{\textbf{}}}
-\commentary{{\small \emph{}}}
-\setgrefactor{17}
-\includescore{kyrie-17-02.tex}
+\greannotation{\small \textsc{\textbf{}}}
+\grecommentary{{\small \emph{}}}
+\gregorioscore{kyrie-17-02}
 
 \end{document}
 
