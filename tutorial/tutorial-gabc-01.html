@@ -65,6 +65,8 @@
 
 <p>Documentation for the gabc notation which we use in this tutorial can be found <a href="../gabc/index.html">here</a>. A <a href="../gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
 
+<p>If you plan on following along with the tutorial, you'll need to <a href="../introduction.html">choose your method</a> for using Gregorio and set your system up first.</p>
+
 <p>We'll start with an empty staff and build up from there. Along the way, I'll make some deliberate mistakes to illustrate some common problems.</p>
 
 <p>If you don't have Gregorio installed on your own computer, you can find out about running it through the web at this <a href="../introduction-web.html"> introduction page</a>.</p>
@@ -88,6 +90,35 @@ name:Kyrie XVII;
 (c4)Ky(f)
 </pre>
 </div>
+
+<p>Save this file as <code>kyrie.gabc</code>.</p>
+
+<p><b>Nota Bene:</b> If you want to choose a different file name for this, or any other file, it is absolutely essential that you do not includes spaces in the file name.  <span class="tex">T<span class="epsilon">e</span>X</span> will throw a hissy fit if you do, because it uses spaces to determine where arguments end.</p>
+
+<p>Now, while the gabc file represents the musical content of your score, it is not a format which <span class="tex">T<span class="epsilon">e</span>X</span> understands.  Thus we need to create another document which <span class="tex">T<span class="epsilon">e</span>X</span> does understand and which will direct Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> (the package which tells <span class="tex">T<span class="epsilon">e</span>X</span> how to find the musical content.</p>
+
+<p>To do this, open a new document and enter the following content:</p>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{newcent}
+\usepackage[T1]{fontenc}
+
+\usepackage[autocompile]{gregoriotex}
+
+\begin{document}
+
+\gregorioscore{kyrie}
+
+\end{document}
+</pre>
+</div>
+
+<p>Save this file as <code>kyrie.tex</code> in the same folder as you saved <code>kyrie.gabc</code> and then compile the document with Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>.</p>
 
 <p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
 
@@ -130,13 +161,14 @@ name:Kyrie XVII;
 	</pre>
 </div>
 
+<p>Now, if you try to typeset this document, you're going to get an error indicating there's a problem in <code>kyrie.gabc</code>.  We're going to fix this error later, so for now (and for the next few steps) simply instruct <span class="tex">T<span class="epsilon">e</span>X</span> to ignore the error.  After it finishes the typesetting process (without producing a pdf), typeset the document again and you won't get the error, but will get the pdf file.</p>
+
+
 <p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
 
 <div class="legende">
 <img src="kyrie-17-03.png"/>
 </div>
-
-<p>(There may be a message about a "syntax error" in the gabc file; we'll deal with that later.)</p>
 
 <p>The Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> system certainly produced some beautiful neumes automatically, but they don't match the original, because we didn't specify the neume shapes we wanted. To produce the diamond-shaped ("inclined") notes that we want, we'll type them in upper-case.</p>
 
@@ -234,7 +266,7 @@ e(ixjvIH'GhvF'E)le(ghg')i(g)son(f.).
 </pre>
 </div>
 
-<p>Even in the result from the previous step, where the error has disappeared, there's a hyphen and a little space between "-son" and the period.  Let's move the period and put it next to the syllable, like this: "son." and resolve that issue.</p>
+<p>Even in the result from the previous step, where the error has disappeared, there's a hyphen over the period.  Let's move the period and put it next to the syllable, like this: "son." and resolve that issue.</p>
 
 <p>Also, you may have noticed that there are notes above the asterisk, unlike in the original score.  We do not want any notes above the asterisk; therefore, to express that intention, let's add a pair of empty parentheses () at the asterisk.</p>
 
