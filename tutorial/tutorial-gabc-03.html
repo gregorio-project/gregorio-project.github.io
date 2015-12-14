@@ -75,7 +75,7 @@
 
 <p>Our gabc notation file is complete now:</p>
 
-<div class="filename">kyrie-17-final.gabc</div>
+<div class="filename"><a href="kyrie-17-final.gabc">kyrie-17-final.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -99,6 +99,8 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 <h3>Adding annotations</h3>
 
 <p>All these details of the output are controlled by the <span class="tex">T<span class="epsilon">e</span>X</span> file which represents the document, so let's look at that.  This is what you currently have:</p>
+
+<div class="filename"><a href="kyrie-17-13-main.tex">kyrie-17-13-main.tex</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -145,6 +147,8 @@ Finally, let's put a title at the top of the page by placing the following line 
 
 
 <p>Your whole file should look like this now:</p>
+
+<div class="filename"><a href="kyrie-17-14-main.tex">kyrie-17-14-main.tex</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -215,7 +219,38 @@ Finally, let's put a title at the top of the page by placing the following line 
 </pre>
 </div>
 
-<p>Here's how the score looks after that change:</p>
+<p>This gives us this final project file:</p>
+
+<div class="filename"><a href="kyrie-17-final-main.tex">kyrie-17-final-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+
+\grechangedim{spaceabovelines}{1.45 cm plus 0.36 cm minus 0.09 cm}{scalable}
+
+\greannotation{\small \textsc{\textbf{VI.}}}
+\grecommentary{{\small \emph{XIV. s.}}}
+\gregorioscore{kyrie-17-final}
+
+\end{document}
+</pre>
+</div>
+
+
+<p>And here's how the score looks after that change:</p>
 
 <div class="legende">
 <img src="kyrie-17-final.png"/>

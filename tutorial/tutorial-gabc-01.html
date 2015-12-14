@@ -83,6 +83,8 @@
 
 <p>To start creating a gabc file, I'll enter the name of the piece, indicate the clef position, and specify the note for the first syllable.</p>
 
+<div class="filename"><a href="kyrie-17-01.gabc">kyrie-17-01.gabc</a></div>
+
 <div class="commandblock">
 <pre>
 name:Kyrie XVII;
@@ -91,13 +93,15 @@ name:Kyrie XVII;
 </pre>
 </div>
 
-<p>Save this file as <code>kyrie.gabc</code>.</p>
+<p>Save this file as <code>kyrie-17.gabc</code>.  In order to differentiate between the different steps, we'll add the step number to this file name (as "kyrie-17-01.gabc" above), but if you're following along you can ignore this.</p>
 
 <p><b>Nota Bene:</b> If you want to choose a different file name for this, or any other file, it is absolutely essential that you do not includes spaces in the file name.  <span class="tex">T<span class="epsilon">e</span>X</span> will throw a hissy fit if you do, because it uses spaces to determine where arguments end.</p>
 
 <p>Now, while the gabc file represents the musical content of your score, it is not a format which <span class="tex">T<span class="epsilon">e</span>X</span> understands.  Thus we need to create another document which <span class="tex">T<span class="epsilon">e</span>X</span> does understand and which will direct Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> (the package which tells <span class="tex">T<span class="epsilon">e</span>X</span> how to find the musical content.</p>
 
 <p>To do this, open a new document and enter the following content:</p>
+
+<div class="filename"><a href="kyrie-17-01-main.tex">kyrie-17-01-main.tex</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -118,7 +122,7 @@ name:Kyrie XVII;
 </pre>
 </div>
 
-<p>Save this file as <code>kyrie.tex</code> in the same folder as you saved <code>kyrie.gabc</code> and then compile the document with Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>.</p>
+<p>Save this file as <code>kyrie-17-main.tex</code> in the same folder as you saved <code>kyrie-17.gabc</code> and then compile the document with Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>.</p>
 
 <p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
 
@@ -132,6 +136,7 @@ name:Kyrie XVII;
 
 <h3>Adding notes</h3>
 
+<div class="filename"><a href="kyrie-17-02.gabc">kyrie-17-02.gabc</a></div>
 
 <div class="commandblock">
 <pre>
@@ -152,6 +157,8 @@ name:Kyrie XVII;
 <img src="note-positions.png"/>
 
 <h3>Adding more notes</h3>
+
+<div class="filename"><a href="kyrie-17-03.gabc">kyrie-17-03.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -174,6 +181,8 @@ name:Kyrie XVII;
 
 <h3>Using capital letters to represent "inclined" notes</h3>
 
+<div class="filename"><a href="kyrie-17-04.gabc">kyrie-17-04.gabc</a></div>
+
 <div class="commandblock">
 	<pre>
 name:Kyrie XVII;
@@ -193,6 +202,8 @@ name:Kyrie XVII;
 <h3>Marking virgas with "v"</h3>
 
 <p>In the previous step's gabc file, the notes on the first syllable of <i>eleison</i> are <code>(jIHGhFEi)</code>.  Because the "j" note and the "h" note should both be virgas, change them to "jv" and "hv":</p>
+
+<div class="filename"><a href="kyrie-17-05.gabc">kyrie-17-05.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -222,6 +233,8 @@ name:Kyrie XVII;
 
 <p>Each <i>punctum mora</i> is represented with a period after the note letter, and each ictus is represented with an apostrophe after the note letter.   Because a vertical episema looks identical to an ictus mark, we would treat them the same way.</p>
 
+<div class="filename"><a href="kyrie-17-06.gabc">kyrie-17-06.gabc</a></div>
+
 <div class="commandblock">
 	<pre>
 name:Kyrie XVII;
@@ -242,6 +255,8 @@ name:Kyrie XVII;
 
 <p>After <i>eleison</i>, let us add the word <i>bis</i>, meaning 'twice', since the phrase is to be sung twice.  The double bar is represented with a double colon (::), on the word "bis".   Let's also take the moment to set "bis" in italic type.</p>
 
+
+<div class="filename"><a href="kyrie-17-07.gabc">kyrie-17-07.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -270,6 +285,8 @@ e(ixjvIH'GhvF'E)le(ghg')i(g)son(f.).
 
 <p>Also, you may have noticed that there are notes above the asterisk, unlike in the original score.  We do not want any notes above the asterisk; therefore, to express that intention, let's add a pair of empty parentheses () at the asterisk.</p>
 
+<div class="filename"><a href="kyrie-17-08.gabc">kyrie-17-08.gabc</a></div>
+
 <div class="commandblock">
 	<pre>
 name:Kyrie XVII;
@@ -291,6 +308,8 @@ name:Kyrie XVII;
 <p><b>Nota Bene:</b> More advanced users may want to handle the capitalizing of the "y" using the <code>firstsyllable</code> and <code>firstsyllableinitial</code> styles from within the <span class="tex">T<span class="epsilon">e</span>X</span> file.  For information on how to do this, consult the Styling section of GregorioRef-###.pdf (where ### is the version number).</p>
 
 <p>Also, the word <i>eleison</i> needs an accent mark on the second "e", so I'm going to replace that letter with the character "&eacute;". If your keyboard layout does not have the "&eacute;" character, you can probably produce it by using your operating system's "Character Select" utility.  Copy the desired character to the clipboard, and paste it into your gabc file.</p>
+
+<div class="filename"><a href="kyrie-17-09.gabc">kyrie-17-09.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
