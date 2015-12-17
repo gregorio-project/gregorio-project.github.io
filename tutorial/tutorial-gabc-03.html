@@ -75,7 +75,7 @@
 
 <p>Our gabc notation file is complete now:</p>
 
-<div class="filename">kyrie-17-final.gabc</div>
+<div class="filename"><a href="kyrie-17-final.gabc">kyrie-17-final.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -98,51 +98,80 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 <h3>Adding annotations</h3>
 
-<p>All these details of the output are controlled by the <span class="tex">T<span class="epsilon">e</span>X</span> file which represents the document, so let's look at that.</p>
+<p>All these details of the output are controlled by the <span class="tex">T<span class="epsilon">e</span>X</span> file which represents the document, so let's look at that.  This is what you currently have:</p>
 
-<div class="filename">kyrie-17-13b-main.tex</div>
+<div class="filename"><a href="kyrie-17-13-main.tex">kyrie-17-13-main.tex</a></div>
 
 <div class="commandblock">
 	<pre>
 \documentclass[12pt, a5paper]{article}
+
 \usepackage{fullpage}
-\usepackage{newcent}
-\usepackage[T1]{fontenc}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
 \usepackage[autocompile]{gregoriotex}
-\pagestyle{empty}
+
 \begin{document}
 
+\gregorioscore{kyrie}
 
-\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
-
-\grechangedim{afterinitialshift}{3.2mm}{scalable}
-\grechangedim{beforeinitialshift}{3.2mm}{scalable}
-
-\grechangestyle{initial}{\fontsize{43}{43}\selectfont}
-
-\greannotation{\small \textsc{\textbf{}}}
-\grecommentary{{\small \emph{}}}
-\gregorioscore{kyrie-17-13b}
-
-\end{document}</pre>
-</div>
-
-
-<p>The <code>\grecommentary{}</code> macro generates the small text above the first stave, so let's add the desired text to it:</p>
-
-<div class="commandblock">
-	<pre>
-\grecommentary{{\small \emph{<font color="red">XIV. s.</font>}}}
+\end{document}
 </pre>
 </div>
 
-<p>The macro <code>\greannotation{}</code> generates the mode label before the first clef, so let's make that:</p>
+<p>The <code>\grecommentary{}</code> macro generates the small text above the first stave, so let's add that first.  Place the following line directly above <code>\gregorioscore</code> (<i>i.e.</i> there should be no blank lines in between):</p>
 
 <div class="commandblock">
 	<pre>
-\greannotaion{\small \textsc{\textbf{<font color="red">VI.</font>}}}
+\grecommentary{{\small \emph{XIV. s.}}}
 </pre>
 </div>
+
+<p>The macro <code>\greannotation{}</code> generates the mode label before the first clef, so let's add that line just above the previous one:</p>
+
+<div class="commandblock">
+	<pre>
+\greannotation{\small \textsc{\textbf{VI.}}}
+</pre>
+</div>
+
+Finally, let's put a title at the top of the page by placing the following line directly after <code>\begin{document}</code>:
+
+<div class="commandblock">
+	<pre>
+\begin{center}\begin{huge}\textsc{Kyrie XVIII}\end{huge}\end{center}
+</pre>
+</div>
+
+
+<p>Your whole file should look like this now:</p>
+
+<div class="filename"><a href="kyrie-17-14-main.tex">kyrie-17-14-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\begin{document}
+<font color="red">\begin{center}\begin{huge}\textsc{Kyrie XVIII}\end{huge}\end{center}
+
+\greannotaion{\small \textsc{\textbf{VI.}}}
+\grecommentary{{\small \emph{XIV. s.}}}</font>
+\gregorioscore{kyrie}
+
+\end{document}
+</pre>
+</div>
+
 
 <p>Make those changes, run that file through <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
 
@@ -152,11 +181,11 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 <h3>Changing the typeface</h3>
 
-<p>To see how the score looks in Palatino font, I looked for the line that sets the typeface New Century Schoolbook:</p>
+<p>To see how the score looks in Arial font, I looked for the line that sets the typeface to Linux Libertine:</p>
 
 <div class="commandline">
 	<pre>
-\usepackage{newcent}
+\usepackage{libertine}
 </pre>
 </div>
 
@@ -164,7 +193,7 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 <div class="commandline">
 	<pre>
-\usepackage{<font color="red">palatino</font>}
+<font color="red">\setmainfont{Arial}</font>
 </pre>
 </div>
 
@@ -174,19 +203,50 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 <img src="kyrie-17-15.png"/>
 </div>
 
-<p>The best-looking free font for gregorio is a matter of taste, but <code>kpfonts</code> is also a good choice (<code>\usepackage{kpfonts}</code>).</p>
+<p>This result is kind of ugly, so we'll change it back to Linux Libertine, but this should give you some idea of how to change the font.  Other fonts, including most of the ones already installed on your system, can be loaded using the <a href="https://www.ctan.org/pkg/fontspec?lang=en"><code>fontspec</code></a> package, just like we loaded Arial above.  You can also find a list of free fonts which are readily available for <span class="tex">T<span class="epsilson">e</span>X</span> see <a href="http://www.tug.dk/FontCatalogue/">The <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> Font Catalogue.</a>  The best-looking font for Gregorian Chant is a matter of taste, so we'll leave it up to you to explore the use of other fonts on your own.</p>
 
 <h3>Changing vertical spacing</h3>
 
-<p>To add more space between the staves, I adjusted a spacing variable by adding the following line:</p>
+<p>To add more space between the staves, I adjusted a spacing variable by adding the following line between the title and the annotation:</p>
 
 <div class="commandline">
 	<pre>
-<font color="red">\grechangedim{spaceabovelines}{1.45576 cm plus 0.36461 cm minus 0.09114 cm}{scalable}%</font>
+\grechangedim{spaceabovelines}{1.45 cm plus 0.36 cm minus 0.09 cm}{scalable}%
 </pre>
 </div>
 
-<p>Here's how the score looks after that change:</p>
+<p>This gives us this final project file:</p>
+
+<div class="filename"><a href="kyrie-17-final-main.tex">kyrie-17-final-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+
+\grechangedim{spaceabovelines}{1.45 cm plus 0.36 cm minus 0.09 cm}{scalable}
+
+\greannotation{\small \textsc{\textbf{VI.}}}
+\grecommentary{{\small \emph{XIV. s.}}}
+\gregorioscore{kyrie-17-final}
+
+\end{document}
+</pre>
+</div>
+
+
+<p>And here's how the score looks after that change:</p>
 
 <div class="legende">
 <img src="kyrie-17-final.png"/>
