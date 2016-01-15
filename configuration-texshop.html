@@ -77,7 +77,11 @@ defaults write TeXShop OtherTeXExtensions -array-add "gtex"</code>
 defaults write TeXShop OtherTrashExtensions -array-add "gtex"</code>
 </div>
 
-<p>Be careful if you add the <code.>gtex</code> extension to this list.  TeXShop will trash <b>all</b> <code>.gtex</code> files this way.  So long as you exclusively use the force or autocompile features, you'll be fine, but this may create problems if you use the never compile option.  For a finer degree of control (i.e. to delete just <code>.gtex</code> files automatically created by GregorioTeX) you'll need to do something more sophisticated involving Applescript.  <a href="http://tex.stackexchange.com/questions/154129/trashing-beamer-aux-files-in-texshop">See this question and answer on tex.stackexchange</a> for details.</p>
+<p><b>Nota bene:</b> Because the <code>gtex</code> files do not share the same name as the root project file, they will not be deleted unless you ask TeXShop to aggressively go after the Aux files.  This can be done by holding down the option button when clicking on "Trash Aux Files" or by setting the hidden preference to always do the aggressive delete:</p>
+
+<div class="commandline">
+<code>defaults write TeXShop AggressiveTrashAUX YES</code>
+</div>
 
 <h3>Using <span class="tex">T<span class="epsilon">e</span>X</span>Shop</h3>
 
