@@ -69,6 +69,15 @@
 <code>defaults write TeXShop OtherTeXExtensions -array-add "gabc"</code>
 </div>
 
+<p>You can also make it so that the "Trash Aux Files" button removes the intermediate files created by Gregorio with the following Terminal commands:</p>
+
+<div class="commandline">
+<code>defaults write TeXShop OtherTrashExtensions -array-add "gaux"</br>
+defaults write TeXShop OtherTrashExtensions -array-add "gtex"</code>
+</div>
+
+<p>Be careful if you add the "gtex" extension to this list.  TeXShop will trash <b>all</b> gtex files this way.  So long as you exclusively use the force or autocompile features, you'll be fine, but this may create problems if you use the never compile option.  For a finer degree of control (i.e. to delete just gtex files automatically created by GregorioTeX) you'll need to do something more sophisticated involving Applescript.  <a href="http://tex.stackexchange.com/questions/154129/trashing-beamer-aux-files-in-texshop">See this question and answer on tex.stackexchange</a> for details.</p>
+
 <h3>Using <span class="tex">T<span class="epsilon">e</span>X</span>Shop</h3>
 
 <p>Once <span class="tex">T<span class="epsilon">e</span>X</span>Shop is ready, refer to <a href="introduction-editor.html">the introduction page</a> to start using Gregorio!</p>
