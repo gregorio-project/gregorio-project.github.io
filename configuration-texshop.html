@@ -63,10 +63,11 @@
 
 <h3>Ease of use of .gabc files (optional)</h3>
 
-<p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of <span class="tex">T<span class="epsilon">e</span>X</span>Shop, open a Terminal window (it's in <code>Applications/Utilities</code>) and enter the following command:</p>
+<p>If you want to be able to filter files with <code>.gabc</code> and <code>.gtex</code> extensions in the file dialogs of <span class="tex">T<span class="epsilon">e</span>X</span>Shop, open a Terminal window (it's in <code>Applications/Utilities</code>) and enter the following command:</p>
 
 <div class="commandline">
-<code>defaults write TeXShop OtherTeXExtensions -array-add "gabc"</code>
+<code>defaults write TeXShop OtherTeXExtensions -array-add "gabc"
+defaults write TeXShop OtherTeXExtensions -array-add "gtex"</code>
 </div>
 
 <p>You can also make it so that the "Trash Aux Files" button removes the intermediate files created by Gregorio with the following Terminal commands:</p>
@@ -76,7 +77,7 @@
 defaults write TeXShop OtherTrashExtensions -array-add "gtex"</code>
 </div>
 
-<p>Be careful if you add the "gtex" extension to this list.  TeXShop will trash <b>all</b> gtex files this way.  So long as you exclusively use the force or autocompile features, you'll be fine, but this may create problems if you use the never compile option.  For a finer degree of control (i.e. to delete just gtex files automatically created by GregorioTeX) you'll need to do something more sophisticated involving Applescript.  <a href="http://tex.stackexchange.com/questions/154129/trashing-beamer-aux-files-in-texshop">See this question and answer on tex.stackexchange</a> for details.</p>
+<p>Be careful if you add the <code.>gtex</code> extension to this list.  TeXShop will trash <b>all</b> <code>.gtex</code> files this way.  So long as you exclusively use the force or autocompile features, you'll be fine, but this may create problems if you use the never compile option.  For a finer degree of control (i.e. to delete just <code>.gtex</code> files automatically created by GregorioTeX) you'll need to do something more sophisticated involving Applescript.  <a href="http://tex.stackexchange.com/questions/154129/trashing-beamer-aux-files-in-texshop">See this question and answer on tex.stackexchange</a> for details.</p>
 
 <h3>Using <span class="tex">T<span class="epsilon">e</span>X</span>Shop</h3>
 
