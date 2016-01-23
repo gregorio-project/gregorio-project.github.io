@@ -36,6 +36,8 @@ menuline('          <li><a href="/gabc/index.html">Basics</a></li>');
 menuline('          <li><a href="/gabc/details.html">Details</a></li>');
 menuline('        </ul>');
 menuline('      </li>');
+menuline('      <li><a href="/tipsntricks.html">Tips and Tricks</a>');
+menuline('      </li>');
 menuline('      <li><a href="/structure.html">Gregorian notation</a>');
 menuline('        <ul class="level2" id="menu-notation">');
 menuline('          <li><a href="/structure.html">Structure</a></li>');
@@ -52,7 +54,7 @@ menuline('  </div>');
 
 function initialize_menu() {
       document.title = $('h1:first').text();
-      $.each(['gregorio', 'gregoriotex', 'gabc', 'notation'], function(i, menu) {
+      $.each(['gregorio', 'gregoriotex', 'gabc', 'tipsntricks', 'notation'], function(i, menu) {
         if (context != menu) {
           $('#menu-'+menu).hide();
         }
