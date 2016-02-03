@@ -76,7 +76,9 @@
 
 <p>If you want to be able to filter files with <code>.gabc</code> extensions in the file dialogs of <span class="tex">T<span class="epsilon">e</span>X</span>works, you have to hack the configuration files a little, but this is very easy.</p>
 
-<p>First, you have to find the file named <code>texworks-config.txt</code>. Under Linux it is in <code>~/.TeXworks/configuration/</code>, under Windows it should be in <code>C:/Users/&lt;your user name&gt;/.texlive2015/texmf-config</code> (replace "2015" with your version); if it's not there, you can look for it with the Windows search tools.  On some systems, this file may be designated as read-only.  If it is, you'll need to alter its permissions before proceeding.</p>
+<p>First, you have to find the file named <code>texworks-config.txt</code>. Under Linux it is in <code>~/.TeXworks/configuration/</code>, under Mac it is in <code>~/Library/TeXworks/configuration/</code>, under Windows it should be in <code>C:/Users/&lt;your user name&gt;/.texlive2015/texmf-config</code> (replace "2015" with your version); if it's not there, you can look for it with the Windows search tools.  On some systems, this file may be designated as read-only.  If it is, you'll need to alter its permissions before proceeding.</p>
+
+<p><b>Nota Bene:</b> If you have never opened <span class="tex">T<span class="epsilon">e</span>X</span>works before then the configuration files will not exist on your system.  Open and close <span class="tex">T<span class="epsilon">e</span>X</span>works and it will create the missing configuration files.  You can also reset your configuration to the default by simply deleting all the configuration files and then opening and closing <span class="tex">T<span class="epsilon">e</span>X</span>works.</p>
 
 <p>Then open this file, and, near the end, you will see comments starting by <code># file-open-filter:</code>. Uncomment these lines (delete the leading "<code># </code>", note that the space has to go too) and then add the following line:</p>
 
