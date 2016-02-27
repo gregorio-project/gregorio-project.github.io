@@ -167,9 +167,43 @@
 <p><sup>1</sup>By default, <code>additionalstafflines</code> inherits its properties from <code>normalstafflines</code>.  To decouple these environments, you must manually change <code>additionalstafflines</code> using <code>\grechangestyle</code>.
 
 
-<h3>Making the initial letter two lines high</h3>
+<h3>Changing the line height of the initial letter</h3>
 
-<p>To make the initial letter of a score as tall as two staff lines, set <code>initial-style: 2;</code> in the header of your gabc file.
+<p>Starting with Gregorio 4.1 the default height for the initial
+letter of a score is one line. This can be changed by the
+command <code>\gresetinitiallines{x}</code> where <code>x</code> is
+one of the following options:</p>
+
+<table	style="width:100%">
+    <col width="5%">
+    <col width="95%">
+	<tr>
+		<th>x</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td><code>0</code></td>
+		<td>No initial</td>
+	</tr>
+	<tr>
+		<td><code>1</code></td>
+		<td>Initial of one line. (the default)</td>
+	</tr>
+	<tr>
+		<td><code>2</code></td>
+		<td>Initial of two lines. Line breaks must be manually
+		specified in the gabc file.</td>
+	</tr>
+</table>
+
+<p>This macro will affect the rest of the scores in the document. Of
+course the macro can be used as needed to change the line height of
+the initial letter.</p>
+
+<p>For Gregorio versions prior to 4.1 the line height of the initial
+letter is changed by the <code>initial-style: x;</code> header of the
+gabc file. Where <code>x</code> is either <code>0, 1, 2</code> as in
+the table above.</p>
 
 <h3>Adding indications to the score</h3>
 
