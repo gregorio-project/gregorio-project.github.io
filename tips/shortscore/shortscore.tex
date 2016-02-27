@@ -1,0 +1,28 @@
+% !TEX TS-program = LuaLaTeX+se
+\documentclass[11pt]{article}
+
+\usepackage{gregoriotex}
+\usepackage{fullpage}
+\usepackage{libertine}
+
+\gresetinitiallines{0}
+\greseteolcustos{manual}%
+\pagestyle{empty}
+
+\begin{document}
+
+\noindent%
+\begin{minipage}{4.8cm}%
+	\gabcsnippet{(c4) <c><sp>V/</sp>.</c> Ky(f)ri(d)e(d) e(d)le(d)i(c)son(d.) <c><sp>R/</sp>.</c>(::)}%
+\end{minipage}%
+\begin{minipage}{3.6cm}%
+	\gresetlinecolor{gregoriocolor}%
+	\gresetclef{invisible}%
+	\gabcsnippet{Chris(f)te(d) e(d)le(d)i(c)son(d.)}%
+\end{minipage}%
+\begin{minipage}{4.5cm}%
+	\gresetclef{invisible}%
+	\gabcsnippet{<c><sp>V/</sp>.</c>(::) Ky(f)ri(d)e(d) e(d)le(d)i(c)son(d.) (::)}%
+\end{minipage}%
+
+\end{document}
