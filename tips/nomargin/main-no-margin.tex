@@ -27,13 +27,11 @@
 % dimension of which that TeX is actually aware (which is normal for italic), so we
 % have manually insert the italic correction (`\/`), the small kern which is normally
 % used when switching from italics to upright fonts.
-% In the libertine font, the “f” is also slightly taller than its bounding box, so we have
-% to prevent it from getting cut off too.  Unfortunately, there isn’t a convenient
-% measure of this built in, so we have to fudge this ourselves with a strut.  Adjust the
-% 0.8em to your taste.
-% We use an admittedly strange trick to fix these, redefining grecommentary.
-\let\grevanillacommentary\grecommentary
-\def\grecommentary#1{\grevanillacommentary{#1\/\rule{0pt}{0.8em}}}
+% To do this we redefine the commentary style so that it adds the italic correction at
+% the end.  Because the commentary will be put into a box, we need to hide this in a
+% conditional to prevent LaTeX from complaining about the mode it’s in when it fills
+% the box.
+\grechangestyle{commentary}{\footnotesize\itshape}[\ifvmode\else\/\fi]
 
 \setbox\scorebox=\vbox{\hsize=10cm\relax % change the width of the score here
 	\gregorioscore[a]{PopulusSion}
