@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Short Scores';
+</script>
+
+<h1>Short Scores</h1>
+
+<p>By default Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> scores span the whole witdth of your document, which works great for most scores.  Occasionally, however, you're just inserting a small snippet, say a two measure psalm antiphon, or need more flexibility in how to arange things on the page.  In cases where you want the score to be less than the full width of the page, you need to wrap it inside a <code>minipage</code> environment like this:</p>
+
+<div class="commandblock">
+<pre>
+\begin{minipage}[t]{4.8cm}%
+	\gabcsnippet{(c4) <c><sp>V/</sp>.</c> Ky(f)ri(d)e(d) e(d)le(d)i(c)son(d.) (::)}%
+\end{minipage}%
+</pre>
+</div>
+
+<p>You do need to set the width argument for the <code>minipage</code> manually, and that may take some trial and error to get right.</p>
+
+<p>Further, each minipage environment is treated as a single character by <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, so it's even possible to have several in the same line, allowing one to create some intersting effects like this one:</p>
+
+<div class="filename"><a href="./shortscore/shortscore.tex">shortscore.tex</a></div>
+
+<div class="commandblock">
+<pre>
+% !TEX TS-program = LuaLaTeX+se
+\documentclass[11pt]{article}
+
+\usepackage{gregoriotex}
+\usepackage{fullpage}
+\usepackage{libertine}
+
+\gresetinitiallines{0}
+\greseteolcustos{manual}%
+\pagestyle{empty}
+
+\begin{document}
+
+\noindent%
+\begin{minipage}[t]{4.8cm}%
+	\gabcsnippet{(c4) <c><sp>V/</sp>.</c> Ky(f)ri(d)e(d) e(d)le(d)i(c)son(d.) <c><sp>R/</sp>.</c>(::)}%
+\end{minipage}%
+\begin{minipage}[t]{3.6cm}%
+	\gresetlinecolor{gregoriocolor}%
+	\gresetclef{invisible}%
+	\gabcsnippet{ Chris(f)te(d) e(d)le(d)i(c)son(d.)}%
+\end{minipage}%
+\begin{minipage}[t]{4.5cm}%
+	\gresetclef{invisible}%
+	\gabcsnippet{<c><sp>V/</sp>.</c>(::) Ky(f)ri(d)e(d) e(d)le(d)i(c)son(d.) (::)}%
+\end{minipage}%
+
+\end{document}
+</pre>
+</div>
+
+<div class="legende">
+<img src="./shortscore/shortscore.png" alt="">
+</div>
+
+<p>Finally, the height of the <code>minipage</code> is determined by its contents, so vertical alignment can some times be problematic.  For instance, in the above example I forced the alignment of the pages based on the top of the minipage (<code>[t]</code>) because all three snippets shared the same top.  Had I used the baseline (no optional argument), the fact that the first and last score have a decender in the lyrics (a letter which extends downwards) and only the first score has anything above the top line (the clef) would have thrown off the alignment so that the staff lines didn't line up.  Forcing the alignment as I did, fixed that here, but in some cases that won't be enough.  In those instances I suggest using struts (invisible vertical lines) in the above lines text and/or translation to force the scores to have a common top or bottom.</p>
+
+<h5>Works with Version:</h5>
+
+<p>4.1.0</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>

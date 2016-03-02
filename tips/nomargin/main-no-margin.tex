@@ -1,0 +1,42 @@
+% !TEX program = LuaLaTeX+se
+
+% This document produces a pdf containing the score with no margin.
+% It is based on this solution:
+% http://tex.stackexchange.com/questions/291630/best-way-to-know-bottom-line-height-of-a-pdf/291664#291664
+%
+% It contains advanced commands quite difficult to understand, but should be straightforward
+% to adapt to your needs.
+%
+\documentclass[11pt]{article}
+\usepackage{gregoriotex}
+\usepackage{libertine}
+% Do not load geometry, fullpage, or any package changing width
+% or margins.
+
+\hoffset-1in
+\voffset-1in
+\newbox\scorebox
+
+% using the "commentary" header of the gabc file
+\gresetheadercapture{commentary}{grecommentary}{string}
+
+\begin{document}
+
+% here the final "9" of the commentary would be cut too sharp. The reason is that
+% the italic "9" glyph in the libertine font is larger than its bounding box, the
+% dimension of which that TeX is actually aware (which is normal for italic), so we
+% have manually insert the italic correction (`\/`), the small kern which is normally
+% used when switching from italics to upright fonts.
+% To do this we redefine the commentary style so that it adds the italic correction at
+% the end.  Because the commentary will be put into a box, we need to hide this in a
+% conditional to prevent LaTeX from complaining about the mode it’s in when it fills
+% the box.
+\grechangestyle{commentary}{\footnotesize\itshape}[\ifvmode\else\/\fi]
+
+\setbox\scorebox=\vbox{\hsize=10cm\relax % change the width of the score here
+	\gregorioscore[a]{PopulusSion}
+}
+\pdfpagewidth\wd\scorebox
+\pdfpageheight\dimexpr\ht\scorebox+\dp\scorebox\relax
+\shipout\box\scorebox
+\end{document}

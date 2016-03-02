@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Litany';
+</script>
+
+<h1>Creating a Litany</h1>
+
+<div class="legende">
+<img src="http://gregobase.selapa.net/sources/2/273.png" alt="">
+</div>
+
+
+<p>Gregorio does not support multiple lines of text under the notes currently, and while it is one of our most asked for features, the coding requirements to implement it are high, making it likely to be a still distant option.  However, it is possible to create something like the above litany, if you're patient and willing to work with multiple scores.</p>
+
+<p>To get something like the above image, each line of music has to be coded as a separate score.  Further, only the first line of the text will actually appear in the score.  The rest will be added in the project file.  To that end we need 4 scores to reproduce the above image.  Further, to get the subsequent lines to align with the scores horizontally, we need to mark the syllables for alignment.  We'll do that with a macro which we'll define in the project file:</p>
+
+<div class="filename"><a href="./litany/Litany-I.gabc">Litany-I.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Litany I;
+
+def-m1: \grealign;
+%%
+(c3) Pa([em1]h)ter([em1]h) de([em1]h) cae([em1]h)lis([em1]h) &lt;b&gt;De&lt;/b&gt;([em1]i)us,([em1]g.) (,)
+mi([em1]g)se([em1]g)&lt;i&gt;ré&lt;/i&gt;([em1]f)&lt;i&gt;re&lt;/i&gt;([em1]g) no([em1]h)bis.([em1]h.) (::)
+</pre>
+</div>
+
+<div class="filename"><a href="./litany/Litany-II.gabc">Litany-II.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Litany II;
+
+def-m1: \grealign;
+%%
+(c3) Sanc([em1]h)ta([em1]h) Ma([em1]h)&lt;b&gt;rí&lt;/b&gt;([em1]i)([em1]gr)a,([em1]g.) (,)
+ó([em1]g)&lt;i&gt;ra&lt;/i&gt;([em1]f) &lt;i&gt;pro&lt;/i&gt;([em1]f) no([em1]h)bis.([em1]h.) (::)
+</pre>
+</div>
+
+<p>The next one is a bit tricky because there are so many notes and the <code>tabbing</code> environment (which is what we're going to use to align the syllables) is limited to 13 tab stops.  There are ways to increase this limit, but it's easier in this case to limit ourselves to only marking some of the syllables in the first part of the line where the note stays the same.</p>
+
+<div class="filename"><a href="./litany/Litany-III.gabc">Litany-III.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Litany III;
+
+def-m1: \grealign;
+%%
+(c3) Om([em1]h)nes(h) sanc([em1]h)ti(h) An([em1]h)ge(h)li(h) et(h) Arch([em1]h)&lt;b&gt;án&lt;/b&gt;([em1]i)ge([em1]gr)li,([em1]g.) (,)
+o([em1]g)rá([em1]g)&lt;i&gt;te&lt;/i&gt;([em1]f) &lt;i&gt;pro&lt;/i&gt;([em1]g) no([em1]h)bis.([em1]h.) (::)
+</pre>
+</div>
+
+<p><b>Nota bene:</b> In the above image the final block of lines aren't acuatlly aligned on the score, so we don't need the alignment macro.  However, we do need to introduce some extra space before the punctum cavum.</p>
+
+<div class="filename"><a href="./litany/Litany-IV.gabc">Litany-IV.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Litany IV;
+%%
+(c3) Sanc(h)te(h) &lt;b&gt;Pe&lt;/b&gt;(i/[7]gr)tre,(g.) (,)
+ó(g)&lt;i&gt;ra&lt;/i&gt;(f) &lt;i&gt;pro&lt;/i&gt;(f) no(h)bis.(h.) (::)
+</pre>
+</div>
+
+<p>Now, in the main project file we need to define the <code>\grealign</code> macro so that when the scores are included, <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> will record the position for future use.  We also need to define a custom <code>tabbing</code> environment which will make use of those saved positions to define its tab stops.  This environment can then be used to enter the subsequent lines of the litany.  When put all together we get the following:</p>
+
+<div class="filename"><a href="./litany/litany.tex">litany.tex</a></div>
+
+<div class="commandblock">
+<pre>
+% !TEX program = LuaLaTeX+se
+% !TEX encoding = UTF-8 Unicode
+\documentclass{report}
+
+\usepackage[a5paper,margin=1cm]{geometry}
+\usepackage[autocompile]{gregoriotex}
+\usepackage[savepos]{zref}
+\usepackage{libertine}
+\usepackage{multicol}
+
+\pagestyle{empty}
+\columnseprule=0.4pt
+
+\makeatletter  
+\newcounter{score}
+\newcounter{tabstop}[score]
+\newcommand{\grealign}{%
+	\@bsphack%
+	\ifgre@boxing\else%
+		\kern\gre@dimen@begindifference%
+		\stepcounter{tabstop}%
+		\expandafter\zsavepos{stop-\thescore-\thetabstop}%
+		\kern-\gre@dimen@begindifference%
+	\fi%
+	\@esphack%
+}
+
+\newcommand{\setstops}{%
+  \gdef\nstabbing@stops{%
+    \hspace*{-\oddsidemargin}\hspace{-1in}%
+    \hspace*{\zposx{stop-\thescore-1} sp}\=%
+  }%
+  \count@=\@ne
+  \loop\ifnum\count@<\value{tabstop}%
+    \begingroup\edef\x{\endgroup
+      \noexpand\g@addto@macro\noexpand\nstabbing@stops{%
+        \noexpand\hspace{-\noexpand\zposx{stop-\thescore-\the\count@} sp}%
+        \noexpand\hspace{\noexpand\zposx{stop-\thescore-\the\numexpr\count@+1} sp}\noexpand\=%
+      }%
+    }\x
+    \advance\count@\@ne
+  \repeat
+  \nstabbing@stops\kill
+}
+\makeatother
+
+\newenvironment{nstabbing}
+  {\setlength{\topsep}{0pt}%
+   \setlength{\partopsep}{0pt}%
+   \tabbing%
+   \setstops}
+  {\endtabbing\stepcounter{score}}
+
+\gresetinitiallines{0}
+\gresetlastline{justified}
+
+\begin{document}
+
+\gregorioscore{Litany-I}%
+\begin{nstabbing}
+\>Fili \>Re-\>démp-\>tor \>mundi \>\textbf{De}-\>us, \>mi-\>se-\>\textit{ré}-\>\textit{re} \>no-\>bis.\\
+\>Spí-\>ri-\>tus \>Sancte \>\>\textbf{De}-\>us, \>mi-\>se-\>\textit{ré}-\>\textit{re} \>no-\>bis.\\
+\>Sancta \>\>Trínitas \>\>unus \>\textbf{De}-\>us, \>mi-\>se-\>\textit{ré}-\>\textit{re} \>no-\>bis.\\
+\end{nstabbing}
+
+\gregorioscore{Litany-II}
+\begin{nstabbing}
+\>Sacnta De-\>\>i \>\textbf{Gé}-\>nitrix, \>\>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancta Vir-\>\>go \>\textbf{ví}r-\>gi-\>num, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\textbf{Mí}cha-\>\>el, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\textbf{Gá}bri-\>\>el, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\textbf{Rá}pha-\>\>el, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\end{nstabbing}
+
+\gregorioscore{Litany-III}
+\begin{nstabbing}
+\>Omnes \>sancti \>beatórum Spirítuum \>\>\textbf{ór}dines, \>\>\>o-\>rá-\>\textit{te} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>Joánnes \>\>Ba-\>\textbf{ptí}-\>\>sta, \>\>o-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\>\textbf{Jo}seph, \>\>\>\>o-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Omnes \>sancti \>Patriárchæ et Proph-\>\>\textbf{é}-\>tæ, \>\>o-\>rá-\>\textit{te} \>\textit{pro} \>no-\>bis.\\
+\end{nstabbing}
+
+\gregorioscore{Litany-IV}
+\begin{multicols}{2}
+\noindent
+Sancte \textbf{Pau}le, \hfill o\textit{ra}.\\
+Sancte And\textbf{ré}a, \hfill o\textit{ra}.\\
+Sancte Jo\textbf{án}nes, \hfill o\textit{ra}.\\
+Omnes sancti Apóstoli\\
+	\hspace*{1cm} et Evange\textbf{lí}stæ, \hfill orá\textit{te}.\\
+Omnes sancti Discípuli \textbf{Dó}mini,  \hfill orá\textit{te}.\\
+Sancte \textbf{Sté}phane,  \hfill o\textit{ra}.\\
+Sancte Lau\textbf{rén}ti,  \hfill o\textit{ra}.\\
+Sancte Vin\textbf{cén}ti,  \hfill o\textit{ra}.\\
+Omnes sancti \textbf{Má}rtyres,  \hfill orá\textit{te}.\\
+Sancte Syl\textbf{vé}ster, \hfill o\textit{ra}.\\
+Sancte Gre\textbf{gó}ri,  \hfill o\textit{ra}.\\
+Sancte Augu\textbf{stí}ne, \hfill o\textit{ra}.\\
+Omnes sancti Pontífices\\
+	\hspace*{1cm} et Confes\textbf{só}res, \hfill orá\textit{te}.\\
+Omnes sancti Do\textbf{ctó}res, \hfill orá\textit{te}.\\
+Sancte An\textbf{tó}ni, \hfill o\textit{ra}.\\
+Sancte Bene\textbf{dí}cte, \hfill o\textit{ra}.\\
+Sancte Do\textbf{mí}nice, \hfill o\textit{ra}.\\
+Sante Fan\textbf{cí}sce, \hfill o\textit{ra}.\\
+Omnes sancti Sacerdótes et Le\textbf{ví}tæ, \hfill orá\textit{te}.\\
+Omnes sancti Mónachi et Ere\textbf{mí}tæ, \hfill orá\textit{te}.\\
+Sancta María Magde\textbf{lé}na, \hfill o\textit{ra}.\\
+\end{multicols}
+
+\end{document}
+</pre>
+</div>
+
+<p>You'll notice that our definition of <code>\grealign</code> contains two of the Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> internals: <code>\ifgre@boxing</code> and <code>\gre@dimen@begindifference</code>.  The first is needed to prevent the creation of spurious tab stops.  In order to align the syllable text (that it knows about) and the notes, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> puts the notes into a box first so that it can measure them.  However, since it's only putting them into a box, and not placing that box on the page, when Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> does this, the position of the notes is 0, which is not a number we want to save.  We only want to save the position when they are being placed on the page: i.e. when we're not boxing (hence the immediate <code>\else</code>).</p>
+
+<p>The other internal, <code>\gre@dimen@begindifference</code> is the travel from the beginning of the notes to the beginning of the text.  By following that travel before we save our position, we force the tab stop to be algined with the text, rather than the notes.  Of course, once we've saved the stop position, we have to undo that move so that Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> can continue to create the score with proper alignment.</p>
+
+<p>Finally, after running Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> on the document <b>twice</b> (once to store the positions, the second to use them), we get somthing like this:</p>
+
+<div class="legende">
+<img src="./litany/litany.png" alt="">
+</div>
+
+<p>Obviously this isn't identical to the original, mostly because I've made a best guess at the page size, but in some ways it improves on it because I make better use of the page size I've chosen.  Each line of music, for instance, stretches all the way across the page, allowing me to make the alignment of the lines clearer.</p>
+
+<h5>Works with Version:</h5>
+
+<p>4.1.0.</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>

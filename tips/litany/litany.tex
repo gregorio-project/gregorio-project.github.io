@@ -1,0 +1,111 @@
+% !TEX program = LuaLaTeX+se
+% !TEX encoding = UTF-8 Unicode
+\documentclass{report}
+
+\usepackage[a5paper,margin=1cm]{geometry}
+\usepackage[autocompile]{gregoriotex}
+\usepackage[savepos]{zref}
+\usepackage{libertine}
+\usepackage{multicol}
+
+\pagestyle{empty}
+\columnseprule=0.4pt
+
+\makeatletter  
+\newcounter{score}
+\newcounter{tabstop}[score]
+\newcommand{\grealign}{%
+	\@bsphack%
+	\ifgre@boxing\else%
+		\kern\gre@dimen@begindifference%
+		\stepcounter{tabstop}%
+		\expandafter\zsavepos{stop-\thescore-\thetabstop}%
+		\kern-\gre@dimen@begindifference%
+	\fi%
+	\@esphack%
+}
+
+\newcommand{\setstops}{%
+  \gdef\nstabbing@stops{%
+    \hspace*{-\oddsidemargin}\hspace{-1in}%
+    \hspace*{\zposx{stop-\thescore-1} sp}\=%
+  }%
+  \count@=\@ne
+  \loop\ifnum\count@<\value{tabstop}%
+    \begingroup\edef\x{\endgroup
+      \noexpand\g@addto@macro\noexpand\nstabbing@stops{%
+        \noexpand\hspace{-\noexpand\zposx{stop-\thescore-\the\count@} sp}%
+        \noexpand\hspace{\noexpand\zposx{stop-\thescore-\the\numexpr\count@+1} sp}\noexpand\=%
+      }%
+    }\x
+    \advance\count@\@ne
+  \repeat
+  \nstabbing@stops\kill
+}
+\makeatother
+
+\newenvironment{nstabbing}
+  {\setlength{\topsep}{0pt}%
+   \setlength{\partopsep}{0pt}%
+   \tabbing%
+   \setstops}
+  {\endtabbing\stepcounter{score}}
+
+\gresetinitiallines{0}
+\gresetlastline{justified}
+
+\begin{document}
+
+\gregorioscore{Litany-I}%
+\begin{nstabbing}
+\>Fili \>Re-\>démp-\>tor \>mundi \>\textbf{De}-\>us, \>mi-\>se-\>\textit{ré}-\>\textit{re} \>no-\>bis.\\
+\>Spí-\>ri-\>tus \>Sancte \>\>\textbf{De}-\>us, \>mi-\>se-\>\textit{ré}-\>\textit{re} \>no-\>bis.\\
+\>Sancta \>\>Trínitas \>\>unus \>\textbf{De}-\>us, \>mi-\>se-\>\textit{ré}-\>\textit{re} \>no-\>bis.\\
+\end{nstabbing}
+
+\gregorioscore{Litany-II}
+\begin{nstabbing}
+\>Sacnta De-\>\>i \>\textbf{Gé}-\>nitrix, \>\>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancta Vir-\>\>go \>\textbf{vír}-\>gi-\>num, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\textbf{Mí}-\>cha-\>el, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\textbf{Gá}-\>bri-\>el, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\textbf{Rá}-\>pha-\>el, \>ó-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\end{nstabbing}
+
+\gregorioscore{Litany-III}
+\begin{nstabbing}
+\>Omnes \>sancti \>beatórum Spirítuum \>\>\textbf{ór}dines, \>\>\>o-\>rá-\>\textit{te} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>Joánnes \>\>Bap-\>\textbf{tí}-\>\>sta, \>\>o-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Sancte \>\>\>\>\textbf{Jo}seph, \>\>\>\>o-\>\textit{ra} \>\textit{pro} \>no-\>bis.\\
+\>Omnes \>sancti \>Patriárchæ et Pro-\>\>\textbf{phé}-\>\>tæ, \>o-\>rá-\>\textit{te} \>\textit{pro} \>no-\>bis.\\
+\end{nstabbing}
+
+\gregorioscore{Litany-IV}
+\begin{multicols}{2}
+\noindent
+Sancte \textbf{Pau}le, \hfill o\textit{ra}.\\
+Sancte And\textbf{ré}a, \hfill o\textit{ra}.\\
+Sancte Jo\textbf{án}nes, \hfill o\textit{ra}.\\
+Omnes sancti Apóstoli\\
+	\hspace*{1cm} et Evange\textbf{lí}stæ, \hfill orá\textit{te}.\\
+Omnes sancti Discípuli \textbf{Dó}mini,  \hfill orá\textit{te}.\\
+Sancte \textbf{Sté}phane,  \hfill o\textit{ra}.\\
+Sancte Lau\textbf{rén}ti,  \hfill o\textit{ra}.\\
+Sancte Vin\textbf{cén}ti,  \hfill o\textit{ra}.\\
+Omnes sancti \textbf{Má}rtyres,  \hfill orá\textit{te}.\\
+Sancte Syl\textbf{vé}ster, \hfill o\textit{ra}.\\
+Sancte Gre\textbf{gó}ri,  \hfill o\textit{ra}.\\
+Sancte Augu\textbf{stí}ne, \hfill o\textit{ra}.\\
+Omnes sancti Pontífices\\
+	\hspace*{1cm} et Confes\textbf{só}res, \hfill orá\textit{te}.\\
+Omnes sancti Do\textbf{ctó}res, \hfill orá\textit{te}.\\
+Sancte An\textbf{tó}ni, \hfill o\textit{ra}.\\
+Sancte Bene\textbf{dí}cte, \hfill o\textit{ra}.\\
+Sancte Do\textbf{mí}nice, \hfill o\textit{ra}.\\
+Sante Fan\textbf{cí}sce, \hfill o\textit{ra}.\\
+Omnes sancti Sacerdótes et Le\textbf{ví}tæ, \hfill orá\textit{te}.\\
+Omnes sancti Mónachi et Ere\textbf{mí}tæ, \hfill orá\textit{te}.\\
+Sancta María Magde\textbf{lé}na, \hfill o\textit{ra}.\\
+\end{multicols}
+
+\end{document}

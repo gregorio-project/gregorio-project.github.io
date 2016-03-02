@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Scores Without Margins';
+</script>
+
+<h1>Scores Without Margins</h1>
+
+<p>While the capabilities of <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> are such that you can make pretty much any kind of document you desire within it, there are occasions where it's useful to prepare a Gregorian chant score for insertion into another work flow which doesn't use <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>.  In these instances, it's often useful if the score's margins are eliminated to prevent the score from having excess padding around it in the final document.  Fortunately, this actually isn't too difficult in <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> as shown in the following example:</p>
+
+<div class="filename"><a href="./nomargin/main-no-margin.tex">main-no-margin.tex</a></div>
+
+<div class="commandblock">
+<pre>
+% !TEX program = LuaLaTeX+se
+
+% This document produces a pdf containing the score with no margin.
+% It is based on this solution:
+% http://tex.stackexchange.com/questions/291630/best-way-to-know-bottom-line-height-of-a-pdf/291664#291664
+%
+% It contains advanced commands quite difficult to understand, but should be straightforward
+% to adapt to your needs.
+%
+\documentclass[11pt]{article}
+\usepackage{gregoriotex}
+\usepackage{libertine}
+% Do not load geometry, fullpage, or any package changing width
+% or margins.
+
+\hoffset-1in
+\voffset-1in
+\newbox\scorebox
+
+% using the "commentary" header of the gabc file
+\gresetheadercapture{commentary}{grecommentary}{string}
+
+\begin{document}
+
+% here the final "9" of the commentary would be cut too sharp. The reason is that
+% the italic "9" glyph in the libertine font is larger than its bounding box, the
+% dimension of which that TeX is actually aware (which is normal for italic), so we
+% have manually insert the italic correction (`\/`), the small kern which is normally
+% used when switching from italics to upright fonts.
+% In the libertine font, the “f” is also slightly taller than its bounding box, so we have
+% to prevent it from getting cut off too.  Unfortunately, there isn’t a convenient
+% measure of this built in, so we have to fudge this ourselves with a strut.  Adjust the
+% 0.8em to your taste.
+% We use an admittedly strange trick to fix these, redefining grecommentary.
+\let\grevanillacommentary\grecommentary
+\def\grecommentary#1{\grevanillacommentary{#1\/\rule{0pt}{0.8em}}}
+
+\setbox\scorebox=\vbox{\hsize=10cm\relax % change the width of the score here
+	\gregorioscore[a]{PopulusSion}
+}
+\pdfpagewidth\wd\scorebox
+\pdfpageheight\dimexpr\ht\scorebox+\dp\scorebox\relax
+\shipout\box\scorebox
+\end{document}
+</pre>
+</div>
+
+<p>Once compiled, this code will produce <a href="./nomargin/main-no-margin.pdf">a pdf file like this one.</a></p>
+
+<h5>Works with Version:</h5>
+
+<p>4.1.0</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
