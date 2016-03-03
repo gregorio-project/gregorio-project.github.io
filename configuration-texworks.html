@@ -98,6 +98,36 @@
 
 <p><b>Note:</b> The interesting combination of wildcards (<code>*</code>) and characters on the <code>gtex</code> filename is designed to pickup the automaticly created <code>gtex</code> files which have the version number attached to the original filename in the form <code>-4_0_0</code> (though with the numbers of the Gregorio version currently installed).  However, if you are in the habit of using dashes and underscores in your filenames, then it may pickup files you've generated manually, so caution is advised.</p>
 
+<h3>Syntax Highlighting for .gabc files (optional)</h3>
+
+<p>Adding syntax highlighting for <code>.gabc</code> files requires
+manual configuration.</p>
+
+<p>First find the file <code>syntax-patterns.txt</code>. Under Linux
+it is in <code>~/.TeXworks/configuration/</code>, under Mac it is
+in <code>~/Library/TeXworks/configuration/</code>, under Windows it
+should be in <code>C:/Users/&lt;your user
+name&gt;/.texlive2015/texmf-config</code> (replace "2015" with your
+version); if it's not there, you can look for it with the Windows
+search tools.  On some systems, this file may be designated as
+read-only.  If it is, you'll need to alter its permissions before
+proceeding.</p>
+
+<p>Add the following code to the end of the file:</p>
+<div class="commandline">
+<code>[Gabc]<br>
+# notes<br>
+tomato  N   \([^\)]*\)<br>
+# headers<br>
+darkblue    N   [^\(:]+:.*;<br>
+# comments<br>
+gray            Y   %.*
+</code>
+</div>
+
+<p>This adds an option to the menu <i>Format -> Syntax Highlighting</i> You will either have to select it manually or set it as the default.</p>
+
+
 <h3>Using <span class="tex">T<span class="epsilon">e</span>X</span>works</h3>
 
 <p>Once <span class="tex">T<span class="epsilon">e</span>X</span>works is ready, refer to <a href="introduction-editor.html">the introduction page</a> to start using Gregorio!</p>
