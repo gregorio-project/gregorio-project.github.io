@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Isolated Neumes in Text';
+</script>
+
+<h1>Isolated Neumes in Text</h1>
+
+<p>When writing academic or instructional works about Gregorian chant, you might want to print a neume directly in the text, rather than breaking into a complete score, in order to better illustrate what you are talking about.  Fortunately, there are two ways to bring those neumes into your text, depending on whether you want a single or multiple glyphs (for a definiton of what Gregorio considers a neume and what it considers a glyph, see <a href="../structure.html">the structure page</a>).</p>
+
+<p><b>Nota Bene:</b> If you want to change the size of the neumes inserted by either of these two methods, then you need to use `\grechangestaffsize`.  When loaded the font containing the musical glyphs is sized to match the current staff size and this is a relationship which it is essential you preserve, otherwise your scores will come out weird.  Fortunately, both these methods are insisitive to the usual <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> size changing commands, but if you're using something else to change font sizes, do not let it mess with the fonts loaded by Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>.</p>
+
+<h3>Single Glyphs</h3>
+
+<p>The first method works best if you neume consists of a single glyph of 5 or fewer notes and for which you know the name of the glyph you want (there is a handy table of glyphs at the end of GregorioRef where you can look up the names).  In this case add the following macro definition to your preamble:</p>
+
+<div class="commandblock">
+<pre>
+\makeatletter
+\def\gretextglyph#1{{\gre@font@music\csname GreCP#1\endcsname}}
+\makeatother
+</pre>
+</div>
+
+<p>This command can then be used to insert the desired glyph anywhere in your text.  For instance a quilisma is inserted as <code>\gretextglyph{Quilisma}</code>.</p>
+
+<p>If you cannot find the glyph you want in the table at the back of GregorioRef, then it is probably a fused glyph: <i>i.e.</i>, a glyph made by fusing two other glyphs together in a seamless fashion.  All glyphs of 6 or more notes are made this way, as are some smaller ones.  In this case you'll want to use the multiple glyph method below.</p>
+
+<h3>Multiple Glyphs</h3>
+
+<p>The second method is to employ a modified form of another trick: <a href="./shortscore.html">the short score</a>.  As a result, it is capable of entring any neume which can be reprsented in gabc regardless of the number of glyphs which go into it.  As a bonus, you don't need to know (or look up) the names of the glyphs you want.</p>
+
+<p>The basic form of the trick is to put a <code>\gabcsnippet</code> inside a <code>minipage</code> (in which we've turned "off" those score elements we don't want to see) and then put that minipage inside a <code>\raisebox</code> so that we can control its position:</p>
+
+<div class="commandblock">
+<pre>
+\raisebox{0pt}[\height][\depth]{%
+    \begin{minipage}{0.8cm}%
+        \gresetlines{invisible}%
+        \gresetclef{invisible}%
+        \greseteolcustos{manual}%
+	    \gabcsnippet{(fvEDC)}%
+    \end{minipage}%
+}%
+</pre>
+</div>
+
+<p>The above block can be placed in your text exactly where you want it, or can be placed inside a macro definition in the preamble as you prefer.</p>
+
+<p><b>Nota Bene:</b> There are four distances in the above code block which you will have to tune for each neume that you insert:</p>
+
+<ol>
+    <li>The first (<code>0pt</code> in the above) is the "raise" of the box, <i>i.e.</i>, it is used to regulate how the neume aligns vertically with the text of the line it is on.</li>
+    <li>The second (<code>\height</code> in the above) is how tall <span class="tex">T<span class="epsilon">e</span>X</span> should consider the neume, <i>i.e.</i>, it is used to adjust the spacing between the line the neume is on and the line above it.  <code>\height</code> in this case represents the "natural" height of the box contents (which should normally correspond to the height of your neume).</li>
+    <li>The third distance (<code>\depth</code> in the above) is how far below the base line <span class="tex">T<span class="epsilon">e</span>X</span> should consider the neume to go (the depth), <i>i.e.</i>, it is used to adjust the spacing between the line the neume is on and the line below it.  <code>\depth</code> in this case reprsenents the "natural" depth of the box contents (which should normally be 0).</li>
+    <li>The fourth distance (<code>0.8cm</code> in the above) is the width of the box containing the neume.  You should pick it to be as tight to the neume as possible without causing a line break.</li>
+</ol>
+
+
+
+<h5>Works with Version:</h5>
+
+<p>4.1.0.</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
