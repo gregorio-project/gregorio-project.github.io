@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Font based Distances';
+</script>
+
+<h1>Font based Distances</h1>
+
+<p>While Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> supports the use of the font based <code>em</code> and <code>ex</code> units when setting the values for distances, each font has 5 other spacing parameters associated with it and sometimes it may be useful to use one of those instead.  These spacing parameters are accessed via the <code>\fontdimen&gt;int&lt;\font</code> interface in <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> where <code>&gt;int&lt;</code> is an integer between 1 and 7, inclusive (see <a href="http://tex.stackexchange.com/questions/88991/what-do-different-fontdimennum-mean">this answer on tex.stackexchange.com</a> for a description of all 7 spacing parameters).  Using these spacing parameters is possible, but imposes some requirements on the way the distance is defined in order to link the two in a dynamic fashion:</p>
+
+<ol>  
+    <li>When using <code>\fontdimen</code> values in defining a Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> distance, they should be prepended by <code>\the</code> and can be combined or scaled using <code>\dimexpr</code> and <code>\glueexpr</code> (which also need to be prepended by <code>\the</code> when used).
+    <li>To prevent premature expansion, the entire value for the distance should be enclosed in <code>\unexpanded</code>.
+    <li>The distance should be defined as <code>fixed</code> relative to the staff size.  If the distance is <code>scalable</code> then any link between the distance and the font distance will be broken if <code>\grechangestaffsize</code> is called.
+</ol>
+
+<p>Example 1:</p>
+
+<div class="commandblock">
+<pre>
+\grechangedim{interwordspacetext}{\unexpanded{\the\fontdimen2\font}}{fixed}%
+</pre>
+</div>
+ 
+<p>This definition for <code>interwordspacetext</code> will make it equal to the standard space for the font (<i>i.e.</i>, what appears between words in the body text.</p>
+
+<p>Example 2:</p>
+
+<div class="commandblock">
+<pre>
+\grechangedim{interwordspacetext@euouae}{\unexpanded{\the\dimexpr(\the\fontdimen2\font * 8 / 10)\relax}}{fixed}%
+</pre>
+</div>
+
+<p>This definition for <code>interwordspacetext@euouae</code> makes it 8/10<sup>th</sup> the size of standard space for the font.
+
+<p>This trick can also be adapted to create a partial (or complete) dependance of one distance on another:</p>
+
+<p>Example 3:</p>
+
+<div class="commandblock">
+<pre>
+\makeatletter
+\grechangedim{interwordspacetext}{\unexpanded{\the\fontdimen2\font plus \the\gluestretch\gre@space@skip@interwordspacenotes minus \the\glueshrink\gre@space@skip@interwordspacenotes}}{fixed}%
+\makeatother
+</pre>
+</div>
+
+<p>Here we've used <code>\gluestretch</code> and <code>\glueshrink</code> to extract the stretch and shrink values from <code>interwordspacenotes</code> and assign them to the stretch and shrink values for <code>interwordpsacetext</code>.  If <code>interwordspacenotes</code> is subsequently changed (say by calling <code>\grechangestaffsize</code> when it is set to be a scalable distance), then those changes will automatically propogate to <code>interwordspacetext</code>.</p>
+
+<p><b>Nota Bene:</b> When using this trick to link distances, don't forget the <code>\makeatletter</code> and <code>\makeatother</code>.  If you do, then <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> will have trouble reading the entire name of the internal macro where the distance is stored.</p>
+
+<h5>Works with Version:</h5>
+
+<p>4.1.1</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
