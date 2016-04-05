@@ -99,7 +99,7 @@
 
 <p>Here we've used <code>\gluestretch</code> and <code>\glueshrink</code> to extract the stretch and shrink values from <code>interwordspacenotes</code> and assign them to the stretch and shrink values for <code>interwordpsacetext</code>.  If <code>interwordspacenotes</code> is subsequently changed (say by calling <code>\grechangestaffsize</code> when it is set to be a scalable distance), then those changes will automatically propogate to <code>interwordspacetext</code>.</p>
 
-<p><b>Nota Bene:</b> When using this trick to link distances, don't forget the <code>\makeatletter</code> and <code>\makeatother</code>.  If you do, then <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> will have trouble reading the entire name of the internal macro where the distance is stored.</p>
+<p><b>Nota Bene:</b> When using this trick to link distances, don't forget the <code>\makeatletter</code> and <code>\makeatother</code>.  If you leave them out, then <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> will have trouble reading the entire name of the internal macro where the distance is stored.</p>
 
 <h5>Works with Version:</h5>
 
