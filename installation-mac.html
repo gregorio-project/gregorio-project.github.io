@@ -129,6 +129,14 @@
 
 <p><b>Nota bene:</b> For versions of Gregorio prior to 4.0, you may want to add the following flags to <code>build.sh</code>: <code> --enable-all-static --disable-shared --enable-static-ltdl</code>.  They will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries.</p>
 
+<h3>Alternate Installation Locations</h3>
+
+<p>By default the automatic installation process will install gregorio in <code>/usr/local/</code> and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> into they system-wide texmf-local.  If you wish to change these destinations, then you can add arguments to the build and install instructions to that effect:</p>
+
+<div class="commandline">
+    <code>./build.sh --arch=x86_64 --prefix=/path/to/custom/root</code><br/>
+    <code>sudo ./install.sh dir:/path/to/custom/texmf</code>
+</div>
 <h3>Update</h3>
 
 <p>To update your git version, you just need to go into the directory containing the source files (assuming you kept it), run <code>git pull</code> and recompile with the same instructions as the previous <em>Compilation</em> section.  If you deleted that directory after install, then just repeat the steps above starting at the <code>git clone</code> command.</p>
