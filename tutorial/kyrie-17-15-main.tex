@@ -3,18 +3,19 @@
 \usepackage{fullpage}
 
 \usepackage{fontspec}
-\setmainfont{Arial}
+\usepackage{libertine}
 
 \usepackage[autocompile]{gregoriotex}
 
 \pagestyle{empty}
 
-\begin{document}
+\grechangestyle{commentary}{\small\bfseries}
+\gresetmodenumbersystem{roman-majuscule}
 
+\begin{document}
 \begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
 
-\greannotation{\small \textsc{\textbf{VI.}}}
-\grecommentary{{\small \emph{XIV. s.}}}
+\gresetheadercapture{date}{grecommentary}{}
 \gregorioscore{kyrie-17-final}
 
 \end{document}

@@ -73,9 +73,9 @@
 <img src="kyrie-xvii-goal.png"/>
 </div>
 
-<p>Our gabc notation file is complete now:</p>
+<p>Our gabc notation file currently looks like this:</p>
 
-<div class="filename"><a href="kyrie-17-final.gabc">kyrie-17-final.gabc</a></div>
+<div class="filename"><a href="kyrie-17-12.gabc">kyrie-17-12.gabc</a></div>
 
 <div class="commandblock">
 	<pre>
@@ -91,14 +91,36 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 <p>And the resulting score looks like this:</p>
 
 <div class="legende">
-<img src="kyrie-17-13a.png"/>
+<img src="kyrie-17-12.png"/>
 </div>
 
-<p>We still have some changes to do: to add the mode notation "VI" before the first clef and add the annotation "XIV. s." above the first stave. I'd like to experiment with a different typeface for the text. Last of all, it would also be nice if we could add more vertical space between the staves.</p>
+<p>We also still have some changes to make to the score: add the mode notation "VI" before the first clef (an annotation) and add "XIV s." (which stands for "14th century," in Latin, the date of the piece) above the first stave (the commentary). I'd like to experiment with a different typeface for the text. Last of all, it would also be nice if we could add more vertical space between the staves.</p>
 
 <h3>Adding annotations</h3>
 
-<p>All these details of the output are controlled by the <span class="tex">T<span class="epsilon">e</span>X</span> file which represents the document, so let's look at that.  This is what you currently have:</p>
+<p>While we could add the annotation and commentary directly in the main project file, let's make use of the gabc headers so that this information stays with the score and can easily be reused if we decide to create another project using this score.</p>
+
+<p>To do this, we need to add two lines to the gabc file (highlighted in red):</p>
+
+<div class="filename"><a href="kyrie-17-final.gabc">kyrie-17-final.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+<font color=red>mode: 6;
+date: XIV\textsuperscript{o} s.;</font>
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::) 
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+<p>You'll note that we've used some <span class="tex">T<span class="epsilon">e</span>X</span> code in the date header in order to create the ordinal indicator (something lacking in the original score).  We could also have used the Unicode character <code>º</code> for the same purpose, but that would be more sensitive to font changes, so I prefer to use the explicit <span class="tex">T<span class="epsilon">e</span>X</span> code.  Of course, you could just leave it out entirely and get something closer to the score.</p>
+
+<p>Now, the mode header will be picked up by default (and placed as an annotation) once it's been added to the gabc file, but the date header will not.  In order to add place the date header in the commentary position, we need to add a line to the project file (highlighted in red):</p>
+
 
 <div class="filename"><a href="kyrie-17-13-main.tex">kyrie-17-13-main.tex</a></div>
 
@@ -115,38 +137,21 @@ K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eac
 
 \begin{document}
 
+<font color="red">\gresetheadercapture{date}{grecommentary}{}</font>
 \gregorioscore{kyrie-17}
 
 \end{document}
 </pre>
 </div>
 
-<p>The <code>\grecommentary{}</code> macro generates the small text above the first stave, so let's add that first.  Place the following line directly above <code>\gregorioscore</code> (<i>i.e.</i> there should be no blank lines in between):</p>
 
-<div class="commandblock">
-	<pre>
-\grecommentary{{\small \emph{XIV. s.}}}
-</pre>
+<p>Once that's done, run that file through Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
+
+<div class="legende">
+<img src="kyrie-17-13.png"/>
 </div>
 
-<p>The macro <code>\greannotation{}</code> generates the mode label before the first clef, so let's add that line just above the previous one:</p>
-
-<div class="commandblock">
-	<pre>
-\greannotation{\small \textsc{\textbf{VI.}}}
-</pre>
-</div>
-
-Finally, let's put a title at the top of the page by placing the following line directly after <code>\begin{document}</code>:
-
-<div class="commandblock">
-	<pre>
-\begin{center}\begin{huge}\textsc{Kyrie XVIII}\end{huge}\end{center}
-</pre>
-</div>
-
-
-<p>Your whole file should look like this now:</p>
+<p>We've got the elements in place, but I don't like the way the date commentary looks.  Instead of italics, I want it to be bold.  However, I still want to keep it the same size, which is slightly smaller than the font used for the lyrics.  To make this happen I need to modify the project file again:</p>
 
 <div class="filename"><a href="kyrie-17-14-main.tex">kyrie-17-14-main.tex</a></div>
 
@@ -161,22 +166,53 @@ Finally, let's put a title at the top of the page by placing the following line 
 
 \usepackage[autocompile]{gregoriotex}
 
-\begin{document}
-<font color="red">\begin{center}\begin{huge}\textsc{Kyrie XVIII}\end{huge}\end{center}
+<font color="red">\grechangestyle{commentary}{\small\bfseries}</font>
 
-\greannotaion{\small \textsc{\textbf{VI.}}}
-\grecommentary{{\small \emph{XIV. s.}}}</font>
+\begin{document}
+
+\gresetheadercapture{date}{grecommentary}{}
 \gregorioscore{kyrie-17}
 
 \end{document}
 </pre>
 </div>
 
-
-<p>Make those changes, run that file through <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
-
 <div class="legende">
 <img src="kyrie-17-14.png"/>
+</div>
+
+<p>I think that's a bit better.  However, having made that change, it's now obvious that the mode number and the date commentary are not printing the same.  This is because by default the mode number uses small capitals, not normal majuscule characters.  I'm going to switch this to get a more consistent look.</p>
+
+<p>I also want to put a title at the top of the page, so I'll add that directly after <code>\begin{document}</code>.</p>
+
+<div class="filename"><a href="kyrie-17-15-main.tex">kyrie-17-15-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\grechangestyle{commentary}{\small\bfseries}
+<font color="red">\gresetmodenumbersystem{roman-majuscule}</font>
+
+\begin{document}
+<font color="red">\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}</font>
+
+\gresetheadercapture{date}{grecommentary}{}
+\gregorioscore{kyrie-17}
+
+\end{document}
+</pre>
+</div>
+
+<div class="legende">
+<img src="kyrie-17-15.png"/>
 </div>
 
 <h3>Changing the typeface</h3>
@@ -200,20 +236,22 @@ Finally, let's put a title at the top of the page by placing the following line 
 <p>Here's how the score looks after that change:</p>
 
 <div class="legende">
-<img src="kyrie-17-15.png"/>
+<img src="kyrie-17-font.png"/>
 </div>
 
 <p>This result is kind of ugly, so we'll change it back to Linux Libertine, but this should give you some idea of how to change the font.  Other fonts, including most of the ones already installed on your system, can be loaded using the <a href="https://www.ctan.org/pkg/fontspec?lang=en"><code>fontspec</code></a> package, just like we loaded Arial above.  You can also find a list of free fonts which are readily available for <span class="tex">T<span class="epsilson">e</span>X</span> see <a href="http://www.tug.dk/FontCatalogue/">The <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> Font Catalogue.</a>  The best-looking font for Gregorian Chant is a matter of taste, so we'll leave it up to you to explore the use of other fonts on your own.</p>
 
 <h3>Changing vertical spacing</h3>
 
-<p>To add more space between the staves, I adjusted a spacing variable by adding the following line between the title and the annotation:</p>
+<p>To add more space between the staves, I adjusted a spacing variable by adding the following line to the preamble:</p>
 
 <div class="commandline">
 	<pre>
-\grechangedim{spaceabovelines}{1.45 cm plus 0.36 cm minus 0.09 cm}{scalable}%
+\grechangedim{lineskip}{1 cm plus 0.36 cm minus 0.09 cm}{scalable}%
 </pre>
 </div>
+
+
 
 <p>This gives us this final project file:</p>
 
@@ -235,7 +273,7 @@ Finally, let's put a title at the top of the page by placing the following line 
 
 \begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
 
-\grechangedim{spaceabovelines}{1.45 cm plus 0.36 cm minus 0.09 cm}{scalable}
+\grechangedim{lineskip}{1 cm plus 0.36 cm minus 0.09 cm}{scalable}
 
 \greannotation{\small \textsc{\textbf{VI.}}}
 \grecommentary{{\small \emph{XIV. s.}}}
