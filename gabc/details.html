@@ -246,7 +246,9 @@ Polyphonic pieces are different only at the level of the neume; indeed, the text
 
 <h3 id="translation">Translation and text above notes</h3>
 
-<p>To add a translation (or a second line of text), simply put it between square brackets in the syllable text. The text will be left-aligned with the text of the syllable, and won't go to the next line automatically. Thus it may require a bit of work to get the desired effect.</p>
+<p>To add a translation (or a second line of text), simply put it between square brackets in the syllable text. By default the text will be left-aligned with the text of the syllable, but you can force it to center below the syllable with <code>\gresettranslationcentering{center}</code>.  In either case, the translation won't go to the next line automatically. Thus it may require a bit of work to get the desired effect.</p>
+
+<p>It is also possible to span the centering of a translation over several syllables.  To do this you enter the translation as normal on the syllabe which you want to start the centering span and enter <code>[/]</code> as the translation for the syllable which ends the centering span.  If you do this, the multi-syllable translation will be centered over the span of syllables regardless of the setting for translation centering for an individual syllable.</p>
 
 <p>It is also possible to add text above notes in two ways: the first is to set the text at the syllable text level between <code>&lt;alt&gt;</code> markup tags (<code>alt</code> is short for <em>above lines text</em>). This text will be left-aligned with the first note of the syllable. It is also possible to typeset text entering <code>[alt:my text]</code> in the notes, which will align "my text" with the next note.</p>
 
