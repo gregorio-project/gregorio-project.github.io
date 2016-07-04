@@ -77,7 +77,7 @@
 <li>open TERMINAL and do <code>xcode-select --install</code> to install the command line tools</li>
 <li>download and install <a href="http://www.macports.org/">MacPorts</a> (free)</li>
 <li>once installed, in the TERMINAL, do <code>sudo port selfupdate</code> to get the latest sources packages</li>
-<li>do <code>sudo port install libtool autoconf automake flex bison</code>.</li>
+<li>do <code>sudo port install libtool autoconf automake flex bison py-pygments</code>.</li>
 <li>For gregorio versions prior to 4.0, if you are using <span style="font-family: monospace;">--enable-xml-read</span> then this additional dependency is needed: <code>sudo port install libxml2</code>.</li>
 <li>Because the versions of git and bash which ship with OSX are not the most recent, you may also want to consider adding the following two packages: <code>sudo port install bash git</code>  If you are planning on helping with development, then the bash upgrade is required.</li>
 </ol>
@@ -88,6 +88,7 @@
 
 <p>If you intend to aid in development, then there are a couple of more packages which will come in handy: <code>sudo port install python27 ImageMagick coreutils</code>
 
+<!-- May 2016 - not needed, but keeping in case this changes again
 <p>Finally, the version of flex that is currently (as of September 2015) available in MacPorts (2.5.37) is not the most current version (2.5.39).  While at last test this version still enabled a successful compilation of Gregorio, the development team uses the current version and does not test for backwards compatibility regularly.  If you want to use the more recent version of flex to ensure compatibility, then follow the following steps:</p>
 
 <ol>
@@ -96,7 +97,7 @@
 <li>in TERMINAL do <code>brew install flex</code></li>
 <li>since Homebrew doesn't add its version of flex to the PATH, you need to do so manually.  To do this for a parituclar TERMINAL session do <code>export PATH=/usr/local/opt/flex/bin/:$PATH</code>.  If you prefer to do this more permently you will need to modify your bash profile.  Instructions for doing so can be found using a Google search.</li>
 </ol>
-
+-->
 
 <h3>Source downloading</h3>
 
@@ -129,6 +130,14 @@
 
 <p><b>Nota bene:</b> For versions of Gregorio prior to 4.0, you may want to add the following flags to <code>build.sh</code>: <code> --enable-all-static --disable-shared --enable-static-ltdl</code>.  They will reduce the number of files installed on your machine by making the command line tool self contained, rather than using linked libraries.</p>
 
+<h3>Alternate Installation Locations</h3>
+
+<p>By default the automatic installation process will install gregorio in <code>/usr/local/</code> and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> into they system-wide texmf-local.  If you wish to change these destinations, then you can add arguments to the build and install instructions to that effect:</p>
+
+<div class="commandline">
+    <code>./build.sh --arch=x86_64 --prefix=/path/to/custom/root</code><br/>
+    <code>sudo ./install.sh dir:/path/to/custom/texmf</code>
+</div>
 <h3>Update</h3>
 
 <p>To update your git version, you just need to go into the directory containing the source files (assuming you kept it), run <code>git pull</code> and recompile with the same instructions as the previous <em>Compilation</em> section.  If you deleted that directory after install, then just repeat the steps above starting at the <code>git clone</code> command.</p>

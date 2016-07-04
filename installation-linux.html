@@ -85,6 +85,15 @@
     <code>sudo ./install.sh</code>
 </div>
 
+<h3>Alternate Installation Locations</h3>
+
+<p>By default the automatic installation process will install gregorio in <code>/usr/local/</code> and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> into they system-wide texmf-local.  If you wish to change these destinations, then you can add arguments to the build and install instructions to that effect:</p>
+
+<div class="commandline">
+    <code>./build.sh --prefix=/path/to/custom/root</code><br/>
+    <code>sudo ./install.sh dir:/path/to/custom/texmf</code>
+</div>
+
 <h2>Most Recent Development Version</h2>
 
 <h3>Install Dependencies</h3>
@@ -92,7 +101,7 @@
 <p>In addition to <span class="tex">T<span class="epsilon">e</span>X</span>Live, to build from the repository you will also need to get several build tools with your package manager.  On Ubuntu/Debian/Mint execute the following in a terminal window:</p>
 
 <div class="commandline">
-    <code>sudo apt-get install git autoconf libltdl7-dev flex bison fontforge</code>
+    <code>sudo apt-get install git autoconf libltdl7-dev flex bison fontforge python-pygments</code>
 </div>
 
 <p><b>Nota bene:</b> You may, should you so choose, use a different pacakge manager, such as <code>aptitude</code>.  If you are using a different Linux distribution, then the names of the packages you need may be slightly different.</p>
