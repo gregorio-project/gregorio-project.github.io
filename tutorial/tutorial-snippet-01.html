@@ -1,0 +1,285 @@
+<html lang="en">
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+    <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Gregorio Tutorial';
+</script>
+
+<style type="text/css">
+  .commandblock {font-family: courier; padding-left: 150px;}
+  .commandline {font-family: courier;}
+</style>
+<h1>Gregorio and Snippet Tutorial</h1>
+
+<p>Documentation for the gabc notation which we use in this tutorial can be found <a href="../gabc/index.html">here</a>. A <a href="../gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
+
+<p>If you plan on following along with the tutorial, you'll need to <a href="../introduction.html">choose your method</a> for using Gregorio and set your system up first.</p>
+
+<p>We'll start with an empty staff (with a clef) and build up from there. Along the way, I'll make use of some useful tricks which help speed up and ensure the accuracy of the transcription.  I'll also make a few common mistakes in order to illustrate some potential pitfalls.</p>
+
+<h2>Adoro Te Devote</h2>
+
+<p>Here is a score from the <i>Antiphonale Monasticum</i>. </p>
+
+<div class="legende">
+<img src="adoro-te-goal.png"/>
+</div>
+
+<p>Since this score is so simple, we're going to make use of the <code>\gabcsnippet</code> command here.  This will allow us to keep all our work in a single file.  However, this choice does come with some limitations (which we will discuss later) and so is not suitable for all scores.  For a tutorial on how to make use of a separate file to represent the score, see <a href="./tutorial-gabc-01.html">our other tutorial</a>.</p>
+
+<p>To start this project off, let's create our file and look at its initial output:</p>
+
+<div class="filename"><a href="adoro-te-01-main.tex">adoro-te-01-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\begin{document}
+
+\gabcsnippet{(cb3)}
+
+\end{document}
+</pre>
+</div>
+
+<p>Save this file as <code>adoro-te-main.tex</code> (in order to differentiate between the different steps, we'll add the step number to this file name (as "adoro-te-01-main.tex" above), but if you're following along you can ignore this</p>) and then compile it using Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>.</p>
+
+<div class="legende">
+<img src="adoro-te-01.png"/>
+</div>
+
+<p>For the next few steps, we're going to be adding material exclusively to the <code>\gabcsnippet</code> line, so I'm only going to show that line when noting the changes.</p>
+
+<p>Since the text and the notes are interlaced in gabc, it is difficult to spell check one's transcription after both are on the page.  To avoid this, we'll start by adding the text by itself and then come back and add in the notes later.  So our first step looks something like this:</p>
+
+<div class="filename"><a href="adoro-te-02-main.tex">adoro-te-02-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Adoro te devote, latens Deitas,
+Quae sub his figuris vere latitas:
+Tibi se cor meum totum subjicit,
+Quia te contemplans totum deficit.}
+</pre>
+</div>
+
+<p>Since we've left out the notes, we can run this block of text through a Latin language spell-checker at this point to make sure we've gotten our transcription right.  Depending on your system setup, this may require copying the text into another program and then copying back any corrections.</p>
+
+<p>Once we've doulbe checked the text to make sure it's correct, it's time to syllabify it by adding <code>()</code> after each syllable.  For something this short, this is relatively easy to do manually, but for a longer text you might want to explore using the syllabifier in the <a href="https://github.com/gregorio-project/hyphen-la">hyphen-la</a> project.</p>
+
+<p>Regardless of what method you choose for syllabifying the text, you should end up with something like this:</p>
+
+<div class="filename"><a href="adoro-te-03-main.tex">adoro-te-03-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Ad()or()o() te() de()vo()te,() la()tens() De()i()tas,()
+Quae() sub() his() fi()gu()ris() ve()re() la()ti()tas:()
+Ti()bi() se() cor() me()um() to()tum() sub()ji()cit,()
+Qui()a() te() con()tem()plans() to()tum() de()fi()cit.()}
+</pre>
+</div>
+
+<p>Compiling this document gives us:</p>
+
+<div class="legende">
+<img src="adoro-te-03.png"/>
+</div>
+
+<p>You'll note that the words at the end of each line hang out into the margin (past the staff lines).  That, however, is not something to worry about at this point.  It is merely the result of all our syllables having no notes in them yet and will fix itself when we add the notes.</p>
+
+<p>Speaking of which, let's do that now:</p>
+
+<div class="filename"><a href="adoro-te-04-main.tex">adoro-te-04-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Ad(d)or(f’)o(h) te(h’) de(h)vo(hi)te,(h.) la(g)tens(f) De(e’)i(d)tas,(d.)
+Quae(d) sub(f) his(h’) fi(h)gu(hi)ris(h.) ve(g)re(f) la(e’)ti(d)tas:(d.)
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) to(i)tum(h) sub(g’)ji(f)cit,(e.)
+Qui(f)a(h) te(g’) con(f)tem(ed)plans(d.) to(f)tum(d) de(e’)fi(d)cit.(d.)}
+</pre>
+</div>
+
+<p>If I compile this file, however, I get a whole bunch of “unrecognized character” errors (which are non-fatal) and none of the vertical episema show up in my score.  This is becuase I had “Smart Quote” replacement active in my editor and so when I typed <code>'</code> (the straight quote) what I actually got was <code>’</code> (a curly right quote).  This is fixable with a simple find and replace, but it would also be a good idea to turn off “Smart Quote” replacement when editing gabc.</p>
+
+<p>Having fixed that error, my file now looks like this:</p>
+
+<div class="filename"><a href="adoro-te-05-main.tex">adoro-te-05-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Ad(d)or(f')o(h) te(h') de(h)vo(hi)te,(h.) la(g)tens(f) De(e')i(d)tas,(d.)
+Quae(d) sub(f) his(h') fi(h)gu(hi)ris(h.) ve(g)re(f) la(e')ti(d)tas:(d.)
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) to(i)tum(h) sub(g')ji(f)cit,(e.)
+Qui(f)a(h) te(g') con(f)tem(ed)plans(d.) to(f)tum(d) de(e')fi(d)cit.(d.)}
+</pre>
+</div>
+
+<p>And it compiles to:</p>
+
+<div class="legende">
+<img src="adoro-te-05.png"/>
+</div>
+
+<p>As promised, the text no longer hangs out into the margin.</p>
+
+<p>To complete this score, we simply need to add in the bar lines:</p>
+
+<div class="filename"><a href="adoro-te-06-main.tex">adoro-te-06-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Ad(d)or(f')o(h) te(h') de(h)vo(hi)te,(h.) (,) la(g)tens(f) De(e')i(d)tas,(d.) (;)
+Quae(d) sub(f) his(h') fi(h)gu(hi)ris(h.) (,) ve(g)re(f) la(e')ti(d)tas:(d.) (:)
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) sub(g')ji(f)cit,(e.) (;)
+Qui(f)a(h) te(g') con(f)tem(ed)plans(d.) (,) to(f)tum(d) de(e')fi(d)cit.(d.) (::)}
+</pre>
+</div>
+
+<div class="legende">
+<img src="adoro-te-06.png"/>
+</div>
+
+<p>Looking over the apparently complete score, I just realized that I forgot the accents in some of the words.  To add these in, I need to go back and replace the appropriate unaccented vowels with their accented counterparts.  This should be doable either in unicode (i.e. entering <code>é</code> directly), or through <span class="tex">T<span class="epsilon">e</span>X</span> code (i.e. entering <code>{\'e}</code>), as is illustrated below:
+
+<div class="filename"><a href="adoro-te-07-main.tex">adoro-te-07-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Ad(d)ór(f')o(h) te(h') de(h)vó(hi)te,(h.) (,) la(g)tens(f) Dé(e')i(d)tas,(d.) (;)
+Quae(d) sub(f) his(h') fi(h)gú(hi)ris(h.) (,) ve(g)re(f) lá(e')ti(d)tas:(d.) (:)
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s{\'u}b(g')ji(f)cit,(e.) (;)
+Qui(f)a(h) te(g') con(f)t{\'e}m(ed)plans(d.) (,) to(f)tum(d) d{\'e}(e')fi(d)cit.(d.) (::)}
+</pre>
+</div>
+
+<div class="legende">
+<img src="adoro-te-07.png"/>
+</div>
+
+<p>However, as our result clearly illustrates, only the first method works exactly as expected.  This is because the contents of the <code>\gabcsnippet</code> command must follow the rules of gabc for the entering of <span class="tex">T<span class="epsilon">e</span>X</span> code by setting it off in <code>&gt;v&lt;&gt;/v&lt;</code> tags:
+
+<div class="filename"><a href="adoro-te-08-main.tex">adoro-te-08-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\gabcsnippet{(cb3) Ad(d)ór(f')o(h) te(h') de(h)vó(hi)te,(h.) (,) la(g)tens(f) Dé(e')i(d)tas,(d.) (;)
+Quae(d) sub(f) his(h') fi(h)gú(hi)ris(h.) (,) ve(g)re(f) lá(e')ti(d)tas:(d.) (:)
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s<v>{\'u}</v>b(g')ji(f)cit,(e.) (;)
+Qui(f)a(h) te(g') con(f)t<v>{\'e}</v>m(ed)plans(d.) (,) to(f)tum(d) d<v>{\'e}</v>(e')fi(d)cit.(d.) (::)}
+</pre>
+</div>
+
+<div class="legende">
+<img src="adoro-te-08.png"/>
+</div>
+
+<p>If the need to explicitly mark <span class="tex">T<span class="epsilon">e</span>X</span> code as such within a <code>.tex</code> file seems counter-intuitive, you must remember that the rules for gabc syntax were developed under the original assumption that it would be in its own separate file, not embedded directly in a <code>.tex</code> file (via the <code>\gabcsnippet</code> command).  This is one of the limitations of the <code>\gabcsnippet</code> command that I mentioned earlier.  Even though we're in a <code>.tex</code> file, we still have to follow the rules for gabc, even if they don't make as much sense in this context.</p>
+
+<p>To complete our score, we need to add in the mode number.  If we were creating a <code>.gabc</code> file, when we could enter this information as part of the file header and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> would pick this information up and print it properply formatted for us.  However, one of the other limitations of the <code>\gabcsnippet</code> command, is that there is no place for the header, so we must do all of this ourselves manually with the <code>\greannoation</code> command:
+
+<div class="filename"><a href="adoro-te-09-main.tex">adoro-te-09-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\begin{document}
+
+\greannotation{\textsc{v}}
+
+\gabcsnippet{(cb3) Ad(d)ór(f')o(h) te(h') de(h)vó(hi)te,(h.) (,) la(g)tens(f) Dé(e')i(d)tas,(d.) (;)
+Quae(d) sub(f) his(h') fi(h)gú(hi)ris(h.) (,) ve(g)re(f) lá(e')ti(d)tas:(d.) (:)
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s<v>{\'u}</v>b(g')ji(f)cit,(e.) (;)
+Qui(f)a(h) te(g') con(f)t<v>{\'e}</v>m(ed)plans(d.) (,) to(f)tum(d) d<v>{\'e}</v>(e')fi(d)cit.(d.) (::)}
+
+\end{document}
+</pre>
+</div>
+
+<div class="legende">
+<img src="adoro-te-09.png"/>
+</div>
+
+<p>With that our score is finished (the addition of the title and the text of the two subsequent verses are left as an exercise for the reader).  Before leaving the tutorial, however, we should mention the other two major limitations of the <code>\gabcsnippet</code> command:/p>
+
+<ul>
+    <li>because the header is not avaiable, you cannot define <a href="../gabc/details.html#verbatim">custom macros</a>, but must enter the whole macro each time you want to use it.</li>
+    <li>you cannot have any mismatched braces in your gabc code.  Any mismatched brace will cause <span class="tex">T<span class="epsilon">e</span>X</span> to have difficutly telling where the <code>\gabcsnippet</code> command ends.  As a result, you must be extremely careful when using a <a href="../gabc/index.html#textcentering">forced syllable center</a>, using <a href="../gabc/details.html#braces">dynamicly sized braces</a>, or <a href="../gabc/details.html#polyphony">simple polyphony</a> as all of these will introduce braces into your gabc syntax.  While all should work if done correctly, the more braces you introduce into your code, the more potential problem points there are.</li>
+<ul>
+
+<p>Because of these limitations, our advice is that you only use the <code>\gabcsnippet</code> command for simple chants which don't take up more than a few lines.</p>
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
