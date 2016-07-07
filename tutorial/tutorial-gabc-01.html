@@ -61,7 +61,7 @@
 </style>
 <h1>Gregorio and GABC Tutorial</h1>
 
-<p>This tutorial demonstrates the features of Gregorio by showing how to reproduce an existing score.</p>
+<p>The purpose of this tutorial is to demonstrate how to represent a Gregorian chant score in a gabc file and then include that file into a larger project which will produce a printed score (the method we recommend for everything but the simplest use cases).  For instructions on how to use the <code>\gabcsnippet</code> command for directly including short snippets of code in an existing <span class="tex">T<span class="epsilon">e</span>X</span> document, please <a href="./tutorial-snippet-01.html">see our other tutorial</a>.</p>
 
 <p>Documentation for the gabc notation which we use in this tutorial can be found <a href="../gabc/index.html">here</a>. A <a href="../gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
 
@@ -70,6 +70,8 @@
 <p>We'll start with an empty staff and build up from there. Along the way, I'll make some deliberate mistakes to illustrate some common problems.</p>
 
 <p>If you don't have Gregorio installed on your own computer, you can find out about running it through the web at this <a href="../introduction-web.html"> introduction page</a>.</p>
+
+<p>In this tutorial we're going to make use of a separate gabc file to hold the score.  This is especially adventagous for large projects or for scores which you use multiple times.  By putting each gabc score in its own file, it is easier to find the score for which you're looking.  These files can have a <a href="../gabc/index.html#header">header</a> which can store meta-data about the score (such as the name of the piece or the manuscript scource), information which your computer's search function can read and use.  Furthermore, a few of the more advanced features of the gabc notation are only usable inside a gabc file.</p>
 
 <h2>Kyrie XVII</h2>
 
@@ -116,7 +118,7 @@ name:Kyrie XVII;
 
 \begin{document}
 
-\gregorioscore{kyrie}
+\gregorioscore{kyrie-17}
 
 \end{document}
 </pre>
