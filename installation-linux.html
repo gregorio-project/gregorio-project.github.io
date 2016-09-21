@@ -141,6 +141,14 @@ a local copy of the repository of the project, with the command:</p>
     <code>./build.sh --force=autoreconf</code><br/>
 </div>
 
+<p><b>Note:</b> Due to a bug in the current release (v2.7-fix-3) of <code>luaotfload</code> the documentation cannot be built against TeXLive 2016 (see <a href="https://github.com/gregorio-project/gregorio/issues/1188">#1188</a>).  As a result, building from a clone of the repository will fail against that version.  A work around for this bug exists (<a href="https://github.com/henryso/gregorio/commit/9fe9139178dce6adebffbae65016800748450b61">9fe9139</a>), but using it breaks compilation under TeXLive 2015 and the bug has been fixed in the latest master for <code>luaotfload</code>.  The result is that users should do one of the following:</p>
+
+<ul>
+<li>Install from the distribution tar ball (recommended for those installing a stable release).</li>
+<li>Switch to TeXLive 2015 to build the docs.</li>
+<li>Upgrade your <code>luaotfload</code> to a more recent version (v2.8-rc1 or later).</li>
+</ul>
+
 
 <h3>Updating</h3>
 
