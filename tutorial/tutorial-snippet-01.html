@@ -216,7 +216,7 @@ Qui(f)a(h) te(g') con(f)t{\'e}m(ed)plans(d.) (,) to(f)tum(d) d{\'e}(e')fi(d)cit.
 <img src="adoro-te-07.png"/>
 </div>
 
-<p>However, as our result clearly illustrates, only the first method works exactly as expected.  This is because the contents of the <code>\gabcsnippet</code> command must follow the rules of gabc for the entering of <span class="tex">T<span class="epsilon">e</span>X</span> code by setting it off in <code>&gt;v&lt;&gt;/v&lt;</code> tags:
+<p>However, as our result clearly illustrates, only the first method works exactly as expected.  This is because the contents of the <code>\gabcsnippet</code> command must follow the rules of gabc for the entering of <span class="tex">T<span class="epsilon">e</span>X</span> code by setting it off in <code>&lt;v&gt;&lt;/v&gt;</code> tags:
 
 <div class="filename"><a href="adoro-te-08-main.tex">adoro-te-08-main.tex</a></div>
 
@@ -224,8 +224,8 @@ Qui(f)a(h) te(g') con(f)t{\'e}m(ed)plans(d.) (,) to(f)tum(d) d{\'e}(e')fi(d)cit.
 	<pre>
 \gabcsnippet{(cb3) Ad(d)ór(f')o(h) te(h') de(h)vó(hi)te,(h.) (,) la(g)tens(f) Dé(e')i(d)tas,(d.) (;)
 Quae(d) sub(f) his(h') fi(h)gú(hi)ris(h.) (,) ve(g)re(f) lá(e')ti(d)tas:(d.) (:)
-Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s<v>{\'u}</v>b(g')ji(f)cit,(e.) (;)
-Qui(f)a(h) te(g') con(f)t<v>{\'e}</v>m(ed)plans(d.) (,) to(f)tum(d) d<v>{\'e}</v>(e')fi(d)cit.(d.) (::)}
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s&lt;v&gt;{\'u}&lt;/v&gt;b(g')ji(f)cit,(e.) (;)
+Qui(f)a(h) te(g') con(f)t&lt;v&gt;{\'e}&lt;/v&gt;m(ed)plans(d.) (,) to(f)tum(d) d&lt;v&gt;{\'e}&lt;/v&gt;(e')fi(d)cit.(d.) (::)}
 </pre>
 </div>
 
@@ -235,7 +235,7 @@ Qui(f)a(h) te(g') con(f)t<v>{\'e}</v>m(ed)plans(d.) (,) to(f)tum(d) d<v>{\'e}</v
 
 <p>If the need to explicitly mark <span class="tex">T<span class="epsilon">e</span>X</span> code as such within a <code>.tex</code> file seems counter-intuitive, you must remember that the rules for gabc syntax were developed under the original assumption that it would be in its own separate file, not embedded directly in a <code>.tex</code> file (via the <code>\gabcsnippet</code> command).  This is one of the limitations of the <code>\gabcsnippet</code> command that I mentioned earlier.  Even though we're in a <code>.tex</code> file, we still have to follow the rules for gabc, even if they don't make as much sense in this context.</p>
 
-<p>To complete our score, we need to add in the mode number.  If we were creating a <code>.gabc</code> file, when we could enter this information as part of the file header and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> would pick this information up and print it properply formatted for us.  However, one of the other limitations of the <code>\gabcsnippet</code> command, is that there is no place for the header, so we must do all of this ourselves manually with the <code>\greannoation</code> command:
+<p>To complete our score, we need to add in the mode number.  If we were creating a <code>.gabc</code> file, when we could enter this information as part of the file header and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> would pick this information up and print it properply formatted for us.  However, one of the other limitations of the <code>\gabcsnippet</code> command is that there is no place for the header, so we must do all of this ourselves manually with the <code>\greannoation</code> command:
 
 <div class="filename"><a href="adoro-te-09-main.tex">adoro-te-09-main.tex</a></div>
 
@@ -256,8 +256,8 @@ Qui(f)a(h) te(g') con(f)t<v>{\'e}</v>m(ed)plans(d.) (,) to(f)tum(d) d<v>{\'e}</v
 
 \gabcsnippet{(cb3) Ad(d)ór(f')o(h) te(h') de(h)vó(hi)te,(h.) (,) la(g)tens(f) Dé(e')i(d)tas,(d.) (;)
 Quae(d) sub(f) his(h') fi(h)gú(hi)ris(h.) (,) ve(g)re(f) lá(e')ti(d)tas:(d.) (:)
-Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s<v>{\'u}</v>b(g')ji(f)cit,(e.) (;)
-Qui(f)a(h) te(g') con(f)t<v>{\'e}</v>m(ed)plans(d.) (,) to(f)tum(d) d<v>{\'e}</v>(e')fi(d)cit.(d.) (::)}
+Ti(h)bi(h) se(ij) cor(k) me(kj)um(h.) (,) to(i)tum(h) s&lt;v&gt;{\'u}&lt;/v&gt;b(g')ji(f)cit,(e.) (;)
+Qui(f)a(h) te(g') con(f)t&lt;v&gt;{\'e}&lt;/v&gt;m(ed)plans(d.) (,) to(f)tum(d) d&lt;v&gt;{\'e}&lt;/v&gt;(e')fi(d)cit.(d.) (::)}
 
 \end{document}
 </pre>
