@@ -235,7 +235,7 @@ Qui(f)a(h) te(g') con(f)t&lt;v&gt;{\'e}&lt;/v&gt;m(ed)plans(d.) (,) to(f)tum(d) 
 
 <p>If the need to explicitly mark <span class="tex">T<span class="epsilon">e</span>X</span> code as such within a <code>.tex</code> file seems counter-intuitive, you must remember that the rules for gabc syntax were developed under the original assumption that it would be in its own separate file, not embedded directly in a <code>.tex</code> file (via the <code>\gabcsnippet</code> command).  This is one of the limitations of the <code>\gabcsnippet</code> command that I mentioned earlier.  Even though we're in a <code>.tex</code> file, we still have to follow the rules for gabc, even if they don't make as much sense in this context.</p>
 
-<p>To complete our score, we need to add in the mode number.  If we were creating a <code>.gabc</code> file, when we could enter this information as part of the file header and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> would pick this information up and print it properply formatted for us.  However, one of the other limitations of the <code>\gabcsnippet</code> command is that there is no place for the header, so we must do all of this ourselves manually with the <code>\greannoation</code> command:
+<p>To complete our score, we need to add in the mode number.  If we were creating a <code>.gabc</code> file, when we could enter this information as part of the file header and Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> would pick this information up and print it properply formatted for us.  However, one of the other limitations of the <code>\gabcsnippet</code> command is that there is no place for the header, so we must do all of this ourselves manually with the <code>\greannoation</code> command:</p>
 
 <div class="filename"><a href="adoro-te-09-main.tex">adoro-te-09-main.tex</a></div>
 
@@ -267,7 +267,7 @@ Qui(f)a(h) te(g') con(f)t&lt;v&gt;{\'e}&lt;/v&gt;m(ed)plans(d.) (,) to(f)tum(d) 
 <img src="adoro-te-09.png"/>
 </div>
 
-<p>With that our score is finished (the addition of the title and the text of the two subsequent verses are left as an exercise for the reader).  Before leaving the tutorial, however, we should mention the other two major limitations of the <code>\gabcsnippet</code> command:/p>
+<p>With that our score is finished (the addition of the title and the text of the two subsequent verses are left as an exercise for the reader).  Before leaving the tutorial, however, we should mention the other two major limitations of the <code>\gabcsnippet</code> command:</p>
 
 <ul>
     <li>because the header is not avaiable, you cannot define <a href="../gabc/details.html#verbatim">custom macros</a>, but must enter the whole macro each time you want to use it.</li>
