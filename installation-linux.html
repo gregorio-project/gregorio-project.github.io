@@ -85,23 +85,13 @@
     <code>sudo ./install.sh</code>
 </div>
 
-<p>If you are an Ubuntu User there may occur a problem with the second command due to a special behaviour of the <code>sudo</code> command under Ubuntu. Try one of the following workarounds: 1. Try the following alternative command:</p>
+<p>If you are an Ubuntu User there may occur a problem with the second command due to a special behaviour of the <code>sudo</code> command under Ubuntu. Try the following command:</p>
 
 <div class="commandline">
 <code>sudo su ./install.sh</code>
 </div>
 
-<p>2. Search for the exact path of your system-wide texmf-local (command to search for it: <code>kpsewhich -var-value TEXMFLOCAL</code>) and type in:</p>
-
-<div class="commandline">
-<code>sudo ./install.sh dir:/path/to/system-wide/texmf-local</code>
-</div>
-
-<p>3. Install GregorioTex just locally via:</p>
-
-<div class="commandline">
-<code>sudo ./install.sh dir:/home/username/texmf-local</code>
-</div>
+<p>or specify your texmf-local explicitely (see next section). You can find your system-wide texmf-local via <code>kpsewhich -var-value TEXMFLOCAL</code>. The userspecific texmf-local should be: <code>/home/username/texmf-local</code></p>
 
 <h3>Alternate Installation Locations</h3>
 
