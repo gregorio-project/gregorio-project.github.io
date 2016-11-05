@@ -85,6 +85,14 @@
     <code>sudo ./install.sh</code>
 </div>
 
+<p>If you are an Ubuntu User there may occur a problem with the second command due to a special behaviour of the <code>sudo</code> command under Ubuntu. Try the following command:</p>
+
+<div class="commandline">
+<code>sudo su ./install.sh</code>
+</div>
+
+<p>or specify your texmf-local explicitely (see next section). You can find your system-wide texmf-local via <code>kpsewhich -var-value TEXMFLOCAL</code>. The userspecific texmf-local should be: <code>/home/username/texmf-local</code></p>
+
 <p>Assuming nither of these commands spit out an error message, then you've successfully installed Gregorio and are ready for the <a href="#next">Next Steps</a>.</p>
 
 <h3>Alternate Installation Locations</h3>
