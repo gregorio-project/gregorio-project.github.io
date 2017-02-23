@@ -67,6 +67,8 @@
 
 <p>If you plan on following along with the tutorial, you'll need to <a href="../introduction.html">choose your method</a> for using Gregorio and set your system up first.</p>
 
+<p>By default, this tutorial is designed to work with version 4.1 of Gregorio, the version which comes packaged in TeXLive 2016.  However, it will also work with version 4.2 with a just one minor changes.  This will be called out at the appropriate place.</p>
+
 <p>We'll start with an empty staff and build up from there. Along the way, I'll make some deliberate mistakes to illustrate some common problems.</p>
 
 <p>If you don't have Gregorio installed on your own computer, you can find out about running it through the web at this <a href="../introduction-web.html"> introduction page</a>.</p>
@@ -156,7 +158,9 @@ name:Kyrie XVII;
 
 <p>That looks better. The three notes on "ri" are represented by (gfg).  Let's add more notes.  Here's a reminder of the letters used to represent each note position on the staff:</p>
 
+<div class="legende">
 <img src="note-positions.png"/>
+</div>
 
 <h3>Adding more notes</h3>
 
@@ -303,11 +307,19 @@ name:Kyrie XVII;
 <img src="kyrie-17-08.png"/>
 </div>
 
+<p><b>4.2 users:</b> In version 4.2 a new bar spacing algorithm was made the default (it was present in version 4.1, but had to be explicitly asked for).  This algorithm had three goals:
+    <ul>
+        <li>better balance the placement of barlines (and their associated text, if any) between the elements on either side</li>
+        <li>make a more efficient use of space by allowing barlines and their associated text to be more loosely attached to each other</li>
+        <li>give the user more control over the above two features by introducing distances which could be used to tweak the behavior of the algorithm.</li>
+    </ul>
+    The result, in general, are scores which look nicer and which you have more control over, but which no longer match the old behavior and thus don't look like the scores in this tutorial.  To get the old behavior, 4.2 users need to add <code>\gersetbarspacing{old}</code> to their kyrie-17-main.tex file.  This line should go between <code>\usepackage[autocompile]{gregoriotex}</code> and <code>\begin{document}</code>.</p>
+
 <h3>Text correction</h3>
 
 <p>In the original score, the "y" in <i>Kyrie</i> is capitalized.  This is a convention in typesetting for chant scores, so let's follow it here, by changing the "y" to an upper-case letter.</p>
 
-<p><b>Nota Bene:</b> More advanced users may want to handle the capitalizing of the "y" using the <code>firstsyllable</code> and <code>firstsyllableinitial</code> styles from within the <span class="tex">T<span class="epsilon">e</span>X</span> file.  For information on how to do this, consult the Styling section of GregorioRef-###.pdf (where ### is the version number).</p>
+<p><b>Nota Bene:</b> More advanced users may want to handle the capitalizing of the "y" using the <code>firstsyllable</code> and <code>firstsyllableinitial</code> styles from within the <span class="tex">T<span class="epsilon">e</span>X</span> file.  For information on how to do this, consult the Styling section of GregorioRef.pdf.</p>
 
 <p>Also, the word <i>eleison</i> needs an accent mark on the second "e", so I'm going to replace that letter with the character "&eacute;". If your keyboard layout does not have the "&eacute;" character, you can probably produce it by using your operating system's "Character Select" utility.  Copy the desired character to the clipboard, and paste it into your gabc file.</p>
 
