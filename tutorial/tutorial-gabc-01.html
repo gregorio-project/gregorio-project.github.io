@@ -289,7 +289,7 @@ e(ixjvIH'GhvF'E)le(ghg')i(g)son(f.).
 
 <p>Even in the result from the previous step, where the error has disappeared, there's a hyphen over the period.  Let's move the period and put it next to the syllable, like this: "son." and resolve that issue.</p>
 
-<p>Also, you may have noticed that there are notes above the asterisk, unlike in the original score.  We do not want any notes above the asterisk; therefore, to express that intention, let's add a pair of empty parentheses () at the asterisk.</p>
+<p>Also, you may have noticed that the asterisk is not centered between "Kyrie" and "eleison", unlike in the original score.  This is because its currently assigned to the same syllable as "el".  In order to give it its own syllable, let's add a pair of empty parentheses () at the asterisk.</p>
 
 <div class="filename"><a href="kyrie-17-08.gabc">kyrie-17-08.gabc</a></div>
 
@@ -313,7 +313,7 @@ name:Kyrie XVII;
         <li>make a more efficient use of space by allowing barlines and their associated text to be more loosely attached to each other</li>
         <li>give the user more control over the above two features by introducing distances which could be used to tweak the behavior of the algorithm.</li>
     </ul>
-    The result, in general, are scores which look nicer and which you have more control over, but which no longer match the old behavior and thus don't look like the scores in this tutorial.  To get the old behavior, 4.2 users need to add <code>\gersetbarspacing{old}</code> to their kyrie-17-main.tex file.  This line should go between <code>\usepackage[autocompile]{gregoriotex}</code> and <code>\begin{document}</code>.</p>
+    The result, in general, are scores which look nicer (and indeed, in this case look closer to the original) and which you have more control over, but which no longer match the old behavior and thus don't look like the scores in this tutorial.  To get the old behavior, 4.2 users need to add <code>\gersetbarspacing{old}</code> to their kyrie-17-main.tex file.  This line should go between <code>\usepackage[autocompile]{gregoriotex}</code> and <code>\begin{document}</code>.</p>
 
 <h3>Text correction</h3>
 
