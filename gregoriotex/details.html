@@ -98,11 +98,6 @@
 		<td>40 pt font</td>
 	</tr>
 	<tr>
-		<td><code>biginitial</code></td>
-		<td>Big (2-Line) Initials</td>
-		<td>80 pt font</td>
-	</tr>
-	<tr>
 		<td><code>translation</code></td>
 		<td>Translation text (appears below lyrics)</td>
 		<td><i>italics</i></td>
@@ -158,9 +153,30 @@
 		<td><span class="gregoriocolor">gregoriocolor</span> (<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>)</td>
 	</tr>
 	<tr>
-	    <td></td>
-	    <td></td>
-	    <td>none (Plain <span class="tex">T<span class="epsilon">e</span>X</span>)</td>
+	    <td><code>annotation</code></td>
+	    <td>the annotation</td>
+	    <td>none</td>
+	</tr>
+	<tr>
+	    <td><code>commentary</code></td>
+	    <td>the commentary</td>
+	    <td><i>footnote-size italics</i></td>
+	</tr>
+	<tr>
+	    <td><code>elision</code></td>
+	    <td>elisions (<code>&lt;e&gt;&lt;/e&gt;</code> in gabc)</td>
+	    <td><i>small-size italics</i> (<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>),
+	    <i>italics</i> (Plain <span class="tex">T<span class="epsilon">e</span>X</span>)</td>
+	</tr>
+	<tr>
+	    <td><code>modedifferentia</code></td>
+	    <td>the rendered annotation from the <code>modedifferentia: ;</code> header in the gabc file</td>
+	    <td><b>bold</b></td>
+	</tr>
+	<tr>
+	    <td><code>modemodifier</code></td>
+	    <td>the rendered annotation from the <code>modemodifier: ;</code> header in the gabc file</td>
+	    <td><b><i>bold italics</i></b></td>
 	</tr>
 </table>
 
@@ -560,8 +576,8 @@ the table above.</p>
 <ul>
 <li><code>\gresetlines{invisible}</code> completely removes the staff lines.</li>
 <li><code>\gresetclef{invisible}</code> removes the clefs.</li>
-<li><code>\grechangestaffthicknes{<i>&lt;integer&gt;</i>}</code> changes the thickness of the staff lines. The default value is the same as the staff size. You can only put integers here.</li>
-<li><code>\gresetgregoriofont[op]{parmesan}</code> uses the Dominican varian of the Parmesan font for the neumes.</li>
+<li><code>\grechangestafflinethickness{<i>&lt;integer&gt;</i>}</code> changes the thickness of the staff lines. The default value is the same as the staff size. You can only put integers here.</li>
+<li><code>\gresetgregoriofont[op]{parmesan}</code> uses the Dominican variant of the Parmesan font for the neumes.</li>
 <li><code>\gresetbolshifts{disable}</code> slightly changes the beginning of line algorithm. <code>\gresetbolshifts{enable}</code> restores the default spacing at the beginning of lines.</li>
 <li><code>\gresetglyphstyle{mensural}</code>, <code>\gresetglyphstyle{hufnagel}</code> and <code>\gresetglyphstyle{medicaea}</code> change the style of some signs.</li>
 <li><code>\gresetlinesbehindpunctumcavum{visible}</code> unhides the staff lines behind the punctum cavum (allowing one to see them in the middle).</li>
@@ -575,6 +591,8 @@ For more details about these and other possibilities, please consult GregorioRef
 <p>In contrast to the competing <span class="tex">T<span class="epsilon">e</span>X</span> systems (Opus<span class="tex">T<span class="epsilon">e</span>X</span> and Musix<span class="tex">T<span class="epsilon">e</span>X</span>), Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> is not designed to be written by a human being but by the gregorio software. This makes it more difficult to understand, but it is necessary in order to obtain certain improvements in the output.</p>
 
 <p>Nevertheless, there are some occasions where understanding the structure of a gtex file is useful and may even allow you to create non-standard effects.  If you want to learn how to do this, look at the Gregorio Controls section of GregorioRef-###.pdf (where ### is the version number), which you should be able to find in the directory where you installed Gregorio.  All the commands which can appear in a gtex file are explained here, along with a full listing of their arguments.</p>
+
+<p>The latest version of this documentation, belonging to the latest stable version of Gregorio, can be found <a href="https://github.com/gregorio-project/gregorio/releases/download/v4.2.0/GregorioRef.pdf">here</a>.</p>
 
 <!-- footer -->
     </div>
