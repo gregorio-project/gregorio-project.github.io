@@ -1,5 +1,5 @@
 % !TEX TS-program = LuaLaTeX+se
-% !TEX root = main-lualatex.tex
+% !TEX root = main-no-margin.tex
 
 % The first part of the score is called the header, you can input some useful informations here:
 
