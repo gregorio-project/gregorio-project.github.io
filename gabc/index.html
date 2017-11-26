@@ -341,21 +341,21 @@ section, which is the heart of the notation.</p>
 <p>The way to notate the clef is using two or three characters:</p>
 
 <ul>
-<li>a letter corresponding to the clef symbol: <code>c</code> or <code>f</code></li>
+<li>a letter corresponding to the clef symbol: <code>c</code> for the do clef or <code>f</code> for the fa clef</li>
 <li>an optional <code>b</code> to indicate if there is a flat on the clef</li>
-<li>a number between <code>1</code> and <code>4</code> corresponding to the line on which the clef is written.  For this purpose, the lines are numbered from the bottom to the top.</li>
+<li>a number between corresponding to the line on which the clef is written.  For this purpose, the lines are numbered from the bottom (<code>1</code> to the top.  The number must not be greater than the number of lines specified in the <a href=#staff-lines><code>staff-lines</code></a> header (usually 4, but could be as high as 5 or as low as 2).</li>
 </ul>
 
 <div class="legende">
 <img src="../illus/clef.png" title="" alt="" />
-<br />Clefs used in Gregorian chant: <code>&nbsp;c1 c2 c3 c4 f3 f4 cb3</code>
+<br />Sample clefs
 </div>
 
 <p>Starting in v4.1 it is possible to print two clefs at the same time.  The clefs are linked by a <code>@</code> and will be printed one over the other if there is room, otherwise the second clef (after the <code>@</code> will be pushed to the right to prevent a collision.  When determining the position of a custos automatically, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> will always use the first clef.</p>
 
 <div class="legende">
 <img src="../illus/double_clef.png" title="" alt="" />
-<br />Double clefs
+<br />Sample double clefs
 </div>
 
 
