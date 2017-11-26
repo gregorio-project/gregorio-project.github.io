@@ -127,6 +127,8 @@ write a value over several lines, omit the semicolon at the end of the
 first line, and end the attribute value with <code>;;</code> (two
 semicolons).</p>
 
+<p>Some headers have special meaning to Gregorio:</p>
+
 <dl>
 <dd><a name="name">name</a></dd>
 <dt>This is the name of the piece, in almost all cases the incipit, the
@@ -146,7 +148,69 @@ copyright holder and licensor of the score as well. One again, reading the <a hr
 <code>score-copyright: (C) Abbaye de Solesmes, 1934</code>
 </dt>
 
+<dd><a name="author">author</a></dd>
+<dt>The author of the piece, if known; of course, the author of most
+traditional chant is not known.</dt>
 
+<dd><a name="language">language</a></dd>
+<dt>The language of the lyrics.</dt>
+
+<dd><a name="language">oriscus-orientation</a></dd>
+<dt>If <code>legacy</code>, the orientation of an unconnected oriscus must be set manually.</dt>
+
+<dd><a name="mode">mode</a></dd>
+<dt>The mode of the piece. This should normally be an arabic
+	number between 1 and 8, but may be any text required for unusual
+	cases. The mode number will be converted to roman numerals and
+	placed above the initial unless one of the following conditions are
+	met:
+	<ul>
+	<li>There is a <code>\greannotation=</code> defined immediately prior to <code>\gregorioscore</code>.</li>
+	<li>The <code>annotation</code> header field is defined.
+	</ul>
+</dt>
+
+<dd><a name="mode-modifier">mode-modifier</a></dd>
+<dt>The mode "modifier" of the piece. This may be any
+	<span class="tex">T<span class="epsilon">e</span>X</span> code to typeset after the mode, if the mode is typeset.  If the mode
+	is not typeset, the mode-modifier will also not be typeset.
+</dt>
+
+<dd><a = name="mode-differentia">mode-differentia</a></dd>
+<dt>The mode or tone differentia of the piece.  Typically,
+	this expresses the variant of the psalm tone to use for the piece.  This may
+	be any <span class="tex">T<span class="epsilon">e</span>X</span> code to typeset after the mode-modifier, if the mode is typeset.
+	If the mode is not typeset, the mode-differentia will also not be typeset.
+</dt>
+
+<dd><a name="annotation">annotation</a></dd>
+<dt>The annotation is the text to appear above the initial letter.
+Usually this is an abbreviation of the office-part in the upper line,
+and an indication of the mode (and differentia for antiphons) in the
+lower.  Either one or two annotation fields may be used; if two are
+used, the first is the upper line, the second the lower.  Example:<br />
+<blockquote><code>annotation:Ad Magnif.;<br />
+annotation:VIII G;</code></blockquote>
+
+Full <span class="tex">T<span class="epsilon">e</span>X</span> markup is accepted:
+
+<blockquote><code>annotation:{\color{red}Ad Magnif.};<br />
+annotation:{\color{red}VIII G};</code></blockquote>
+
+If the user already defined annotation(s) in the main <span class="tex">T<span class="epsilon">e</span>X</span> file via
+	<code>\greannotation</code> then the <code>annotation</code> header field will not
+	overwrite that definition.
+</dt>
+
+<dd><a name="staff-lines">staff-lines</a></dd>
+<dt>The number of lines on the staff.  You can have as few as 2 lines and as many as 5.  If this header is left out, then the default will be the classic 4 line staff.
+</dt>
+
+</dl>
+
+<p>Although gregorio ascribes no special meaning to them, other suggested headers are:</p>
+
+<dl>
 <dd><a name="office-part">office-part</a></dd>
 <dt>The office-part is the category of chant (in latin), according to its liturgical
 rôle.  Examples are: antiphona, hymnus, responsorium brevium,
@@ -171,10 +235,6 @@ references to the Bible.</dt>
 been adapted for new words, or when a manuscript is transcribed into square notation.
 This may be a corporate name, like
 <code>Solesmes</code>.</dt>
-
-<dd><a name="author">author</a></dd>
-<dt>The author of the piece, if known; of course, the author of most
-traditional chant is not known.</dt>
 
 <dd><a name="date">date</a></dd>
 <dt>The date of composition, or the date of earliest attestation.  With
@@ -204,45 +264,17 @@ held; e.g. <code>Bibliothèque Nationale, Paris</code>.</dt>
 19th century revival), the name of the book; e.g. <code>Liber
 Usualis</code>.</dt>
 
-<dd><a name="language">language</a></dd>
-<dt>The language of the lyrics.</dt>
-
 <dd><a name="transcriber">transcriber</a></dd>
 <dt>The name of the transcriber into gabc.</dt>
 
 <dd><a name="transcription-date">transcription-date</a></dd>
 <dt>The date the gabc was written, with the following convention yyyymmdd, like 20090129 for january the 29th 2009.</dt>
 
-<dd><a name="mode">mode</a></dd>
-<dt>The mode of the piece.  This should
-normally be an arabic number between 1 and 8, but may be any text required for unusual
-cases.  Note that this will only appear above the initial if the <a href="#annotation">annotation field</a> is not provided.</dt>
-
-<dd><a name="initial-style">initial-style</a></dd>
-<dt>The style of the initial letter.  0 means no initial letter, 1 a
-normal one, and 2 a large one, on two lines. Note that if you want to use the
-initial on two lines, you have to specify at least the two first line breaks.
-</dt>
-
 <dd><a name="user-notes">user-notes</a></dd> <dt>This may contain any
 text in addition to the other headers -- any notes the transcriber may
 wish.  However, it is recommended to use the specific header fields
 where they are suitable, so that it is easier to find particular
 information.</dt>
-
-<dd><a name="annotation">annotation</a></dd>
-<dt>The annotation is the text to appear above the initial letter.
-Usually this is an abbreviation of the office-part in the upper line,
-and an indication of the mode (and differentia for antiphons) in the
-lower.  Either one or two annotation fields may be used; if two are
-used, the first is the upper line, the second the lower.  Example:<br />
-<code>annotation:Ad Magnif.;</code><br />
-<code>annotation:VIII G;</code>
-</dt>
-
-<dd><a name="generated-by">generated-by</a></dd>
-<dt>The name of the software used to generate the gabc file. If you
-write gabc by hand, this field should not appear.</dt>
 
 </dl>
 
