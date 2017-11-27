@@ -30,10 +30,71 @@ menuline('          <li><a href="/gregoriotex/example.html">Examples</a></li>');
 menuline('          <li><a href="/gregoriotex/features.html">Bonus features</a></li>');
 menuline('        </ul>');
 menuline('      </li>');
-menuline('      <li><a href="/gabc/index.html">gabc</a>');
+menuline('      <li><a href="/gabc/index.html">gabc</a>');//File Structure 
+//                  header
+//                  %% separator
+//                  notation
+//                  % comments
 menuline('        <ul class="level2" id="menu-gabc">');
-menuline('          <li><a href="/gabc/index.html">Basics</a></li>');
-menuline('          <li><a href="/gabc/details.html">Details</a></li>');
+menuline('          <li>Headers</li>');
+menuline('              <ul class="level3" id="menu-gabc-headers">');
+menuline('                  <li>Mode Headers</li>');
+menuline('                  <li>Defining Macros</li>');
+menuline('              </ul>');
+menuline('          <li>Text Syntax</li>');//Syllable Syntax basics
+//                      style tags
+//                          bold
+//                          colored
+//                          italic
+//                          small capitals
+//                          teletype
+//                          underline
+//                      syllable controls
+//                          clear
+//                          elision
+//                          euouae
+//                          no line break
+//                          protrusion
+//                      other
+//                          above lines text
+//                          special characters
+//                          verbatim
+menuline('              <ul class="level2" id="menu-gabc-text">');
+menuline('                  <li>Lyric Centering</li>');
+menuline('                  <li>Translation Text</li>');
+menuline('                  <li>Special Characters</li>');
+//                          Advanced topics
+menuline('                  <li>Vowel Detection</li>');
+//                              elision
+//                              Vowel file
+menuline('              </ul>');
+menuline('        </ul>');
+menuline('          <li>Note Syntax</li>');//Syllable Syntax basics
+menuline('              <ul class="level2" id="menu-gabc-note">');
+menuline('                  <li>Clefs</li>');
+menuline('                  <li>Pitches</li>');
+menuline('                  <li>One-Note Neumes</li>');
+menuline('                  <li>Complex Neumes</li>');
+menuline('                  <li>Additional Symbols</li>');
+menuline('                  <li>Horizontal Episema</li>');
+menuline('                  <li>Separation Bars</li>');
+menuline('                  <li>Custos</li>');
+menuline('                  <li>Line Breaks</li>');
+//                          Advanced topics
+menuline('                  <li>Oriscus Orientation</li>');
+menuline('                  <li>Neume Fusion</li>');
+menuline('                  <li>Neume Spacing</li>');
+menuline('                  <li>Choral Signs</li>');
+menuline('                  <li>Braces</li>');
+menuline('                  <li>Stem Length for the Bottom Lines</li>');
+menuline('                  <li>Custom Ledger Lines</li>');
+menuline('                  <li>Simple Slurs</li>');
+menuline('                  <li>High and Low Note Episema Placement</li>');
+menuline('                  <li>Horizontal Episema Tuning</li>');
+menuline('                  <li>Above Line Text within Notes</li>');
+menuline('                  <li>Verbatim TeX within Notes</li>');
+menuline('                  <li>Using Macros</li>');
+menuline('              </ul>');
 menuline('        </ul>');
 menuline('      </li>');
 menuline('      <li><a href="/tipsntricks.html">Tips and Tricks</a>');
