@@ -107,7 +107,7 @@ o([em1]g)rá([em1]g)&lt;i&gt;te&lt;/i&gt;([em1]f) &lt;i&gt;pro&lt;/i&gt;([em1]g)
 </pre>
 </div>
 
-<p><b>Nota bene:</b> In the above image the final block of lines aren't acuatlly aligned on the score, so we don't need the alignment macro.  However, we do need to introduce some extra space before the punctum cavum.</p>
+<p><b>Nota bene:</b> In the above image the final block of lines aren't actually aligned on the score, so we don't need the alignment macro.  However, we do need to introduce some extra space before the punctum cavum.</p>
 
 <div class="filename"><a href="./litany/Litany-IV.gabc">Litany-IV.gabc</a></div>
 
@@ -242,9 +242,9 @@ Sancta María Magde\textbf{lé}na, \hfill o\textit{ra}.\\
 
 <p>You'll notice that our definition of <code>\grealign</code> contains two of the Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> internals: <code>\ifgre@boxing</code> and <code>\gre@dimen@begindifference</code>.  The first is needed to prevent the creation of spurious tab stops.  In order to align the syllable text (that it knows about) and the notes, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> puts the notes into a box first so that it can measure them.  However, since it's only putting them into a box, and not placing that box on the page, when Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> does this, the position of the notes is 0, which is not a number we want to save.  We only want to save the position when they are being placed on the page: i.e. when we're not boxing (hence the immediate <code>\else</code>).</p>
 
-<p>The other internal, <code>\gre@dimen@begindifference</code> is the travel from the beginning of the notes to the beginning of the text.  By following that travel before we save our position, we force the tab stop to be algined with the text, rather than the notes.  Of course, once we've saved the stop position, we have to undo that move so that Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> can continue to create the score with proper alignment.</p>
+<p>The other internal, <code>\gre@dimen@begindifference</code> is the travel from the beginning of the notes to the beginning of the text.  By following that travel before we save our position, we force the tab stop to be aligned with the text, rather than the notes.  Of course, once we've saved the stop position, we have to undo that move so that Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> can continue to create the score with proper alignment.</p>
 
-<p>Finally, after running Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> on the document <b>twice</b> (once to store the positions, the second to use them), we get somthing like this:</p>
+<p>Finally, after running Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> on the document <b>twice</b> (once to store the positions, the second to use them), we get something like this:</p>
 
 <div class="legende">
 <img src="./litany/litany.png" alt="">
@@ -255,6 +255,7 @@ Sancta María Magde\textbf{lé}na, \hfill o\textit{ra}.\\
 <h5>Works with Version:</h5>
 
 <p>4.1.0.</p>
+<p>5.1.0.</p>
 
 
 <!-- footer -->
