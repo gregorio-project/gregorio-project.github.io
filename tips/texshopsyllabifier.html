@@ -57,21 +57,21 @@
 
 <h1>Using syllabifier.py with <span class="tex">T<span class="epsilon">e</span>X</span>Shop</h1>
 
-<p>If you've ever had to enter a long score in gabc, you've probably encountered the special difficulty that this creates.  Since the text and notes are interlaced by syllable in the gabc it's especially difficult to enter things quickly.  Even for some one well practiced at entering the language of the lyrics, the note sequences don't follow the usual patterns of the lyrics' language, so all your stored muscle memory for typing does little to help you enter the notes.  Further, since the lyrics and notes are interlaced on a syllable-by-syllable basis, one's typing skills (which usually operate at the word level) don't even help much with the lyrics.  Finally, the interlacing also prevents the use of spell checkers to help make sure that the lyrics have been entered correctly, greatly increasing the amount of proofreading that needs to be done and the chance for mistakes to creep in unnoticed.</p>
+<p>If you’ve ever had to enter a long score in gabc, you’ve probably encountered the special difficulty that this creates.  Since the text and notes are interlaced by syllable in the gabc it’s especially difficult to enter things quickly.  Even for some one well practiced at entering the language of the lyrics, the note sequences don’t follow the usual patterns of the lyrics’ language, so all your stored muscle memory for typing does little to help you enter the notes.  Further, since the lyrics and notes are interlaced on a syllable-by-syllable basis, one’s typing skills (which usually operate at the word level) don’t even help much with the lyrics.  Finally, the interlacing also prevents the use of spell checkers to help make sure that the lyrics have been entered correctly, greatly increasing the amount of proofreading that needs to be done and the chance for mistakes to creep in unnoticed.</p>
 
-<p>One step that can alleviate the latter two of these problems is to enter the lyrics and notes separately.  If the lyrics are entered first (as we suggested in <a href="../tutorial/tutorial-snippet-01.html">snippet tutorial</a>) then one's typing skills in the language of the lyrics are better employed (increasing the speed of entry) and spell checkers can be used to assist in the proofreading process (reducing the likelihood of mistakes).  The problem is that once the lyrics are entered, they have to be split by syllable, a process which can be cumbersome if done by hand.</p>
+<p>One step that can alleviate the latter two of these problems is to enter the lyrics and notes separately.  If the lyrics are entered first (as we suggested in <a href="../tutorial/tutorial-snippet-01.html">snippet tutorial</a>) then one’s typing skills in the language of the lyrics are better employed (increasing the speed of entry) and spell checkers can be used to assist in the proofreading process (reducing the likelihood of mistakes).  The problem is that once the lyrics are entered, they have to be split by syllable, a process which can be cumbersome if done by hand.</p>
 
 <p>Fortunately the <a href="https://github.com/gregorio-project/hyphen-la">hyphen-la</a> project has a <a href="https://github.com/gregorio-project/hyphen-la/blob/master/syllabifier/syllabify.py">python script</a> which can be used to automate that process.  This script is fairly powerful as is, but has a few limitations.  This Tip will help you overcome those limitations in order to make the syllabifier available in <span class="tex">T<span class="epsilon">e</span>X</span>Shop as a macro which will opperate on the selected text.</p>
 
 <h2>Prerequisites</h2>
 
-<p>To make this Tip work, you'll first need to clone the <a href="https://github.com/gregorio-project/hyphen-la">hyphen-la</a> repository.  For the purposes of our discussion here, we'll assume that this repository was cloned into <code>~/hyphen-la</code>.  If you cloned it to a different location, then you'll need to modify the scripts below accordingly.  Once you've cloned the repository, run <code>make</code> in the <code>patterns</code> folder (to generate the .dict files that the syllabifier uses).</p>
+<p>To make this Tip work, you’ll first need to clone the <a href="https://github.com/gregorio-project/hyphen-la">hyphen-la</a> repository.  For the purposes of our discussion here, we’ll assume that this repository was cloned into <code>~/hyphen-la</code>.  If you cloned it to a different location, then you’ll need to modify the scripts below accordingly.  Once you’ve cloned the repository, run <code>make</code> in the <code>patterns</code> folder (to generate the .dict files that the syllabifier uses).</p>
 
 <p>Further, since <code>syllabifier.py</code> is written in Python 3, you will need an installation of it.  I use MacPorts for that, so I access it with <code>/opt/local/bin/python3</code>.  You can get it from somewhere else if you want, in which case replace <code>/opt/local/bin/python3</code> in the scripts below with the appropriate command for your system.  (Yes, you will need the full path, even if your <code>PATH</code> normally allows you to do without it in Terminal.)</p>
 
 <h2>Accessing syllabifier from the command line</h2>
 
-<p>The first thing to do is to make the syllabifier available on the command line.  As I have a personal scripts directory, <code>~/scripts</code> which I've already put on my <code>PATH</code>, my first thought was to simply add a symlink in this folder which pointed to the <code>syllabify.py</code>.  Unfortunately this does not work because <code>syllabify.py</code> needs to be able find those .dict files and it does this using relative paths.  You therefore have to run <code>syllabify.py</code> from <code>~/hyphen-la/syllabifier</code> in the repository.  We thus need to write a wrapper script which will switch to the appropriate directory:</p>
+<p>The first thing to do is to make the syllabifier available on the command line.  As I have a personal scripts directory, <code>~/scripts</code> which I’ve already put on my <code>PATH</code>, my first thought was to simply add a symlink in this folder which pointed to the <code>syllabify.py</code>.  Unfortunately this does not work because <code>syllabify.py</code> needs to be able find those .dict files and it does this using relative paths.  You therefore have to run <code>syllabify.py</code> from <code>~/hyphen-la/syllabifier</code> in the repository.  We thus need to write a wrapper script which will switch to the appropriate directory:</p>
 
 <div class="commandblock">
 <pre>
@@ -82,17 +82,17 @@ cd ~/hyphen-la/syllabifier
 </pre>
 </div>
 
-<p>Now, at this point you're probably wondering about the special shebang in this script.  This shebang basically has the effect of clearing out all the usual customizations to bash.  I do this because we're going to end up running this script from inside an AppleScript where those customizations won't be available.  This shebang, therefore, has the effect of making the script function from the command-line in the same way that it will from inside the AppleScript.  The restricted shell that results is annoying, but Apple claims to do this for security and portability.  Scripts written in this way should run on any Mac (because they cannot use any user customizations) and the tools available to the script writer are highly limited, making it less likely that it can do something dangerous.</p>
+<p>Now, at this point you’re probably wondering about the special shebang in this script.  This shebang basically has the effect of clearing out all the usual customizations to bash.  I do this because we’re going to end up running this script from inside an AppleScript where those customizations won’t be available.  This shebang, therefore, has the effect of making the script function from the command-line in the same way that it will from inside the AppleScript.  The restricted shell that results is annoying, but Apple claims to do this for security and portability.  Scripts written in this way should run on any Mac (because they cannot use any user customizations) and the tools available to the script writer are highly limited, making it less likely that it can do something dangerous.</p>
 
-<p>Unfortunately for us, Macs do not generally ship with python3 and so its not available in this restricted shell.  As a result the shebang in <code>syllabify.py</code> isn't going to be of much help and instead we need to invoke the python interpreter ourselves using the full path to it.</p>
+<p>Unfortunately for us, Macs do not generally ship with python3 and so its not available in this restricted shell.  As a result the shebang in <code>syllabify.py</code> isn’t going to be of much help and instead we need to invoke the python interpreter ourselves using the full path to it.</p>
 
-<p>You'll also notice that I've stripped away many of the features of the syllabifier with this script.  It only accepts stdin for input and writes to stdout for output.  It also forces the character which separates the syllables to <code>()</code> (more appropriate for gabc than the default <code>-</code>.  Finally it will always add the hyphen character to the end of each word.  This makes the script simpler, but not all that useful outside of the macro we're going to write.  For those of you interested in a more generally useful wrapper script see <a href="">PLACEHOLDER</a>.</p>
+<p>You’ll also notice that I’ve stripped away many of the features of the syllabifier with this script.  It only accepts stdin for input and writes to stdout for output.  It also forces the character which separates the syllables to <code>()</code> (more appropriate for gabc than the default <code>-</code>.  Finally it will always add the hyphen character to the end of each word.  This makes the script simpler, but not all that useful outside of the macro we’re going to write.  For those of you interested in a more generally useful wrapper script see <a href="">PLACEHOLDER</a>.</p>
 
-<p>Once you've written this wrapper script, save it somewhere in your <code>PATH</code> where you'll know the full path to it and make it executable (<code>chmod +x /path/to/script</code>).  I saved it to my personal scripts folder as <code>~/scripts/syllabify</code>.  Once that's done you can test it by piping a word into the scripts: <code>echo puer | syllabify</code>.  If everything is working, you should get <code>pu()er()</code> back out in your Terminal.</p>
+<p>Once you’ve written this wrapper script, save it somewhere in your <code>PATH</code> where you’ll know the full path to it and make it executable (<code>chmod +x /path/to/script</code>).  I saved it to my personal scripts folder as <code>~/scripts/syllabify</code>.  Once that’s done you can test it by piping a word into the scripts: <code>echo puer | syllabify</code>.  If everything is working, you should get <code>pu()er()</code> back out in your Terminal.</p>
 
 <h2>Writing the macro within <span class="tex">T<span class="epsilon">e</span>X</span>Shop</code></h2>
 
-<p>Now that our shell script is in place, we write the macro in <span class="tex">T<span class="epsilon">e</span>X</span>Shop that makes use of it.  To get started fire up <span class="tex">T<span class="epsilon">e</span>X</span>Shop and open the macro editor (Macros → Open Macro Editor…). Now click on the "New Item" button.  An item titled "New Item" will appear at the bottom of the list and will be selected for you.  Change the name to something more indicative of the macro's purpose (I chose "Syllabifier") and then copy the following code into the Content box:</p>
+<p>Now that our shell script is in place, we write the macro in <span class="tex">T<span class="epsilon">e</span>X</span>Shop that makes use of it.  To get started fire up <span class=”tex”>T<span class=”epsilon”>e</span>X</span>Shop and open the macro editor (Macros → Open Macro Editor…). Now click on the “New Item” button.  An item titled “New Item” will appear at the bottom of the list and will be selected for you.  Change the name to something more indicative of the macro’s purpose (I chose “Syllabifier”) and then copy the following code into the Content box:</p>
 
 <div class="commandblock">
 <pre>
@@ -105,10 +105,10 @@ tell application "TeXShop"
 end tell
 
 try
-	set output to do shell script ("/bin/echo \"" & input & "\" | ~/scripts/syllabify")
+	set output to do shell script ("/bin/echo \"" &amp; input &amp; "\" | ~/scripts/syllabify")
 on error errStr number errnum
-	display dialog "syllabify returned error number " & errnum & "
-" & errStr
+	display dialog "syllabify returned error number " &amp; errnum &amp; "
+" &amp; errStr
 end try
 
 tell application "TeXShop"
@@ -117,12 +117,12 @@ end tell
 </pre>
 </div>
 
-<p>For those interested in knowing what the code does, I'll explain it below.  For those who blindly trust me, you can click Save and are ready to go.</p>
+<p>For those interested in knowing what the code does, I’ll explain it below.  For those who blindly trust me, you can click Save and are ready to go.</p>
 
 <ul>
 <li>The first line of this macro tells <span class="tex">T<span class="epsilon">e</span>X</span>Shop the macro is written in AppleScript and it requires no user interaction while running (the <code>direct</code> part of the line).</li>
 
-<li>The second uses the <span class="tex">T<span class="epsilon">e</span>X</span>Shop magic variable <code>#DOCUMENTNAME#</code> to set the value of an AppleScript variable (<code>docname</code>) so that we can easily refer to the document we're working on when the macro is called.</li>
+<li>The second uses the <span class="tex">T<span class="epsilon">e</span>X</span>Shop magic variable <code>#DOCUMENTNAME#</code> to set the value of an AppleScript variable (<code>docname</code>) so that we can easily refer to the document we’re working on when the macro is called.</li>
 
 <li>We then have a <code>tell</code> block which asks <span class="tex">T<span class="epsilon">e</span>X</span>Shop for the selected text of the current document and stores that in the variable <code>input</code>.</li>
 
@@ -135,7 +135,7 @@ end tell
 
 <p>What should you do if you get an error?  Well, that obviously depends on the error, but the first step should be to check your paths.  Where is <code>syllabify.py</code>?  Is that directory the target of the <code>cd</code> statement in the bash script?  Where is <code>python3</code>?  (You can check this location with <code>which python3</code> in Terminal.)  Is that full path being used in the bash script?  Finally, where did you save the bash script?  Is that the path specified in the AppleScript?  The fact that these paths have to be exactly right and will often vary from computer to computer is the reason this page is here instead of there being a couple of files in the <code>contrib/TeXShop</code> folder of Gregorio.  Double check them all and make sure they match the setup of your computer (which may be different from mine).</p>
 
-<p>If all else fails, email the <a href="../contact.html">mailing list</a> and I'll do my best to help.</p>
+<p>If all else fails, email the <a href="../contact.html">mailing list</a> and I’ll do my best to help.</p>
 
 <h5>Works with Version:</h5>
 
