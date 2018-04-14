@@ -88,7 +88,7 @@ cd ~/hyphen-la/syllabifier
 
 <p>You'll also notice that I've stripped away many of the features of the syllabifier with this script.  It only accepts stdin for input and writes to stdout for output.  It also forces the character which separates the syllables to <code>()</code> (more appropriate for gabc than the default <code>-</code>.  Finally it will always add the hyphen character to the end of each word.  This makes the script simpler, but not all that useful outside of the macro we're going to write.  For those of you interested in a more generally useful wrapper script see <a href="">PLACEHOLDER</a>.</p>
 
-<p>Once you've written this wrapper script, save it somewhere in your <code>PATH</code> where you'll know the full path to it and make it executable (<code>chmod +x /path/to/script</code>).  I saved it to my personal scripts folder as <code>~/scripts/syllabify</code>.  Once that's done you can test it by piping a word into the scripts: <code>echo puer | syllabify</code>.  If everything is working, you should get <code>pu()er</code> back out in your Terminal.</p>
+<p>Once you've written this wrapper script, save it somewhere in your <code>PATH</code> where you'll know the full path to it and make it executable (<code>chmod +x /path/to/script</code>).  I saved it to my personal scripts folder as <code>~/scripts/syllabify</code>.  Once that's done you can test it by piping a word into the scripts: <code>echo puer | syllabify</code>.  If everything is working, you should get <code>pu()er()</code> back out in your Terminal.</p>
 
 <h2>Writing the macro within <span class="tex">T<span class="epsilon">e</span>X</span>Shop</code></h2>
 
@@ -122,7 +122,7 @@ end tell
 <ul>
 <li>The first line of this macro tells <span class="tex">T<span class="epsilon">e</span>X</span>Shop the macro is written in AppleScript and it requires no user interaction while running (the <code>direct</code> part of the line).</li>
 
-<li>The second uses the <span class="tex">T<span class="epsilon">e</span>X</span>Shop magic variable <code>#DOCUMENTNAME#</code> to set the value of an AppleScript variable so that we can easily refer to the document we're working on when the macro is called.</li>
+<li>The second uses the <span class="tex">T<span class="epsilon">e</span>X</span>Shop magic variable <code>#DOCUMENTNAME#</code> to set the value of an AppleScript variable (<code>docname</code>) so that we can easily refer to the document we're working on when the macro is called.</li>
 
 <li>We then have a <code>tell</code> block which asks <span class="tex">T<span class="epsilon">e</span>X</span>Shop for the selected text of the current document and stores that in the variable <code>input</code>.</li>
 
@@ -133,7 +133,7 @@ end tell
 
 <h2>Troubleshooting</h2>
 
-<p>What should you do if you get an error?  Well, that obviously depends on the error, but the first step should be to check your paths.  Where is <code>syllabify.py</code>?  Is that directory the target of the <code>cd</code> statement in the bash script?  Where is <code>python3</code>?  (You can check this location with <code>which python3</code> in Terminal.)  Is that full path being used in the bash script?  Finally, where did you save the bash script?  Is that the path specified in the AppleScript?  The fact that these paths have to be exactly right and will often vary from computer to computer is the reason this page is here instead of there being a couple of files in the <code>contrib/TeXShop</code> folder of Gregorio.</p>
+<p>What should you do if you get an error?  Well, that obviously depends on the error, but the first step should be to check your paths.  Where is <code>syllabify.py</code>?  Is that directory the target of the <code>cd</code> statement in the bash script?  Where is <code>python3</code>?  (You can check this location with <code>which python3</code> in Terminal.)  Is that full path being used in the bash script?  Finally, where did you save the bash script?  Is that the path specified in the AppleScript?  The fact that these paths have to be exactly right and will often vary from computer to computer is the reason this page is here instead of there being a couple of files in the <code>contrib/TeXShop</code> folder of Gregorio.  Double check them all and make sure they match the setup of your computer (which may be different from mine).</p>
 
 <p>If all else fails, email the <a href="../contact.html">mailing list</a> and I'll do my best to help.</p>
 
