@@ -61,7 +61,7 @@
 </style>
 <h1>GABC Tutorial</h1>
 
-<p>The purpose of this tutorial is to demonstrate how to represent a Gregorian chant score in gabc.  However, we are not going to assume a familiarity with the terminology used to describe such a score either in order to make this introduction easier to follow for those who are relatively new to chant more generally (and not just typesetting it).</p>
+<p>The purpose of this tutorial is to demonstrate how to represent a Gregorian chant score in gabc.  However, we are not going to assume a familiarity with the terminology used to describe such a score in order to make this introduction easier to follow for those who are relatively new to chant more generally (and not just typesetting it).</p>
 
 <p>Documentation for the gabc notation which we use in this tutorial can be found <a href="../gabc/index.html">here</a>.  We will also link to the various parts of the documentation as it becomes relavent.  A <a href="../gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
 
@@ -95,7 +95,7 @@
     <dt><code>commentary: ;</code></dt>
         <dd>This line is also an empty header field, but it's for specific information about the score.  In gabc parlance, the commentary is the text that appears just above the top line of the staff and is flushed right.  This is usually a scripture citation.  Our piece, however, doesn't have this line so we're going to delete this line.</dd>
     <dt><code>annotation: ;</code></dt>
-        <dd>Like commentary, annotations refer to a very specific part of the score in gabc parlance.  In this case it's the text which goes above the initial.  Our score has two lines there, and fortunately gabc supports upto two annotation headers.</dd>
+        <dd>Like commentary, annotations refer to a very specific part of the score in gabc parlance.  In this case it's the text which goes above the initial.  Our score has two lines there, and fortunately gabc supports up to two annotation headers.</dd>
     <dt><code>centering-scheme: english;</code></dt>
         <dd>This header is actually a legacy header which is no longer supported in Gregorio.  It formerly controlled how the text of the lyrics aligned with the notes above.  This is now controlled in the TeX of a document, but because Illuminare doesn't give you access to that, it continues to make use of the old header.  In this case our text is in Latin and thus follows the <a href="../graphy.html">Latin alignment conventions</a>.  In more recent versions of Gregorio we refer to this as <code>vowel</code> centering in order to be more descriptive.</dd>
     <dt><code>%fontsize: 12;</code></dt>
@@ -110,13 +110,13 @@
         <dd>This is the first part of the score and indicates the starting clef.  There are two <a href="../gabc/index.html#clef">clefs</a> in gabc: do (<code>c</code>) and fa (<code>f</code>) and each can be on any of the 4 lines (1 on the bottom, 4 on the top).  This here is a do clef on the 4th line, which is actually what we have in our score, so we'll leave it alone.</dd>
 </dl>
 
-<p>Besides these "starter" headers provided by Illuminare, I know other information about this particular score which I'm also going to fill in.  Once I do that I get something that looks like the following:</p>
+<p>Besides these “starter” headers provided by Illuminare, I know other information about this particular score which I'm also going to fill in.  Once I do that I get something that looks like the following:</p>
 
 <div class="legende">
 <a href="Exaudivit-02.png"><img src="Exaudivit-02.png" alt="Finished headers.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>As you can see, the user notes have been placed as text above the score.  This is what is called "header capture" and is a feature of GregorioTeX that allows you to make use (in a variety of ways) of the information recorded in any of the header fields of your score without having to retype (or even copy/paste) it into the main document.  It is controlled entirely on the TeX side of things, however, so Illuminare is handling this in the background for us and we cannot adjust it in this interface.  The best we could do here is to comment out the <code>user-notes</code> line (<i>i.e.</i>, put a <code>%</code> in front of it) if we wanted to make that line disappear.</p>
+<p>As you can see, the user notes have been placed as text above the score.  This is what is called “header capture” and is a feature of GregorioTeX that allows you to make use (in a variety of ways) of the information recorded in any of the header fields of your score without having to retype (or even copy/paste) it into the main document.  It is controlled entirely on the TeX side of things, however, so Illuminare is handling this in the background for us and we cannot adjust it in this interface.  The best we could do here is to comment out the <code>user-notes</code> line (<i>i.e.</i>, put a <code>%</code> in front of it) if we wanted to make that line disappear.</p>
 
 <p>You'll also note that even though we put in the <code>annotation</code> headers, the annotations themselves have not shown up in the output.  That's because the annotations appear above the initial.  Since we don't have an initial yet, there is no place for the annotations to appear.  So let's put in the initial, indeed, let's put in the whole first word:</p>
 
@@ -126,7 +126,7 @@
 
 <p>Having done this we can now see another limitation of Illuminare: it can only handle 1 annotation line.  The second line in the gabc is ignored.  We can't force Illuminare to change this behavior, so we're going to have to live with it (at least until you're ready to move on to learning TeX).</p>
 
-<p>So, having put in the first word, it's now time to start adding the notes.  Now, notes are <a href="../gabc/index.html#text">assigned to particular syllables</a> and are marked off from the text of the lyrics by parentheses (<code>()</code>).  Furthermore, each note position (<a href="../gabc/index.html#heights">the pitch of the note</a>) is represented by a particular letter.  Finally stacked notes (called a pes or podatus) are entered from bottom to top, just like they are sung.  Taking all of these into account the first word works out to look like this:</p>
+<p>So, having put in the first word, it's now time to start adding the notes.  Now, notes are <a href="../gabc/index.html#text">assigned to particular syllables</a> and are marked off from the text of the lyrics by parentheses (<code>()</code>).  Furthermore, each note position (<a href="../gabc/index.html#heights">the pitch of the note</a>) is represented by a particular letter.  In this scheme <code>g</code> is in the middle space of the staff and we go backwards in the alphabet (towards <code>a</code>) as we go down and forwards in the alphabet as we go up.  Finally stacked notes (called a pes or podatus) are entered from bottom to top, just like they are sung.  Taking all of these into account the first word works out to look like this:</p>
 
 <div class="legende">
 <a href="Exaudivit-04.png"><img src="Exaudivit-04.png" alt="Notes for the first word.  Click to enlarge..." width=500/></a>
@@ -140,13 +140,13 @@
 <a href="Exaudivit-05.png"><img src="Exaudivit-05.png" alt="Revised first word.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>Having finished with the first word, we're ready for the next feature which is a <a href="../gabc/index.html#bars">bar line</a>.  In particular this is a divisio minima and it has an asterisk below it.  That asterisk is treated just like the text in the first word and the bar line is the equivalent of a note attached to its "syllable":</p>
+<p>Having finished with the first word, we're ready for the next feature which is a <a href="../gabc/index.html#bars">bar line</a>.  In particular this is a divisio minima (represented by a comma (<code>,</code>)) and it has an asterisk below it.  That asterisk is treated just like the text in the first word and the bar line is the equivalent of a note attached to its “syllable”:</p>
 
 <div class="legende">
 <a href="Exaudivit-06.png"><img src="Exaudivit-06.png" alt="First bar.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>That was easy.  Further, given what we've done so far you should be able to enter the next couple of syllables without too much trouble.  When you get to the syllable "plo" however, you'll find that there is a horizontal line over one of the notes and we haven't discussed these yet.  This line is what is known as an <a href="../gabc/details.html#signs">horizontal episema</a> (sometimes referred to simply as an episema, pl. episemata).  Adding one to a note simply requires that we put an underscore (<code>_</code>) after the letter corresponding to the pitch.  With that information you should also be able to do the next word too:</p>
+<p>That was easy.  Further, given what we've done so far you should be able to enter the next couple of syllables without too much trouble.  When you get to the syllable “plo” however, you'll find that there is a horizontal line over one of the notes and we haven't discussed these yet.  This line is what is known as an <a href="../gabc/details.html#signs">horizontal episema</a> (sometimes referred to simply as an episema, pl. episemata).  Adding one to a note simply requires that we put an underscore (<code>_</code>) after the letter corresponding to the pitch.  With that information you should also be able to do the next word too:</p>
 
 <div class="legende">
 <a href="Exaudivit-07.png"><img src="Exaudivit-07.png" alt="Notes with horizontal episemata.  Click to enlarge..." width=500/></a>
@@ -174,13 +174,13 @@
 <a href="Exaudivit-10.png"><img src="Exaudivit-10.png" alt="Quilisma.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>Hold on a moment!  Why is there that extra space between the first two notes and the second two?  Well, as it turns out, Gregorio has shifted those two notes in order to avoid a potential collision with the punctum mora on the first note.  Try taking it out and you'll see that the two top notes shift back to where we want them to be.  Now the punctum mora and the higher notes will not collide if they are placed in the desired positions, so how do we get the notes to be attached and have the punctum mora?  The answer is to tell Gregorio not to put a <a href="../gabc/details.html#spaces">space</a> before the quilisma.  This is accomplished with an exclamation point (<code>!</code>):</p>
+<p id="nospace">Hold on a moment!  Why is there that extra space between the first two notes and the second two?  Well, as it turns out, Gregorio has shifted those two notes in order to avoid a potential collision with the punctum mora on the first note.  Try taking it out and you'll see that the two top notes shift back to where we want them to be.  Now the punctum mora and the higher notes will not collide if they are placed in the desired positions, so how do we get the notes to be attached and have the punctum mora?  The answer is to tell Gregorio not to put a <a href="../gabc/details.html#spaces">space</a> before the quilisma.  This is accomplished with an exclamation point (<code>!</code>):</p>
 
 <div class="legende">
 <a href="Exaudivit-11.png"><img src="Exaudivit-11.png" alt="No space!  Click to enlarge..." width=500/></a>
 </div>
 
-<p>The next feature of the score we reproducing is the half-note that ends the line.  This is called a custos and is used to advise the singer as to what the first note of the next line is.  Since we're not actually ready to end the line in our score, we're going to ignore it for now and instead enter the remaining text and notes through the "alleluia".  That should be enough material to figure out where to end our line:</p>
+<p>The next feature of the score we reproducing is the half-note that ends the line.  This is called a custos and is used to advise the singer as to what the first note of the next line is.  Since we're not actually ready to end the line in our score, we're going to ignore it for now and instead enter the remaining text and notes through the “alleluia”.  That should be enough material to figure out where to end our line.  Along the way we have to deal with two <a href="../gabc/index.html#bars">bar lines</a> we haven't seen before: the partial bar (divisio minor) and the full bar (divsio maior).  The first is represented by a semi-colon (<code>;</code>) and the second by a colon (<code>:</code>):</p>
 
 <div class="legende">
 <a href="Exaudivit-12.png"><img src="Exaudivit-12.png" alt="Line break and custos.  Click to enlarge..." width=500/></a>
@@ -188,12 +188,37 @@
 
 <p>Hey!  What do you know, Gregorio has automatically inserted the line break with the correct custos for us.  We don't actually have to describe that portion of the score.  This makes it much easier to reuse scores in different contexts where things may change the line breaking decisions (width of page, size of text, <i>etc.</i>).  As a result we can just ignore the line breaks in our source and keep going.</p>
 
-<p>All is not well, however.  If you look at the syllable "le" you'll notice that two notes which are not joined in the source appear to have been joined automatically by Gregorio.  If you look really close at the image, you'll note that they are not actually joined, they are just so close together that the vigras (the stem joining the two stacked notes and the stem descending from the highest note) appear to merge. We don't want that, so we need to tell Gregorio to put more <a href="../gabc/details.html#spaces">space</a> in there, the opposite of what we did earlier.  The character for that is a forward slash (<code>/</code>) and I'm actually going to put in two of them to get a larger space:</p>
+<p>All is not well, however.  If you look at the syllable “le” you'll notice that two notes which are not joined in the source appear to have been joined automatically by Gregorio.  If you look really close at the image, you'll note that they are not actually joined, they are just so close together that the vigras (the stem joining the two stacked notes and the stem descending from the highest note) appear to merge. We don't want that, so we need to tell Gregorio to put more <a href="../gabc/details.html#spaces">space</a> in there, the opposite of what we did earlier.  The character for that is a forward slash (<code>/</code>) and I'm actually going to put in two of them to get a larger space:</p>
 
 <div class="legende">
 <a href="Exaudivit-13.png"><img src="Exaudivit-13.png" alt="Add some space.  Click to enlarge..." width=500/></a>
 </div>
 
+<p>As we continue with the score, the next novelties that we encounter are in the word “clamor”.  Let's start by simply inputting the notes and lyrics to the end of that word:</p>
+
+<div class="legende">
+<a href="Exaudivit-14.png"><img src="Exaudivit-14.png" alt="Notes to “clamor”.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>To start with the first syllable of “clamor,” there are two issues to deal with: first the notes have not been grouped together correctly, and second there's a tick-mark that is supposed to be below the middle note of the sequence.  To deal with the first we have to tell Gregorio where the note grouping boundaries are.  We do this by introducing an exclamation point (<code>!</code>) between the two note groups.  You'll recall that <a href="#nospace">we used this character earlier</a> to tell Gregorio not to put a space between the two note groups in the first syllable of “vocem”.  In that case Gregorio was already grouping the notes correctly, it was just introducing extra space.  In this instance we have the opposite case: Greogrio is not introducing any extra space, but it is not grouping the notes correctly.  The exclamation point (<code>!</code>) is a no-space group boundary for the notes and so it works in both cases to correct what Gregorio is doing wrong.  To add the tick-mark, what's called a <a href="../gabc/details.html#signs">vertical episema (or ictus)</a>, we need to add an apostrophe (<code>'</code>) after the note that needs the mark:</p>
+
+<div class="legende">
+<a href="Exaudivit-15.png"><img src="Exaudivit-15.png" alt="Regroup notes and add ictus.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>Having fixed the first syllable of “clamor” we now need to fix the second.  In this syllable the second, higher note is smaller than normal.  This is called a <a href="../gabc/details.html#liquescences">diminutive liquescent</a> and is represented in gabc by appending a tilde (<code>~</code>) to the note:</p>
+
+<div class="legende">
+<a href="Exaudivit-16.png"><img src="Exaudivit-16.png" alt="Linquesent.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>Our next challenge comes in our next word, “meus,” where we have a pair of diamond shaped notes (as opposed to the square ones we've largely been dealing with thus far).  These notes are called <a href="../gabc/index.html#onenote">punctum inclinatum</a> (the square notes are called punctum quadratum) and are indicated by capitalizing the letter corresponding to the appropriate pitch:</p>
+
+<div class="legende">
+<a href="Exaudivit-17.png"><img src="Exaudivit-17.png" alt="Punctum inclinatum.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>At this point, we've actually been over quite a number of features of gabc.  Enough, in fact, that you should be able to input everything upto but not including the last word of the third line (“ejus”) using what we've been over.  In fact, I challenge you to do just that before continuing with the tutorial.  Review what you need to and when you've got all of those notes entered, <a href="./tutorial-gabc-02.html">click here to continue with the tutorial.</a>
 
 
 <!-- footer -->
