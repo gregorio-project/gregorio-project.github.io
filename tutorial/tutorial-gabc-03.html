@@ -70,7 +70,7 @@
 <p>As things go, this looks pretty good.  However, if you click on the "Gregorio PDF" link (or EPS, if you prefer that format) and look at the result, you'll get something like this:</p>
 
 <div class="legende">
-<a href="Exaudivit-27.eps"><img src="Exaudivit-27.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+<a href="Exaudivit-27.png"><img src="Exaudivit-27.png" alt="Downloaded score.  Click to enlarge..." width=500/></a>
 </div>
 
 <p>A close study of this result yields a few surprises.  First both of our annotations have appeared in the final score.  That's a good thing, as it reveals that it was only Illuminare's preview which didn't show <a href=./tutorial-gabc-01.html#annotations">both of the supported annotation fields</a>.  Now that we're no longer dealing with the preview, we can see both, as we should.</p>
@@ -80,13 +80,13 @@
 <p>Third, some of the <i lang="la">punctum mora</i> have moved.  Take the first two on the first line (second syllable of "<i lang="la">suo</i>").  In the <a href="Exaudivit-00.png">original score</a> and in <a href="Exaudivit-09.png">our preview</a> those dots were vertically aligned.  In the final downloaded result, the top <i lang="la">punctum mora</i> has been moved to be closer to the note that it's attached to.  In fact that's happened for every such combination of notes (called a <i lang="la">clivis</i>).  While there is nothing necessarily wrong with this, the movement of the <i lang="la">punctum mora</i> has not obscured it in any way, it doesn't match the original.  So if we want to match the original, how do we do that?  The solution is a bit counter intuitive if you think about it musically: instead of attaching the <i lang="la">punctum mora</i> to the notes to which they apply (<code>f.e.</code>), we attach both to the second note (<code>fe..</code>).  Think of it as attaching the two <i lang="la">puncti moræ</i> to the <i lang="la">clivis</i> as a whole rather than to the last note of it.  If we do this for all of our double-dotted <i lang="la">clivis</i> we get the following download:</p>
 
 <div class="legende">
-<a href="Exaudivit-28.eps"><img src="Exaudivit-28.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+<a href="Exaudivit-28.png"><img src="Exaudivit-28.png" alt="Downloaded score.  Click to enlarge..." width=500/></a>
 </div>
 
 <p>The fourth thing to notice are some spacing issues, particularly where we introduced spaces into the score manually.  In the first "alleluia" the space we put between the podatus and clivis in "le" seems a bit wide and should be cut down from the double space (<code>//</code>) to the single one (<code>/</code>).  In the third "alleluia" (second one on the third line) we introduced that quadruple space (<code>////</code>) which now is looking simply huge.  Let's cut that one down to no space break to see what happens (<a href="./tutorial-gab-02.html#lotsofspace">remember</a>, we had chosen not to use such a break because we were worried about a collision between the <i lang="la">punctum mora</i> and the bottom note of the <i lang="la">podatus</i>):</p>
 
 <div class="legende">
-<a href="Exaudivit-29.eps"><img src="Exaudivit-29.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+<a href="Exaudivit-29.png"><img src="Exaudivit-29.png" alt="Downloaded score.  Click to enlarge..." width=500/></a>
 </div>
 
 <p>So it turns out that Gregorio's collision avoidance system is actually much better than what Illuminare displays in its preview (which is necessarily optimized for faster run times in order to give you near realtime feedback on what you're entering).  It is, therefore, advisable to look at the exported result, not the preview window, <b>before</b> making any decisions about spacing.  The way we did things is rather inefficient in that regard.</p>
@@ -94,7 +94,7 @@
 <p>A fifth problem is in the word "<i lang="la">introivit</i>" (middle of the third line).  In the syllable "i" the first three notes are not grouped right and there's extra space between the some of the later notes.  That requires that we introduce a space (<code>/</code>) and an exclamation point (<code>!</code>) in order to force things to the way we want them:</p>
 
 <div class="legende">
-<a href="Exaudivit-30.eps"><img src="Exaudivit-30.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+<a href="Exaudivit-30.png"><img src="Exaudivit-30.png" alt="Downloaded score.  Click to enlarge..." width=500/></a>
 </div>
 
 <p>You can download the gabc code for the <a href=./Exaudivit.gabc">finished score here.</a></p>
