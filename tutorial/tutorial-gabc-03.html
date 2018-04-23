@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+    <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'gabc Tutorial';
+</script>
+
+<style type="text/css">
+  .commandblock {font-family: courier; padding-left: 150px;}
+  .commandline {font-family: courier;}
+</style>
+<h1>GABC Tutorial - Part III</h1>
+
+<p>If you took my challenge seriously, you should have entered the complete score at this point and have something that looks like this:</p>
+
+<div class="legende">
+<a href="Exaudivit-26.png"><img src="Exaudivit-26.png" alt="Completed score.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>As things go, this looks pretty good.  However, if you click on the "Gregorio PDF" link (or EPS, if you prefer that format) and look at the result, you'll get something like this:</p>
+
+<div class="legende">
+<a href="Exaudivit-27.eps"><img src="Exaudivit-27.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>A close study of this result yields a few surprises.  First both of our annotations have appeared in the final score.  That's a good thing, as it reveals that it was only Illuminare's preview which didn't show <a href=./tutorial-gabc-01.html#annotations">both of the supported annotation fields</a>.  Now that we're no longer dealing with the preview, we can see both, as we should.</p>
+
+<p>We've also got a header capture system running on the <code>name</code> field to give us a title.  That could be good or bad, depending on your intended use.  To get rid of this title you have to either delete the <code>name</code> field, or move it so that it is not the first line of the header <b>and</b> comment it out as Illuminare does not like having a comment character as the first character in the gabc.</p>
+
+<p>Third, some of the <i lang="la">punctum mora</i> have moved.  Take the first two on the first line (second syllable of "<i lang="la">suo</i>").  In the <a href="Exaudivit-00.png">original score</a> and in <a href="Exaudivit-09.png">our preview</a> those dots were vertically aligned.  In the final downloaded result, the top <i lang="la">punctum mora</i> has been moved to be closer to the note that it's attached to.  In fact that's happened for every such combination of notes (called a <i lang="la">clivis</i>).  While there is nothing necessarily wrong with this, the movement of the <i lang="la">punctum mora</i> has not obscured it in any way, it doesn't match the original.  So if we want to match the original, how do we do that?  The solution is a bit counter intuitive if you think about it musically: instead of attaching the <i lang="la">punctum mora</i> to the notes to which they apply (<code>f.e.</code>), we attach both to the second note (<code>fe..</code>).  Think of it as attaching the two <i lang="la">puncti moræ</i> to the <i lang="la">clivis</i> as a whole rather than to the last note of it.  If we do this for all of our double-dotted <i lang="la">clivis</i> we get the following download:</p>
+
+<div class="legende">
+<a href="Exaudivit-28.eps"><img src="Exaudivit-28.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>The fourth thing to notice are some spacing issues, particularly where we introduced spaces into the score manually.  In the first "alleluia" the space we put between the podatus and clivis in "le" seems a bit wide and should be cut down from the double space (<code>//</code>) to the single one (<code>/</code>).  In the third "alleluia" (second one on the third line) we introduced that quadruple space (<code>////</code>) which now is looking simply huge.  Let's cut that one down to no space break to see what happens (<a href="./tutorial-gab-02.html#lotsofspace">remember</a>, we had chosen not to use such a break because we were worried about a collision between the <i lang="la">punctum mora</i> and the bottom note of the <i lang="la">podatus</i>):</p>
+
+<div class="legende">
+<a href="Exaudivit-29.eps"><img src="Exaudivit-29.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>So it turns out that Gregorio's collision avoidance system is actually much better than what Illuminare displays in its preview (which is necessarily optimized for faster run times in order to give you near realtime feedback on what you're entering).  It is, therefore, advisable to look at the exported result, not the preview window, <b>before</b> making any decisions about spacing.  The way we did things is rather inefficient in that regard.</p>
+
+<p>A fifth problem is in the word "<i lang="la">introivit</i>" (middle of the third line).  In the syllable "i" the first three notes are not grouped right and there's extra space between the some of the later notes.  That requires that we introduce a space (<code>/</code>) and an exclamation point (<code>!</code>) in order to force things to the way we want them:</p>
+
+<div class="legende">
+<a href="Exaudivit-30.eps"><img src="Exaudivit-30.eps" alt="Downloaded score.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>You can download the gabc code for the <a href=./Exaudivit.gabc">finished score here.</a></p>
+
+<p>These issues are typical of what you'll encounter in using Illuminare.  It's immediate preview is really useful for making sure you're on the right track as you enter new gabc code, but it should never be relied upon for the final layout decisions.  Always download the PDF (or EPS) file, examine it closely, refine your code, and repeat as necessary until you have a final result that you're willing to work with.</p>
+
+<p>Finally, I should take a moment to advise you that Illuminare is <b>not</b> running the most recent version of Gregorio, so just because you cannot figure out how to do something there does not mean that it is not possible.  Illuminare was setup in 2013 and has not been updated since.  This means that it is running v2.3 or v2.4 while the current version of Gregorio is 5.1 (as of 2018).  While the core of the gabc notation remains the same, Gregorio has undergone some significant development since 2013 making it possible to refine and improve the way your scores look.  To do so, however, you will need to learn TeX because many of the finer formatting controls are manipulated there.  As a result I would say that Illuminare is a great place to get started and if you are doing one off scores every once in a while, but if you are serious about using Gregorio on a regular basis then you really should come to grips with TeX and work your way through <a href="./tutorials.html">our other tutorials</a>.</p>
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
