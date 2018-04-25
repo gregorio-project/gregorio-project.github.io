@@ -63,19 +63,37 @@
 
 <p>To be able to use Gregorio in Scribus, some additional files for Scribus must be installed. These files are available in the <code>contrib/</code> directory of the Gregorio sources, and also in the <a href="https://github.com/gregorio-project/gregorio/tree/master/contrib">Git repository</a>. These files are <code>900_gregorio.xml</code> and <code>gregorio.png</code>. If you are under Windows, they are in <code>C:\Program Files\Gregorio\contrib</code> (assuming you have gregorio installed here).</p>
 
-<p class="nofirst">If you are under MacOS X or if you have installed Gregorio under Windows with the advanced method, you will need to slightly modify these files to adapt them to your system. These modifications are described in the comments of the file <code>900_gregorio.xml</code>.</p>
+<p class="nofirst">If you are under MacOS X, you will need to slightly modify Scribus to make use of these files. These modifications are described below.</p>
 
-<p class="nofirst">Finally, you need to make Scribus use these files. In the Scribus menu, go to  <code>File/Preferences</code>. Then, in the <code>External Tools</code> part, under <code>Render Frames</code>, click on <code>Add</code> and select the file <code>900_gregorio.xml</code>. Something you might want to do is to make gregorio the first item of the list. To do so, click on <code>Up</code> several times. Click on <code>Apply</code>, then <code>OK</code>, and you're done.</p>
+<p class="nofirst">Finally, you need to make Scribus use these files. In the Scribus menu, go to  <code>File/Preferences</code>. Then, in the <code>External Tools</code> part, under <code>Render Frames</code>, click on <code>Add</code> and select the file <code>900_gregorio.xml</code>. Something you might want to do is to make gregorio the first item of the list. To do so, click on <code>Up</code> several times. Click on <code>Apply</code>, then <code>OK</code>, and you’re done.</p>
 
 <h3>Use in Scribus</h3>
 
 <p>The use of gregorio inside Scribus is almost the same as the use of <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> within Scribus: click on <code>Insert/Insert Render Frame</code>, then select the area in which you want a score to appear. Right-click on this area and click on <code>Edit Source</code>, and the editor will open.</p>
 
-<p class="nofirst">First select gregorio in the program list (if it's not selected by default). The left text area allows you to enter the gabc code of the score. Two other tabs are present: one to add some packages to the <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> header, and one to enter some Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> commands.</p>
+<p class="nofirst">First select gregorio in the program list (if it’s not selected by default). The left text area allows you to enter the gabc code of the score. Two other tabs are present: one to add some packages to the <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> header, and one to enter some Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> commands.</p>
 
 <p class="nofirst">The rendering result may look strange at first, because the preview has a low quality; this is not the case for the final rendering; which you will see if you export in PDF.</p>
 
 <p class="nofirst">When you try to export a PDF, you will need to check the box <code>Embed EPS &amp; PDF files (EXPERIMENTAL)</code>. While exporting, Scribus will output some warnings, but you can ignore them safely.  If you cannot check that box (this happens in certain versions, especially under Linux), the scores will be included as images, which can introduce pixelization. To improve the quality of the images, you can change the value of the option <code>Resolution for EPS Graphics</code>; 600dpi is a standard value for desktop printers. Note that in this case the size of the PDF output file will be as much as 10 times greater.</p>
+
+<h3>Modifying Scribus on a Mac</h3>
+
+<p>As GUI applications on a Mac do not have access to your regular PATH by default, Scribus is unable to find either the <code>lualatex</code> engine or the <code>gregorio</code> executable by default.  To fix this we have to change the way Scribus launches in order to change the PATH it accesses.  We’re going to do that based on <a href="https://apple.stackexchange.com/a/51737/200894">this procedure found on AskDifferent</a> (the Apple StackExchange).  For simplicity sake, I’m going to assume that Scribus is installed in <code>/Applications</code>.  If you installed it somewhere else, you’ll need to make appropriate changes below.</p>
+
+<p>The first thing to do is to open up the Scribus app so that we can see the contents.  To do this right-click on Scribus and select “Show Package Contents” from the pop-up menu.</p>
+
+<p>Now, navigate to the <code>Contents/MacOS</code> subfolder.  You should see a single file called “Scribus” here.  To this folder you need to add a file: Scribus.sh.  An example of this file can be found in the <code>contrib</code> folder where you found <code>900_gregorio.xml</code>.  Copy that file to this folder and then open the new file for editting.</p>
+
+<p>The example file sets the PATH appropriately for users of Mac<span class="tex">T<span class="epsilon">e</span>X</span> who may have also installed Gregorio using the package installer.  If that is your situation, then you actually don’t need to edit the file.  If your setup is different, however, then change <code>/Library/TeX/texbin</code> for the path to <code>lualatex</code> and <code>/usr/local/bin</code> for the path to <code>gregorio</code>.  If you are not sure where these are, then open Terminal and enter <code>which lualatex</code> and <code>which gregorio-5_1_1</code> to find out (replace <code>5_1_1</code> with the version of gregorio that you installed; tab completion can help with this).  Use these folders, being sure to leave off the names of the executables.</p>
+
+<p>Once the file is edited, save it and then use Terminal to check that its executable bit is set.  The command to do this is <code>chmod +x /Applications/Scribus.app/Contents/MacOS/Scribus.sh</code> and should be executed from Terminal.</p>
+
+<p>The next step is to edit <code>Info.plist</code> in the <code>Contents</code> folder.  This is an XML file, which means it can be edited with any text editor.  If you have XCode installed, you can also edit it with that.  Find the <code>CFBundleExecutable</code> key and change the string associated with it to <code>Scribus.sh</code>.</p>
+
+<p>At this point Scribus is properly modified, but the application launcher doesn’t know it yet.  The last step, therefore, is to register the change by executing the following command in Terminal: <code>/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -v -f /Applications/Scribus.app</code>  That should do it.  Fire up Scribus, add the tool as described above (if you haven’t already), and test it out to make sure it works.  Incidentally this modification should also make the LaTeX render frame that comes with Scribus work without any special customization.</p>
+
+
 
 <!-- footer -->
     </div>
