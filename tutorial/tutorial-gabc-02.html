@@ -44,7 +44,7 @@
     </div>
   </div>
   <script>write_gre_menu();</script>
-  <div class="flux">
+    <div class="flux">
     &nbsp;
     <!-- IE patch-->
     <div class="text">
@@ -52,198 +52,71 @@
 <!-- header -->
 <script>
     context = 'gregorio';
-    title = 'Gregorio Tutorial (part II)';
+    title = 'gabc Tutorial';
 </script>
 
 <style type="text/css">
   .commandblock {font-family: courier; padding-left: 150px;}
   .commandline {font-family: courier;}
 </style>
-<h1>Gregorio Tutorial (part II)</h1>
+<h1>GABC Tutorial – Part II</h1>
 
-<p>Here we continue the gabc tutorial that began on <a href="./tutorial-gabc-01.html">this page</a>.</p>
-
-<p>The documentation for the gabc notation, the notation we use in this tutorial, can be found <a href="../gabc/index.html">here</a>.</p>
-
-<h2>Kyrie XVII (continued)</h2>
-
-<p>Our goal is to typeset this score using Gregorio:</p>
+<p>At the end of <a href="./tutorial-gabc-01.html">Part I</a> I <a href="./tutorial-gabc-01.html#challenge">challenged you</a> to enter up to, but not including, the last word of the third line (“<i lang="la">ejus</i>”) of our score.  If you did everything correctly, then you should have something which looks like this:</p>
 
 <div class="legende">
-<img src="kyrie-xvii-goal.png"/>
+<a href="Exaudivit-18.png"><img src="Exaudivit-18.png" alt="Start of Part II.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>So far we have written this partial gabc file:</p>
+<p>If you need it, here’s a link to our <a href="Exaudivit-00.png">original score</a>.</p>
 
-<div class="filename"><a href="kyrie-17-09.gabc">kyrie-17-09.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-</pre>
-</div>
-
-<p>And we obtained this result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Now let’s take a crack at that last word.  To start input the text and notes (and the bar line that follows) without worrying about groupings or spacing (do take care of the <i lang="la">punctum inclinati</i> and horizontal <i lang="la">episema</i>, however):</p>
 
 <div class="legende">
-<img src="kyrie-17-09.png"/>
+<a href="Exaudivit-19.png"><img src="Exaudivit-19.png" alt="Entering “ejus”.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>So let's add the notes, note shapes, flats, ictuses (icti?), and <i>punctum mora</i> for the remainder:</p>
-
-
-<h3>Adding notes for the remainder of the piece</h3>
-
-<div class="filename"><a href="kyrie-17-10.gabc">kyrie-17-10.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-<font color="red">Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
-K&yacute;(f)ri(hj)e(ixjjkij.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-K&yacute;(f)ri(hj)e(ixjjkij.) *() (ixfhjjkij.) **() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)</font>
-</pre>
-</div>
-
-<p>Here is the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Looking at the results its obvious that Gregorio is not grouping the notes correctly in the first syllable, so the first step is to demarcate the groups.  We could use the exclamation point (<code>!</code>) for this, but if <a href="./tutorial-gabc-01.html#nospacegroup">you recall</a> the exclamation point is a no space group boundary and there is clearly a space in our score between the groups.  As a result we need to indicate that space instead:</p>
 
 <div class="legende">
-<img src="kyrie-17-10.png"/>
+<a href="Exaudivit-20.png"><img src="Exaudivit-20.png" alt="Regrouping notes.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Adding the quarter bars</h3>
-
-<p>The previous <i>Kyrie</i>, on the third line of the score, needs quarter bars above the asterisks.  Here's a reminder of the characters for separator bars:</p>
+<p>Having done that, we find that there is still a problem with the output: we’re missing that stem hanging down on the right side of the note just after the space.  This is called a <a href="../gabc/index.html#onenote"><i lang="la">virga</i></a> and is indicated by appending a <code>v</code> to the note:</p>
 
 <div class="legende">
-<img src="bar-symbols.png"/>
+<a href="Exaudivit-21.png"><img src="Exaudivit-21.png" alt="Virga.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>In the gabc file, we place a comma (,) after the asterisks in those two places to represent the quarter bars. </p>
+<p>While <i lang="la">virgæ</i> are not all that uncommon, Gregorio is usually fairly good about inserting them automatically.  In fact if you look back through the notes we’ve already entered there are several which have a <i lang="la">virga</i> on the left side of the note that Gregorio put in for us.  As a result, you should always try to enter a sequence of notes without specifying the <i lang="la">virgæ</i> first, just in case it’s added automatically.  It’s only when Gregorio fails to see the need for a <i lang="la">virga</i> that you should manually insert the <code>v</code> (or <code>V</code> for a <i lang="la">virga</i> on the left-hand side of a note).</p>
 
-<div class="filename"><a href="kyrie-17-11.gabc">kyrie-17-11.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
-K&yacute;(f)ri(hj)e(ixjjkij.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-K&yacute;(f)ri(hj)e(ixjjkij.) *<font color="red">(,)</font> (ixfhjjkij.) **<font color="red">(,)</font> e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-
-</pre>
-</div>
-
-
-<p>Here is the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Looking ahead, our next challenge occurs in the second “alleluia” of the two coming up.  The second syllable has a <a href="../gabc/details.html#alterations">flat</a> as part of the glyph.  Flats are represented by <code>x</code> and if you’re familiar with modern notation your instinct might be to put that <code>x</code> directly before the note which should be sung flat:</p>
 
 <div class="legende">
-<img src="kyrie-17-11.png"/>
+<a href="Exaudivit-22.png"><img src="Exaudivit-22.png" alt="Virga.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Grouping notes into neumes as desired</h3>
-
-<p>In the last <i>Kyrie</i>, I've circled two sets of notes.   I'd like the second set to be arranged into the same neume pattern as the first set.</p>
+<p>Well, that didn’t work.  Instead of applying a flat to the desired note, it’s turned the previous note into a flat.  This is because Gregorio treats a flat as a special note shape.  We thus need to add <b>two</b> letters to our sequence: a pitch to indicate where on the staff the flat is to occur (in this case a <code>i</code>) and the <code>x</code> to indicate that said “note” is actually a flat.  Furthermore, we must put it where we want it to occur in the sequence of notes.  This means putting it before the first note:</p>
 
 <div class="legende">
-<img src="kyrie-17-11a.png"/>
+<a href="Exaudivit-23.png"><img src="Exaudivit-23.png" alt="Adding a flat.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>Here's a fragment from the gabc file for those notes:</p>
-
-<div class="commandblock">
-	<pre>
-K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixfhjjkij.) **(,)
-
-</pre>
-</div>
-
-<p>The sequence <code>(ixfhjjkij.)</code> represents the notes (and the flat) after the first asterisk.  If we add an exclamation point (!) and make it into <code>(ixf!hjjkij.)</code>, that will tell Gregorio where we want a note grouping to begin.  So now that fragment becomes:</p>
-
-
-<div class="commandblock">
-	<pre>
-K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf<font color="red">!</font>hjjkij.) **(,)
-
-</pre>
-</div>
-
-<div class="filename"><a href="kyrie-17-12.gabc">kyrie-17-12.gabc</a></div>
-
-<p>and here is the gabc file:</p>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
-K&yacute;(f)ri(hj)e(ixjjkij.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf<font color="red">!</font>hjjkij.) **(,) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-</pre>
-</div>
-
-<p>And the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p id="lotsofspace">Having done that we can now see that Gregorio is not grouping the notes in that syllable correctly and thus we need to force a regrouping.  Due to the <i lang="la">punctum mora</i> on the first note, we cannot use an exclamation point (<code>!</code>) because then the next note, which is only a single step higher, will overlap with the punctum mora.  Instead we have to use a space and indeed we need enough to get past the <i lang="la">punctum mora</i>:</p>
 
 <div class="legende">
-<img src="kyrie-17-12.png"/>
+<a href="Exaudivit-24.png"><img src="Exaudivit-24.png" alt="Adjusting the spacing.  Click to enlarge..." width=500/></a>
 </div>
 
-<!--  Our new spacings mean that there are no line breaking issues in this score anymore.
+<p>That probably seems like an excessive number of forward slashes (<code>/</code>) to be typing but that’s how many we need.  In more recent versions of Gregorio support was added for an arbitrarily scaled space (<code>/[<i>&lt;factor&gt;</i>]</code>) but this is not available in the version that Illuminare runs, and besides it wouldn’t save us any characters in this case (both <code>////</code> and <code>/[4]</code> are the same number of characters).</p>
 
-<h3>Correcting line breaking problems</h3>
-
-<p>Gregorio sometimes does not handle the ends of lines in the ideal way we'd like.  However, we can specify some line breaks manually to make the results more attractive.</p>
-
-<p>The start of the third line has a flat a little too close to the clef. Adding an explicit line break before that point can help:</p>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
-K&yacute;(f)ri(hj)e(ixjjkij.) <font color="red">(z)</font> e(ixjvishs'gshvfs'es)l&eacute;(ghg')i(g)son.(f.)  (::)
-K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-</pre>
-</div>
-
-
-<p>Here's the result after processing:</p>
+<p>Our next challenge is the double bar line after the “alleluia.”  Or rather, the text below it.  The double bar line (called a <a href="../gabc/index.html#bars"><i lang="la">diviso finalis</i></a>) is, as you might expect, represented by two colons (<code>::</code>), one for each bar line.  The text below, however, is unusual because it is <a href="../gabc/index.html#textstyle">italicized</a>.  Gregorio handles such text styling the same way that html does, with tags: <code>&lt;i&gt;Ps.&lt;/i&gt;</code>.  Similar tags exist for other styling options (though we don’t need them here):</p>
 
 <div class="legende">
-<img src="kyrie-17-13.png"/>
+<a href="Exaudivit-25.png"><img src="Exaudivit-25.png" alt="Adjusting the spacing.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>We can do the same at the start of the fourth line as well.</p>
+<p id="challenge">At this point you should be able to enter the rest of the score using the techniques we’ve gone over so far.  As a result I’m going to challenge you to do just that before going on to the <a href="./tutorial-gabc-03.html">next part of the tutorial</a>.
 
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::) (z)
-Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
-K&yacute;(f)ri(hj)(z)e(ixjjkij.) (z) e(ixjvishs'gshvfs'es)l&eacute;(ghg')i(g)son.(f.)  (::)
-K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) <font color="red">(z)</font> e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
-</pre>
-</div>
-
-
-<p>Here's the result:</p>
-
-<div class="legende">
-<img src="kyrie-17-13a.png"/>
-</div>
--->
-
-<p>Now we need to add the mode notation "VI" before the first clef and add the annotation "XIV. s." above the first stave.   Let's work on that on the next page of the tutorial.</p>
-
-<h3><a href="./tutorial-gabc-03.html">&#8594; Next Page</a></h3>
 
 <!-- footer -->
     </div>

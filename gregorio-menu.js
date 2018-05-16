@@ -16,7 +16,7 @@ menuline('		<li><a href="/introduction-web.html">Through the web</a></li>');
 menuline('		<li><a href="/introduction-scribus.html">In Scribus</a></li>');
 menuline('		    </ul>');
 menuline('          </li>');
-menuline('          <li><a href="/tutorial/tutorial-gabc-01.html">Tutorial</a></li>');
+menuline('          <li><a href="/tutorial/tutorials.html">Tutorials</a></li>');
 menuline('         <li><a href="https://github.com/gregorio-project/gregorio/releases">Download@github</a> </li>');
 menuline('          <li><a href="/installation.html">Installation</a> </li>');
 menuline('          <li><a href="/legalissues.html">Legal issues</a></li>');
