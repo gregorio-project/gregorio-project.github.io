@@ -125,7 +125,7 @@ Quia te contemplans totum deficit.}
 
 <p>Since we've left out the notes, we can run this block of text through a Latin language spell-checker at this point to make sure we've gotten our transcription right.  Depending on your system setup, this may require copying the text into another program and then copying back any corrections.</p>
 
-<p>Once we've doulbe checked the text to make sure it's correct, it's time to syllabify it by adding <code>()</code> after each syllable.  For something this short, this is relatively easy to do manually, but for a longer text you might want to explore using the syllabifier in the <a href="https://github.com/gregorio-project/hyphen-la">hyphen-la</a> project.</p>
+<p>Once we've double checked the text to make sure it's correct, it's time to syllabify it by adding <code>()</code> after each syllable.  For something this short, this is relatively easy to do manually, but for a longer text you might want to explore using the syllabifier in the <a href="https://github.com/gregorio-project/hyphen-la">hyphen-la</a> project.</p>
 
 <p>Regardless of what method you choose for syllabifying the text, you should end up with something like this:</p>
 
@@ -272,7 +272,7 @@ Qui(f)a(h) te(g') con(f)t&lt;v&gt;{\'e}&lt;/v&gt;m(ed)plans(d.) (,) to(f)tum(d) 
 <p>With that our score is finished (the addition of the title and the text of the two subsequent verses are left as an exercise for the reader).  Before leaving the tutorial, however, we should mention the other two major limitations of the <code>\gabcsnippet</code> command:</p>
 
 <ul>
-    <li>because the header is not avaiable, you cannot define <a href="../gabc/details.html#verbatim">custom macros</a>, but must enter the whole macro each time you want to use it.</li>
+    <li>because the header is not available, you cannot define <a href="../gabc/details.html#verbatim">custom macros</a>, but must enter the whole macro each time you want to use it.</li>
     <li>you cannot have any mismatched braces in your gabc code.  Any mismatched brace will cause <span class="tex">T<span class="epsilon">e</span>X</span> to have difficutly telling where the <code>\gabcsnippet</code> command ends.  As a result, you must be extremely careful when using a <a href="../gabc/index.html#textcentering">forced syllable center</a>, using <a href="../gabc/details.html#braces">dynamicly sized braces</a>, or <a href="../gabc/details.html#polyphony">simple polyphony</a> as all of these will introduce braces into your gabc syntax.  While all should work if done correctly, the more braces you introduce into your code, the more potential problem points there are.</li>
 <ul>
 
