@@ -52,308 +52,176 @@
 <!-- header -->
 <script>
     context = 'gregorio';
-    title = 'Gregorio Tutorial';
+    title = 'gabc Tutorial';
 </script>
 
 <style type="text/css">
   .commandblock {font-family: courier; padding-left: 150px;}
   .commandline {font-family: courier;}
 </style>
-<h1>Gregorio and GABC Tutorial</h1>
+<h1>GABC Tutorial</h1>
 
-<p>The purpose of this tutorial is to demonstrate how to represent a Gregorian chant score in a gabc file and then include that file into a larger project which will produce a printed score (the method we recommend for everything but the simplest use cases).  For instructions on how to use the <code>\gabcsnippet</code> command for directly including short snippets of code in an existing <span class="tex">T<span class="epsilon">e</span>X</span> document, please <a href="./tutorial-snippet-01.html">see our other tutorial</a>.</p>
+<p>The purpose of this tutorial is to demonstrate how to represent a Gregorian chant score in gabc.  However, we are not going to assume a familiarity with the terminology used to describe such a score in order to make this introduction easier to follow for those who are relatively new to chant more generally (and not just typesetting it).</p>
 
-<p>Documentation for the gabc notation which we use in this tutorial can be found <a href="../gabc/index.html">here</a>. A <a href="../gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
+<p>Documentation for the gabc notation which we use in this tutorial can be found <a href="../gabc/index.html">here</a>.  We will also link to the various parts of the documentation as it becomes relavent.  A <a href="../gabc/summary-gabc.pdf">one-page summary is also on-line</a> (PDF).</p>
 
-<p>If you plan on following along with the tutorial, you'll need to <a href="../introduction.html">choose your method</a> for using Gregorio and set your system up first.</p>
+<p>In this tutorial we’ll be using the <a href="http://apps.illuminarepublications.com/gregorio/">Illuminare Score Editor</a> and all the images will be derived from that tool because it has a built-in preview window that gives us nearly instantaneous feedback about what we’re doing. However, you could also use the <a href="http://gregorio.gabrielmass.com/cgi/process.pl">Gregorio Chant Engraver</a> if you prefer that.  Obviously the images won’t match and some of the specific interface issues are different (including the lack of an instant preview), but the gabc itself is identical and we are specifically going to focus on that gabc notation.  This makes for a much easier introduction for those not familiar with <span class="tex">T<span class="epsilon">e</span>X</span>.  Once you’re comfortable with gabc notation, then you’ll find learning how to integrate it into larger projects using <span class="tex">T<span class="epsilon">e</span>X</span> much easier (as is done in our <a href="./tutorials.html">other tutorials</a>).</p>
 
-<p>By default, this tutorial is designed to work with version 4.1 of Gregorio, the version which comes packaged in TeXLive 2016.  However, it will also work with version 4.2 with a just one minor changes.  This will be called out at the appropriate place.</p>
+<h2>Exaudivit</h2>
 
-<p>We'll start with an empty staff and build up from there. Along the way, I'll make some deliberate mistakes to illustrate some common problems.</p>
-
-<p>If you don't have Gregorio installed on your own computer, you can find out about running it through the web at this <a href="../introduction-web.html"> introduction page</a>.</p>
-
-<p>In this tutorial we're going to make use of a separate gabc file to hold the score.  This is especially adventagous for large projects or for scores which you use multiple times.  By putting each gabc score in its own file, it is easier to find the score for which you're looking.  These files can have a <a href="../gabc/index.html#header">header</a> which can store meta-data about the score (such as the name of the piece or the manuscript scource), information which your computer's search function can read and use.  Furthermore, a few of the more advanced features of the gabc notation are only usable inside a gabc file.</p>
-
-<h2>Kyrie XVII</h2>
-
-<p>Here is a score from the <i>Liber Cantualis</i>. </p>
+<p>Here is a score from the <i lang="la">Graduale Romanum</i>:</p>
 
 <div class="legende">
-<img src="kyrie-xvii-goal.png"/>
+<a href="Exaudivit-00.png"><img src="Exaudivit-00.png" alt="Our source and goal.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Step one: Enter the first syllable.</h3>
+<p>It’s not the simplest score in the world, but it is not overly complicated either and it illustrates several of the most common features of Gregorian chant allowing us to call out how to represent these using gabc as we go.</p>
 
-<p>To start creating a gabc file, I'll enter the name of the piece, indicate the clef position, and specify the note for the first syllable.</p>
-
-<div class="filename"><a href="kyrie-17-01.gabc">kyrie-17-01.gabc</a></div>
-
-<div class="commandblock">
-<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)
-</pre>
-</div>
-
-<p>Save this file as <code>kyrie-17.gabc</code>.  In order to differentiate between the different steps, we'll add the step number to this file name (as "kyrie-17-01.gabc" above), but if you're following along you can ignore this.</p>
-
-<p><b>Nota Bene:</b> If you want to choose a different file name for this, or any other file, it is absolutely essential that you do not includes spaces in the file name.  <span class="tex">T<span class="epsilon">e</span>X</span> will throw a hissy fit if you do, because it uses spaces to determine where arguments end.</p>
-
-<p>Now, while the gabc file represents the musical content of your score, it is not a format which <span class="tex">T<span class="epsilon">e</span>X</span> understands.  Thus we need to create another document which <span class="tex">T<span class="epsilon">e</span>X</span> does understand and which will direct Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> (the package which tells <span class="tex">T<span class="epsilon">e</span>X</span> how to find the musical content.</p>
-
-<p>To do this, open a new document and enter the following content:</p>
-
-<div class="filename"><a href="kyrie-17-01-main.tex">kyrie-17-01-main.tex</a></div>
-
-<div class="commandblock">
-	<pre>
-\documentclass[12pt, a5paper]{article}
-
-\usepackage{fullpage}
-
-\usepackage{fontspec}
-\usepackage{libertine}
-
-\usepackage[autocompile]{gregoriotex}
-
-\begin{document}
-
-\gregorioscore{kyrie-17}
-
-\end{document}
-</pre>
-</div>
-
-<p>Save this file as <code>kyrie-17-main.tex</code> in the same folder as you saved <code>kyrie-17.gabc</code> and then compile the document with Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>.</p>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Obviously the first step is to fire up <a href="http://apps.illuminarepublications.com/gregorio/">Illuminare Score Editor</a>.  When we do so we get a screen that looks like this:</p>
 
 <div class="legende">
-<img src="kyrie-17-01.png"/>
+<a href="Exaudivit-01.png"><img src="Exaudivit-01.png" alt="Illuminare Score Editor on open.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>Well, it's not much, but it's a start.  The note on "Ky" is on the second line, and that's represented by (f).  Gregorio automatically makes the first letter of the piece a large initial.</p>
+<p>The top most pane allows us to control certain elements of how the score appears.  We won’t be dealing with these in this tutorial.</p>
 
-<p>Let's add some more text and notes:</p>
+<p>The bottom most pane shows us a preview of our score.  Illuminare will update this in real time as we work so you’ll be able to see exactly how the gabc you’re entering translates into a score.</p>
 
-<h3>Adding notes</h3>
+<p>The pane in the middle is where we’ll be entering our gabc code and as you can see, it’s already got some code in it by default.  Let’s start by explaining what’s already there line by line:</p>
 
-<div class="filename"><a href="kyrie-17-02.gabc">kyrie-17-02.gabc</a></div>
+<dl>
+    <dt><code>user-notes: ;</code></dt>
+        <dd>This line is an empty header field.  <a href="../gabc/index.html#header">Headers</a> are for describing you score so that when you come back to the file later you can figure out what it is, where it came from, and other things like that.  This particular field is there for you to record any information that you want about the score.  In this case I’m going to make a note that this is part of this tutorial.  That note goes between the colon (<code>:</code>) and the semi-colon (<code>;</code>).</dd>
+    <dt><code>commentary: ;</code></dt>
+        <dd>This line is also an empty header field, but it’s for specific information about the score.  In gabc parlance the commentary is the text that appears just above the top line of the staff and is flushed right.  This is usually a scripture citation.  Our piece, however, doesn’t have this line so we’re going to delete this line.</dd>
+    <dt><code>annotation: ;</code></dt>
+        <dd>Like commentary, annotations refer to a very specific part of the score in gabc parlance.  In this case it’s the text which goes above the initial.  Our score has two lines there, and fortunately gabc supports up to two annotation headers.</dd>
+    <dt><code>centering-scheme: english;</code></dt>
+        <dd>This header is actually a legacy header which is no longer supported in Gregorio.  It formerly controlled how the text of the lyrics aligned with the notes above.  This is now controlled in the <span class="tex">T<span class="epsilon">e</span>X</span> of a document, but because Illuminare doesn’t give you access to that, it's continued use of an older version of Gregorio means that you still have access to it.  In this case our text is in Latin and thus follows the <a href="../graphy.html">Latin alignment conventions</a>.  In more recent versions of Gregorio we refer to this as <code>vowel</code> centering in order to be more descriptive.</dd>
+    <dt><code>%fontsize: 12;</code></dt>
+    <dt><code>%spacing: vichi;</code></dt>
+    <dt><code>%font: OFLSortsMillGoudy;</code></dt>
+    <dt><code>%width: 4.5;</code></dt>
+    <dt><code>%height: 11;</code></dt>
+        <dd>These headers are not official headers, but rather ones which is specific to Illuminare.  You’ll notice that the correspond to the features in the topmost panel and serve to record those settings so that you can duplicate them later should you need to (say for another score which will be part of the same document and thus should look similar to the first score).  The <code>%</code> at the beginning of each line indicates that the line is to be treated as a comment.  That is, Gregorio is to ignore it when parsing the gabc.</dd>
+    <dt><code>%%</code></dt>
+        <dd>Unlike the single <code>%</code> on the previous lines, this double <code>%%</code> does not instruct Gregorio to ignore this line.  Instead it indicates that we’re done with the headers and ready to begin the score itself.</dd>
+    <dt><code>(c4)</code></dt>
+        <dd>This is the first part of the score and indicates the starting clef.  There are two <a href="../gabc/index.html#clef">clefs</a> in gabc: do (<code>c</code>) and fa (<code>f</code>) and each can be on any of the 4 lines (1 on the bottom, 4 on the top).  This here is a do clef on the 4th line, which is actually what we have in our score, so we’ll leave it alone.</dd>
+</dl>
 
-<div class="commandblock">
-<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)<font color="red">ri(gfg)e(h)</font>
-</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Besides these “starter” headers provided by Illuminare, I know other information about this particular score which I’m also going to fill in.  Once I do that I get something that looks like the following:</p>
 
 <div class="legende">
-<img src="kyrie-17-02.png"/>
+<a href="Exaudivit-02.png"><img src="Exaudivit-02.png" alt="Finished headers.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>That looks better. The three notes on "ri" are represented by (gfg).  Let's add more notes.  Here's a reminder of the letters used to represent each note position on the staff:</p>
+<p>As you can see, the user notes have been placed as text above the score.  This is what is called “header capture” and is a feature of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> that allows you to make use (in a variety of ways) of the information recorded in any of the header fields of your score without having to retype (or even copy/paste) it into the main document.  It is controlled entirely on the <span class="tex">T<span class="epsilon">e</span>X</span> side of things, however, so Illuminare is handling this in the background for us and we cannot adjust it in this interface.  The best we could do here is to comment out the <code>user-notes</code> line (<i>i.e.</i>, put a <code>%</code> in front of it) if we wanted to make that line disappear.</p>
+
+<p id="annotations">You’ll also note that even though we put in the <code>annotation</code> headers, the annotations themselves have not shown up in the output.  That’s because the annotations appear above the initial.  Since we don’t have an initial yet, there is no place for the annotations to appear.  So let’s put in the initial, indeed, let’s put in the whole first word:</p>
 
 <div class="legende">
-<img src="note-positions.png"/>
+<a href="Exaudivit-03.png"><img src="Exaudivit-03.png" alt="First word.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Adding more notes</h3>
+<p>Having done this we can now see another limitation of Illuminare: it can only handle 1 annotation line.  The second line in the gabc is ignored.  We can’t force Illuminare to change this behavior, so we’re going to have to live with it (at least until you’re ready to move on to learning <span class="tex">T<span class="epsilon">e</span>X</span>).</p>
 
-<div class="filename"><a href="kyrie-17-03.gabc">kyrie-17-03.gabc</a></div>
+<p>So, having put in the first word, it’s now time to start adding the notes.  Now, notes are <a href="../gabc/index.html#text">assigned to particular syllables</a> and are marked off from the text of the lyrics by parentheses (<code>()</code>).  Furthermore, each note (<a href="../gabc/index.html#heights">the pitch of the note</a>) is represented by a particular letter.  In this scheme <code>g</code> is in the middle space of the staff and we go backwards in the alphabet (towards <code>a</code>) as we go down and forwards in the alphabet as we go up.  Unlike modern notes, there is no point at which the letters start to repeat.  That’s because these letters are <b>not</b> note names, they are staff positions.  For a similar reason the position or type of the clef <b>does not</b> affect the letters.  <code>g</code> will always be the middle position (for a 4-line staff, it’s actually possible to have 2-, 3-, or 5-line staffs which would have a different middle position, but we’re going to ignore those because they are really uncommon).</p>
 
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)ri(gfg)e(h) <font color="red">* e(jihghfe)le(ghg)i(g)son(f).</font>
-	</pre>
-</div>
-
-<p>Now, if you try to typeset this document, you're going to get an error indicating there's a problem in <code>kyrie.gabc</code>.  We're going to fix this error later, so for now (and for the next few steps) simply instruct <span class="tex">T<span class="epsilon">e</span>X</span> to ignore the error (press "Enter" when it comes up).  After it finishes the typesetting process (without producing a pdf), typeset the document again and you won't get the error, but will get the pdf file.</p>
-
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Additionally stacked notes (called a <i lang="la">pes</i> or <i lang="la">podatus</i>) are entered from bottom to top, just like they are sung.  Taking all of these into account the first word works out to look like this:</p>
 
 <div class="legende">
-<img src="kyrie-17-03.png"/>
+<a href="Exaudivit-04.png"><img src="Exaudivit-04.png" alt="Notes for the first word.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>The Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> system certainly produced some beautiful neumes automatically, but they don't match the original, because we didn't specify the neume shapes we wanted. To produce the diamond-shaped ("inclined") notes that we want, we'll type them in upper-case.</p>
+<p>If you paid attention while you were typing, you’ll have noticed that Illuminare automatically matches parentheses when you type the opening one.  That's to help you create well formed gabc code that won’t result in errors.  Looking at the output, we can also see that hyphens get inserted automatically when they are needed.  We don’t have the exact same hyphens as the original score because of minor variations in spacing and that’s something I’m not going to really worry about now.</p>
 
-<h3>Using capital letters to represent "inclined" notes</h3>
-
-<div class="filename"><a href="kyrie-17-04.gabc">kyrie-17-04.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)ri(gfg)e(h) * e(j<font color="red">IHG</font>h<font color="red">FE</font>)le(ghg)i(g)son(f).
-	</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>What I am going to worry about, however, is the fact that a couple of my letters appear to be a bit different from the original.  Looking closely at the original score we can see that the <code>x</code> is capitalized and that there is an accent on the first <code>i</code>.  Before we go any further we should fix these two issues.  Fortunately fixing them is easy.  In the first case we just replace <code>x</code> with <code>X</code> and in the second we replace <code>i</code> with <code>í</code>.  Now, if you keyboard doesn’t have a <code>í</code> on it, you could use whatever method your operating system provides for inputing such characters.  Without knowing your OS I can’t tell you what that is, but every modern OS has one.  However, Illuminare has provided a shortcut for us.  If we place the cursor to the right of the <code>i</code> and enter <code>'</code> then it will automatically swap out the <code>i'</code> sequence for <code>í</code>.  It’s a convenient feature and one that will be used several times as we enter the rest of the score.</p>
 
 <div class="legende">
-<img src="kyrie-17-04.png"/>
+<a href="Exaudivit-05.png"><img src="Exaudivit-05.png" alt="Revised first word.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>Now we have the right "inclined" notes.   Here's another change we should make: each series of inclined notes is preceded by a <i>virga</i> instead of a simple punctum.  A virga is a punctum with a stem attached.    Let's change those note shapes by adding a "v" after the note letters.</p>
-
-<h3>Marking virgas with "v"</h3>
-
-<p>In the previous step's gabc file, the notes on the first syllable of <i>eleison</i> are <code>(jIHGhFEi)</code>.  Because the "j" note and the "h" note should both be virgas, change them to "jv" and "hv":</p>
-
-<div class="filename"><a href="kyrie-17-05.gabc">kyrie-17-05.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)ri(gfg)e(h) * e(<font color="red">jv</font>IHG<font color="red">hv</font>FE)le(ghg)i(g)son(f). bis
-</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Having finished with the first word, we’re ready for the next feature which is a <a href="../gabc/index.html#bars">bar line</a>.  In particular this is a <i lang="la">divisio minima</i> (represented by a comma (<code>,</code>)) and it has an asterisk below it.  That asterisk is treated just like the text in the first word and the bar line is the equivalent of a note attached to its “syllable”:</p>
 
 <div class="legende">
-<img src="kyrie-17-05.png"/>
+<a href="Exaudivit-06.png"><img src="Exaudivit-06.png" alt="First bar.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Time for a review!</h3>
-
-<p>Let's compare this with the original to see what else needs to be corrected:</p>
+<p>That was easy.  Further, given what we’ve done so far you should be able to enter the next couple of syllables without too much trouble.  When you get to the syllable “plo” however, you’ll find that there is a horizontal line over one of the notes and we haven’t discussed these yet.  This line is what is known as an <a href="../gabc/details.html#signs">horizontal <i lang="la">episema</i></a> (sometimes referred to simply as an <i lang="la">episema</i>, pl. <i lang="la">episemata</i>).  Adding one to a note simply requires that we put an underscore (<code>_</code>) after the letter corresponding to the pitch.  With that information you should also be able to do the next word too:</p>
 
 <div class="legende">
-<img src="kyrie-xvii-goal.png"/>
+<a href="Exaudivit-07.png"><img src="Exaudivit-07.png" alt="Notes with horizontal episemata.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>We need to add the flat symbol, mark the dots on the <i>punctum mora</i> notes, indicate the ictuses, and add the double bar.   Also, we need to fix up some details about the text, but we'll do that after correcting the notes.</p>
-
-<h3>Adding marks for <i>punctum mora</i> and ictus</h3>
-
-<p>Each <i>punctum mora</i> is represented with a period after the note letter, and each ictus is represented with an apostrophe after the note letter.   Because a vertical episema looks identical to an ictus mark, we would treat them the same way.</p>
-
-<div class="filename"><a href="kyrie-17-06.gabc">kyrie-17-06.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)ri(gfg)e(<font color="red">h.</font>) * e(jvI<font color="red">H'</font>Hhv<font color="red">F'</font>es)le(gh<font color="red">g'</font>)i(g)son(<font color="red">f.</font>).
-</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>The word that follows, however, has a far more complicated <a href="../structure.html">neume</a> than we’ve seen thus far.  What do we need to do to get that swooping structure (a <i lang="la">porrectus</i>)?  Well, let’s start by entering the notes associated with the neume:</p>
 
 <div class="legende">
-<img src="kyrie-17-06.png"/>
+<a href="Exaudivit-08.png"><img src="Exaudivit-08.png" alt="Porrectus.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Adding the flat and the double bar</h3>
+<p>Well, what do you know.  Just entering the notes was enough for Gregorio to do the right thing.  Indeed, you’ll find that this is often the case.  Gregorio is aware of the conventions that govern the choice of glyphs that go into a neume and <a href="../gabc/index.html#complexneumes">follows them automatically.</a>  You’ll only need to intervene when you have a score that breaks those conventions (a fairly rare occurrence).</p>
 
-<p>In gabc notation, "x" represents a flat symbol.  Because the flat falls on position "i" (the uppermost space in the staff), we represent it with the letters "ix", and we add those letters to the first syllable of <i>eleison</i>.<p>
-
-<p>After <i>eleison</i>, let us add the word <i>bis</i>, meaning 'twice', since the phrase is to be sung twice.  The double bar is represented with a double colon (::), on the word "bis".   Let's also take the moment to set "bis" in italic type.</p>
-
-
-<div class="filename"><a href="kyrie-17-07.gabc">kyrie-17-07.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)ri(gfg)e(h.) * e(<font color="red">ix</font>jvIH'GhvF'E)le(ghg')i(g)son(f.). <font color="red">&lt;i&gt;bis&lt;/i&gt;(::)</font>
-</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>Looking at the next syllable we see something new to deal with again: dots after the notes (<a href="../gabc/details.html#signs"><i lang="la">punctum moræ</i></a>).  These function much like the horizontal <i lang="la">episamata</i> we saw earlier in that they are represented by a period (<code>.</code>) after the note:</p>
 
 <div class="legende">
-<img src="kyrie-17-07.png"/>
+<a href="Exaudivit-09.png"><img src="Exaudivit-09.png" alt="Punctum moræ.  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Correcting two text alignment problems</h3>
+<p>The bar that follows we handle just like we did before, just without the asterisk this time.  I’m also going to introduce a hard linebreak into my gabc at this point.  This line break doesn’t affect the way the score is laid out visually, it just helps me navigate the source should I need to go back and find a particular place later to make a change.  Indeed, normally I add a line break after every bar line so I’m also going to go back and put one in after the one we did earlier.  You’re free to adopt whatever convention you want for inserting linebreaks.</p>
 
-<p>You've probably noticed that a syntax error was reported during processing of some of the above steps.   That happened because the text <i>Kyrie eleison</i> ends with a period, but the notes for "-son" were put before the period:</p>
-<div class="commandblock">
-	<pre>
-e(ixjvIH'GhvF'E)le(ghg')i(g)son(f.). 
-</pre>
-</div>
-
-<p>Even in the result from the previous step, where the error has disappeared, there's a hyphen over the period.  Let's move the period and put it next to the syllable, like this: "son." and resolve that issue.</p>
-
-<p>Also, you may have noticed that the asterisk is not centered between "Kyrie" and "eleison", unlike in the original score.  This is because its currently assigned to the same syllable as "el".  In order to give it its own syllable, let's add a pair of empty parentheses () at the asterisk.</p>
-
-<div class="filename"><a href="kyrie-17-08.gabc">kyrie-17-08.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)Ky(f)ri(gfg)e(h.) <font color="red">*()</font> e(ixjvIH'GhvF'E)le(ghg')i(g)<font color="red">son.</font>(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p>After the line break we come across a neume which has a wiggly note in it.  This is what is known as a <i lang="la">quilisma</i> and is one of the <a href="../gabc/index.html#onenote">different note shapes</a> we come across in Gregorian chant.  In gabc we indicate that a note should be a <i lang="la">quilisma</i> by putting a <code>w</code> after the letter identifying the pitch.  Along with the rest of the word this gives us:</p>
 
 <div class="legende">
-<img src="kyrie-17-08.png"/>
+<a href="Exaudivit-10.png"><img src="Exaudivit-10.png" alt="Quilisma.  Click to enlarge..." width=500/></a>
 </div>
 
-<p><b>4.2 users:</b> In version 4.2 a new bar spacing algorithm was made the default (it was present in version 4.1, but had to be explicitly asked for).  This algorithm had three goals:
-    <ul>
-        <li>better balance the placement of barlines (and their associated text, if any) between the elements on either side</li>
-        <li>make a more efficient use of space by allowing barlines and their associated text to be more loosely attached to each other</li>
-        <li>give the user more control over the above two features by introducing distances which could be used to tweak the behavior of the algorithm.</li>
-    </ul>
-    The result, in general, are scores which look nicer (and indeed, in this case look closer to the original) and which you have more control over, but which no longer match the old behavior and thus don't look like the scores in this tutorial.  To get the old behavior, 4.2 users need to add <code>\gersetbarspacing{old}</code> to their kyrie-17-main.tex file.  This line should go between <code>\usepackage[autocompile]{gregoriotex}</code> and <code>\begin{document}</code>.</p>
-
-<h3>Text correction</h3>
-
-<p>In the original score, the "y" in <i>Kyrie</i> is capitalized.  This is a convention in typesetting for chant scores, so let's follow it here, by changing the "y" to an upper-case letter.</p>
-
-<p><b>Nota Bene:</b> More advanced users may want to handle the capitalizing of the "y" using the <code>firstsyllable</code> and <code>firstsyllableinitial</code> styles from within the <span class="tex">T<span class="epsilon">e</span>X</span> file.  For information on how to do this, consult the Styling section of GregorioRef.pdf.</p>
-
-<p>Also, the word <i>eleison</i> needs an accent mark on the second "e", so I'm going to replace that letter with the character "&eacute;". If your keyboard layout does not have the "&eacute;" character, you can probably produce it by using your operating system's "Character Select" utility.  Copy the desired character to the clipboard, and paste it into your gabc file.</p>
-
-<div class="filename"><a href="kyrie-17-09.gabc">kyrie-17-09.gabc</a></div>
-
-<div class="commandblock">
-	<pre>
-name:Kyrie XVII;
-%%
-(c4)K<font color="red">Y</font>(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l<font color="red">&eacute;</font>(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
-</pre>
-</div>
-
-<p>Here's the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+<p id="nospace">Hold on a moment!  Why is there that extra space between the first two notes and the second two?  Well, as it turns out, Gregorio has shifted those two notes in order to avoid a potential collision with the <i lang="la">punctum mora</i> on the first note.  Try taking it out and you’ll see that the two top notes shift back to where we want them to be.  Now the <i lang="la">punctum mora</i> and the higher notes will not collide if they are placed in the desired positions, so how do we get the notes to be attached and have the <i lang="la">punctum mora</i>?  The answer is to tell Gregorio not to put a <a href="../gabc/details.html#spaces">space</a> before the <i lang="la">quilisma</i>.  This is accomplished with an exclamation point (<code>!</code>):</p>
 
 <div class="legende">
-<img src="kyrie-17-09.png"/>
+<a href="Exaudivit-11.png"><img src="Exaudivit-11.png" alt="No space!  Click to enlarge..." width=500/></a>
 </div>
 
-<h3>Pretty good progress!</h3>
-
-<p>Let's compare this with the original again:</p>
+<p>The next feature of the score we reproducing is the half-note that ends the line.  This is called a <i lang="la">custos</i> and is used to advise the singer as to what the first note of the next line is.  Since we’re not actually ready to end the line in our score, we’re going to ignore it for now and instead enter the remaining text and notes through the “alleluia”.  That should be enough material to figure out where to end our line.  Along the way we have to deal with two <a href="../gabc/index.html#bars">bar lines</a> we haven’t seen before: the partial bar (<i lang="la">divisio minor</i>) and the full bar (<i lang="la">divsio maior</i>).  The first is represented by a semi-colon (<code>;</code>) and the second by a colon (<code>:</code>):</p>
 
 <div class="legende">
-<img src="kyrie-xvii-goal.png"/>
+<a href="Exaudivit-12.png"><img src="Exaudivit-12.png" alt="Line break and custos.  Click to enlarge..." width=500/></a>
 </div>
 
-<p>There are still some differences.  Of course, the typefaces are different. The examples above from my system use the <span class="tex">T<span class="epsilon">e</span>X</span> typeface "libertine" (Linux Libertine), which is very readable. I'll do an experiment with a different typeface later.</p>
+<p>Hey!  What do you know, Gregorio has automatically inserted the line break with the correct <i lang="la">custos</i> for us.  We don’t actually have to describe that portion of the score.  This makes it much easier to reuse scores in different contexts where things may change the line breaking decisions (width of page, size of text, <i>etc.</i>).  As a result we can just ignore the line breaks in our source and keep going.</p>
 
-<p>There is also a difference in the hyphenation of the text. The gregorio software did not automatically add a hyphen after the first syllable of <i>KYrie</i>, because there was enough space between the neumes without a hyphen. Feel free to add a hyphen manually in your gabc file if you find that it makes the score more readable for you.</p>
+<p>All is not well, however.  If you look at the syllable “le” you’ll notice that two notes which are not joined in the source appear to have been joined automatically by Gregorio.  If you look really close at the image, you’ll note that they are not actually joined, they are just so close together that the <i lang="la">vigræ</i> (the stem joining the two stacked notes and the stem descending from the highest note) appear to merge. We don’t want that, so we need to tell Gregorio to put more <a href="../gabc/details.html#spaces">space</a> in there, the opposite of what we did earlier.  The character for that is a forward slash (<code>/</code>) and I’m actually going to put in two of them to get a larger space:</p>
 
-<p>Let's go on to another page, to continue work on this Kyrie.</p>
+<div class="legende">
+<a href="Exaudivit-13.png"><img src="Exaudivit-13.png" alt="Add some space.  Click to enlarge..." width=500/></a>
+</div>
 
-<h3><a href="./tutorial-gabc-02.html">&#8594; Next Page</a></h3>
+<p>As we continue with the score, the next novelties that we encounter are in the word “<i lang="la">clamor</i>”.  Let’s start by simply inputting the notes and lyrics to the end of that word:</p>
+
+<div class="legende">
+<a href="Exaudivit-14.png"><img src="Exaudivit-14.png" alt="Notes to “clamor”.  Click to enlarge..." width=500/></a>
+</div>
+
+<p id="nospacegroup">To start with the first syllable of “<i lang="la">clamor</i>,” there are two issues to deal with: first the notes have not been grouped together correctly, and second there’s a tick-mark that is supposed to be below the middle note of the sequence.  To deal with the first we have to tell Gregorio where the note grouping boundaries are.  We do this by introducing an exclamation point (<code>!</code>) between the two note groups.  You’ll recall that <a href="#nospace">we used this character earlier</a> to tell Gregorio not to put a space between the two note groups in the first syllable of “<i lang="la">vocem</i>”.  In that case Gregorio was already grouping the notes correctly, it was just introducing extra space.  In this instance we have the opposite case: Greogrio is not introducing any extra space, but it is not grouping the notes correctly.  The exclamation point (<code>!</code>) is a no-space group boundary for the notes and so it works in both cases to correct what Gregorio is doing wrong.  To add the tick-mark, what’s called a <a href="../gabc/details.html#signs">vertical <i lang="la">episema</i> (or <i lang="la">ictus</i>)</a>, we need to add an apostrophe (<code>'</code>) after the note that needs the mark:</p>
+
+<div class="legende">
+<a href="Exaudivit-15.png"><img src="Exaudivit-15.png" alt="Regroup notes and add ictus.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>Having fixed the first syllable of “<i lang="la">clamor</i>” we now need to fix the second.  In this syllable the second, higher note is smaller than normal.  This is called a <a href="../gabc/details.html#liquescences">diminutive <i lang="la">liquescent</i></a> and is represented in gabc by appending a tilde (<code>~</code>) to the note:</p>
+
+<div class="legende">
+<a href="Exaudivit-16.png"><img src="Exaudivit-16.png" alt="Linquesent.  Click to enlarge..." width=500/></a>
+</div>
+
+<p>Our next challenge comes in our next word, “<i lang="la">meus</i>,” where we have a pair of diamond shaped notes (as opposed to the square ones we’ve largely been dealing with thus far).  These notes are called <a href="../gabc/index.html#onenote"><i lang="la">punctum inclinatum</i></a> (the square notes are called <i lang="la">punctum quadratum</i>) and are indicated by capitalizing the letter corresponding to the appropriate pitch:</p>
+
+<div class="legende">
+<a href="Exaudivit-17.png"><img src="Exaudivit-17.png" alt="Punctum inclinatum.  Click to enlarge..." width=500/></a>
+</div>
+
+<p id="challenge">At this point, we’ve actually been over quite a number of features of gabc.  Enough, in fact, that you should be able to input everything up to but not including the last word of the third line (“<i lang="la">ejus</i>”) using what we’ve been over.  In fact, I challenge you to do just that before continuing with the tutorial.  Review what you need to and when you’ve got all of those notes entered, <a href="./tutorial-gabc-02.html">click here to continue with the tutorial.</a>
+
 
 <!-- footer -->
     </div>
