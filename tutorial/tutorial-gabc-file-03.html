@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Gregorio Tutorial (part III)';
+</script>
+<style type="text/css">
+        .commandblock {font-family: courier; padding-left: 150px;}
+	.commandline {font-family: courier;}
+        .filename {font-family: courier; font-weight: bold;}
+</style>
+<h1>Gregorio Tutorial (part III)</h1>
+
+<p>Here we continue the gabc tutorial that began on <a href="./tutorial-gabc-file-01.html">this page</a>.</p>
+
+<p>We will talk about some features of Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, whose documentation can be found <a href="../gregoriotex/index.html">here</a>.</p>
+
+<h2>Kyrie XVII (end)</h2>
+
+<p>We have been working to typeset this score:</p>
+
+<div class="legende">
+<img src="kyrie-xvii-goal.png"/>
+</div>
+
+<p>Our gabc notation file currently looks like this:</p>
+
+<div class="filename"><a href="kyrie-17-12.gabc">kyrie-17-12.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::) 
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+<p>And the resulting score looks like this:</p>
+
+<div class="legende">
+<img src="kyrie-17-12.png"/>
+</div>
+
+<p>We also still have some changes to make to the score: add the mode notation "VI" before the first clef (an annotation) and add "XIV s." (which stands for "14th century," in Latin, the date of the piece) above the first stave (the commentary). I'd like to experiment with a different typeface for the text. Last of all, it would also be nice if we could add more vertical space between the staves.</p>
+
+<h3>Adding annotations</h3>
+
+<p>While we could add the annotation and commentary directly in the main project file, let's make use of the gabc headers so that this information stays with the score and can easily be reused if we decide to create another project using this score.</p>
+
+<p>To do this, we need to add two lines to the gabc file (highlighted in red):</p>
+
+<div class="filename"><a href="kyrie-17-final.gabc">kyrie-17-final.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+<font color=red>mode: 6;
+date: XIV\textsuperscript{o} s.;</font>
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::) 
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) (z) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+<p>You'll note that we've used some <span class="tex">T<span class="epsilon">e</span>X</span> code in the date header in order to create the ordinal indicator (something lacking in the original score).  We could also have used the Unicode character <code>º</code> for the same purpose, but that would be more sensitive to font changes, so I prefer to use the explicit <span class="tex">T<span class="epsilon">e</span>X</span> code.  Of course, you could just leave it out entirely and get something closer to the score.</p>
+
+<p>Now, the mode header will be picked up by default (and placed as an annotation) once it's been added to the gabc file, but the date header will not.  In order to add place the date header in the commentary position, we need to add a line to the project file (highlighted in red):</p>
+
+
+<div class="filename"><a href="kyrie-17-13-main.tex">kyrie-17-13-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\begin{document}
+
+<font color="red">\gresetheadercapture{date}{grecommentary}{}</font>
+\gregorioscore{kyrie-17}
+
+\end{document}
+</pre>
+</div>
+
+
+<p>Once that's done, run that file through Lua<span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>, and the resulting score looks like this:</p>
+
+<div class="legende">
+<img src="kyrie-17-13.png"/>
+</div>
+
+<p>We've got the elements in place, but I don't like the way the date commentary looks.  Instead of italics, I want it to be bold.  However, I still want to keep it the same size, which is slightly smaller than the font used for the lyrics.  To make this happen I need to modify the project file again:</p>
+
+<div class="filename"><a href="kyrie-17-14-main.tex">kyrie-17-14-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+<font color="red">\grechangestyle{commentary}{\small\bfseries}</font>
+
+\begin{document}
+
+\gresetheadercapture{date}{grecommentary}{}
+\gregorioscore{kyrie-17}
+
+\end{document}
+</pre>
+</div>
+
+<div class="legende">
+<img src="kyrie-17-14.png"/>
+</div>
+
+<p>I think that's a bit better.  However, having made that change, it's now obvious that the mode number and the date commentary are not printing the same.  This is because by default the mode number uses small capitals, not normal majuscule characters.  I'm going to switch this to get a more consistent look.</p>
+
+<p>I also want to put a title at the top of the page, so I'll add that directly after <code>\begin{document}</code>.</p>
+
+<div class="filename"><a href="kyrie-17-15-main.tex">kyrie-17-15-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\grechangestyle{commentary}{\small\bfseries}
+<font color="red">\gresetmodenumbersystem{roman-majuscule}</font>
+
+\begin{document}
+<font color="red">\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}</font>
+
+\gresetheadercapture{date}{grecommentary}{}
+\gregorioscore{kyrie-17}
+
+\end{document}
+</pre>
+</div>
+
+<div class="legende">
+<img src="kyrie-17-15.png"/>
+</div>
+
+<h3>Changing the typeface</h3>
+
+<p>To see how the score looks in Arial font, I looked for the line that sets the typeface to Linux Libertine:</p>
+
+<div class="commandline">
+	<pre>
+\usepackage{libertine}
+</pre>
+</div>
+
+<p class="nofirst">and I changed it:</p>
+
+<div class="commandline">
+	<pre>
+<font color="red">\setmainfont{Arial}</font>
+</pre>
+</div>
+
+<p>Here's how the score looks after that change:</p>
+
+<div class="legende">
+<img src="kyrie-17-font.png"/>
+</div>
+
+<p>This result is kind of ugly, so we'll change it back to Linux Libertine, but this should give you some idea of how to change the font.  Other fonts, including most of the ones already installed on your system, can be loaded using the <a href="https://www.ctan.org/pkg/fontspec?lang=en"><code>fontspec</code></a> package, just like we loaded Arial above.  You can also find a list of free fonts which are readily available for <span class="tex">T<span class="epsilson">e</span>X</span> see <a href="http://www.tug.dk/FontCatalogue/">The <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span> Font Catalogue.</a>  The best-looking font for Gregorian Chant is a matter of taste, so we'll leave it up to you to explore the use of other fonts on your own.</p>
+
+<h3>Changing vertical spacing</h3>
+
+<p>To add more space between the staves, I adjusted a spacing variable by adding the following line to the preamble:</p>
+
+<div class="commandline">
+	<pre>
+\grechangedim{lineskip}{1 cm plus 0.36 cm minus 0.09 cm}{scalable}%
+</pre>
+</div>
+
+
+
+<p>This gives us this final project file:</p>
+
+<div class="filename"><a href="kyrie-17-final-main.tex">kyrie-17-final-main.tex</a></div>
+
+<div class="commandblock">
+	<pre>
+\documentclass[12pt, a5paper]{article}
+
+\usepackage{fullpage}
+
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage[autocompile]{gregoriotex}
+
+\grechangestyle{commentary}{\small\bfseries}
+\gresetmodenumbersystem{roman-majuscule}
+
+\begin{document}
+
+\begin{center}\begin{huge}\textsc{Kyrie XVII}\end{huge}\end{center}
+
+\grechangedim{lineskip}{1 cm plus 0.36 cm minus 0.09 cm}{scalable}
+
+\gresetheadercapture{date}{grecommentary}{}
+\gregorioscore{kyrie-17}
+
+
+\end{document}
+</pre>
+</div>
+
+
+<p>And here's how the score looks after that change:</p>
+
+<div class="legende">
+<img src="kyrie-17-final.png"/>
+</div>
+
+<p>That completes this tutorial. For reference, you may want to print a copy of this PDF <a href="../gabc/summary-gabc.pdf">summary of gabc</a>, which shows the notation for some gabc features we haven't demonstrated here. For more, see <a href="http://gregoriochant.org/dokuwiki/doku.php/cheat_sheet">this reference</a>.</p>
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>

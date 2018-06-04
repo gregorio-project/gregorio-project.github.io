@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'gregorio';
+    title = 'Gregorio Tutorial (part II)';
+</script>
+
+<style type="text/css">
+  .commandblock {font-family: courier; padding-left: 150px;}
+  .commandline {font-family: courier;}
+</style>
+<h1>Gregorio Tutorial (part II)</h1>
+
+<p>Here we continue the gabc tutorial that began on <a href="./tutorial-gabc-file-01.html">this page</a>.</p>
+
+<p>The documentation for the gabc notation, the notation we use in this tutorial, can be found <a href="../gabc/index.html">here</a>.</p>
+
+<h2>Kyrie XVII (continued)</h2>
+
+<p>Our goal is to typeset this score using Gregorio:</p>
+
+<div class="legende">
+<img src="kyrie-xvii-goal.png"/>
+</div>
+
+<p>So far we have written this partial gabc file:</p>
+
+<div class="filename"><a href="kyrie-17-09.gabc">kyrie-17-09.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+</pre>
+</div>
+
+<p>And we obtained this result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+
+<div class="legende">
+<img src="kyrie-17-09.png"/>
+</div>
+
+<p>So let's add the notes, note shapes, flats, ictuses (icti?), and <i>punctum mora</i> for the remainder:</p>
+
+
+<h3>Adding notes for the remainder of the piece</h3>
+
+<div class="filename"><a href="kyrie-17-10.gabc">kyrie-17-10.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+<font color="red">Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *() (ixfhjjkij.) **() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)</font>
+</pre>
+</div>
+
+<p>Here is the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+
+<div class="legende">
+<img src="kyrie-17-10.png"/>
+</div>
+
+<h3>Adding the quarter bars</h3>
+
+<p>The previous <i>Kyrie</i>, on the third line of the score, needs quarter bars above the asterisks.  Here's a reminder of the characters for separator bars:</p>
+
+<div class="legende">
+<img src="bar-symbols.png"/>
+</div>
+
+<p>In the gabc file, we place a comma (,) after the asterisks in those two places to represent the quarter bars. </p>
+
+<div class="filename"><a href="kyrie-17-11.gabc">kyrie-17-11.gabc</a></div>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *<font color="red">(,)</font> (ixfhjjkij.) **<font color="red">(,)</font> e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+
+</pre>
+</div>
+
+
+<p>Here is the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+
+<div class="legende">
+<img src="kyrie-17-11.png"/>
+</div>
+
+<h3>Grouping notes into neumes as desired</h3>
+
+<p>In the last <i>Kyrie</i>, I've circled two sets of notes.   I'd like the second set to be arranged into the same neume pattern as the first set.</p>
+
+<div class="legende">
+<img src="kyrie-17-11a.png"/>
+</div>
+
+<p>Here's a fragment from the gabc file for those notes:</p>
+
+<div class="commandblock">
+	<pre>
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixfhjjkij.) **(,)
+
+</pre>
+</div>
+
+<p>The sequence <code>(ixfhjjkij.)</code> represents the notes (and the flat) after the first asterisk.  If we add an exclamation point (!) and make it into <code>(ixf!hjjkij.)</code>, that will tell Gregorio where we want a note grouping to begin.  So now that fragment becomes:</p>
+
+
+<div class="commandblock">
+	<pre>
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf<font color="red">!</font>hjjkij.) **(,)
+
+</pre>
+</div>
+
+<div class="filename"><a href="kyrie-17-12.gabc">kyrie-17-12.gabc</a></div>
+
+<p>and here is the gabc file:</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf<font color="red">!</font>hjjkij.) **(,) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+<p>And the result after processing by gregorio and <span class="latex">L<span class="alpha">a</span>T<span class="epsilon">e</span>X</span>:</p>
+
+<div class="legende">
+<img src="kyrie-17-12.png"/>
+</div>
+
+<!--  Our new spacings mean that there are no line breaking issues in this score anymore.
+
+<h3>Correcting line breaking problems</h3>
+
+<p>Gregorio sometimes does not handle the ends of lines in the ideal way we'd like.  However, we can specify some line breaks manually to make the results more attractive.</p>
+
+<p>The start of the third line has a flat a little too close to the clef. Adding an explicit line break before that point can help:</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::)
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)e(ixjjkij.) <font color="red">(z)</font> e(ixjvishs'gshvfs'es)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+
+<p>Here's the result after processing:</p>
+
+<div class="legende">
+<img src="kyrie-17-13.png"/>
+</div>
+
+<p>We can do the same at the start of the fourth line as well.</p>
+
+<div class="commandblock">
+	<pre>
+name:Kyrie XVII;
+%%
+(c4)KY(f)ri(gfg)e(h.) *() e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.) &lt;i&gt;bis&lt;/i&gt;(::) (z)
+Chri(ixj)ste(jv.hijv.) e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  &lt;i&gt;bis&lt;/i&gt;(::)
+K&yacute;(f)ri(hj)(z)e(ixjjkij.) (z) e(ixjvishs'gshvfs'es)l&eacute;(ghg')i(g)son.(f.)  (::)
+K&yacute;(f)ri(hj)e(ixjjkij.) *(,) (ixf!hjjkij.) **(,) <font color="red">(z)</font> e(ixjvIH'GhvF'E)l&eacute;(ghg')i(g)son.(f.)  (::)
+</pre>
+</div>
+
+
+<p>Here's the result:</p>
+
+<div class="legende">
+<img src="kyrie-17-13a.png"/>
+</div>
+-->
+
+<p>Now we need to add the mode notation "VI" before the first clef and add the annotation "XIV. s." above the first stave.   Let's work on that on the next page of the tutorial.</p>
+
+<h3><a href="./tutorial-gabc-file-03.html">&#8594; Next Page</a></h3>
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
