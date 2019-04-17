@@ -98,7 +98,26 @@
 <li><a href="installation-mac.html">installation under MacOS X</a></li>
 </ul>
 
-<h2>Editor Configuration</h2>
+<h2>Configuration</h2>
+
+<h3>Executable Access</h3>
+
+<p>By default Lua<span class="tex">T<span class="epsilon">e</span>X</span> (and all other varieties of <span class="tex">T<span class="epsilon">e</span>X</span> is only permitted to access a limited list of third-party programs.  This is a security measure which prevents documents from doing things to you system that you might not expect or desire.  Of course, in order for Gregorio to work, it has to be able to access its own exectuable.  If you've installed <span class="tex">T<span class="epsilon">e</span>X</span> Live or MiK<span class="tex">T<span class="epsilon">e</span>X</span>, then access to the included executable is already setup for you.  However, if you install an updated version, then you will need to enable access to the new executable.  This can be accomplished in a number of ways:</p>
+
+<ul>
+<li><p>Use <code>--shell-escape</code> when compiling documents making use of Gregorio.  This option enables Lua<span class="tex">T<span class="epsilon">e</span>X</span> to call any shell command. Obviously this makes the compilation less secure, but that drop in security applies only to that document compilation, allowing for case-by-case differentiation in compilation behavior. It is our default recommendation because it is the simplest for most people to implement. To see how to automate this process if you are using an editor, see <a href="#editor">Editor Configuration</a> below.</p></li>
+<li><p>Make the <code>--shell-escape</code> mode the default by setting <code>shell_escape=t</code> in texmf.cnf. <b>This will make all compilations less secure</b>, but means that you don't have to specify the <code>--shell-escape</code> flag on any given run.  You should only do this if you trust <b>all</b> the documents you run through <span class="tex">T<span class="epsilon">e</span>X</span> on your system.</p>
+    <p>To find your texmf.cnf file, execute <code>kpsewhich texmf.cnf</code> from the command line.  Open the file at the given location and search for <code>shell_escape=p</code> and then change the <code>p</code> to <code>t</code>.  If you cannot find this line, then you can simply add <code>shell_escape=t</code> to the bottom of the file.</p></li>
+<li><p>Add the new executable to the list of permitted programs in texmf.cnf.  This is the most secure option as it only adds the new executable to the list of allowed programs and nothing else.  However, it does need to be done each time you install a new version of Gregorio.</p>
+
+    <p>The list that needs editting is called <code>shell_escape_commands</code> and the program that needs to be added to it is called <code>gregorio-x_y_z</code> where <code>x_y_z</code> is the version number of Gregorio that you've installed.  If the list is not present in your top-level texmf.cnf, then you'll need to use <code>kpsewhich -a texmf.cnf</code> to find the lower-level configuration file.  <b>Do not edit those lower level files.</b>  Instead, copy the <code>shell_escape_commands</code> list into your top-level texmf.cnf file and edit that copy.  Values in the top-level file automatically override those in the lower-level ones.</p></li>
+<li><p>Create a symlink on your system that points <code>gregorio</code> to <code>gregorio-x_y_z</code>) (where <code)x_y_z</code> is the version number of Gregorio that you've installed).  This symlink must be on your <code>PATH</code> before the folder containing the <span class="tex">T<span class="epsilon">e</span>X</span> executables so that it hides the executable that comes with <span class="tex">T<span class="epsilon">e</span>X</span>.  This option is as secure as the previous option, and will also need to be updated every time you install a new version of Gregorio.  For instructions on how to do this, see the documentation for your system.</p></li>
+<li><p>Resign yourself to using Gregorio in the old school way.  This means turning off the autocompile feature and manually running <code>gregorio-x_y_z</code> on your gabc files to generate the gtex files.  This doesn't work for <code>\gabcsnippet</code> (only <code>\gregorioscore</code>) and is damned inconvenient generally, but it is possible, so we list it here to be complete.</p></li>
+</ul>
+
+<p>For more information about texmf.cnf files (and related issues) we suggest reading <a href="https://texfaq.org/FAQ-privinst">this page</a> or asking a question at <a href="https://tex.stackexchange.com"><span class="tex">T<span class="epsilon">e</span>X</span> Stack Exchange</a>.
+
+<h3 id="editor">Editor Configuration</h3>
 
 <p>If you plan to use an editor, then you'll need to configure it once Gregorio is installed.  For instructions on how to do this, refer to the following pages:</p>
 
