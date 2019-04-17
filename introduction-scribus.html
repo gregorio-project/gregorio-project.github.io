@@ -61,7 +61,9 @@
 
 <h3>Installing the additional Scribus files</h3>
 
-<p>To be able to use Gregorio in Scribus, some additional files for Scribus must be installed. These files are available in the <code>contrib/</code> directory of the Gregorio sources, and also in the <a href="https://github.com/gregorio-project/gregorio/tree/master/contrib">Git repository</a>. These files are <code>900_gregorio.xml</code> and <code>gregorio.png</code>. If you are under Windows, they are in <code>C:\Program Files\Gregorio\contrib</code> (assuming you have gregorio installed here).</p>
+<p>To be able to use Gregorio in Scribus, you first need to make sure that the extsizes and the filecontents packages are part of the <span class="tex">T<span class="epsilon">e</span>X</span> distribution that you installed.  If you used <span class="tex">T<span class="epsilon">e</span>X</span> Live, this really should only be an issue if you went for a minimal installation, in which case you'll want to use <code>tlmgr</code> to install them.  MiK<span class="tex">T<span class="epsilon">e</span>X</span> users should only have a problem if automatic installation of needed packages is disabled.  For everyone else, check you distribution's documentation to figure out if these packages are installed (and how to make the available if they are not).</p>
+
+<p>There are also some additional files for Scribus which must be installed. These files are available in the <code>contrib/</code> directory of the Gregorio sources, and also in the <a href="https://github.com/gregorio-project/gregorio/tree/master/contrib">Git repository</a>. These files are <code>900_gregorio.xml</code> and <code>gregorio.png</code>. If you are under Windows, they are in <code>C:\Program Files\Gregorio\contrib</code> (assuming you have gregorio installed here).</p>
 
 <p class="nofirst">If you are under MacOS X, you will need to slightly modify Scribus to make use of these files. These modifications are described below.</p>
 
