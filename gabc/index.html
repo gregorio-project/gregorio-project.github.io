@@ -386,7 +386,9 @@ section, which is the heart of the notation.</p>
 
 <h3 id="textcentering">Text centering</h3>
 
-<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, this may not give the desireable result in all cases.  If it is necessary, put the part of the text to be aligned between braces.  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
+<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  By default, Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, these rules, which are traditional to Latin text, may not give the desirable result in all cases.  As a result Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> provides two alternate rule sets: centering the whole syllable under the first neume and centering the first letter of the syllable under the first neume.  To use these rules you will need to use the <code>\gresetlyriccentering{syllable}</code> or <code>\gresetlyriccentering{firstletter}</code> command, respectively, in your <span class="tex">T<span class="epsilon">e</span>X</span> file.  <code>\gresetlyriccentering{vowel}</code> will change things back to the default rules.</p>
+
+<p>Additionally, if it is necessary, it is possible to control the portion of a particular syllable which is used for alignment.  To do this, put the part of the text to be aligned between braces (in the gabc).  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
 
 <div class="commandline">
 <code>e{ve}r(e)</code>
