@@ -66,6 +66,7 @@
 <h3><a href="#heights">Pitch</a></h3>
 <h3><a href="#onenote">One-note neumes</a></h3>
 <h3><a href="#complexneumes">Complex neumes</a></h3>
+<h3><a href="#virga">Virga</a></h3>
 <h3><a href="#bars">Separation bars</a></h3>
 <h3><a href="#clef">The clef</a></h3>
 <h2><a href="#text">Text</a></h2>
@@ -301,7 +302,7 @@ section, which is the heart of the notation.</p>
 
 <p>In the notation adopted, a lower-case letter from <code>a</code> to <code>m</code>, represents a <em>punctum quadratum</em>, a square note, and an upper-case letter (A through M), a <em>punctum inclinatum</em>, a diamond-shaped note, which are less frequently used.</p>
 
-<p>For the <em>virga</em>, add a <code>v</code> after the letter. For the oriscus pointing in the direction of the next non-unison note add an <code>o</code> or use <code>o0</code> for an oriscus pointing down, <code>o1</code> for an oriscus pointing up. A stropha is coded by adding a <code>s</code>, etc.</p>
+<p>For the oriscus pointing in the direction of the next non-unison note add an <code>o</code> or use <code>o0</code> for an oriscus pointing down, <code>o1</code> for an oriscus pointing up. A stropha is coded by adding a <code>s</code>, etc.</p>
 
 <div class="legende">
 <img src="../illus/shapes.png" title="" alt="" /><br />
@@ -322,6 +323,17 @@ section, which is the heart of the notation.</p>
 <p>When there is a <em>quilisma</em> within a neume, you type a <code>w</code> after the corresponding pitch.</p>
 
 <p>Of course there are cases in which a sequence of notes can be written in more than one way. These cases are described in the section <a href="details.html#determination">Determination of the neume according to the sequence of notes</a>.</p>
+
+<h3 id="virga">Virga</h3>
+
+<p>Gregorio will automatically add virgae (the thin vertical stems) to most note groups which require them.  If you require a virga which does not normally appear it can be added to the note with <code>v</code> (virga on the right) or <code>V</code> (virga on the left).  If an unwanted virga appears, it can be suppressed by prepending the note group with a <code>@</code>.</p>
+
+
+<div class="legende">
+<img src="../illus/virga.png" title="" alt="" /><br />
+<br />Adding and suppressing virgae</strong>
+</div>
+
 
 <h3 id="bars">Separation bars</h3>
 
