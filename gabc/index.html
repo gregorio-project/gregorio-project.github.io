@@ -66,6 +66,7 @@
 <h3><a href="#heights">Pitch</a></h3>
 <h3><a href="#onenote">One-note neumes</a></h3>
 <h3><a href="#complexneumes">Complex neumes</a></h3>
+<h3><a href="#virga">Virga</a></h3>
 <h3><a href="#bars">Separation bars</a></h3>
 <h3><a href="#clef">The clef</a></h3>
 <h2><a href="#text">Text</a></h2>
@@ -110,7 +111,6 @@
 <a href="#transcriber">transcriber</a>: writer of gabc;
 <a href="#transcription-date">transcription-date</a>: 2009;
 <a href="#mode">mode</a>: 6;
-<a href="#initial-style">initial-style</a>: 1;
 <a href="#user-notes">user-notes</a>: whatever other comments you wish to make;
 <a href="#annotation">annotation</a>: IN.;
 <a href="#annotation">annotation</a>: 6;
@@ -165,7 +165,7 @@ traditional chant is not known.</dt>
 	placed above the initial unless one of the following conditions are
 	met:
 	<ul>
-	<li>There is a <code>\greannotation=</code> defined immediately prior to <code>\gregorioscore</code>.</li>
+	<li>There is a <code>\greannotation</code> defined immediately prior to <code>\gregorioscore</code>.</li>
 	<li>The <code>annotation</code> header field is defined.
 	</ul>
 </dt>
@@ -302,7 +302,7 @@ section, which is the heart of the notation.</p>
 
 <p>In the notation adopted, a lower-case letter from <code>a</code> to <code>m</code>, represents a <em>punctum quadratum</em>, a square note, and an upper-case letter (A through M), a <em>punctum inclinatum</em>, a diamond-shaped note, which are less frequently used.</p>
 
-<p>For the <em>virga</em>, add a <code>v</code> after the letter. For the oriscus pointing in the direction of the next non-unison note add an <code>o</code> or use <code>o0</code> for an oriscus pointing down, <code>o1</code> for an oriscus pointing up. A stropha is coded by adding a <code>s</code>, etc.</p>
+<p>For the oriscus pointing in the direction of the next non-unison note add an <code>o</code> or use <code>o0</code> for an oriscus pointing down, <code>o1</code> for an oriscus pointing up. A stropha is coded by adding a <code>s</code>, etc.</p>
 
 <div class="legende">
 <img src="../illus/shapes.png" title="" alt="" /><br />
@@ -323,6 +323,17 @@ section, which is the heart of the notation.</p>
 <p>When there is a <em>quilisma</em> within a neume, you type a <code>w</code> after the corresponding pitch.</p>
 
 <p>Of course there are cases in which a sequence of notes can be written in more than one way. These cases are described in the section <a href="details.html#determination">Determination of the neume according to the sequence of notes</a>.</p>
+
+<h3 id="virga">Virga</h3>
+
+<p>Gregorio will automatically add virgae (the thin vertical stems) to most note groups which require them.  If you require a virga which does not normally appear it can be added to the note with <code>v</code> (virga on the right) or <code>V</code> (virga on the left).  If an unwanted virga appears, it can be suppressed by prepending the note group with a <code>@</code>.</p>
+
+
+<div class="legende">
+<img src="../illus/virga.png" title="" alt="" /><br />
+<br />Adding and suppressing virgae</strong>
+</div>
+
 
 <h3 id="bars">Separation bars</h3>
 
@@ -386,7 +397,9 @@ section, which is the heart of the notation.</p>
 
 <h3 id="textcentering">Text centering</h3>
 
-<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, this may not give the desireable result in all cases.  If it is necessary, put the part of the text to be aligned between braces.  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
+<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  By default, Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, these rules, which are traditional to Latin text, may not give the desirable result in all cases.  As a result Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> provides two alternate rule sets: centering the whole syllable under the first neume and centering the first letter of the syllable under the first neume.  To use these rules you will need to use the <code>\gresetlyriccentering{syllable}</code> or <code>\gresetlyriccentering{firstletter}</code> command, respectively, in your <span class="tex">T<span class="epsilon">e</span>X</span> file.  <code>\gresetlyriccentering{vowel}</code> will change things back to the default rules.</p>
+
+<p>Additionally, if it is necessary, it is possible to control the portion of a particular syllable which is used for alignment.  To do this, put the part of the text to be aligned between braces (in the gabc).  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
 
 <div class="commandline">
 <code>e{ve}r(e)</code>

@@ -81,7 +81,7 @@
         <td>5.1</td>
     </tr>
     <tr>
-        <td>2019 (forthcoming)</td>
+        <td>2019</td>
         <td>5.2</td>
     </tr>
 </table>
@@ -125,6 +125,30 @@
 <li><a href="configuration-texworks.html"><span class="tex">T<span class="epsilon">e</span>X</span>works</a> (a cross platform editor for Linux, Mac, and Windows)</li>
 <li><a href="configuration-texshop.html"><span class="tex">T<span class="epsilon">e</span>X</span>Shop</a> (a Mac only editor)</li>
 </ul>
+
+<h3 id="uninstall">Uninstalling Gregorio</h3>
+<p>While we hope you'll be satisfied with Gregorio and never want to remove it from your computer, we've also tried to make it as straight forward as possible to do so should the need arise.  Follow the instructions below that correspond to your OS and method of installation.</p>
+
+<h4><span class="tex">T<span class="epsilon">e</span>X</span> Live or MiK<span class="tex">T<span class="epsilon">e</span>X</span> (All OSes)</h4>
+<p>Make use of the package installation tools for these distributions to remove a version of Gregorio which was installed by them.</p>
+
+<h4>Windows Installer</h4>
+<p>Use the Uninstall feature of Add/Remove Programs.  See the Windows documentation for more information.</p>
+
+<h4>MacOS Installer</h4>
+<p>Use the Uninstall-Gregorio-*.*.*.pkg that corresponds to the version which you installed.  Download it from the <a href="https://github.com/gregorio-project/gregorio/releases">appropriate release page</a> and run it just like you did the original installer.</p>
+
+<h4>Command-line installation (MacOS and Linux)</h4>
+<p>If you've installed a version of Gregorio from the command-line, there is a <code>uninstall-gtex.sh</code> script which is generated during the installation process which you can use.  This file is placed at <code>TEXMFLOCAL/scripts/gregoriotex/uninstall-gtex.sh</code> (where <code>TEXMFLOCAL</code> is the place where you installed Gregorio<span class="tex">T<span class="epsilon">e</span>X</span>, usually the output of <code>kpsewhich --var-value TEXMFLOCAL</code>.  To use the script you first need to set its executable bit and then run it.  Given the usual installation path, that looks something like this:</p>
+
+<div class="commandline">
+<code>chmod +x $(kpsewhich --var-value TEXMFLOCAL)/scripts/gregoriotex/uninstall-gtex.sh</code><br>
+<code>$(kpsewhich --var-value TEXMFLOCAL)/scripts/gregoriotex/uninstall-gtex.sh</code>
+</div>
+
+<p>This removes the Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> components.  Once that's done, you simply need to delete the executable, which can be done using <code>make uninstall</code> in the source code directory.  If you did not keep your source code download, then make use of <code>which</code> and <code>rm</code> to locate and delete the executable (it should be named <code>gregorio-*_*_*</code>, where the wild cards correspond to the version number that was installed).</p>
+
+<p><b>Note:</b> Depending on how and where you installed Gregorio, you may need to execute some of the above commands as root.</p>
 
 <!-- footer -->
     </div>

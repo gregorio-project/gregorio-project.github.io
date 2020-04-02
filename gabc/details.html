@@ -203,14 +203,14 @@
 <p>As the empty notes and accents are quite rare, the notation to get them is not very intuitive, but is still simple: simply add the following signs after your note:</p>
 
 <ul>
-<li>punctum cavum (also works with a punctum inclinatum and punctum inclinatum auctus): r</li>
-<li>linea punctum: R</li>
-<li>linea punctum cavum: r0</li>
-<li>accentus: r1</li>
-<li>reversed accentus: r2</li>
-<li>circulus: r3</li>
-<li>semi-circulus: r4</li>
-<li>reversed semi-circulus: r5</li>
+    <li>punctum cavum (also works with a punctum inclinatum and punctum inclinatum auctus): r</li>
+    <li>linea punctum: R</li>
+    <li>linea punctum cavum: r0</li>
+    <li>accentus: r1</li>
+    <li>reversed accentus: r2</li>
+    <li>circulus: r3</li>
+    <li>semi-circulus: r4</li>
+    <li>reversed semi-circulus: r5</li>
 </ul>
 
 <div class="legende">
@@ -222,20 +222,24 @@
 
 <p>The goal of the notation presented here is to represent Gregorian chant, and thus songs in only one voice.  However, the first polyphonic pieces were written in square notation, even if the current notation is slightly different, so it seemed important to consider the case of people who would want to write polyphonic scores in square notation.</p>
 
-<!--
-Polyphonic pieces are different only at the level of the neume; indeed, the text is the same for all the voices (but usually only two). We propose separating the voices using the character <code>&amp;</code>
-
-<div class="commandline">
-<code>A(g&amp;f)nnua(j/k&amp;dfde/d) gau(j&amp;e)dia(hjhi/g&amp;f/g) (:&amp;:)</code>
-</div>
--->
-
 <p>Sadly the typography of polyphony on several levels of staffs is way more difficult than the normal typography, and it's not yet possible (with Gregorio or any other serious gregorian software of which we are aware). Gregorio does support a simple notation for simple polyphony on one staff line. This is possible in gabc when putting the first note of a vertically aligned group between curly brackets:</p>
 
 <div class="legende">
 <img src="../illus/polyphony.png" alt=""/>
 <br />Simple polyphonic notation
 </div>
+
+<p>As a result of the difficulty in rendering polyphony typographically, there are a few quirks with the above notation that users should be aware of:</p>
+
+<ul>
+    <li>The notes in curly braces must go first.</li>
+    <li>You can alternate notes in curly braces and notes outside them in the same syllable, but the curly braces are effectively a zero-width space (<code>!</code>) between the notes on either side of them.  If using this alternating pattern, you will need to manually space between the various groups of notes in the same syllable.</li>
+    <li>The notes in curly braces are ignored for spacing purposes; only the notes outside the curly braces count.  This means if they are wider than the notes outside curly braces which immediately follow, then they may run into the next element.  You'll need to add manual spaces outside the curly braces to prevent this.</li>
+    <li>No attempt is made to avoid collisions between the two voices.  It is the users responsibility to introduce manual spacing to avoid said collisions.</li>
+    <li>At the end of the line the automatic custos will be set based on the first note in the next syllable, even if it is inside curly braces.</li>
+</ul>
+
+<p>Since polyphony is so rare in Gregorian chant, improving the behavior of Gregorio in this area is extremely low on the list of priorities for the developers.  If you find yourself using this feature and want improvements, then you are most likely going to have to make them yourself (see <a href="https://github.com/gregorio-project/gregorio/blob/master/CONTRIBUTING.md">the contributing guide</a> for how to get started).</p>
 
 <h3 id="endofline">End of line</h3>
 

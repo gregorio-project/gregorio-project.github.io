@@ -79,7 +79,7 @@
 
 <p class="nofirst">When you try to export a PDF, you will need to check the box <code>Embed EPS &amp; PDF files (EXPERIMENTAL)</code>. While exporting, Scribus will output some warnings, but you can ignore them safely.  If you cannot check that box (this happens in certain versions, especially under Linux), the scores will be included as images, which can introduce pixelization. To improve the quality of the images, you can change the value of the option <code>Resolution for EPS Graphics</code>; 600dpi is a standard value for desktop printers. Note that in this case the size of the PDF output file will be as much as 10 times greater.</p>
 
-<h3>Modifying Scribus on a Mac</h3>
+<h3 id="modifymac">Modifying Scribus on a Mac</h3>
 
 <p>As GUI applications on a Mac do not have access to your regular PATH by default, Scribus is unable to find either the <code>lualatex</code> engine or the <code>gregorio</code> executable by default.  To fix this we have to change the way Scribus launches in order to change the PATH it accesses.  We’re going to do that based on <a href="https://apple.stackexchange.com/a/51737/200894">this procedure found on AskDifferent</a> (the Apple StackExchange).  For simplicity sake, I’m going to assume that Scribus is installed in <code>/Applications</code>.  If you installed it somewhere else, you’ll need to make appropriate changes below.</p>
 
