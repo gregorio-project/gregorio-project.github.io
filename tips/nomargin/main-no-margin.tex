@@ -1,21 +1,12 @@
 % !TEX program = LuaLaTeX+se
 
 % This document produces a pdf containing the score with no margin.
-% It is based on this solution:
-% http://tex.stackexchange.com/questions/291630/best-way-to-know-bottom-line-height-of-a-pdf/291664#291664
 %
-% It contains advanced commands quite difficult to understand, but should be straightforward
-% to adapt to your needs.
-%
-\documentclass[11pt]{article}
+\documentclass[11pt, varwidth=10cm]{standalone} % font size and score width
 \usepackage{gregoriotex}
-\usepackage{libertine}
+\usepackage[osf,p]{libertine}
 % Do not load geometry, fullpage, or any package changing width
 % or margins.
-
-\hoffset-1in
-\voffset-1in
-\newbox\scorebox
 
 % using the "commentary" header of the gabc file
 \gresetheadercapture{commentary}{grecommentary}{string}
@@ -33,10 +24,6 @@
 % the box.
 \grechangestyle{commentary}{\footnotesize\itshape}[\ifvmode\else\/\fi]
 
-\setbox\scorebox=\vbox{\hsize=10cm\relax % change the width of the score here
-	\gregorioscore[a]{PopulusSion}
-}
-\pdfpagewidth\wd\scorebox
-\pdfpageheight\dimexpr\ht\scorebox+\dp\scorebox\relax
-\shipout\box\scorebox
+\gregorioscore[a]{PopulusSion}
+
 \end{document}
