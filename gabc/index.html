@@ -488,7 +488,7 @@ secondary w W;</code>
 
 <h3 id="initial">Initial determination</h3>
 
-<p>The initial is automatically recognized by gregorio as the first letter.  You can use the gabc attribute <code>initial-style</code> in the header to set its size.  The values corespond to number of lines the intial takes up: <code>0</code> (there is no initial), <code>1</code> (the default), or <code>2</code> (the initial takes up two lines).</p>
+<p>The initial is automatically recognized by gregorio as the first letter.  You can the control how many lines it takes up with the <code>\gresetinitiallines{<i>&lt;integer&gt;</i>}</code> in your <span class="tex">T<span class="epsilon">e</span>X</span> file.  Setting this value to <code>0</code> means that the initial will not be separated out and will appear with the rest of its syllable under its notes.</p>
 
 <p>Note that in the case of a syllable composed of one letter only, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> automatically adds a hyphen under the first notes.  To disable this feature, use the command <code>\gresetemptyfirstsyllablehyphen{auto}</code>.</p>
 
