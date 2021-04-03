@@ -309,7 +309,7 @@ section, which is the heart of the notation.</p>
 <br />The different shapes
 </div>
 
-<p><i>Nota Bene:</i> There are actually two <em>puncta inclinata</em> glyphs, one shaped for an ascending series of such notes and one for a descending series.  While there are algorithms which should automatically select between these two glyphs based on the surrounding notes, you can force the selection of a particular shape with <code>G0</code> (for descending) and <code>G1</code> (for ascending).</p>
+<p><i>Nota Bene:</i> There are actually three <em>puncta inclinata</em> glyphs: one shaped for an ascending series of such notes, one for a descending series, and one for a unison series (notes at the same pitch).  While there are algorithms which should automatically select between these three glyphs based on the surrounding notes, you can force the selection of a particular shape with <code>G0</code> (for descending), <code>G1</code> (for ascending), and <code>G2</code> (for unison).</p>
 
 <h3 id="complexneumes">Complex neumes</h3>
 
@@ -397,17 +397,98 @@ section, which is the heart of the notation.</p>
 
 <h3 id="textcentering">Text centering</h3>
 
-<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  By default, Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, these rules, which are traditional to Latin text, may not give the desirable result in all cases.  As a result Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> provides two alternate rule sets: centering the whole syllable under the first neume and centering the first letter of the syllable under the first neume.  To use these rules you will need to use the <code>\gresetlyriccentering{syllable}</code> or <code>\gresetlyriccentering{firstletter}</code> command, respectively, in your <span class="tex">T<span class="epsilon">e</span>X</span> file.  <code>\gresetlyriccentering{vowel}</code> will change things back to the default rules.</p>
+<p>In Gregorian chant, aligning the neumes with the text is important so that the singer can match them up appropriately.  By default, Gregorio automates this using the rules described on <a href="../graphy.html" title="">the page about the writing of chant</a>. However, these rules, which are traditional to Latin text, may not give the desirable result in all cases.  For instance, if the languages other than Latin may identify vowels in a different manner.  To help with this you can use the <code>language</code> header field to specify a language for the lyrics other than Latin.  When Gregorio encounters this field, it will look for for the language in gregorio-vowels.dat.  This file uses a special syntax to describe how the vowels in a syllable are determined:</p>
 
-<p>Additionally, if it is necessary, it is possible to control the portion of a particular syllable which is used for alignment.  To do this, put the part of the text to be aligned between braces (in the gabc).  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
+<div class="commandline">
+<code>
+alias [english] to [en];<br/>
+alias [English] to [en];<br/>
+alias [eng] to [en];<br/>
+<br/>
+language [en];<br/>
+<br/>
+vowel aàáâAÀÁÂ;<br/>
+vowel eèéêëEÈÉÊË;<br/>
+vowel iìíîIÌÍÎ;<br/>
+vowel oòóôOÒÓÔ;<br/>
+vowel uùúûUÙÚÛ;<br/>
+vowel yỳýYỲÝ;<br/>
+vowel æǽÆǼ;<br/>
+vowel œŒ;<br/>
+<br/>
+prefix qu Qu qU QU;<br/>
+prefix gu Gu gU GU;<br/>
+prefix y Y;<br/>
+<br/>
+suffix w W;<br/>
+suffix we We wE WE;<br/>
+<br/>
+secondary w W;</code>
+</div>
+
+<p>The <code>alias</code> keyword indicates that a name is an alias for a given language. The <code>alias</code> keyword must be followed by the name of the alias in square brackets, the <code>to</code> keyword, the name of the target language in square brackets, and a semicolon.  For best performance, aliases should precede the language they are aliasing.</p>
+
+<p>The <code>language</code> keyword indicates that the rules which follow are for the specified language.  It must be followed by the language name enclosed in square brackets and a semicolon.  The language specified applies until the next language statement.</p>
+
+<p>The <code>vowel</code> keyword indicates that the characters which follow, until the next semicolon, should be considered vowels.  There may be multiple <code>vowel</code> statements, and the characters following all of them will be considered vowels.</p>
+
+<p>The <code>prefix</code> keyword lists strings of characters which end in a vowel, but when followed by a sequence of vowels, <b>SHOULD NOT</b> be considered part of the vowel sound.  These strings follow the keyword and must be separated by space and end with a semicolon.  There may be multiple <code>prefix</code> statements, and all will apply.  Examples of prefixes include "i" and "u" in Latin and "qu" in English.</p>
+
+<p>The <code>suffix</code> keyword lists strings of characters which don't start with a vowel, but when appearing after a sequence of vowels, <b>SHOULD</b> be considered part of the vowel sound.  These strings follow the keyword and must be separated by space and end with a semicolon.  There may be multiple <code>suffix</code> statements, and all will apply.  Examples of suffixes include "w" and "we" in English and "y" in Spanish.</p>
+
+<p>The <code>secondary</code> keyword lists strings of characters which do not contain vowels, but for which, when there are no vowels present in a syllable, define the center of the syllable.  These strings follow the keyword and must be separated by space and end with a semicolon.  Examples of secondary sequences include "w" from Welsh loanwords in English and the syllabic consonants "l" and "r" in Czech.</p>
+
+<p>Gregorio comes with a gregorio-vowels.dat which defines rules for English (with the possible aliases shown above in the example) and the Slavic languages.  The available aliases for the Slavic languages are:</p>
+
+<ul>
+<li>polish</li>
+<li>Polish</li>
+<li>pol</li>
+<li>pl</li>
+
+<li>czech</li>
+<li>Czech</li>
+<li>ces</li>
+<li>cze</li>
+<li>cs</li>
+
+<li>slovak</li>
+<li>Slovak</li>
+<li>slk</li>
+<li>slo</li>
+<li>sk</li>
+
+<li>Slavic</li>
+<li>slavic</li>
+<li>Church Slavic</li>
+<li>church slavic</li>
+<li>Church Slavonic</li>
+<li>church slavonic</li>
+<li>Old Church Slavonic</li>
+<li>old church slavonic</li>
+<li>Old Slavonic</li>
+<li>old slavonic</li>
+<li>Old Bulgarian</li>
+<li>old bulgarian</li>
+<li>chu</li>
+
+<li>cu</li>
+</ul>
+
+<p>For other languages (or to modify the rules for Latin, English, or the Slavic languages), you will have to write your own gregorio-vowels.dat and place it in some folder that can be found using <code>kspewhich --all gregorio-vowels.dat</code>.  If you do write vowel definitions for a new language, you are invited to submit them for inclusion in future versions of Gregorio.  See the <a href="https://github.com/gregorio-project/gregorio/blob/master/CONTRIBUTING.md">the contributing guide</a> for details.</p>
+
+<p>Additionally, if it is necessary, it is possible to control the portion of a particular syllable which is identified as the vowel.  To do this, put the part of the text to be considered the vowel between braces (in the gabc).  For instance, in the following example the neumes will align with the center of "ve" instead of the first "e":</p>
 
 <div class="commandline">
 <code>e{ve}r(e)</code>
 </div>
 
+
+<p>Finally, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> provides two alternate rule sets which don't rely on vowel identification: centering the whole syllable under the first neume and centering the first letter of the syllable under the first neume.  To use these rules you will need to use the <code>\gresetlyriccentering{syllable}</code> or <code>\gresetlyriccentering{firstletter}</code> command, respectively, in your <span class="tex">T<span class="epsilon">e</span>X</span> file.  <code>\gresetlyriccentering{vowel}</code> will change things back to the default rules.</p>
+
 <h3 id="initial">Initial determination</h3>
 
-<p>The initial is automatically recognized by gregorio as the first letter.  You can use the gabc attribute <code>initial-style</code> in the header to set its size.  The values corespond to number of lines the intial takes up: <code>0</code> (there is no initial), <code>1</code> (the default), or <code>2</code> (the initial takes up two lines).</p>
+<p>The initial is automatically recognized by gregorio as the first letter.  You can the control how many lines it takes up with the <code>\gresetinitiallines{<i>&lt;integer&gt;</i>}</code> in your <span class="tex">T<span class="epsilon">e</span>X</span> file.  Setting this value to <code>0</code> means that the initial will not be separated out and will appear with the rest of its syllable under its notes.</p>
 
 <p>Note that in the case of a syllable composed of one letter only, Gregorio<span class="tex">T<span class="epsilon">e</span>X</span> automatically adds a hyphen under the first notes.  To disable this feature, use the command <code>\gresetemptyfirstsyllablehyphen{auto}</code>.</p>
 

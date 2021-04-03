@@ -65,7 +65,7 @@
     <li>The distance should be defined as <code>fixed</code> relative to the staff size.  If the distance is <code>scalable</code> then any link between the distance and the font distance will be broken if <code>\grechangestaffsize</code> is called.
 </ol>
 
-<p>Example 1:</p>
+<h2>Example 1:</h2>
 
 <div class="commandblock">
 <pre>
@@ -75,7 +75,7 @@
  
 <p>This definition for <code>interwordspacetext</code> will make it equal to the standard space for the font (<i>i.e.</i>, what appears between words in the body text).</p>
 
-<p>Example 2:</p>
+<h2>Example 2:</h2>
 
 <div class="commandblock">
 <pre>
@@ -87,7 +87,9 @@
 
 <p>This trick can also be adapted to create a partial (or complete) dependance of one distance on another:</p>
 
-<p>Example 3:</p>
+<h2>Example 3:</h2>
+
+<p><b>Nota bene:</b> Starting with version 4.2, this particular trick is no longer necessary as the <code>inherited</code> keyword can be used to link distances using <code>\grechangedim</code> directly.</p>
 
 <div class="commandblock">
 <pre>

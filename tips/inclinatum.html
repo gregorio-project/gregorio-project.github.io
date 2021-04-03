@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2015 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Forcing an Upright Punctum Inclinatum';
+</script>
+
+<h1>Forcing an Upright Punctum Inclinatum</h1>
+
+<p>By default there are three different punctum inclinatum shapes which Gregorio selects from automatically depending on the pitches of the surrounding notes.  You can also manually tell Gregorio which to use by appending a number to the note name: <code>G0</code> is a descending punctum inclinatum, <code>G1</code> is an ascending punctum inclinatum, and <code>G2</code> is a unison punctum inclinatum.</p>
+
+<p>Some styles of chant notation, however, only make use of the unison punctum inclinatum, regardless of the surrounding notes.  Now, while this can be acheived by adding a <code>2</code> to every punctum inclinatum in the gabc, this is both a tedious process and forces the resulting gabc to that particular notation style (making it harder to reuse in other contexts).  A better way to do this is to get GregorioTeX to automatically swap out the appropriate glyphs for you with the following code:</p>
+
+<pre>
+\grechangeglyph{AscendensPunctumInclinatum}{greciliae}{StansPunctumInclinatum}
+\grechangeglyph{DescendensPunctumInclinatum}{greciliae}{StansPunctumInclinatum}
+</pre>
+
+<p><b>Nota bene:</b> If you are using Gregorio or Grana Padano, put that font name instead of Graeciliae.</p>
+
+<p>Besides swapping the note shape, you might also want to adjust the spaces related to the ascending and descending punctum inclinatum so that they match with the spaces related to the upright punctum inclinatum.  Those space adjustments are as follows:</p>
+
+<pre>
+\grechangedim{ascendingpunctuminclinatumshift}{punctuminclinatumshift}{inherited}
+\grechangedim{ascendingpunctuminclinatumanddebilisshift}{punctuminclinatumanddebilisshift}{inherited}
+\grechangedim{ascendingpunctuminclinatumbigshift}{punctuminclinatumbigshift}{inherited}
+\grechangedim{ascendingpunctuminclinatummaxshift}{punctuminclinatummaxshift}{inherited}
+\grechangedim{descendingpunctuminclinatumascendingshift}{punctuminclinatumunisonshift}{inherited}
+\grechangedim{ascendingpunctuminclinatumdescendingshift}{punctuminclinatumunisonshift}{inherited}
+\grechangedim{ascendinginclinatumtonobarmaxshift}{descendinginclinatumtonobarmaxshift}{inherited}
+\grechangedim{ascendinginclinatumtonobarbigshift}{descendinginclinatumtonobarbigshift}{inherited}
+\grechangedim{ascendinginclinatumtonobarshift}{descendinginclinatumtonobarshift}{inherited}
+</pre>
+
+<p>To apply this style change to all scores in a document, simply put all of the above commands in your document’s preamble.</p>
+
+<h5>Works with Version:</h5>
+
+<p>5.2.1</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
