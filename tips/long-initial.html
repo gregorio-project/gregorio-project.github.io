@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+  Gregorio web site.
+  Copyright (C) 2007-2021 The Gregorio project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <title>Gregorio project website</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="Free software for typesetting Gregorian chant" lang="en">
+  <meta name="keywords" content="Gregorian chant, gregorio, gabc, gregoriotex" lang="en">
+  <meta name="author" content="The Gregorio project">
+  <link rel="shortcut icon" href="../illus/fav.ico">
+  <link rel="icon" href="../illus/fav.ico">
+  <link rel="stylesheet" href="../style.css" type="text/css" title="default">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="../gregorio-menu.js"></script>
+  <script>
+    var context = 'gregorio';
+    var title = 'Gregorio project website'
+  </script>
+</head>
+
+<body>
+  <div id="ban">
+    <img src="../illus/harpedroite.png" title="" class="hd" alt="" />
+    <a id="haut" name="haut"></a>
+    <div id="banniere">
+    </div>
+  </div>
+  <script>write_gre_menu();</script>
+  <div class="flux">
+    &nbsp;
+    <!-- IE patch-->
+    <div class="text">
+      <!-- End of header -->
+<!-- header -->
+<script>
+    context = 'tipsntricks';
+    title = 'Long Initial';
+</script>
+
+<h1>Long Initial</h1>
+
+<p>
+  Have you ever wanted to have multiple characters as part of the initial on your chant?
+  Normally, it is only possible to have a single character as the initial of a chant.
+  However, in some cases gregorio will treat multiple characters of input as a single character of output: <code><sp>V/</sp></code> at the start of a chant produces an initial of `\Vbar{}` in latex.
+</p>
+<p>
+  When using gregoio, GABC, and lualatex+se it is possile to add <code><v>...</v></code> tags to your <code>*.gabc</code> file.
+  These are used to add latex markup to your gabc output (for instance changing the font chracteristics of the chant text).
+  This can also be used as the initial of your chant, and the entire tag will be considered the whole of the initial.
+</p>
+<p>
+  Note: all of these example must be done with the <code>initiallines</code> being <code>1</code>.
+  To change the font size to be the same as the rest of the chant you can use <code>\grechangestyle{initial}{\fontsize{14}{20}}</code> or some other font size.
+  This <bold>should</bold> be done within a block in your <code>*.tex</code> file so your subsequent chants revert to the default font size:
+</p>
+<p>
+<pre>
+{
+    \grechangestyle{initial}{\fontsize{14}{20}}
+    \gregorioscore{path/to/gabc}
+}
+</pre>
+</p>
+<p>
+  Examples:
+  <ol>
+    <li>
+      Using <code><v>~</v></code> gives you a tabbed in first line.
+    </li>
+    <li>
+      Using <code><v>1.</v></code> will have the text "1." as your initial.
+    </li>
+    <li>
+      Using <code><v>\Vbar. 2.</v></code> will have the text "℣. 1." as your initial.
+    </li>
+  </ol>
+</p>
+
+<h5>Works with Version:</h5>
+
+<p>
+  <ul>
+    <li>5.0</li>
+    <li>5.1</li>
+    <li>5.2</li>
+  </ul>
+</p>
+
+
+<!-- footer -->
+    </div>
+    <div class="bottom">
+    </div>
+    <script>initialize_menu();</script>
+  </body>
+</html>
